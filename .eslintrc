@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@udea-io/eslint-config/react-native"
+  ]
+}
