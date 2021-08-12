@@ -4,6 +4,7 @@ import { I18nManager } from 'react-native';
 import * as Localization from 'expo-localization';
 import Locales from '~/Locale';
 
+// eslint-disable-next-line import/no-mutable-exports
 export let languageTag = 'en';
 
 export const translate = memoize(

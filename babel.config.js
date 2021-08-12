@@ -2,7 +2,7 @@ module.exports = function (api) {
   api.cache(true);
   // api.cache.invalidate(() => process.env.NODE_ENV);
   // console.log('env', process.env.NODE_ENV);
-  // console.log('benv', process.env.BABEL_ENV);
+  // console.log('bEnv', process.env.BABEL_ENV);
   return {
     presets: ['babel-preset-expo'],
     plugins: [
@@ -15,7 +15,7 @@ module.exports = function (api) {
           blacklist: null,
           whitelist: null,
           safe: false,
-          allowUndefined: false,
+          allowUndefined: true,
         },
       ],
       [

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
-import { AppStateActions } from '~/Store';
+import { AppStateActions } from '~/Store/Actions';
 
 export default () => {
   const dispatch = useDispatch();

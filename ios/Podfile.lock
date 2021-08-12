@@ -42,7 +42,7 @@ PODS:
     - UMCore
   - EXStructuredHeaders (1.1.1):
     - UMCore
-  - EXUpdates (0.8.2):
+  - EXUpdates (0.8.4):
     - EXStructuredHeaders
     - EXUpdatesInterface
     - React-Core
@@ -56,26 +56,26 @@ PODS:
     - React-Core (= 0.63.4)
     - React-jsi (= 0.63.4)
     - ReactCommon/turbomodule/core (= 0.63.4)
-  - Firebase/CoreOnly (8.3.0):
-    - FirebaseCore (= 8.3.0)
-  - Firebase/Messaging (8.3.0):
+  - Firebase/CoreOnly (8.4.0):
+    - FirebaseCore (= 8.4.0)
+  - Firebase/Messaging (8.4.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 8.3.0)
-  - FirebaseCore (8.3.0):
+    - FirebaseMessaging (~> 8.4.0)
+  - FirebaseCore (8.4.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.4.0):
+  - FirebaseCoreDiagnostics (8.5.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
-  - FirebaseInstallations (8.4.0):
+  - FirebaseInstallations (8.5.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseMessaging (8.3.0):
+  - FirebaseMessaging (8.4.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -347,7 +347,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-flipper (0.99.0):
+  - react-native-flipper (0.102.0):
     - React-Core
   - react-native-netinfo (6.0.0):
     - React-Core
@@ -415,13 +415,13 @@ PODS:
     - React-jsi (= 0.63.4)
   - RNCAsyncStorage (1.12.1):
     - React-Core
-  - RNCMaskedView (0.1.11):
+  - RNCMaskedView (0.1.10):
     - React
-  - RNFBApp (12.2.0):
-    - Firebase/CoreOnly (= 8.3.0)
+  - RNFBApp (12.4.0):
+    - Firebase/CoreOnly (= 8.4.0)
     - React-Core
-  - RNFBMessaging (12.2.0):
-    - Firebase/Messaging (= 8.3.0)
+  - RNFBMessaging (12.4.0):
+    - Firebase/Messaging (= 8.4.0)
     - React-Core
     - RNFBApp
   - RNGestureHandler (1.10.3):
@@ -708,15 +708,15 @@ SPEC CHECKSUMS:
   EXScreenOrientation: d94f791c7ade3639352f34fcf5353f7c554b7d69
   EXSplashScreen: 6208ca88470ff5979fd49a08ef3feb01143a2b79
   EXStructuredHeaders: e52b880264d15b8ad07d36670226c29476af6334
-  EXUpdates: dcc9d0432e1ad0a3f51b8721375401b4708bf7a1
+  EXUpdates: af3ecad91644a171deaa310326e73b4e70f6963c
   EXUpdatesInterface: b68e78b912a03fff7901a5f46ec200c45e3506a5
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
-  Firebase: 817b9171d0d51dccc458b94a5e8edff6b1dd323d
-  FirebaseCore: a6dba751680d7033b9d3831e1cfc95ead0605118
-  FirebaseCoreDiagnostics: cad03be1904b975f845e632f2720c3337da27faf
-  FirebaseInstallations: 1585729afc787877763208c2088ed84221161f77
-  FirebaseMessaging: 42252b79b860482021483748669ec32e22196462
+  Firebase: 54cdc8bc9c9b3de54f43dab86e62f5a76b47034f
+  FirebaseCore: 31f389c37ac1ea52454a53d3081f2d7019485a4a
+  FirebaseCoreDiagnostics: 7bf55d386f9fc690d971b70a582142321a390eb8
+  FirebaseInstallations: f2bc590b291d25fb40a9a05b8281c02a881b5117
+  FirebaseMessaging: 78025c56654f05c7ebd6f7f87f9d4b12c5231207
   Flipper: 30e8eeeed6abdc98edaf32af0cda2f198be4b733
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
@@ -744,7 +744,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-flipper: 351d392aad3404f0a964054e544be1e0c215969e
+  react-native-flipper: 339e6b27446914e4945d54f99539198534488f12
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
@@ -758,9 +758,9 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
-  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNFBApp: f83ab90f319f1a4b7f276e4703c6a0cdfce5abde
-  RNFBMessaging: 463bd1c052aae9bb78a07670645b82357b88952a
+  RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNFBApp: 97b2da195d4606716b284a7c8a988dd8ed5cec41
+  RNFBMessaging: ee81245484ef7e835975d09c2cd4000dfa2ae5e7
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNLocalize: 82a569022724d35461e2dc5b5d015a13c3ca995b
   RNReanimated: d9da990fc90123f4ffbfdda93d00fc15174863a8

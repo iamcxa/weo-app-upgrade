@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Localization from 'expo-localization';
 import { AppState } from 'react-native';
 import { setI18nConfig } from '~/Helper/I18n';
-import { AppStateActions } from '~/Store';
+import { AppStateActions } from '~/Store/Actions';
 
 // kick-off i18n config
 const currentUsedLanguageTag = setI18nConfig();

@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { translate as t } from '~/Helper/I18n';
-import { ExampleActions, ExampleSelectors } from '~/Store';
+import { ExampleActions } from '~/Store/Actions';
+import { ExampleSelectors } from '~/Store/Selectors';
 import { Classes, Colors, Fonts, Images } from '~/Theme';
 
 import Style from './ApiExampleScreenStyle';

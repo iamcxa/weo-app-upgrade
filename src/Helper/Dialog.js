@@ -1,13 +1,10 @@
 import { get } from 'lodash';
 import { Alert } from 'react-native';
-import {
-  ServiceUnavailableAlert,
-  ApiExceptionAlert,
-} from '@udea-io/axios-wrapper/alert/react-native';
-import { t } from '~/Helper';
+import { ReactNativeAlert } from '@udea-io/axios-wrapper';
+import { translate as t } from '~/Helper/I18n';
 
 export const showServiceUnavailableAlert = (response, callback) =>
-  ServiceUnavailableAlert({
+  ReactNativeAlert.ServiceUnavailableAlert({
     btnOk: t('api.button.ok'),
     btnMore: t('api.button.more'),
     title: t('api.unavailable.title'),
@@ -15,7 +12,7 @@ export const showServiceUnavailableAlert = (response, callback) =>
   })(response, callback);
 
 export const showApiExceptionAlert = (response, callback) =>
-  ApiExceptionAlert({
+  ReactNativeAlert.ApiExceptionAlert({
     btnOk: t('api.button.ok'),
     btnMore: t('api.button.more'),
     title: t('api.unavailable.title'),

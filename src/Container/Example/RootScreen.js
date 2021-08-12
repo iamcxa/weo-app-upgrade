@@ -19,9 +19,12 @@ class RootScreen extends React.Component {
       test: __DEV__,
     };
 
-    DevSettings.addMenuItem('Show Secret Dev Screen', () => {
-      Alert.alert('Showing secret dev screen!');
-    });
+    if (Platform.OS !== 'web') {
+      DevSettings.addMenuItem('--> Show RootScreen <--', () => {
+        Alert.alert('Change me at the RootScreen');
+        this.props.navigation.navigate('RootScreen');
+      });
+    }
   }
 
   componentDidMount() {

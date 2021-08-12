@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from 'react-native';
 
-import { AppStateActions } from '~/Store';
+import { AppStateActions } from '~/Store/Actions';
 
 const StateMonitor = () => {
   const dispatch = useDispatch();

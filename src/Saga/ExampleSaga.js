@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
 import { put, call } from 'redux-saga/effects';
-import { ExampleActions } from '~/Store';
+import { ExampleActions } from '~/Store/Actions';
 import { Handler, Example } from '~/Api';
 import { Logger, t } from '~/Helper';
 
