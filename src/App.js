@@ -1,12 +1,12 @@
 import 'expo-splash-screen';
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 
-import { persistor, AppStore } from '~/Store';
 import SplashScreen from '~/Container/Splash/SplashScreen';
 import AppNavigator from '~/Navigator/AppNavigator';
-import AppMonitor from '~/Monitor/AppMonitor';
+import { AppStore, persistor } from '~/Store';
 
 export default () => {
   return (
@@ -24,7 +24,6 @@ export default () => {
        */}
       <PersistGate loading={<SplashScreen />} persistor={persistor}>
         <AppNavigator />
-        <AppMonitor />
       </PersistGate>
     </Provider>
   );
