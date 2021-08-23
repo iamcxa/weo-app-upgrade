@@ -8,10 +8,7 @@ import { createReducer } from 'reduxsauce';
 import { INITIAL_STATE } from './InitialState';
 import { AppStateTypes } from './Actions';
 
-export const onAppVersionUpdate = (
-  state,
-  { appVersion, buildVersion, bundleIdentifier },
-) => ({
+export const onAppVersionUpdate = (state, { appVersion, buildVersion, bundleIdentifier }) => ({
   ...state,
   currentVersion: {
     appVersion,
@@ -57,11 +54,6 @@ export const onNetInfoUpdate = (state, action) => ({
   netInfo: action.state,
 });
 
-export const onSystemAlertShow = (state, action) => ({
-  ...state,
-  isSystemAlertShow: action.status,
-});
-
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
@@ -70,8 +62,7 @@ export const reducer = createReducer(INITIAL_STATE, {
   [AppStateTypes['APP/ON_LOCALE_UPDATE']]: onLocaleUpdate,
   [AppStateTypes['APP/ON_STATE_UPDATE']]: onAppStateUpdate,
   [AppStateTypes['APP/ON_NET_INFO_UPDATE']]: onNetInfoUpdate,
-  [AppStateTypes.ON_LOADING]: onLoadingUpdate,
-  [AppStateTypes.ON_VERSION_UPDATE]: onAppVersionUpdate,
-  [AppStateTypes.ON_SYSTEM_ALERT_SHOW]: onSystemAlertShow,
-  [AppStateTypes.ON_ORIENTATION_UPDATE]: onOrientationUpdate,
+  [AppStateTypes['APP/ON_LOADING']]: onLoadingUpdate,
+  [AppStateTypes['APP/ON_VERSION_UPDATE']]: onAppVersionUpdate,
+  [AppStateTypes['APP/ON_ORIENTATION_UPDATE']]: onOrientationUpdate,
 });

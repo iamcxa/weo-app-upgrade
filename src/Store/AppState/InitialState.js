@@ -6,11 +6,9 @@ import { boilerplateVersion } from '../../../package.json';
 export const INITIAL_STATE = {
   boilerplateVersion,
 
-  currentOrientation: '',
+  currentOrientation: null,
 
   currentState: 'active',
-
-  // currentTimeZone: 'Asia/Taipei',
 
   netInfo: {
     details: {
@@ -49,6 +47,4 @@ export const INITIAL_STATE = {
   isLoading: false,
   loadingMessage: '',
   loadingOptions: {},
-
-  isSystemAlertShow: false,
 };

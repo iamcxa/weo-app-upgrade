@@ -28,17 +28,14 @@ const { Types, Creators } = createActions({
   // This action triggered when the phone network status changes.
   'app/onNetInfoUpdate': ['state'],
 
-  // This action triggered when the app requires user to wait.
-  onLoading: ['isLoading', 'message', 'options'],
-
   // This action triggered when the app stars, to get current app version.
-  onVersionUpdate: ['nativeAppVersion', 'nativeBuildVersion', 'expoVersion', 'platform'],
-
-  // This action triggered when the system alert shows.
-  onSystemAlertShow: ['status'],
+  'app/onVersionUpdate': ['nativeAppVersion', 'nativeBuildVersion', 'expoVersion', 'platform'],
 
   // This action triggered when the app orientation changes.
-  onOrientationUpdate: ['currentOrientation'],
+  'app/onOrientationUpdate': ['currentOrientation'],
+
+  // This action triggered when the app requires user to wait.
+  'app/onLoading': ['isLoading', 'message', 'options'],
 
   // This action triggered when the app go to foreground or background.
   onDeviceUpdate: ['device'],
