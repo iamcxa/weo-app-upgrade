@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, Platform, Text, View, DevSettings, Alert } from 'react-native';
+import { Alert, Button, DevSettings, Platform, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { t, Logger as l } from '~/Helper';
+
+import { Logger as l, t } from '~/Helper';
 
 import styles from './RootScreenStyle';
 
