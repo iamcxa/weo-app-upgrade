@@ -13,16 +13,9 @@ target 'rnappexpo' do
   # Uncomment to opt-in to using Flipper
   if !ENV['CI']
     # ref: https://github.com/facebook/react-native/issues/31480#issuecomment-871414342
-    use_flipper!({'Flipper' => '0.99.0'})
+    use_flipper!({'Flipper' => '0.102.0'})
     post_install do |installer|
-#         installer.pods_project.build_configurations.each do |config|
-#             config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-#             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-#         end
         flipper_post_install(installer)
-        # Fix atomic_notify_one bug for XCode 12.5
-#         find_and_replace("Pods/RCT-Folly/folly/synchronization/DistributedMutex-inl.h", "atomic_notify_one(state)", "folly::atomic_notify_one(state)")
-#         find_and_replace("Pods/RCT-Folly/folly/synchronization/DistributedMutex-inl.h", "atomic_wait_until(&state, previous | data, deadline)", "folly::atomic_wait_until(&state, previous | data, deadline)")
     end
   end
 
