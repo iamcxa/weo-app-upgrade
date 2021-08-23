@@ -7,14 +7,20 @@ import * as ApiInterceptors from './ApiInterceptors';
 import Config from '~/Config';
 
 const ApiHandler =
-  (method = ApiConst.GET, config = {}, options = {}) =>
+  (
+    method = ApiConst.GET,
+    config = {},
+    options = {
+      headers: {
+        'Accept-Language': Localization.locales.toString(),
+      },
+    },
+  ) =>
   async (url) => {
     // Get current app locale status
     let acceptLanguage = get(config, 'headers["Accept-Language"]');
     if (!acceptLanguage) {
-      if (Localization.locales instanceof Array) {
-        acceptLanguage = Localization.locales.toString();
-      }
+      acceptLanguage = Localization.locales.toString();
     }
 
     const jwt = get(config, 'Authorization');
