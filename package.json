@@ -100,18 +100,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "importSort": {
-    ".js, .jsx, .es6, .es": {
-      "parser": "babylon",
-      "style": "import-sort-style-module-scoped",
-      "options": {}
-    },
-    ".ts, .tsx": {
-      "parser": "typescript",
-      "style": "import-sort-style-module-scoped",
-      "options": {}
-    }
-  },
   "resolutions": {
     "react-devtools-core": "^4.11.0"
   },
