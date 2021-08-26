@@ -1,13 +1,12 @@
 /* eslint-disable global-require */
+import asyncStorage from '@react-native-community/async-storage';
+import { Platform } from 'react-native';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
-import { Platform } from 'react-native';
-
-import asyncStorage from '@react-native-community/async-storage';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
-import createMigrations from './CreateMigrations';
+import createMigrations from './Migration';
 
 /**
  * This import defaults to localStorage for web and AsyncStorage for react-native.
@@ -30,11 +29,6 @@ const persistConfig = {
    * Blacklist state that we do not need/want to persist
    */
   blacklist: [
-    'appApi',
-    'appAlert',
-    'appState',
-    'appRoute',
-    // 'appApi',
     // 'auth',
   ],
 };
