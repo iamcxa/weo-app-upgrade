@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "rn-app-expo",
-    "slug": "rn-app-expo",
+    "name": "WeoApp",
+    "slug": "WeoApp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "rn-app-expo"
+  "name": "WeoApp"
 }

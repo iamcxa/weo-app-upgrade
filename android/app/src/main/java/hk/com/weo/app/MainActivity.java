@@ -1,4 +1,4 @@
-package com.rnappexpo;
+package hk.com.weo.app;
 
 import android.os.Bundle;
 

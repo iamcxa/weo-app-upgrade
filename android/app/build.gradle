@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rnappexpo"
+        applicationId "hk.com.weo.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

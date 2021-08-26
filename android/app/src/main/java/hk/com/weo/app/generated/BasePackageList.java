@@ -1,4 +1,4 @@
-package com.rnappexpo.generated;
+package hk.com.weo.app.generated;
 
 import java.util.Arrays;
 import java.util.List;
