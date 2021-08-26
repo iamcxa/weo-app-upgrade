@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { isString } from 'lodash';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { CircleActions, UserActions } from 'App/Stores';
+import React from "react";
+import PropTypes from "prop-types";
+import { isString } from "lodash";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { CircleActions, UserActions } from "App/Stores";
 
-import SplashView from './SplashView';
+import SplashView from "./SplashView";
 
 class SplashScreen extends React.Component {
   static propTypes = {
@@ -21,8 +21,8 @@ class SplashScreen extends React.Component {
   };
 
   static defaultProps = {
-    apiToken: '',
-    currentState: '',
+    apiToken: "",
+    currentState: "",
   };
 
   timer = null;
@@ -58,7 +58,7 @@ class SplashScreen extends React.Component {
   //   console.log('havePermission=>', havePermission);
   //   if (havePermission === true) {
   //     const { fetchGetStayCircles, sceneKey } = this.props;
-  //     fetchGetStayCircles(null, sceneKey);
+  //     fetchGetStayCircles(nsrc/Locale/index.jsull, sceneKey);
   //     if (this.timer) {
   //       clearTimeout(this.timer);
   //     }
@@ -136,6 +136,6 @@ export default connect(
         cleanUser: UserActions.cleanUser,
         fetchPostAutoSignUp: UserActions.fetchPostAutoSignUp,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(SplashScreen);
