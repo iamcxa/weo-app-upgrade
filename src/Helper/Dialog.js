@@ -1,6 +1,5 @@
-import { get } from 'lodash';
-import { Alert } from 'react-native';
 import { ReactNativeAlert } from '@udea-io/axios-wrapper';
+
 import { translate as t } from '~/Helper/I18n';
 
 export const showServiceUnavailableAlert = (response, callback) =>

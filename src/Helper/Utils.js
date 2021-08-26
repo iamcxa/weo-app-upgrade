@@ -1,10 +1,9 @@
-import { isEqual, isError, attempt } from 'lodash';
+import { attempt, isEqual, isError } from 'lodash';
 
 export const shouldUpdate = (nextProps, nextState) => {
   const { sceneKey, routeName } = this.props;
   return (
-    routeName === sceneKey &&
-    (!isEqual(this.props, nextProps) || !isEqual(this.state, nextState))
+    routeName === sceneKey && (!isEqual(this.props, nextProps) || !isEqual(this.state, nextState))
   );
 };
 

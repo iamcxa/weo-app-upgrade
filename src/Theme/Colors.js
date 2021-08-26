@@ -7,7 +7,7 @@
 
 export default {
   transparent: 'rgba(0,0,0,0)',
-  //Example colors:
+  // Example colors:
   shadow: 'rgba(52,52,52,0.5)',
   text: '#212529',
   primary: '#007bff',

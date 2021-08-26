@@ -1,5 +1,5 @@
-import { consoleTransport } from 'react-native-logs';
 import { ENABLE_LOGGER } from '@env';
+import { consoleTransport } from 'react-native-logs';
 
 const defaultConfig = {
   severity: 'debug',

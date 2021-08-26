@@ -1,11 +1,10 @@
-import { mapValues, mapKeys } from 'lodash';
-import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 
-// Custom Scenes
-import RootScreen from '~/Container/Example/RootScreen';
 import ApiExampleScreen from '~/Container/Example/ApiExampleScreen';
 import FcmExampleScreen from '~/Container/Example/FcmExampleScreen';
+// Custom Scenes
+import RootScreen from '~/Container/Example/RootScreen';
 
 const RootStack = createNativeStackNavigator();
 

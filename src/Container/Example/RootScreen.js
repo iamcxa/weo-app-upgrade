@@ -16,14 +16,12 @@ class RootScreen extends React.Component {
   constructor(prop) {
     super(prop);
 
-    this.state = {
-      test: __DEV__,
-    };
+    this.state = {};
 
     if (Platform.OS !== 'web') {
       DevSettings.addMenuItem('--> Show RootScreen <--', () => {
         Alert.alert('Change me at the RootScreen');
-        this.props.navigation.navigate('RootScreen');
+        prop.navigation.navigate('RootScreen');
       });
     }
   }
@@ -33,16 +31,13 @@ class RootScreen extends React.Component {
   }
 
   onPressOpenApiExample = () => {
-    // Run the startup saga when the application is starting
-    // this.props.startup();ApiExampleScreen
-
-    this.props.navigation.navigate('ApiExampleScreen');
+    const { navigation } = this.props;
+    navigation.navigate('ApiExampleScreen');
   };
 
   onPressOpenFcmExample = () => {
-    // Run the startup saga when the application is starting
-    // Actions.FcmExampleScreen();
-    this.props.navigation.navigate('FcmExampleScreen');
+    const { navigation } = this.props;
+    navigation.navigate('FcmExampleScreen');
   };
 
   render() {

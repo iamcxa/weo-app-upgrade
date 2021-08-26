@@ -5,8 +5,9 @@
  */
 
 import { createReducer } from 'reduxsauce';
-import { INITIAL_STATE } from './InitialState';
+
 import { AppConfigTypes } from './Actions';
+import { INITIAL_STATE } from './InitialState';
 
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer

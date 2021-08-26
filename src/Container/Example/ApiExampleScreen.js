@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ActivityIndicator, Button, Image, Platform, Text, View } from 'react-native';
+import { ActivityIndicator, Button, Image, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -24,6 +24,8 @@ class ApiExampleScreen extends React.Component {
   }
 
   render() {
+    const { userErrorMessage, user, liveInEurope, fetchUser, createPost, userIsLoading } =
+      this.props;
     return (
       <View style={Style.container}>
         <View>
@@ -31,8 +33,8 @@ class ApiExampleScreen extends React.Component {
             <Image style={Style.logo} source={Images.logo} resizeMode="contain" />
           </View>
           <Text style={Style.text}>{t('example.api.title')}</Text>
-          {this.props.userErrorMessage ? (
-            <Text style={Style.error}>{this.props.userErrorMessage}</Text>
+          {userErrorMessage ? (
+            <Text style={Style.error}>{userErrorMessage}</Text>
           ) : (
             <View style={Classes.center}>
               <Text style={Fonts.style.regular}>
@@ -40,25 +42,21 @@ class ApiExampleScreen extends React.Component {
                   t('example.api.username')
                   // "I'm a fake user, my name is "
                 }
-                {this.props.user.name}
+                {user.name}
               </Text>
               <Text style={Fonts.style.regular}>
                 {
-                  this.props.liveInEurope
+                  liveInEurope
                     ? t('example.api.live_in_eu') // 'I live in Europe !'
                     : t('example.api.not_live_in_eu') // "I don't live in Europe."
                 }
               </Text>
             </View>
           )}
-          <Button onPress={this.props.fetchUser} title={t('example.api.refresh')} />
-          <Button onPress={this.props.createPost} title={t('example.api.create')} />
+          <Button onPress={fetchUser} title={t('example.api.refresh')} />
+          <Button onPress={createPost} title={t('example.api.create')} />
         </View>
-        <ActivityIndicator
-          size="large"
-          color={Colors.primary}
-          animating={this.props.userIsLoading}
-        />
+        <ActivityIndicator size="large" color={Colors.primary} animating={userIsLoading} />
       </View>
     );
   }
@@ -70,7 +68,13 @@ ApiExampleScreen.propTypes = {
   userErrorMessage: PropTypes.string,
   fetchUser: PropTypes.func.isRequired,
   createPost: PropTypes.func.isRequired,
-  liveInEurope: PropTypes.bool,
+  liveInEurope: PropTypes.bool.isRequired,
+};
+
+ApiExampleScreen.defaultProps = {
+  user: {},
+  userIsLoading: false,
+  userErrorMessage: '',
 };
 
 export default connect(

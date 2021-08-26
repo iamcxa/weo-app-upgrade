@@ -1,13 +1,13 @@
-export { shouldUpdate, isJSON, getCircularReplacer } from './Utils';
-export { default as I18n, translate as t } from './I18n';
 export { default as Dialog } from './Dialog';
+export { default as I18n, translate as t } from './I18n';
 export { default as Logger } from './Logger';
 export {
-  ScaledSheet,
-  StyleSheet,
-  Screen,
+  getBottomSpace,
+  getStatusBarHeight,
   ifIphoneX,
   isIphoneX,
-  getStatusBarHeight,
-  getBottomSpace,
+  ScaledSheet,
+  Screen,
+  StyleSheet,
 } from './Screen';
+export { getCircularReplacer, isJSON, shouldUpdate } from './Utils';

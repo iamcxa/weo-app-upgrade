@@ -1,4 +1,4 @@
-import {  ENV_DEVELOP, ENV_LOCAL, ENV_STANDARD } from '@env';
+import { ENV_DEVELOP, ENV_LOCAL, ENV_STANDARD } from '@env';
 
 export default {
   // App basic info

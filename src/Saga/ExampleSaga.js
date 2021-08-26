@@ -1,8 +1,9 @@
 import { Alert } from 'react-native';
-import { put, call } from 'redux-saga/effects';
-import { ExampleActions } from '~/Store/Actions';
-import { Handler, Example } from '~/Api';
+import { call, put } from 'redux-saga/effects';
+
+import { Example, Handler } from '~/Api';
 import { Logger, t } from '~/Helper';
+import { ExampleActions } from '~/Store/Actions';
 
 /**
  * A saga can contain multiple functions.

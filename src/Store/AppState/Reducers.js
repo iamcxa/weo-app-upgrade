@@ -5,8 +5,9 @@
  */
 
 import { createReducer } from 'reduxsauce';
-import { INITIAL_STATE } from './InitialState';
+
 import { AppStateTypes } from './Actions';
+import { INITIAL_STATE } from './InitialState';
 
 export const onAppVersionUpdate = (state, { appVersion, buildVersion, bundleIdentifier }) => ({
   ...state,

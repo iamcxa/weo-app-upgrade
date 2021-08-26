@@ -1,7 +1,7 @@
 import { ENV_DEVELOP, ENV_LOCAL, ENV_STANDARD } from '@env';
 
-import LOGGER from './Logger';
 import API from './Api';
+import LOGGER from './Logger';
 
 export default {
   // App basic info

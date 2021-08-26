@@ -8,13 +8,13 @@
 //
 // export { Colors, Fonts, Images, Metrics, Styles, Classes, Global };
 
-export { default as Global } from './Global';
+export { default as Classes } from './Classes';
 export { default as Colors } from './Colors';
 export { default as Fonts } from './Fonts';
-export { default as Metrics } from './Metrics';
+export { default as Global } from './Global';
 export { default as Images } from './Images';
+export { default as Metrics } from './Metrics';
 export { default as Styles } from './Styles';
-export { default as Classes } from './Classes';
 
 // export * from './Colors';
 

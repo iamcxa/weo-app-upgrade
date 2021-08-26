@@ -1,10 +1,12 @@
 import 'react-native-console-time-polyfill';
-import { get } from 'lodash';
-import * as Localization from 'expo-localization';
 
-import { ApiRuntime, ApiConst } from '@udea-io/axios-wrapper';
-import * as ApiInterceptors from './ApiInterceptors';
+import { ApiConst, ApiRuntime } from '@udea-io/axios-wrapper';
+import * as Localization from 'expo-localization';
+import { get } from 'lodash';
+
 import Config from '~/Config';
+
+import * as ApiInterceptors from './ApiInterceptors';
 
 const ApiHandler =
   (

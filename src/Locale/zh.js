@@ -1,6 +1,6 @@
 export default {
   // Language indicator
-  language: 'zh',
+  language: 'en',
 
   // Default values for applying during interpolate automatically
   DEFAULT_VALUES: {

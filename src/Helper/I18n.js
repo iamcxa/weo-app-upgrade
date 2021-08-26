@@ -1,7 +1,8 @@
+import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 import { memoize } from 'lodash';
 import { I18nManager } from 'react-native';
-import * as Localization from 'expo-localization';
+
 import Locales from '~/Locale';
 
 // eslint-disable-next-line import/no-mutable-exports

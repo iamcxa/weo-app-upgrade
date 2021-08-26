@@ -1,5 +1,6 @@
-import { get } from 'lodash';
 import { axios } from '@udea-io/axios-wrapper';
+import { get } from 'lodash';
+
 import * as ApiResponse from '../ApiResponse';
 
 export const requestInterceptor = {

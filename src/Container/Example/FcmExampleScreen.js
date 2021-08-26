@@ -1,11 +1,11 @@
+import firebase from '@react-native-firebase/app';
+import messaging from '@react-native-firebase/messaging';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Alert, Button, Clipboard, Image, Platform, ScrollView, Text, View } from 'react-native';
 // import { Permissions } from 'react-native-unimodules';
 import { connect } from 'react-redux';
 
-import firebase from '@react-native-firebase/app';
-import messaging from '@react-native-firebase/messaging';
 import { getCircularReplacer } from '~/Helper';
 
 import style from './FcmExampleScreenStyle';
@@ -28,7 +28,6 @@ class FcmExampleScreen extends React.Component {
 
     this.state = {
       permission: null,
-      state: '',
       message: '',
       token: 'no token yet',
     };
