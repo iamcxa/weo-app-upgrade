@@ -1,14 +1,23 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Alert, Button, Clipboard, Image, Platform, ScrollView, Text, View } from 'react-native';
+import firebase from "@react-native-firebase/app";
+import messaging from "@react-native-firebase/messaging";
+import PropTypes from "prop-types";
+import React from "react";
+import {
+  Alert,
+  Button,
+  Clipboard,
+  Image,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 // import { Permissions } from 'react-native-unimodules';
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import firebase from '@react-native-firebase/app';
-import messaging from '@react-native-firebase/messaging';
-import { getCircularReplacer } from '~/Helper';
+import { getCircularReplacer } from "~/Helper";
 
-import style from './FcmExampleScreenStyle';
+import style from "./FcmExampleScreenStyle";
 
 /**
  * This is an example of how to interact with FCM(Firebase Cloud Messaging).
@@ -19,29 +28,31 @@ import style from './FcmExampleScreenStyle';
  */
 
 class FcmExampleScreen extends React.Component {
-  channelId = 'test-channel';
+  channelId = "test-channel";
 
-  channelName = 'Test channel';
+  channelName = "Test channel";
 
   constructor(props) {
     super(props);
 
     this.state = {
       permission: null,
-      state: '',
-      message: '',
-      token: 'no token yet',
+      message: "",
+      token: "no token yet",
     };
   }
 
   // Setup FCM permission and listeners when the scene is mounted
   async componentDidMount() {
-    __DEV__ && console.log('@Mount FcmExampleScreen!');
+    __DEV__ && console.log("@Mount FcmExampleScreen!");
 
     const { isEmulator } = this.props;
 
-    if (isEmulator && Platform.OS === 'ios') {
-      Alert.alert('Oops!', `You're running at emulator! so FCM will be disabled.`);
+    if (isEmulator && Platform.OS === "ios") {
+      Alert.alert(
+        "Oops!",
+        `You're running at emulator! so FCM will be disabled.`
+      );
     } else {
       // this.handleNotificationChannel();
       this.handleNotificationListeners();
@@ -113,8 +124,8 @@ class FcmExampleScreen extends React.Component {
     // Assume a message-notification contains a "type" property in the data payload of the screen to open
     messaging().onNotificationOpenedApp((remoteMessage) => {
       console.log(
-        'Notification caused app to open from background state:',
-        remoteMessage.notification,
+        "Notification caused app to open from background state:",
+        remoteMessage.notification
       );
 
       this.onMessageReceiveListener(remoteMessage);
@@ -129,7 +140,7 @@ class FcmExampleScreen extends React.Component {
 
     if (enabled) {
       await this.onPressGetToken();
-      Alert.alert('status', `Authorization status: ${authStatus}`);
+      Alert.alert("status", `Authorization status: ${authStatus}`);
     }
   };
 
@@ -162,7 +173,7 @@ class FcmExampleScreen extends React.Component {
   // };
 
   onMessageReceiveListener = (message) => {
-    console.log('onMessageReceiveListener=>', message);
+    console.log("onMessageReceiveListener=>", message);
 
     this.setState({
       message,
@@ -199,7 +210,7 @@ class FcmExampleScreen extends React.Component {
       token,
     });
     Clipboard.setString(token);
-    __DEV__ && console.log('@FCM: Token=>', token);
+    __DEV__ && console.log("@FCM: Token=>", token);
   };
 
   render() {
@@ -210,7 +221,7 @@ class FcmExampleScreen extends React.Component {
           <Image
             style={style.image}
             source={{
-              uri: 'https://i.ytimg.com/vi/sioEY4tWmLI/maxresdefault.jpg',
+              uri: "https://i.ytimg.com/vi/sioEY4tWmLI/maxresdefault.jpg",
             }}
             resizeMode="contain"
           />
@@ -219,7 +230,7 @@ class FcmExampleScreen extends React.Component {
             This example will shows push notifications message when it arrives.
           </Text>
 
-          {Platform.OS === 'ios' && (
+          {Platform.OS === "ios" && (
             <>
               <Text style={style.title}>Permission Status</Text>
               <Text style={style.content}>{JSON.stringify(permission)}</Text>
@@ -230,7 +241,9 @@ class FcmExampleScreen extends React.Component {
           <Text style={style.content}>{token}</Text>
 
           <Text style={style.title}>Receive Message</Text>
-          <Text style={style.message}>{JSON.stringify(message, getCircularReplacer(), 2)}</Text>
+          <Text style={style.message}>
+            {JSON.stringify(message, getCircularReplacer(), 2)}
+          </Text>
 
           <Button onPress={this.onPressGetToken} title="Copy FCM Token" />
         </ScrollView>
@@ -249,5 +262,5 @@ export default connect(
   (state) => ({
     isEmulator: state.appState.device.isEmulator,
   }),
-  (dispatch) => ({}),
+  (dispatch) => ({})
 )(FcmExampleScreen);

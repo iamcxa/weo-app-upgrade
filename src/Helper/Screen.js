@@ -1,23 +1,22 @@
-import { SIZE_MATTERS_BASE_HEIGHT, SIZE_MATTERS_BASE_WIDTH } from '@env';
-import { Dimensions, PixelRatio } from 'react-native';
+import { SIZE_MATTERS_BASE_HEIGHT, SIZE_MATTERS_BASE_WIDTH } from "@env";
+import { Dimensions, PixelRatio } from "react-native";
 import {
+  getBottomSpace,
+  getStatusBarHeight,
   ifIphoneX,
   isIphoneX,
-  getStatusBarHeight,
-  getBottomSpace,
-} from 'react-native-iphone-x-helper';
-
+} from "react-native-iphone-x-helper";
 import {
-  ScaledSheet,
-  scale,
-  verticalScale,
   moderateScale,
   moderateVerticalScale,
-} from 'react-native-size-matters';
+  scale,
+  ScaledSheet,
+  verticalScale,
+} from "react-native-size-matters";
 
-let Screen = {
-  width: Dimensions.get('window').width,
-  height: Dimensions.get('window').height,
+const Screen = {
+  width: Dimensions.get("window").width,
+  height: Dimensions.get("window").height,
   ScaledSheet,
   scale,
   verticalScale,
@@ -32,25 +31,23 @@ let Screen = {
 };
 
 if (SIZE_MATTERS_BASE_HEIGHT && SIZE_MATTERS_BASE_WIDTH) {
-  const extend = require('react-native-size-matters/extend');
+  // eslint-disable-next-line global-require
+  const extend = require("react-native-size-matters/extend");
 
-  Screen = {
-    ...Screen,
-    ScaledSheet: extend.ScaledSheet,
-    scale: extend.scale,
-    verticalScale: extend.verticalScale,
-    moderateScale: extend.moderateScale,
-    moderateVerticalScale: extend.moderateVerticalScale,
-  };
+  Screen.scale = extend.scale;
+  Screen.ScaledSheet = extend.ScaledSheet;
+  Screen.verticalScale = extend.verticalScale;
+  Screen.moderateScale = extend.moderateScale;
+  Screen.moderateVerticalScale = extend.moderateVerticalScale;
 }
 
 const StyleSheet = ScaledSheet;
 export {
-  ScaledSheet,
-  StyleSheet,
-  Screen,
+  getBottomSpace,
+  getStatusBarHeight,
   ifIphoneX,
   isIphoneX,
-  getStatusBarHeight,
-  getBottomSpace,
+  ScaledSheet,
+  Screen,
+  StyleSheet,
 };

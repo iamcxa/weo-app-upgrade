@@ -1,13 +1,12 @@
 /* eslint-disable global-require */
-import { applyMiddleware, compose, createStore } from 'redux';
-import { persistReducer, persistStore } from 'redux-persist';
-import { Platform } from 'react-native';
+import asyncStorage from "@react-native-community/async-storage";
+import { Platform } from "react-native";
+import { applyMiddleware, compose, createStore } from "redux";
+import { persistReducer, persistStore } from "redux-persist";
+import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
 
-import asyncStorage from '@react-native-community/async-storage';
-import createSagaMiddleware from 'redux-saga';
-import thunk from 'redux-thunk';
-
-import createMigrations from './CreateMigrations';
+import createMigrations from "./Migration";
 
 /**
  * This import defaults to localStorage for web and AsyncStorage for react-native.
@@ -22,7 +21,7 @@ import createMigrations from './CreateMigrations';
  */
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage: asyncStorage,
   version: 1,
   migrate: createMigrations,
@@ -30,11 +29,6 @@ const persistConfig = {
    * Blacklist state that we do not need/want to persist
    */
   blacklist: [
-    'appApi',
-    'appAlert',
-    'appState',
-    'appRoute',
-    // 'appApi',
     // 'auth',
   ],
 };
@@ -58,7 +52,7 @@ export default (rootReducer, rootSaga) => {
     // Use it if Remote debugging with RNDebugger, otherwise use remote-redux-devtools
     composeEnhancers = (
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
-      require('remote-redux-devtools').composeWithDevTools
+      require("remote-redux-devtools").composeWithDevTools
     )({
       name: Platform.OS,
       trace: true,
@@ -69,13 +63,16 @@ export default (rootReducer, rootSaga) => {
   // Enable hot module replacement for reducers
   if (module.hot) {
     module.hot.accept(() => {
-      const nextRootReducer = require('~/Store').default;
+      const nextRootReducer = require("~/Store").default;
       store.replaceReducer(nextRootReducer);
     });
   }
 
   // Create the store
-  const store = createStore(persistedReducers, composeEnhancers(applyMiddleware(...middleware)));
+  const store = createStore(
+    persistedReducers,
+    composeEnhancers(applyMiddleware(...middleware))
+  );
 
   // Kick off the root saga
   sagaMiddleware.run(rootSaga);

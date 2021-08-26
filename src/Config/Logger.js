@@ -1,11 +1,11 @@
-import { consoleTransport } from 'react-native-logs';
-import { ENABLE_LOGGER } from '@env';
+import { ENABLE_LOGGER } from "@env";
+import { consoleTransport } from "react-native-logs";
 
 const defaultConfig = {
-  severity: 'debug',
+  severity: "debug",
   transport: consoleTransport,
   transportOptions: {
-    color: 'ansi', // custom option that color consoleTransport logs
+    color: "ansi", // custom option that color consoleTransport logs
   },
   levels: {
     debug: 0,
@@ -14,7 +14,7 @@ const defaultConfig = {
     error: 3,
   },
   async: true,
-  dateFormat: 'time',
+  dateFormat: "time",
   printLevel: true,
   printDate: true,
   enabled: ENABLE_LOGGER,

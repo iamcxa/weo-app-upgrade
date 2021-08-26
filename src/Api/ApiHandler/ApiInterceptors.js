@@ -1,6 +1,7 @@
-import { get } from 'lodash';
-import { axios } from '@udea-io/axios-wrapper';
-import * as ApiResponse from '../ApiResponse';
+import { axios } from "@udea-io/axios-wrapper";
+import { get } from "lodash";
+
+import * as ApiResponse from "../ApiResponse";
 
 export const requestInterceptor = {
   onFulfilled(config) {
@@ -30,11 +31,11 @@ export const responseInterceptor = {
     // show console warning message
     __DEV__ &&
       console.warn(
-        `API Response Error: ${isCanceled ? '(Request Canceled) ' : ''}${
+        `API Response Error: ${isCanceled ? "(Request Canceled) " : ""}${
           error.status || error.message
         }
-      \n[ Request Path ]\n${get(error, 'config.url')}\n\n[ Full Response ]\n`,
-        JSON.stringify(error, null, 2),
+      \n[ Request Path ]\n${get(error, "config.url")}\n\n[ Full Response ]\n`,
+        JSON.stringify(error, null, 2)
       );
 
     switch (error.status) {

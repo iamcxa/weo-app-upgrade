@@ -1,4 +1,4 @@
-import { isEqual, isError, attempt } from 'lodash';
+import { attempt, isEqual, isError } from "lodash";
 
 export const shouldUpdate = (nextProps, nextState) => {
   const { sceneKey, routeName } = this.props;
@@ -15,7 +15,7 @@ export const isJSON = (str) => {
 export const getCircularReplacer = () => {
   const seen = new WeakSet();
   return (key, value) => {
-    if (typeof value === 'object' && value !== null) {
+    if (typeof value === "object" && value !== null) {
       if (seen.has(value)) {
         return;
       }

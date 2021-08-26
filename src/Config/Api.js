@@ -1,4 +1,4 @@
-import {  ENV_DEVELOP, ENV_LOCAL, ENV_STANDARD } from '@env';
+import { ENV_DEVELOP, ENV_LOCAL, ENV_STANDARD } from "@env";
 
 export default {
   // App basic info
@@ -7,6 +7,6 @@ export default {
 
   // Api
   API_TIMEOUT: 10 * 1000,
-  API_VERSION: '',
-  API_BASE_URL: 'https://jsonplaceholder.typicode.com',
+  API_VERSION: "",
+  API_BASE_URL: "https://jsonplaceholder.typicode.com",
 };
