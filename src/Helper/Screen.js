@@ -31,7 +31,8 @@ const Screen = {
 };
 
 if (SIZE_MATTERS_BASE_HEIGHT && SIZE_MATTERS_BASE_WIDTH) {
-  const extend = import('react-native-size-matters/extend');
+  // eslint-disable-next-line global-require
+  const extend = require('react-native-size-matters/extend');
 
   Screen.scale = extend.scale;
   Screen.ScaledSheet = extend.ScaledSheet;
