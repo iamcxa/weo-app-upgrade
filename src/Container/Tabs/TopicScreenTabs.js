@@ -14,7 +14,6 @@ import { Colors, Metrics } from "App/Theme";
 import { Dialog, Screen } from "App/Helpers";
 import { CustomTabIcon } from "App/Components";
 
-import PanHandlers from "./PanHandlers";
 import FaqScreen from "App/Containers/FaqScreen";
 import PrivacyScreen from "App/Containers/PrivacyScreen";
 import ThereYouAreIntro from "App/Containers/ThereYouAreIntro";
@@ -25,6 +24,7 @@ import TopicCreationScreen from "App/Containers/Topic/TopicCreationScreen";
 import NotificationScreen from "App/Containers/Notification/NotificationScreen";
 import HereYouAreTopicScreen from "App/Containers/Topic/HereYouAreTopicScreen";
 import ThereYouAreTopicScreen from "App/Containers/Topic/ThereYouAreTopicScreen";
+import PanHandlers from "./PanHandlers";
 
 const styles = StyleSheet.create({
   floatingButton: {

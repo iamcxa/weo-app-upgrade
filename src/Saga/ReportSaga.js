@@ -22,10 +22,10 @@ export function* fetchPostHidePost({ id, mode, belongsTo }) {
     );
     if (res.success) {
       if (mode === "TOPIC") {
-        yield put(TopicActions.deleteTopicById({ belongsTo: belongsTo, id }));
+        yield put(TopicActions.deleteTopicById({ belongsTo, id }));
         Actions.pop();
       } else {
-        yield put(PostActions.deletePostById({ belongsTo: belongsTo, id }));
+        yield put(PostActions.deletePostById({ belongsTo, id }));
       }
     }
   } catch (err) {

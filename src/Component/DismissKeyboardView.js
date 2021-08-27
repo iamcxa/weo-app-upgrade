@@ -1,19 +1,21 @@
-import React from 'react';
+import React from "react";
 import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   Platform,
   Keyboard,
   View,
-} from 'react-native';
+} from "react-native";
 
-import { Screen } from 'App/Helpers';
+import { Screen } from "App/Helpers";
 
 const AvoidingView = ({ children, ...props }) => (
   <KeyboardAvoidingView
-    behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    behavior={Platform.OS === "ios" ? "padding" : undefined}
     keyboardVerticalOffset={
-      Platform.OS === 'ios' ? Screen.verticalScale(30) : Screen.verticalScale(24)
+      Platform.OS === "ios"
+        ? Screen.verticalScale(30)
+        : Screen.verticalScale(24)
     }
     {...props}
     style={{ flex: 1 }}

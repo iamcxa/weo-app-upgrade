@@ -190,7 +190,7 @@ class VoiceControl extends Component {
         throw new Error("Voice Recognizing not available now");
       }
     } catch (e) {
-      //eslint-disable-next-line
+      // eslint-disable-next-line
       console.error(e);
     }
   };
@@ -207,7 +207,7 @@ class VoiceControl extends Component {
         onSuccess
       );
     } catch (e) {
-      //eslint-disable-next-line
+      // eslint-disable-next-line
       console.error(e);
     }
   };

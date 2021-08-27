@@ -192,45 +192,41 @@ class NotificationScreen extends React.Component {
           leftComponent={null}
           style={styles.navBar}
         />
-        {
-          <FlatList
-            style={{
-              backgroundColor: Colors.paleGrey,
-            }}
-            contentContainerStyle={styles.listContent}
-            ItemSeparatorComponent={ListSeparator}
-            keyExtractor={(item, index) => `${index}`}
-            renderItem={this.renderItem}
-            data={allIds}
-            onMomentumScrollBegin={() => {
-              this.onEndReachedCalledDuringMomentum = false;
-            }}
-            onEndReached={this.handleListReachEnd}
-            onEndReachedThreshold={0.3}
-            refreshControl={
-              <RefreshControl
-                refreshing={isFetching}
-                onRefresh={this.handleRefresh}
-              />
-            }
-            ListEmptyComponent={
-              <View style={styles.emptyListTextWrapper}>
-                <Text style={styles.emptyListText}>
-                  {t("notify_list_empty")}
+        <FlatList
+          style={{
+            backgroundColor: Colors.paleGrey,
+          }}
+          contentContainerStyle={styles.listContent}
+          ItemSeparatorComponent={ListSeparator}
+          keyExtractor={(item, index) => `${index}`}
+          renderItem={this.renderItem}
+          data={allIds}
+          onMomentumScrollBegin={() => {
+            this.onEndReachedCalledDuringMomentum = false;
+          }}
+          onEndReached={this.handleListReachEnd}
+          onEndReachedThreshold={0.3}
+          refreshControl={
+            <RefreshControl
+              refreshing={isFetching}
+              onRefresh={this.handleRefresh}
+            />
+          }
+          ListEmptyComponent={
+            <View style={styles.emptyListTextWrapper}>
+              <Text style={styles.emptyListText}>{t("notify_list_empty")}</Text>
+            </View>
+          }
+          ListFooterComponent={
+            isEmpty(fcmToken) && (
+              <View style={styles.txtNotEnableNotificationWrapper}>
+                <Text style={styles.txtNotEnableNotification}>
+                  {t("notify_list_empty_cuz_disabled_notification")}
                 </Text>
               </View>
-            }
-            ListFooterComponent={
-              isEmpty(fcmToken) && (
-                <View style={styles.txtNotEnableNotificationWrapper}>
-                  <Text style={styles.txtNotEnableNotification}>
-                    {t("notify_list_empty_cuz_disabled_notification")}
-                  </Text>
-                </View>
-              )
-            }
-          />
-        }
+            )
+          }
+        />
       </View>
     );
   }

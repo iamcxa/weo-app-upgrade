@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-import Screen from '../utils/screen';
-import { Colors, Images } from 'App/Theme';
-import { translate as t } from 'App/Helpers/I18n';
+import { Colors, Images } from "App/Theme";
+import { translate as t } from "App/Helpers/I18n";
+import Screen from "../utils/screen";
 
 const styles = StyleSheet.create({
   footer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     height: Screen.moderateScale(20),
   },
   toolBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginRight: Screen.moderateScale(20),
   },
   toolBtnLabel: {
@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
   toolBtnNumber: {
     marginLeft: Screen.moderateScale(5),
     fontSize: Screen.moderateScale(10),
-    color: 'black',
+    color: "black",
   },
   moreBtn: {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
     padding: Screen.moderateScale(12),
   },
@@ -57,7 +57,7 @@ const CommentCardFooter = ({
       disabled={isPeekMode}
     >
       <Image source={Images.reply} />
-      <Text style={styles.toolBtnLabel}>{t('__reply')}</Text>
+      <Text style={styles.toolBtnLabel}>{t("__reply")}</Text>
       <Text style={styles.toolBtnNumber}>{repliesLength}</Text>
     </TouchableOpacity>
     <TouchableOpacity
@@ -72,7 +72,7 @@ const CommentCardFooter = ({
       disabled={isPeekMode}
     >
       <Image source={Images.share} />
-      <Text style={styles.toolBtnLabel}>{t('__share')}</Text>
+      <Text style={styles.toolBtnLabel}>{t("__share")}</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={[styles.moreBtn, isPeekMode && styles.peekModeDisabled]}

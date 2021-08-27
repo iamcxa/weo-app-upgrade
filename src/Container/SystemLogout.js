@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Animated } from "react-native";
 import { Actions } from "react-native-router-flux";
+import Storage from "App/constant/storage";
+import Images from "App/Theme/Images";
 import IconTitle from "../widget/IconTitle";
 import { PrimaryBtn } from "../widget/Button";
 import { Title } from "../widget/Label";
 import Screen from "../utils/screen";
-import Storage from "App/constant/storage";
 import { removeItem, getItem } from "../utils/asyncStorage";
 import i18n, { i18nKey } from "../utils/i18n";
-import Images from "App/Theme/Images";
 
 const styles = StyleSheet.create({
   container: {

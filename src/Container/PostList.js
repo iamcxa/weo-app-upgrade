@@ -41,11 +41,11 @@ import {
   ReportActions,
 } from "App/Stores";
 
+import { getStateKeyByBelongsTo } from "App/Stores/List/Reducers";
+import { onUpdateList } from "App/Stores/List/Actions/list";
 import { getRoutePrefix } from "../utils/route";
 import BottomPopup from "../widget/BottomPopup";
 import MoreMenu from "../widget/MoreMenu";
-import { getStateKeyByBelongsTo } from "App/Stores/List/Reducers";
-import { onUpdateList } from "App/Stores/List/Actions/list";
 
 const { ON_END_REACHED_THROTTLE, CIRCLE_TYPE } = Config;
 
@@ -398,7 +398,7 @@ class PostList extends React.Component {
 
       createPost({ target: belongsTo, data: res.data });
       updateTopicByKey({
-        belongsTo: belongsTo,
+        belongsTo,
         key: topic.id,
         data: {
           ...topic,
@@ -706,12 +706,10 @@ class PostList extends React.Component {
                 }
               : {}
           }
-          style={[
-            {
-              paddingHorizontal: 0,
-              marginBottom: Screen.verticalScale(8),
-            },
-          ]}
+          style={{
+            paddingHorizontal: 0,
+            marginBottom: Screen.verticalScale(8),
+          }}
           numberOfLines={5}
           // leftOnPress={Actions[`${getRoutePrefix()}_topicList`]}
         />

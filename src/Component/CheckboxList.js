@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
-import IoniconsIcon from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from 'App/Theme/Colors';
-import Screen from '../utils/screen';
-import CheckBox from 'react-native-check-box';
-import { PrimaryInput } from '../widget/InputBox';
-import { checkForm } from '../utils/form';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Text, TextInput, View, Image } from "react-native";
+import IoniconsIcon from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/FontAwesome";
+import Colors from "App/Theme/Colors";
+import CheckBox from "react-native-check-box";
+import Screen from "../utils/screen";
+import { PrimaryInput } from "../widget/InputBox";
+import { checkForm } from "../utils/form";
 
 const styles = StyleSheet.create({
   checkBox: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: Screen.moderateScale(21),
     height: Screen.moderateScale(21),
     // borderRadius: Screen.moderateScale(2.5 * 2),
-    backgroundColor: '#fafafa',
-    borderStyle: 'solid',
+    backgroundColor: "#fafafa",
+    borderStyle: "solid",
     borderWidth: 1,
     borderColor: Colors.mainBlue,
   },
   checkBoxChecked: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: Screen.moderateScale(21),
     height: Screen.moderateScale(21),
     // borderRadius: Screen.moderateScale(2.5 * 2),
     backgroundColor: Colors.pink,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderWidth: Screen.onePixel,
     borderColor: Colors.pink,
   },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: Screen.moderateScale(16),
   },
   inputOuterStyle: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginLeft: Screen.moderateScale(22),
     marginBottom: 0,
   },
@@ -62,7 +62,7 @@ export default class CheckboxList extends Component {
     super(props);
     this.state = {
       ischecked: null,
-      input: '',
+      input: "",
       isErrorCheck: true,
     };
   }
@@ -94,11 +94,11 @@ export default class CheckboxList extends Component {
 
   setClick = (i) => {
     let hasinputIndex;
-    console.log('click', i);
+    console.log("click", i);
     if (this.state.ischecked === i) {
       this.props.onChanege({
         index: -1,
-        value: '',
+        value: "",
         id: -1,
       });
       this.setState({
@@ -122,7 +122,7 @@ export default class CheckboxList extends Component {
         }
       });
       if (hasinputIndex === i) {
-        console.log('input', this.state.input);
+        console.log("input", this.state.input);
         if (this.state.input) {
           this.setState({
             isErrorCheck: true,
@@ -139,6 +139,7 @@ export default class CheckboxList extends Component {
       }
     }
   };
+
   check = () => this.state.isErrorCheck;
 
   inputOnChange = (input, i) => {
@@ -160,17 +161,18 @@ export default class CheckboxList extends Component {
             : this.props.rightContent[i].name,
           id: this.props.rightContent[i].id,
         });
-        console.log('input', this.state.input);
-      },
+        console.log("input", this.state.input);
+      }
     );
   };
+
   render() {
     let result;
     const { setClick, rightContent, keyboardShow, keyboardHide } = this.props;
     const radioList = this.props.rightContent.map((data, i) => {
       const hasInputAndSelect = data.hasInput && this.state.ischecked === i;
       if (hasInputAndSelect) {
-        //有輸入框且勾選時
+        // 有輸入框且勾選時
         console.log(this.state.isErrorCheck);
         result = (
           <PrimaryInput
@@ -199,8 +201,8 @@ export default class CheckboxList extends Component {
           />
         );
       } else if (data.hasInput && this.state.ischecked != i) {
-        //有輸入框但未勾選時
-        console.log(this.state.isErrorCheck); //一載入都是null
+        // 有輸入框但未勾選時
+        console.log(this.state.isErrorCheck); // 一載入都是null
         result = (
           <PrimaryInput
             style={styles.inputOuterStyle}
@@ -220,7 +222,7 @@ export default class CheckboxList extends Component {
               if (keyboardShow) {
                 keyboardShow(this.input);
                 // Android ScrollView 鍵盤沒有把 View 推起來的 Hack
-                const str = ' ';
+                const str = " ";
                 const str2 = this.state.input;
                 this.setState(
                   {
@@ -230,7 +232,7 @@ export default class CheckboxList extends Component {
                     this.setState({
                       input: str2,
                     });
-                  },
+                  }
                 );
               }
             }}
@@ -258,7 +260,9 @@ export default class CheckboxList extends Component {
               this.setClick(i);
             }}
             isChecked={
-              this.state.ischecked !== null ? this.state.ischecked === i : data.checked
+              this.state.ischecked !== null
+                ? this.state.ischecked === i
+                : data.checked
             }
             rightText={data.name}
             unCheckedImage={<View style={styles.checkBox} />}

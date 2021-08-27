@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import Screen from "App/utils/screen";
+
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 
 const isCloseToBottom = (
@@ -31,9 +32,11 @@ export default class Collapsible extends Component {
   };
 
   scroll = new Animated.Value(0);
+
   offset = new Animated.Value(0);
 
   min = this.props.min === false ? 0 : Platform.select({ ios: 20, android: 0 });
+
   max = (this.props.max || 44) + this.min;
 
   position = Animated.add(this.scroll, this.offset).interpolate({

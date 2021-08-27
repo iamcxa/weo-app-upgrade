@@ -9,8 +9,8 @@ import SliderCard, {
 } from "App/Components/SliderCard";
 
 import Colors from "App/Theme/Colors";
-import Screen from "../../utils/screen";
 import CheckboxList from "App/Components/CheckboxList";
+import Screen from "../../utils/screen";
 
 const { width, height } = Screen;
 

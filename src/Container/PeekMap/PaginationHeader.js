@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     alignSelf: "center",
     color: Colors.pureWhite,
-    minWidth: "auto", //Screen.scale(120),
+    minWidth: "auto", // Screen.scale(120),
     maxWidth: Screen.scale(260),
     justifyContent: "center",
     alignItems: "center",

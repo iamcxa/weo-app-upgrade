@@ -75,11 +75,11 @@ export default class TimePick extends Component {
                 is24Hour: false,
               });
               {
-                /*await this.showPicker('isoFormat', {
+                /* await this.showPicker('isoFormat', {
                 hour: 0,
                 minute: 0,
                 is24Hour: true,
-                });*/
+                }); */
               }
             }}
           >

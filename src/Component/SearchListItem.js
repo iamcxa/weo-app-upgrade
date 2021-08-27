@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Highlighter from 'react-native-highlight-words';
-import { Actions } from 'react-native-router-flux';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import Highlighter from "react-native-highlight-words";
+import { Actions } from "react-native-router-flux";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-import { Date as d, Screen } from 'App/Helpers';
-import { Colors } from 'App/Theme';
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { Date as d, Screen } from "App/Helpers";
+import { Colors } from "App/Theme";
+import { getStateKeyByBelongsTo } from "App/Stores/List/Reducers";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
   topic: {},
   topicTitle: {
     fontSize: Screen.scale(16),
-    fontWeight: '500',
+    fontWeight: "500",
     lineHeight: parseInt(Screen.scale(20), 10),
     color: Colors.greyishBrown,
   },
   detailBar: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: Screen.scale(5),
   },
   topicCreatedAt: {
@@ -89,8 +89,8 @@ export default class SearchListItem extends React.PureComponent {
       title,
     } = this.props.itemData;
     // Actions.pop();
-    console.log('key=>', key);
-    console.log('this.props.itemData=>', this.props.itemData);
+    console.log("key=>", key);
+    console.log("this.props.itemData=>", this.props.itemData);
     Actions[`${key}_postList`]({
       // Actions.privacy({
       // type: 'popTo',
@@ -129,12 +129,12 @@ export default class SearchListItem extends React.PureComponent {
       // createdAt,
       // topicId,
     } = post;
-    console.log('post=>', post);
+    console.log("post=>", post);
     // Actions[`${key}_replyList`]({
     // Actions.privacy({
     // Actions.postList({
     Actions[`${key}_postList`]({
-      type: 'push',
+      type: "push",
       title: this.props.itemData.title,
       postId,
       topicId: id,
@@ -167,11 +167,11 @@ export default class SearchListItem extends React.PureComponent {
     } = reply;
     // Actions.postList({
 
-    console.log('reply=>', reply);
+    console.log("reply=>", reply);
     Actions[`${key}_postList`]({
       // Actions[`${key}_replyList`]({
       title: this.props.itemData.title,
-      topicId: topicId,
+      topicId,
       postId: post.id,
       replyId: id,
       content,

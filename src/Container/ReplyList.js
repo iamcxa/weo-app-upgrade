@@ -30,7 +30,6 @@ import { Colors, Screen } from "App/Theme";
 import { AppStateActions } from "App/Stores";
 import Config from "App/Config";
 
-import { fetchAPI, apiHandler, apiAction } from "../utils/api";
 import {
   updateReply,
   resetReply,
@@ -40,6 +39,7 @@ import {
 } from "App/Stores/List/Actions/reply";
 import { updatePostByKey, deletePostById } from "App/Stores/List/Actions/post";
 import { getStateKeyByBelongsTo } from "App/Stores/List/Reducers";
+import { fetchAPI, apiHandler, apiAction } from "../utils/api";
 import MoreMenu from "../widget/MoreMenu";
 import BottomPopup from "../widget/BottomPopup";
 

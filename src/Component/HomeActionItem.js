@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import Screen from '../utils/screen';
-import Colors from 'App/Theme/Colors';
-import { H4 } from '../widget/Label';
-import Images from 'App/Theme/Images';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import Colors from "App/Theme/Colors";
+import Images from "App/Theme/Images";
+import PropTypes from "prop-types";
+import { H4 } from "../widget/Label";
+import Screen from "../utils/screen";
 
 const styles = StyleSheet.create({
   container: {
     // width: Screen.moderateScale(120),
     // width: '31%',
     // width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     // marginBottom: Screen.moderateScale(15),
     // width: Screen.width * 0.3,
     paddingBottom: Screen.moderateScale(13),
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     borderRadius: Screen.moderateScale(50) / 2,
     borderColor: Colors.mainBlue,
     borderWidth: Screen.moderateScale(2),
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 3,
     // backgroundColor: 'red'
   },
@@ -47,7 +47,9 @@ export default class HomeActionItem extends Component {
         style={[
           this.props.style,
           styles.container,
-          this.props.isActive ? { backgroundColor: Colors.backgroundColor } : {},
+          this.props.isActive
+            ? { backgroundColor: Colors.backgroundColor }
+            : {},
         ]}
         onPress={() => {
           if (!this.btnClick) {
@@ -72,7 +74,7 @@ export default class HomeActionItem extends Component {
           />
         </View>
         <View style={{ paddingRight: 2, paddingLeft: 2 }}>
-          <H4 style={{ textAlign: 'center' }}>{this.props.title}</H4>
+          <H4 style={{ textAlign: "center" }}>{this.props.title}</H4>
         </View>
       </TouchableOpacity>
     );
@@ -87,6 +89,6 @@ HomeActionItem.propTypes = {
 };
 
 HomeActionItem.defaultProps = {
-  title: '',
+  title: "",
   onPress: () => {},
 };

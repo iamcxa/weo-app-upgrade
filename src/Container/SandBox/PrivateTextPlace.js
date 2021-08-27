@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import PrivateText from "App/Components/PrivateText";
-import { Title, H1, H2, H3, H4, DefaultText } from "../../widget/Label";
 import { Actions } from "react-native-router-flux";
+import { Title, H1, H2, H3, H4, DefaultText } from "../../widget/Label";
 
 const styles = StyleSheet.create({
   container: {

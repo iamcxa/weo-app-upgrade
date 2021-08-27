@@ -144,20 +144,18 @@ class SearchScreen extends React.Component {
         >
           <View style={styles.inputWrapper}>
             <Image source={Images.search} style={styles.searchIcon} />
-            {
-              <ComposedTextInput
-                ref={(ref) => {
-                  this.searchField = ref;
-                }}
-                value={search}
-                autoCapitalize="none"
-                placeholder="Search"
-                onChangeText={this.onChangeText}
-                placeholderTextColor={Colors.pinkishGrey}
-                style={styles.searchInput}
-                underlineColorAndroid="transparent"
-              />
-            }
+            <ComposedTextInput
+              ref={(ref) => {
+                this.searchField = ref;
+              }}
+              value={search}
+              autoCapitalize="none"
+              placeholder="Search"
+              onChangeText={this.onChangeText}
+              placeholderTextColor={Colors.pinkishGrey}
+              style={styles.searchInput}
+              underlineColorAndroid="transparent"
+            />
           </View>
           {search.length === 0 && (
             <FlatList

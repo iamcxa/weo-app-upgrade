@@ -11,13 +11,13 @@ import Config from "App/Config";
 import { Colors, Images } from "App/Theme";
 import { Screen } from "App/Helpers";
 
+import { updateUser, cleanUser } from "App/Stores/User/Actions";
+import Storage from "App/constant/storage";
 import { getItem, setItem } from "../utils/asyncStorage";
 
-import { updateUser, cleanUser } from "App/Stores/User/Actions";
 import { getToken } from "../utils/fcm";
 import { getRandomSeed, getRandomNickName } from "../utils/user";
 // import { fetchAPI, apiHandler, apiAction } from '../utils/api';
-import Storage from "App/constant/storage";
 
 import SplashView from "./SplashView";
 

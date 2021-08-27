@@ -77,10 +77,10 @@ const CircleSliderHeader = (props) => {
           horizontal
           pagingEnabled
           dotsContainerStyle={styles.paginationContainer}
-          listRef={this.refs} //to allow React Native Pagination to scroll to item when clicked  (so add "ref={r=>this.refs=r}" to your list)
-          paginationVisibleItems={paginationVisibleItems} //needs to track what the user sees
-          paginationItems={entries} //pass the same list as data
-          paginationItemPadSize={padSize} //num of items to pad above and below your visible items
+          listRef={this.refs} // to allow React Native Pagination to scroll to item when clicked  (so add "ref={r=>this.refs=r}" to your list)
+          paginationVisibleItems={paginationVisibleItems} // needs to track what the user sees
+          paginationItems={entries} // pass the same list as data
+          paginationItemPadSize={padSize} // num of items to pad above and below your visible items
           dotThemeLight
           startDotIconName={PAGINATION_DOT_ICON_NAME}
           endDotIconName={PAGINATION_DOT_ICON_NAME}

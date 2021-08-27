@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Actions } from "react-native-router-flux";
 import Colors from "App/Theme/Colors";
-import { Title } from "../../widget/Label";
 import DropDownMenu from "App/Components/DropDownMenu";
+import { Title } from "../../widget/Label";
 import { PrimaryBtn, LineBtn } from "../../widget/Button";
 import { PrimaryInput, ListInput } from "../../widget/InputBox";
 import CheckBox from "../../widget/CheckBox";
@@ -103,7 +103,7 @@ export default class Gec extends Component {
           <PrimaryBtn
             onPress={Actions.drawer}
             text="下一步"
-            //style={{ width: Screen.width - Screen.moderateScale(90) }}
+            // style={{ width: Screen.width - Screen.moderateScale(90) }}
           />
           <LineBtn text="忘記密碼" onPress={() => {}} />
         </View>

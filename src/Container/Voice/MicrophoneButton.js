@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 import * as Animatable from "react-native-animatable";
 
-import Screen from "../../utils/screen";
 import Images from "App/Theme/Images";
 import ImageButton from "App/Components/ImageButton";
+import Screen from "../../utils/screen";
 
 const styles = StyleSheet.create({
   container: {

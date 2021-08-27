@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Image, ScrollView, StatusBar } from "react-native";
 import { Actions } from "react-native-router-flux";
+import Colors from "App/Theme/Colors";
+import FooterLogo from "App/Components/FooterLogo";
 import { H1, H5 } from "../widget/Label";
 import Screen from "../utils/screen";
-import Colors from "App/Theme/Colors";
 import { PrimaryBtn } from "../widget/RoundButton";
-import FooterLogo from "App/Components/FooterLogo";
 
 const TOTAL_PAGES = 3;
 

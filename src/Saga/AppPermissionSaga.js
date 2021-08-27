@@ -13,9 +13,9 @@ export function* checkPermissions({ permissions, onSuccess, onFailure }) {
   // ensure that "permissions" is an array.
   if (permissions instanceof Array) {
     // try to iterate the array to get permission to check.
-    for (let eachPermission of permissions) {
+    for (const eachPermission of permissions) {
       if (eachPermission) {
-        let permissionStatus = yield call(Permissions.check, eachPermission);
+        const permissionStatus = yield call(Permissions.check, eachPermission);
         __DEV__ &&
           console.log(
             "checkPermissions permissionStatus=>",

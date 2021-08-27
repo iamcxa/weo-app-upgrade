@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { StyleSheet, View, Alert } from "react-native";
 import { Actions } from "react-native-router-flux";
 import RoundButton from "App/Components/Button";
-import Screen from "../utils/screen";
 import Colors from "App/Theme/Colors";
+import Screen from "../utils/screen";
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Image, TouchableOpacity } from 'react-native';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Image, TouchableOpacity } from "react-native";
 
 export default class ImageButton extends Component {
   static propTypes = {
@@ -17,12 +17,12 @@ export default class ImageButton extends Component {
 
   static defaultProps = {
     onPress: () => {},
-    source: '',
-    resizeMode: 'center',
+    source: "",
+    resizeMode: "center",
     blurRadius: 0,
     disabled: false,
-    height: 'auto',
-    width: 'auto',
+    height: "auto",
+    width: "auto",
     style: {},
     imageStyle: {},
   };
@@ -64,8 +64,8 @@ export default class ImageButton extends Component {
       <TouchableOpacity
         style={[
           {
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: "center",
+            alignItems: "center",
             height,
             width,
           },
@@ -80,10 +80,10 @@ export default class ImageButton extends Component {
           resizeMode={resizeMode}
           style={[
             {
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-              width: '100%',
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+              width: "100%",
             },
             imageStyle,
           ]}

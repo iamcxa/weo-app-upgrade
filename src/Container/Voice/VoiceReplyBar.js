@@ -11,12 +11,13 @@ import {
   // TouchableWithoutFeedback,
 } from "react-native";
 
-import KeyboardUtil from "../../utils/keyboard";
 import { Colors } from "App/Theme";
 import { Screen, ListenableEvent } from "App/Helpers";
 import ReplyBar from "App/Components/ReplyBar";
 
 import Config from "App/Config";
+import KeyboardUtil from "../../utils/keyboard";
+
 const { CIRCLE_TYPE } = Config;
 
 const styles = StyleSheet.create({
@@ -151,20 +152,15 @@ export default class VoiceReplyBar extends Component {
       voiceInputText,
     } = this.props;
     return (
-      <View style={[styles.container]}>
-        <Animated.View
-          style={[
-            styles.replyBar,
-            // { bottom: this.keyboardHeight }
-          ]}
-        >
+      <View style={styles.container}>
+        <Animated.View style={styles.replyBar}>
           <ReplyBar
             onBlur={() => Keyboard.dismiss()}
             ref={(ref) => {
               this.replyBar = ref;
             }}
             style={{
-              bottom: 0, //isListening ? 0 : -100,
+              bottom: 0, // isListening ? 0 : -100,
             }}
             type="TOPIC"
             appendContent={voiceInputText}

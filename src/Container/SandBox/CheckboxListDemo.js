@@ -17,6 +17,7 @@ export default class CheckboxListDemo extends Component {
     super(props);
     this.state = {};
   }
+
   render() {
     const array = [1, 2, 3, 4, 5];
     return (

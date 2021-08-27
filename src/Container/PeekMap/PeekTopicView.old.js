@@ -14,7 +14,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import { Screen, StyleSheet, Date as d } from "App/Helpers";
 import { translate as t } from "App/Helpers/I18n";
-import { Colors } from "App/Theme";
+import { Colors, Classes } from "App/Theme";
 import Config from "App/Config";
 import {
   TopicCard,
@@ -24,8 +24,6 @@ import {
   CollapsibleHeader,
 } from "App/Components";
 import { SortOptionRow } from "App/Components/ListHeader";
-
-import { Classes } from "App/Theme";
 
 import HyperlinkWrapper from "App/widget/HyperlinkWrapper";
 import { getRoutePrefix } from "App/utils/route";

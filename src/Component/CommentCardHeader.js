@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-import Screen from "../utils/screen";
 import Colors from "App/Theme/Colors";
+import Screen from "../utils/screen";
 
 const topicListHeaderStyles = StyleSheet.create({
   avatar: {

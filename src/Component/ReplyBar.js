@@ -499,7 +499,7 @@ class ReplyBar extends React.PureComponent {
         content: data.content,
         circleId: data.circleId,
         belongsTo: belongsTo || CIRCLE_TYPE.HERE_YOU_ARE,
-        selectedImage: selectedImage,
+        selectedImage,
         onSuccess: replySuccess,
       });
     } else if (type === "REPLY") {

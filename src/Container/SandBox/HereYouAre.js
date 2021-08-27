@@ -8,11 +8,11 @@ import {
   Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import Screen from "../../utils/screen";
 import Colors from "App/Theme/Colors";
 import MainNavBar from "App/Components/MainNavBar";
 import TopicCard from "App/Components/TopicCard";
 import CollapsibleHeader from "App/Components/CollapsibleHeader";
+import Screen from "../../utils/screen";
 
 const styles = StyleSheet.create({
   container: {

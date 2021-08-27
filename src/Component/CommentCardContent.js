@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { isString, isEmpty } from 'lodash';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { isString, isEmpty } from "lodash";
+import { View, Text, TouchableOpacity } from "react-native";
 
-import { Colors } from 'App/Theme';
-import { StyleSheet } from 'App/Helpers';
-import HyperlinkWrapper from '../widget/HyperlinkWrapper';
+import { Colors } from "App/Theme";
+import { StyleSheet } from "App/Helpers";
+import HyperlinkWrapper from "../widget/HyperlinkWrapper";
 
 const styles = StyleSheet.create({
   contentText: {
@@ -48,7 +48,7 @@ const CommentCardContent = ({
             isPeekMode && styles.peekModeHighlightAuthorName,
           ]}
         >
-          {'@'}
+          {"@"}
           {replyAuthorName}
         </Text>
       </TouchableOpacity>
@@ -56,7 +56,9 @@ const CommentCardContent = ({
 
     {isString(content) && !isEmpty(content.trim()) && (
       <HyperlinkWrapper>
-        <Text style={[styles.contentText, isPeekMode && styles.peekModeContentText]}>
+        <Text
+          style={[styles.contentText, isPeekMode && styles.peekModeContentText]}
+        >
           {content}
         </Text>
       </HyperlinkWrapper>
@@ -74,9 +76,9 @@ CommentCardContent.propTypes = {
 
 CommentCardContent.defaultProps = {
   onPressPopupOriginPost: () => {},
-  replyAuthorName: '',
+  replyAuthorName: "",
   replyPostId: null,
-  content: '',
+  content: "",
   isPeekMode: false,
 };
 

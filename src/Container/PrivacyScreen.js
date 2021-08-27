@@ -9,9 +9,9 @@ import { MainNavBar, AndroidBackKey } from "App/Components";
 import { Screen } from "App/Helpers";
 import { Classes, Colors } from "App/Theme";
 
+import Storage from "App/constant/storage";
 import { PrimaryBtn } from "../widget/RoundButton";
 import { setItem } from "../utils/asyncStorage";
-import Storage from "App/constant/storage";
 
 const styles = StyleSheet.create({
   navBar: {

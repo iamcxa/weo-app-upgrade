@@ -1,36 +1,36 @@
-import React from 'react';
-import numeral from 'numeral';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { isEmpty, debounce } from 'lodash';
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React from "react";
+import numeral from "numeral";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { isEmpty, debounce } from "lodash";
+import { TouchableOpacity, View, StyleSheet } from "react-native";
+import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import Config from 'App/Config';
-import { Colors, Metrics } from 'App/Theme';
-import { Screen } from 'App/Helpers';
-import { VoteActions } from 'App/Stores';
+import Config from "App/Config";
+import { Colors, Metrics } from "App/Theme";
+import { Screen } from "App/Helpers";
+import { VoteActions } from "App/Stores";
 
-import { DefaultText } from '../widget/Label';
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { getStateKeyByBelongsTo } from "App/Stores/List/Reducers";
+import { DefaultText } from "../widget/Label";
 
 const { BUTTON_DEBOUNCE } = Config;
-const LIKE = 'LIKE';
-const DISLIKE = 'DISLIKE';
+const LIKE = "LIKE";
+const DISLIKE = "DISLIKE";
 
 const TargetType = {
-  TOPIC: 'topics',
-  POST: 'posts',
-  REPLY: 'replies',
+  TOPIC: "topics",
+  POST: "posts",
+  REPLY: "replies",
 };
 
 const styles = StyleSheet.create({
   container: {},
   likeBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
     // marginBottom: Screen.scale(8),
     height: Screen.scale(24),
     borderRadius: Screen.scale(12),
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     width: Screen.scale(24),
     height: Screen.scale(24),
     borderRadius: Screen.scale(12),
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   likesLabel: {
     color: Colors.warmGrey,
@@ -53,16 +53,20 @@ const styles = StyleSheet.create({
   },
   rightBlock: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: "space-around",
   },
 });
 
 class VoteBox extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(['TOPIC', 'POST', 'REPLY']).isRequired,
-    belongsTo: PropTypes.oneOf(['HERE_YOU_ARE', 'THERE_YOU_ARE', 'BROWSE', 'PEEK'])
-      .isRequired,
+    type: PropTypes.oneOf(["TOPIC", "POST", "REPLY"]).isRequired,
+    belongsTo: PropTypes.oneOf([
+      "HERE_YOU_ARE",
+      "THERE_YOU_ARE",
+      "BROWSE",
+      "PEEK",
+    ]).isRequired,
     disabled: PropTypes.bool,
     handleVote: PropTypes.func.isRequired,
   };
@@ -122,9 +126,11 @@ class VoteBox extends React.Component {
           onPress={this.likeOnPress}
         >
           <DefaultText style={styles.likesLabel}>
-            {numeral(voteData.like).format('0,0')}
+            {numeral(voteData.like).format("0,0")}
           </DefaultText>
-          <View style={[styles.likeBtn, { backgroundColor: Colors.mainYellow }]}>
+          <View
+            style={[styles.likeBtn, { backgroundColor: Colors.mainYellow }]}
+          >
             <MaterialIcon
               name="thumb-up-outline"
               size={Screen.scale(13)}
@@ -149,9 +155,11 @@ class VoteBox extends React.Component {
           onPress={this.dislikeOnPress}
         >
           <DefaultText style={styles.likesLabel}>
-            {numeral(voteData.dislike).format('0,0')}
+            {numeral(voteData.dislike).format("0,0")}
           </DefaultText>
-          <View style={[styles.likeBtn, { backgroundColor: Colors.silverThree }]}>
+          <View
+            style={[styles.likeBtn, { backgroundColor: Colors.silverThree }]}
+          >
             <MaterialIcon
               name="thumb-down-outline"
               size={Screen.scale(13)}
@@ -176,7 +184,7 @@ export default connect(
       {
         handleVote: VoteActions.handleVote,
       },
-      dispatch,
+      dispatch
     ),
-  }),
+  })
 )(VoteBox);

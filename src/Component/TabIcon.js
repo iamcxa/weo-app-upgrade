@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Text, StyleSheet, View, Image, Platform } from 'react-native';
-import Colors from 'App/Theme/Colors';
-import Screen from '../utils/screen';
-import NotifyBox from 'App/Components/NotifyBox';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Text, StyleSheet, View, Image, Platform } from "react-native";
+import Colors from "App/Theme/Colors";
+import NotifyBox from "App/Components/NotifyBox";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import Screen from "../utils/screen";
 
 @connect(
   (state) => ({
     tab: state.tab,
   }),
-  (dispatch) => bindActionCreators({}, dispatch),
+  (dispatch) => bindActionCreators({}, dispatch)
 )
 class Notify extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+
   render() {
     return (
       <View
         style={{
-          position: 'absolute',
-          ...(Screen.proportion == '4:3'
+          position: "absolute",
+          ...(Screen.proportion == "4:3"
             ? {
                 right: Screen.moderateScale(10),
                 top: Screen.moderateScale(-7),
@@ -45,8 +46,8 @@ class Notify extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     ...Platform.select({
       ios: {
         height: Screen.tabHeight,
@@ -63,8 +64,8 @@ const styles = StyleSheet.create({
     ios: {
       title: {
         fontSize: Screen.moderateScale(14),
-        fontWeight: '500',
-        textAlign: 'center',
+        fontWeight: "500",
+        textAlign: "center",
       },
       icon: {
         height: Screen.moderateScale(24),
@@ -75,8 +76,8 @@ const styles = StyleSheet.create({
     android: {
       title: {
         fontSize: Screen.moderateScale(14),
-        fontWeight: '500',
-        textAlign: 'center',
+        fontWeight: "500",
+        textAlign: "center",
       },
       icon: {
         height: Screen.moderateScale(24),
@@ -128,13 +129,13 @@ const defaultProps = {
 
 const TabIcon = (props) => {
   const { focused, iconName, mainIcon, notify } = props;
-  const target = focused ? 'true' : 'false';
+  const target = focused ? "true" : "false";
   // console.log("TabIcon!!!!!!!", iconName, props);
   let tabBackColor = Colors.tealish;
   if (focused) {
     tabBackColor = Colors.whiteThree;
   }
-  if (mainIcon && Platform.OS === 'ios') {
+  if (mainIcon && Platform.OS === "ios") {
     tabBackColor = Colors.tealish;
   }
   return (
@@ -149,7 +150,7 @@ const TabIcon = (props) => {
         ]}
         resizeMode="contain"
       />
-      {mainIcon && Platform.OS === 'ios' ? null : (
+      {mainIcon && Platform.OS === "ios" ? null : (
         <Text
           style={[
             styles.title,

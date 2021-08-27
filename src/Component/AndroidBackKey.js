@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
-import { Actions } from 'react-native-router-flux';
+import React from "react";
+import PropTypes from "prop-types";
+import { isEmpty } from "lodash";
+import { Actions } from "react-native-router-flux";
 // eslint-disable-next-line react-native/split-platform-components
-import { BackHandler, Platform, ToastAndroid } from 'react-native';
+import { BackHandler, Platform, ToastAndroid } from "react-native";
 
 export const EVENTS = {
-  CHANGE: 'change',
-  HARDWARE_BACK_PRESS: 'hardwareBackPress',
+  CHANGE: "change",
+  HARDWARE_BACK_PRESS: "hardwareBackPress",
 };
 
 class AndroidBackKey extends React.PureComponent {
@@ -23,8 +23,8 @@ class AndroidBackKey extends React.PureComponent {
     backTo: null,
     backToProps: undefined,
     onBackKeyPress: null,
-    routeName: '',
-    sceneKey: '',
+    routeName: "",
+    sceneKey: "",
   };
 
   /**
@@ -32,10 +32,10 @@ class AndroidBackKey extends React.PureComponent {
    */
   componentDidMount() {
     // Android "Back" button trigger event listener
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       this.backHandler = BackHandler.addEventListener(
         EVENTS.HARDWARE_BACK_PRESS,
-        this.onAndroidBackButtonPressed,
+        this.onAndroidBackButtonPressed
       );
     }
   }
@@ -45,32 +45,33 @@ class AndroidBackKey extends React.PureComponent {
    */
   componentWillUnmount() {
     // Android "Back" button trigger event listener
-    if (Platform.OS === 'android' && this.backHandler) {
+    if (Platform.OS === "android" && this.backHandler) {
       this.backHandler.remove();
     }
   }
 
   onAndroidBackButtonPressed = () => {
     const { routeName, sceneKey } = this.props;
-    console.log('routeName=>', routeName);
-    console.log('sceneKey=>', sceneKey);
-    if (Platform.OS === 'android') {
+    console.log("routeName=>", routeName);
+    console.log("sceneKey=>", sceneKey);
+    if (Platform.OS === "android") {
       __DEV__ &&
         ToastAndroid.show(
           `Back button pressed at "${Actions.currentScene}"`,
-          ToastAndroid.SHORT,
+          ToastAndroid.SHORT
         );
     }
     if ((sceneKey && Actions.currentScene === sceneKey) || !sceneKey) {
       const { backTo, backToProps, onBackKeyPress } = this.props;
 
       const hasBackTo =
-        (typeof backTo === 'string' && !isEmpty(backTo)) || typeof backTo === 'function';
-      const hasBackToHandler = typeof onBackKeyPress === 'function';
-      if (typeof backTo === 'string') {
+        (typeof backTo === "string" && !isEmpty(backTo)) ||
+        typeof backTo === "function";
+      const hasBackToHandler = typeof onBackKeyPress === "function";
+      if (typeof backTo === "string") {
         Actions[backTo](backToProps);
       }
-      if (typeof backTo === 'function') {
+      if (typeof backTo === "function") {
         backTo(backToProps);
       }
       if (hasBackToHandler) {

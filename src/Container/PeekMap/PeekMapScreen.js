@@ -105,8 +105,11 @@ class PeekMapScreen extends React.Component {
       },
     },
   };
+
   markerRefs = [];
+
   circleRefs = [];
+
   loadingTimer = null;
 
   async componentDidMount() {

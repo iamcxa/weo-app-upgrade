@@ -5,16 +5,16 @@ import { bindActionCreators } from "redux";
 import { Actions } from "react-native-router-flux";
 import PropTypes from "prop-types";
 import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
-import { PrimaryBtn } from "../widget/RoundButton";
 import ModalCard from "App/Components/ModalCard";
-import Screen from "../utils/screen";
 import Colors from "App/Theme/Colors";
-import RadioButton from "../widget/RadioButton";
-import { fetchAPI, apiAction, apiHandler } from "../utils/api";
 import { AppStateActions } from "App/Stores";
 import AvoidingView from "App/Components/DismissKeyboardView";
 import { translate as t } from "App/Helpers/I18n";
 import { ReportActions } from "App/Stores/index";
+import { fetchAPI, apiAction, apiHandler } from "../utils/api";
+import RadioButton from "../widget/RadioButton";
+import Screen from "../utils/screen";
+import { PrimaryBtn } from "../widget/RoundButton";
 
 const styles = StyleSheet.create({
   container: {

@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import Colors from "App/Theme/Colors";
+import Images from "App/Theme/Images";
 import {
   ThreeLineListItem,
   RowStatusListItm,
@@ -17,7 +18,6 @@ import {
 } from "../../widget/ListItem";
 import CheckBox from "../../widget/CheckBox";
 import Screen from "../../utils/screen";
-import Images from "App/Theme/Images";
 
 const styles = StyleSheet.create({
   container: {

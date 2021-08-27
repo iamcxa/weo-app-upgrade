@@ -38,7 +38,7 @@ export function* fetchGetPost({ topicId, curPage, belongsTo, handleNextPage }) {
         if (topic) {
           yield put(
             TopicActions.updateTopicByKey({
-              belongsTo: belongsTo,
+              belongsTo,
               key: topic.id,
               data: topic,
             })

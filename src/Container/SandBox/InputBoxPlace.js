@@ -48,7 +48,7 @@ export default class InputBoxPlace extends Component {
           value={this.state.pwd}
           placeholder="請輸入密碼"
           isRequire
-          pattern={"^.{6,}$"}
+          pattern="^.{6,}$"
           onError={() => {
             console.log("pwd validator fail!!");
           }}

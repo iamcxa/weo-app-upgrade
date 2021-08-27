@@ -33,7 +33,7 @@ const RootTabs = ({ handleUpdateList }) => (
         component={VoiceScreen}
       />
 
-      {/* Tab Here You Here Circle*/}
+      {/* Tab Here You Here Circle */}
       {TopicScreenTabs({
         handleUpdateList,
       })}

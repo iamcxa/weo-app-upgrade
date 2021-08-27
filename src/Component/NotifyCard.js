@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { H3, H5 } from "../widget/Label.js";
 import { Date as d } from "App/Helpers";
 import { Colors, Metrics, Fonts } from "App/Theme";
+import { H3, H5 } from "../widget/Label.js";
 
 export default class NotifyCard extends Component {
   render() {
