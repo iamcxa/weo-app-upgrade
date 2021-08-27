@@ -1,9 +1,9 @@
 import { put, call, select } from 'redux-saga/effects';
 import { keyBy } from 'lodash';
 
-import { NotificationActions } from 'App/Stores';
-import { Handler, Notification } from 'App/Apis';
-import { Logger } from 'App/Helpers';
+import { NotificationActions } from '~/Stores';
+import { Handler, Notification } from '~/Apis';
+import { Logger } from '~/Helpers';
 
 const TAG = '@NotificationSaga';
 

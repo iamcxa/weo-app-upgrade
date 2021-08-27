@@ -10,7 +10,7 @@ import {
   Keyboard,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import { PrimaryBtn, SubBtn, LineBtn, LogoBtn } from '../widget/Button';
 import Screen from '../utils/screen';
 

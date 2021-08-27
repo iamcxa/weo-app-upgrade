@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Image } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import SliderCard, { sliderWidth, itemWidth, sliderHeight } from 'App/Components/SliderCard';
+import SliderCard, { sliderWidth, itemWidth, sliderHeight } from '~/Components/SliderCard';
 
-import Colors from 'App/Theme/Colors';
-import CheckboxList from 'App/Components/CheckboxList';
+import Colors from '~/Theme/Colors';
+import CheckboxList from '~/Components/CheckboxList';
 import Screen from '../../utils/screen';
 
 const { width, height } = Screen;

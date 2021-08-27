@@ -1,8 +1,8 @@
 import { put, call, select } from 'redux-saga/effects';
 
-import { AppStateActions, AppConfigActions } from 'App/Stores';
-import { Handler, Config } from 'App/Apis';
-import { Logger } from 'App/Helpers';
+import { AppStateActions, AppConfigActions } from '~/Stores';
+import { Handler, Config } from '~/Apis';
+import { Logger } from '~/Helpers';
 
 const TAG = '@WeoConfigSaga';
 

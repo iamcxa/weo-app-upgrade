@@ -6,9 +6,9 @@ import DeviceInfo from 'react-native-device-info';
 import DropdownAlert from 'react-native-dropdownalert';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import config from 'App/Config';
-import RoundButton from 'App/Components/Button';
-import { updateAlert } from 'App/Stores/AppAlert/Actions';
+import config from '~/Config';
+import RoundButton from '~/Components/Button';
+import { updateAlert } from '~/Stores/AppAlert/Actions';
 
 const styles = StyleSheet.create({
   container: {

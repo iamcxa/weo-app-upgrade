@@ -20,8 +20,8 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
-import { translate as t } from 'App/Helpers/I18n';
-import { Date as d, Screen, ListenableEvent, ifIphoneX } from 'App/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { Date as d, Screen, ListenableEvent, ifIphoneX } from '~/Helpers';
 import {
   MainNavBar,
   CommentCard,
@@ -29,9 +29,9 @@ import {
   PostListFooter,
   ReplyBar,
   ReplyDialog,
-} from 'App/Components';
-import { Colors, Fonts, Metrics } from 'App/Theme';
-import Config from 'App/Config';
+} from '~/Components';
+import { Colors, Fonts, Metrics } from '~/Theme';
+import Config from '~/Config';
 import {
   AppStore,
   PostActions,
@@ -39,10 +39,10 @@ import {
   AppStateActions,
   AppAlertActions,
   ReportActions,
-} from 'App/Stores';
+} from '~/Stores';
 
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
-import { onUpdateList } from 'App/Stores/List/Actions/list';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
+import { onUpdateList } from '~/Stores/List/Actions/list';
 import { getRoutePrefix } from '../utils/route';
 import BottomPopup from '../widget/BottomPopup';
 import MoreMenu from '../widget/MoreMenu';

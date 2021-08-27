@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Text, StyleSheet, View, FlatList } from 'react-native';
 
-import { translate as t } from 'App/Helpers/I18n';
-import { MainNavBar, AndroidBackKey } from 'App/Components';
-import { Screen } from 'App/Helpers';
-import { Classes, Colors, Metrics } from 'App/Theme';
+import { translate as t } from '~/Helpers/I18n';
+import { MainNavBar, AndroidBackKey } from '~/Components';
+import { Screen } from '~/Helpers';
+import { Classes, Colors, Metrics } from '~/Theme';
 
 const styles = StyleSheet.create({
   navBar: {

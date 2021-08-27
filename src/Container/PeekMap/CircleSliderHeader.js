@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import IoniconIcon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Carousel from 'react-native-snap-carousel';
-import Screen from 'App/utils/screen';
-import Colors from 'App/Theme/Colors';
+import Screen from '~/utils/screen';
+import Colors from '~/Theme/Colors';
 import PropTypes from 'prop-types';
-import { SortOptionRow } from 'App/Components/ListHeader';
+import { SortOptionRow } from '~/Components/ListHeader';
 import Pagination from 'react-native-pagination';
 import { Actions } from 'react-native-router-flux';
 

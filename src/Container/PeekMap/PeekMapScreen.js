@@ -10,13 +10,13 @@ import { Marker } from 'react-native-maps';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-import { MainNavBar, AndroidBackKey } from 'App/Components';
-import { Screen, Geolocation, Permission } from 'App/Helpers';
-import { translate as t } from 'App/Helpers/I18n';
-import { Colors, Images, Classes } from 'App/Theme';
-import { AppStateActions, CircleActions, AppPermissionSelectors } from 'App/Stores';
+import { MainNavBar, AndroidBackKey } from '~/Components';
+import { Screen, Geolocation, Permission } from '~/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { Colors, Images, Classes } from '~/Theme';
+import { AppStateActions, CircleActions, AppPermissionSelectors } from '~/Stores';
 
-import { Config } from 'App/Config';
+import { Config } from '~/Config';
 import styles from './PeekMapScreenStyle';
 // import CircleMarker from './CircleMarker';
 

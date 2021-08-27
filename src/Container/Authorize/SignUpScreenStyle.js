@@ -1,6 +1,6 @@
 import { Platform, StyleSheet as RNStyleSheet } from 'react-native';
-import { StyleSheet, Screen } from 'App/Helpers';
-import { Colors } from 'App/Theme';
+import { StyleSheet, Screen } from '~/Helpers';
+import { Colors } from '~/Theme';
 
 export default StyleSheet.create({
   container: {

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Text, View, StyleSheet } from 'react-native';
 import Image from 'react-native-image-cache-wrapper';
 
-import { Screen } from 'App/Helpers';
-import { Classes, Colors } from 'App/Theme';
-import { Badge } from 'App/widget/RoundButton';
+import { Screen } from '~/Helpers';
+import { Classes, Colors } from '~/Theme';
+import { Badge } from '~/widget/RoundButton';
 
 const styles = StyleSheet.create({
   wrapper: {

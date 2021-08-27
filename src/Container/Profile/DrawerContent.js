@@ -14,19 +14,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import VersionNumber from 'react-native-version-number';
 
-import Config from 'App/Config';
-import { Colors } from 'App/Theme';
-import { Screen } from 'App/Helpers';
-import { AppConfigActions, AppStateActions } from 'App/Stores';
-import { BaseModalSelector } from 'App/Components';
-import { translate as t } from 'App/Helpers/I18n';
+import Config from '~/Config';
+import { Colors } from '~/Theme';
+import { Screen } from '~/Helpers';
+import { AppConfigActions, AppStateActions } from '~/Stores';
+import { BaseModalSelector } from '~/Components';
+import { translate as t } from '~/Helpers/I18n';
 
-import { H3, H4 } from 'App/widget/Label';
-import { cleanUser } from 'App/Stores/User/Actions';
+import { H3, H4 } from '~/widget/Label';
+import { cleanUser } from '~/Stores/User/Actions';
 
-import i18n, { i18nKey } from 'App/utils/i18n';
-import { fetchAPI, apiHandler, apiAction } from 'App/utils/api';
-import * as fcm from 'App/utils/fcm';
+import i18n, { i18nKey } from '~/utils/i18n';
+import { fetchAPI, apiHandler, apiAction } from '~/utils/api';
+import * as fcm from '~/utils/fcm';
 
 const styles = StyleSheet.create({
   container: {

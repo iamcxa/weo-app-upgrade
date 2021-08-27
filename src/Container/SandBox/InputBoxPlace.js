@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import InputBox from 'App/Components/InputBox';
+import InputBox from '~/Components/InputBox';
 import { Actions } from 'react-native-router-flux';
-import RoundButton from 'App/Components/Button';
+import RoundButton from '~/Components/Button';
 import { checkRequired } from '../../utils/form';
 
 const styles = StyleSheet.create({

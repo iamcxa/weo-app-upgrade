@@ -2,11 +2,11 @@ import { isEmpty, uniqBy, differenceBy } from 'lodash';
 import moment from 'moment';
 import { put, call, delay, select } from 'redux-saga/effects';
 
-import { Geolocation, Permission, Dialog, Logger, Fcm } from 'App/Helpers';
-import { AppStore, CircleActions, AppStateActions, AppPermissionSelectors } from 'App/Stores';
-import { Handler, Circle } from 'App/Apis';
-import { translate as t } from 'App/Helpers/I18n';
-import Config from 'App/Config';
+import { Geolocation, Permission, Dialog, Logger, Fcm } from '~/Helpers';
+import { AppStore, CircleActions, AppStateActions, AppPermissionSelectors } from '~/Stores';
+import { Handler, Circle } from '~/Apis';
+import { translate as t } from '~/Helpers/I18n';
+import Config from '~/Config';
 
 const TAG = '@CircleSaga';
 

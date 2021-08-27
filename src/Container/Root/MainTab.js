@@ -5,16 +5,16 @@ import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Colors, Classes } from 'App/Theme';
-import { Screen, ScaledSheet } from 'App/Helpers';
+import { Colors, Classes } from '~/Theme';
+import { Screen, ScaledSheet } from '~/Helpers';
 
-import { onUpdateList } from 'App/Stores/List/Actions/list';
-import TopicScreen from 'App/Containers/Topic/TopicScreen';
-import ThereYouAreIntro from 'App/Containers/ThereYouAreIntro';
-import ProfileScreen from 'App/Containers/Profile/ProfileScreen';
-import TopicCreationScreen from 'App/Containers/Topic/TopicCreationScreen';
-import MainTabBar from 'App/Components/MainTabBar';
-import CustomTabIcon from 'App/Components/CustomTabIcon';
+import { onUpdateList } from '~/Stores/List/Actions/list';
+import TopicScreen from '~/Containers/Topic/TopicScreen';
+import ThereYouAreIntro from '~/Containers/ThereYouAreIntro';
+import ProfileScreen from '~/Containers/Profile/ProfileScreen';
+import TopicCreationScreen from '~/Containers/Topic/TopicCreationScreen';
+import MainTabBar from '~/Components/MainTabBar';
+import CustomTabIcon from '~/Components/CustomTabIcon';
 
 const styles = ScaledSheet.create({
   tabBar: {

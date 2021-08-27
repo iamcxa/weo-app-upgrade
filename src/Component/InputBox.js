@@ -12,7 +12,7 @@ import {
   PixelRatio,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import Screen from '../utils/screen';
 import { Bage } from '../widget/RoundButton';
 

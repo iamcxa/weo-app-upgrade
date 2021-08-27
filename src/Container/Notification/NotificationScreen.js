@@ -7,12 +7,12 @@ import { Actions } from 'react-native-router-flux';
 import { isEqual, isEmpty, throttle } from 'lodash';
 import { FlatList, RefreshControl, Text, View } from 'react-native';
 
-import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from 'App/Components';
-import { Config } from 'App/Config';
-import { NotificationActions } from 'App/Stores';
-import { translate as t } from 'App/Helpers/I18n';
-import { Notification, StyleSheet } from 'App/Helpers';
-import { Colors, Classes, Fonts } from 'App/Theme';
+import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from '~/Components';
+import { Config } from '~/Config';
+import { NotificationActions } from '~/Stores';
+import { translate as t } from '~/Helpers/I18n';
+import { Notification, StyleSheet } from '~/Helpers';
+import { Colors, Classes, Fonts } from '~/Theme';
 
 const { ON_END_REACHED_THROTTLE } = Config;
 

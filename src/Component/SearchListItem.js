@@ -4,9 +4,9 @@ import Highlighter from 'react-native-highlight-words';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { Date as d, Screen } from 'App/Helpers';
-import { Colors } from 'App/Theme';
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { Date as d, Screen } from '~/Helpers';
+import { Colors } from '~/Theme';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Switch, Platform } from 'react-native';
-import { Screen } from 'App/Helpers';
-import { Classes, Colors, Metrics, Fonts } from 'App/Theme';
+import { Screen } from '~/Helpers';
+import { Classes, Colors, Metrics, Fonts } from '~/Theme';
 
 const styles = StyleSheet.create({
   content: {

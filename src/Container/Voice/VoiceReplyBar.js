@@ -11,11 +11,11 @@ import {
   // TouchableWithoutFeedback,
 } from 'react-native';
 
-import { Colors } from 'App/Theme';
-import { Screen, ListenableEvent } from 'App/Helpers';
-import ReplyBar from 'App/Components/ReplyBar';
+import { Colors } from '~/Theme';
+import { Screen, ListenableEvent } from '~/Helpers';
+import ReplyBar from '~/Components/ReplyBar';
 
-import Config from 'App/Config';
+import Config from '~/Config';
 import KeyboardUtil from '../../utils/keyboard';
 
 const { CIRCLE_TYPE } = Config;

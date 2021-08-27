@@ -16,7 +16,7 @@ export function useNetInfo(config) {
   React.useEffect(() => {
     const handleNetInfoChange = (newState) => {
       if (netInfo !== newState) {
-        dispatch(AppStateActions['app/onNetInfoUpdate'](newState));
+        dispatch(AppStateActions['~/onNetInfoUpdate'](newState));
       }
     };
     const unsubscribe = NetInfo.addEventListener(handleNetInfoChange);

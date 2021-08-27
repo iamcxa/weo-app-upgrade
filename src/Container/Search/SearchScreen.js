@@ -15,12 +15,12 @@ import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { debounce, throttle, isEmpty } from 'lodash';
 
-import Config from 'App/Config';
-import { ifIphoneX } from 'App/Helpers';
-import { SearchActions } from 'App/Stores';
-import { translate as t } from 'App/Helpers/I18n';
-import { Classes, Colors, Images, Metrics } from 'App/Theme';
-import { ModalCard, SearchListItem, ComposedTextInput, DismissKeyboardView } from 'App/Components';
+import Config from '~/Config';
+import { ifIphoneX } from '~/Helpers';
+import { SearchActions } from '~/Stores';
+import { translate as t } from '~/Helpers/I18n';
+import { Classes, Colors, Images, Metrics } from '~/Theme';
+import { ModalCard, SearchListItem, ComposedTextInput, DismissKeyboardView } from '~/Components';
 
 import styles from './SearchScreenStyle';
 

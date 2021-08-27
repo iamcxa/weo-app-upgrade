@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Colors } from 'App/Theme';
-import { Screen, StyleSheet } from 'App/Helpers';
+import { Colors } from '~/Theme';
+import { Screen, StyleSheet } from '~/Helpers';
 
 const styles = StyleSheet.create({
   separator: {

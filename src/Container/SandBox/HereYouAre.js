@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, FlatList, StyleSheet, Text, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Colors from 'App/Theme/Colors';
-import MainNavBar from 'App/Components/MainNavBar';
-import TopicCard from 'App/Components/TopicCard';
-import CollapsibleHeader from 'App/Components/CollapsibleHeader';
+import Colors from '~/Theme/Colors';
+import MainNavBar from '~/Components/MainNavBar';
+import TopicCard from '~/Components/TopicCard';
+import CollapsibleHeader from '~/Components/CollapsibleHeader';
 import Screen from '../../utils/screen';
 
 const styles = StyleSheet.create({

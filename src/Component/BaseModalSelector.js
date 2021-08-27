@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
-import { translate as t } from 'App/Helpers/I18n';
-import { Colors, Classes } from 'App/Theme';
-import { StyleSheet } from 'App/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { Colors, Classes } from '~/Theme';
+import { StyleSheet } from '~/Helpers';
 
 const styles = StyleSheet.create({
   cancelTextStyle: { color: Colors.red },

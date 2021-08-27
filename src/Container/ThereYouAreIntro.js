@@ -5,10 +5,10 @@ import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 import { Alert, Text, View, StyleSheet, SafeAreaView } from 'react-native';
 
-import { MainNavBar, IconButton } from 'App/Components';
-import { translate as t } from 'App/Helpers/I18n';
-import { Screen, Dialog } from 'App/Helpers';
-import { Colors } from 'App/Theme';
+import { MainNavBar, IconButton } from '~/Components';
+import { translate as t } from '~/Helpers/I18n';
+import { Screen, Dialog } from '~/Helpers';
+import { Colors } from '~/Theme';
 
 // import { setItem } from '../utils/asyncStorage';
 import { PrimaryBtn } from '../widget/RoundButton';

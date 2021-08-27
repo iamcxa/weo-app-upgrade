@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Animated } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Storage from 'App/constant/storage';
-import Images from 'App/Theme/Images';
+import Storage from '~/constant/storage';
+import Images from '~/Theme/Images';
 import IconTitle from '../widget/IconTitle';
 import { PrimaryBtn } from '../widget/Button';
 import { Title } from '../widget/Label';

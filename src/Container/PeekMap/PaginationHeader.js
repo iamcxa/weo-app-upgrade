@@ -4,8 +4,8 @@ import IoniconIcon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 
-import { Screen, StyleSheet } from 'App/Helpers';
-import { Colors, Metrics, Classes } from 'App/Theme';
+import { Screen, StyleSheet } from '~/Helpers';
+import { Colors, Metrics, Classes } from '~/Theme';
 
 const styles = StyleSheet.create({
   container: {

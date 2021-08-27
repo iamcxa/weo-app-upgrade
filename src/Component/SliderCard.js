@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 // import PropTypes from 'prop-types';
 import { ParallaxImage } from 'react-native-snap-carousel';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import Screen from '../utils/screen';
 import { Title } from '../widget/Label';
 

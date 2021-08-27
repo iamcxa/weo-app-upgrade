@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import CustomTabIcon from 'App/Components/CustomTabIcon';
+import CustomTabIcon from '~/Components/CustomTabIcon';
 
-import { Colors } from 'App/Theme';
-import { Screen } from 'App/Helpers';
+import { Colors } from '~/Theme';
+import { Screen } from '~/Helpers';
 
 const styles = StyleSheet.create({
   container: {

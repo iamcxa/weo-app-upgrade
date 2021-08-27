@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Colors from 'App/Theme/Colors';
-import Images from 'App/Theme/Images';
+import Colors from '~/Theme/Colors';
+import Images from '~/Theme/Images';
 import {
   ThreeLineListItem,
   RowStatusListItm,

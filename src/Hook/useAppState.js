@@ -11,7 +11,7 @@ export function useAppState() {
 
   const handleAppStateChange = async (newState) => {
     if (currentState !== newState) {
-      dispatch(AppStateActions['app/onStateUpdate'](newState));
+      dispatch(AppStateActions['~/onStateUpdate'](newState));
     }
   };
 

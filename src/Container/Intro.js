@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, ScrollView, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Colors from 'App/Theme/Colors';
-import FooterLogo from 'App/Components/FooterLogo';
+import Colors from '~/Theme/Colors';
+import FooterLogo from '~/Components/FooterLogo';
 import { H1, H5 } from '../widget/Label';
 import Screen from '../utils/screen';
 import { PrimaryBtn } from '../widget/RoundButton';
@@ -115,7 +115,7 @@ export default class Intro extends Component {
               }}
             >
               <Image
-                source={require('App/Assets/Images/intro/intro-1.png')}
+                source={require('~/Assets/Images/intro/intro-1.png')}
                 style={{
                   width: Screen.width * 0.7,
                   height: (Screen.width * 0.7 * 182) / 257,
@@ -148,7 +148,7 @@ export default class Intro extends Component {
               }}
             >
               <Image
-                source={require('App/Assets/Images/intro/intro-2.png')}
+                source={require('~/Assets/Images/intro/intro-2.png')}
                 style={{
                   width: Screen.moderateScale(284),
                   height: Screen.moderateScale(181),
@@ -179,7 +179,7 @@ export default class Intro extends Component {
               }}
             >
               <Image
-                source={require('App/Assets/Images/intro/intro-3.png')}
+                source={require('~/Assets/Images/intro/intro-3.png')}
                 style={{
                   width: Screen.moderateScale(241),
                   height: Screen.moderateScale(191),

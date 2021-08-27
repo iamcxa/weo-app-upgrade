@@ -4,7 +4,7 @@ import { Marker, Circle, Callout } from 'react-native-maps';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { Colors, Images } from 'App/Theme';
+import { Colors, Images } from '~/Theme';
 
 import styles from './CircleMarkerStyle.js';
 

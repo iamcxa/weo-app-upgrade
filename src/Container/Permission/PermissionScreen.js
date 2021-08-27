@@ -7,11 +7,11 @@ import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 import { View, Text, Platform, FlatList, ScrollView } from 'react-native';
 
-import { Colors, Fonts } from 'App/Theme';
-import { Permission, Screen } from 'App/Helpers';
-import { translate as t } from 'App/Helpers/I18n';
-import { Separator, BaseButton, LanguageModal } from 'App/Components';
-import { AppPermissionSelectors, AppConfigActions, UserActions } from 'App/Stores';
+import { Colors, Fonts } from '~/Theme';
+import { Permission, Screen } from '~/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { Separator, BaseButton, LanguageModal } from '~/Components';
+import { AppPermissionSelectors, AppConfigActions, UserActions } from '~/Stores';
 
 import styles from './PermissionScreenStyle';
 

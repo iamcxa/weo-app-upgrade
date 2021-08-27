@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { RefreshControl, Animated, Platform, ScrollView, View } from 'react-native';
 import PropTypes from 'prop-types';
-import Screen from 'App/utils/screen';
+import Screen from '~/utils/screen';
 
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 

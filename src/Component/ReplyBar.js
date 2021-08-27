@@ -26,11 +26,11 @@ import {
   Screen,
   Date as d,
   Content as ContentHelper,
-} from 'App/Helpers';
-import { Colors, Metrics, Fonts, Classes } from 'App/Theme';
-import { AppStateActions, TopicActions } from 'App/Stores';
-import { translate as t } from 'App/Helpers/I18n';
-import Config from 'App/Config';
+} from '~/Helpers';
+import { Colors, Metrics, Fonts, Classes } from '~/Theme';
+import { AppStateActions, TopicActions } from '~/Stores';
+import { translate as t } from '~/Helpers/I18n';
+import Config from '~/Config';
 
 import { fetchAPI, apiAction } from '../utils/api';
 import { validateEmpty, validateBlockWords } from '../utils/input';

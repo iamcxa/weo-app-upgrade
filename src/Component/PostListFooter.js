@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import Screen from '../utils/screen';
 
 const styles = StyleSheet.create({

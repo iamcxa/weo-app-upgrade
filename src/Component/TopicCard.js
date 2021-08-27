@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 
-import { translate as t } from 'App/Helpers/I18n';
-import { BaseButton } from 'App/Components';
-import { Colors, Metrics, Fonts } from 'App/Theme';
-import { Screen, StyleSheet } from 'App/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { BaseButton } from '~/Components';
+import { Colors, Metrics, Fonts } from '~/Theme';
+import { Screen, StyleSheet } from '~/Helpers';
 import { DefaultText } from '../widget/Label';
 import VoteBox from './VoteBox';
 

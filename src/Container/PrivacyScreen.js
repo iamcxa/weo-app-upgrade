@@ -4,12 +4,12 @@ import { Platform, StyleSheet, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { WebView } from 'react-native-webview';
 
-import { translate as t } from 'App/Helpers/I18n';
-import { MainNavBar, AndroidBackKey } from 'App/Components';
-import { Screen } from 'App/Helpers';
-import { Classes, Colors } from 'App/Theme';
+import { translate as t } from '~/Helpers/I18n';
+import { MainNavBar, AndroidBackKey } from '~/Components';
+import { Screen } from '~/Helpers';
+import { Classes, Colors } from '~/Theme';
 
-import Storage from 'App/constant/storage';
+import Storage from '~/constant/storage';
 import { PrimaryBtn } from '../widget/RoundButton';
 import { setItem } from '../utils/asyncStorage';
 

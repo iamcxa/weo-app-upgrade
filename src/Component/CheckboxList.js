@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import CheckBox from 'react-native-check-box';
 import Screen from '../utils/screen';
 import { PrimaryInput } from '../widget/InputBox';

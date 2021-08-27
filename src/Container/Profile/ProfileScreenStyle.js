@@ -1,5 +1,5 @@
-import { StyleSheet, Screen } from 'App/Helpers';
-import { Colors, Metrics } from 'App/Theme';
+import { StyleSheet, Screen } from '~/Helpers';
+import { Colors, Metrics } from '~/Theme';
 
 export default StyleSheet.create({
   navBar: {

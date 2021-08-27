@@ -17,10 +17,10 @@ import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
 import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Config from 'App/Config';
-import { translate as t } from 'App/Helpers/I18n';
-import { Classes, Colors, Fonts, Images } from 'App/Theme';
-import { AppStateActions, TopicActions } from 'App/Stores';
+import Config from '~/Config';
+import { translate as t } from '~/Helpers/I18n';
+import { Classes, Colors, Fonts, Images } from '~/Theme';
+import { AppStateActions, TopicActions } from '~/Stores';
 import {
   Date as d,
   Dialog,
@@ -28,11 +28,11 @@ import {
   StyleSheet,
   ListenableEvent,
   Content as ContentHelper,
-} from 'App/Helpers';
+} from '~/Helpers';
 
-import { PrimaryBtn } from 'App/widget/RoundButton';
-import { AvatarBlock, ModalCard, DismissKeyboardView } from 'App/Components';
-import { checkAndRequestPermission, permissionType } from 'App/utils/permission';
+import { PrimaryBtn } from '~/widget/RoundButton';
+import { AvatarBlock, ModalCard, DismissKeyboardView } from '~/Components';
+import { checkAndRequestPermission, permissionType } from '~/utils/permission';
 
 const { BUTTON_DEBOUNCE, CREATE_TOPIC_PERIOD } = Config;
 

@@ -1,5 +1,5 @@
-import { StyleSheet, Screen } from 'App/Helpers';
-import { Fonts, Styles, Colors, Metrics } from 'App/Theme';
+import { StyleSheet, Screen } from '~/Helpers';
+import { Fonts, Styles, Colors, Metrics } from '~/Theme';
 
 export default StyleSheet.create({
   content: {

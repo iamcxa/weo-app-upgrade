@@ -15,7 +15,7 @@ export function useScreenOrientation(lock) {
     () =>
       ScreenOrientation.getOrientationAsync().then((info) => {
         if (currentOrientation !== info) {
-          dispatch(AppStateActions['app/onOrientationUpdate'](info));
+          dispatch(AppStateActions['~/onOrientationUpdate'](info));
         }
         return info;
       }),
@@ -25,7 +25,7 @@ export function useScreenOrientation(lock) {
   React.useEffect(() => {
     if (lock && lock !== ScreenOrientation.OrientationLock.DEFAULT) {
       ScreenOrientation.lockAsync(lock)
-        .then(() => dispatch(AppStateActions['app/onOrientationUpdate'](lock)))
+        .then(() => dispatch(AppStateActions['~/onOrientationUpdate'](lock)))
         .catch(setLockError);
     } else {
       ScreenOrientation.unlockAsync();
@@ -36,7 +36,7 @@ export function useScreenOrientation(lock) {
       console.log('event=>', event);
       console.log('currentOrientation=>', currentOrientation);
       if (currentOrientation !== event) {
-        dispatch(AppStateActions['app/onOrientationUpdate'](event));
+        dispatch(AppStateActions['~/onOrientationUpdate'](event));
       }
     };
 

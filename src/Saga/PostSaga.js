@@ -3,10 +3,10 @@ import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { call, put, select } from 'redux-saga/effects';
 
-import { Handler, Post } from 'App/Apis';
-import { AppStateActions, TopicActions, PostActions } from 'App/Stores';
-import { translate as t } from 'App/Helpers/I18n';
-import { deletePostById } from 'App/Stores/List/Actions/post';
+import { Handler, Post } from '~/Apis';
+import { AppStateActions, TopicActions, PostActions } from '~/Stores';
+import { translate as t } from '~/Helpers/I18n';
+import { deletePostById } from '~/Stores/List/Actions/post';
 
 export function* fetchGetPost({ topicId, curPage, belongsTo, handleNextPage }) {
   const isInternetReachable = yield select(

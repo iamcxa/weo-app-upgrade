@@ -11,21 +11,21 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Screen, StyleSheet, Date as d } from 'App/Helpers';
-import { translate as t } from 'App/Helpers/I18n';
-import { Colors, Classes } from 'App/Theme';
-import Config from 'App/Config';
+import { Screen, StyleSheet, Date as d } from '~/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { Colors, Classes } from '~/Theme';
+import Config from '~/Config';
 import {
   TopicCard,
   AndroidBackKey,
   ListSeparator,
   BaseIconButton,
   BackToTopButton,
-} from 'App/Components';
+} from '~/Components';
 
-import { SortOptionRow } from 'App/Components/ListHeader';
-import HyperlinkWrapper from 'App/widget/HyperlinkWrapper';
-import { getRoutePrefix } from 'App/utils/route';
+import { SortOptionRow } from '~/Components/ListHeader';
+import HyperlinkWrapper from '~/widget/HyperlinkWrapper';
+import { getRoutePrefix } from '~/utils/route';
 
 import PaginationHeader from './PaginationHeader';
 

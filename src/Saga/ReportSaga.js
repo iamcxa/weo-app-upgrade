@@ -3,9 +3,9 @@ import _ from 'lodash';
 import { Actions } from 'react-native-router-flux';
 import { call, put, select } from 'redux-saga/effects';
 
-import { Handler, Post, Report } from 'App/Apis';
-import { AppStateActions, TopicActions, PostActions, AppAlertActions } from 'App/Stores';
-import { translate as t } from 'App/Helpers/I18n';
+import { Handler, Post, Report } from '~/Apis';
+import { AppStateActions, TopicActions, PostActions, AppAlertActions } from '~/Stores';
+import { translate as t } from '~/Helpers/I18n';
 
 export function* fetchPostHidePost({ id, mode, belongsTo }) {
   try {

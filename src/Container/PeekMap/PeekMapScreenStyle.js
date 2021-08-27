@@ -1,5 +1,5 @@
-import { ScaledSheet, Screen } from 'App/Helpers';
-import { Metrics, Colors, Classes } from 'App/Theme';
+import { ScaledSheet, Screen } from '~/Helpers';
+import { Metrics, Colors, Classes } from '~/Theme';
 
 export default ScaledSheet.create({
   container: {

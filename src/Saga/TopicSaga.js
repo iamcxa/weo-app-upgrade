@@ -3,21 +3,21 @@ import { Actions } from 'react-native-router-flux';
 import { Platform } from 'react-native';
 import { keyBy, isEmpty } from 'lodash';
 
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
-import { AppStateActions, TopicActions, CircleActions } from 'App/Stores';
-import { Handler, Topic } from 'App/Apis';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
+import { AppStateActions, TopicActions, CircleActions } from '~/Stores';
+import { Handler, Topic } from '~/Apis';
 import {
   Logger,
   Dialog,
   User as UserHelper,
   Content as ContentHelper,
   Date as d,
-} from 'App/Helpers';
-import { CIRCLE_TYPE } from 'App/Config';
+} from '~/Helpers';
+import { CIRCLE_TYPE } from '~/Config';
 
 import * as UploadSaga from './UploadSaga';
 
-// import { updateTopics, resetTopic, updateTopicByKey } from 'App/Stores/List/Actions/topic';
+// import { updateTopics, resetTopic, updateTopicByKey } from '~/Stores/List/Actions/topic';
 
 const TAG = '@TopicSaga';
 

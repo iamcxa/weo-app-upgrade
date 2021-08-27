@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { ScaledSheet } from 'App/Helpers';
-import Colors from 'App/Theme/Colors';
-import Styles from 'App/Theme/Styles';
-import Fonts from 'App/Theme/Fonts';
-import Classes from 'App/Theme/Classes';
+import { ScaledSheet } from '~/Helpers';
+import Colors from '~/Theme/Colors';
+import Styles from '~/Theme/Styles';
+import Fonts from '~/Theme/Fonts';
+import Classes from '~/Theme/Classes';
 
 export default ScaledSheet.create({
   container: {

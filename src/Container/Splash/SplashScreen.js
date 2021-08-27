@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { isString } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CircleActions, UserActions } from 'App/Stores';
+import { CircleActions, UserActions } from '~/Stores';
 
 import SplashView from './SplashView';
 

@@ -7,12 +7,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
-import Config from 'App/Config';
-import { Colors, Images } from 'App/Theme';
-import { Screen } from 'App/Helpers';
+import Config from '~/Config';
+import { Colors, Images } from '~/Theme';
+import { Screen } from '~/Helpers';
 
-import { updateUser, cleanUser } from 'App/Stores/User/Actions';
-import Storage from 'App/constant/storage';
+import { updateUser, cleanUser } from '~/Stores/User/Actions';
+import Storage from '~/constant/storage';
 import { getItem, setItem } from '../utils/asyncStorage';
 
 import { getToken } from '../utils/fcm';

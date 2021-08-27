@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import Share from 'react-native-share';
 
-import Colors from 'App/Theme/Colors';
-import config from 'App/Config';
+import Colors from '~/Theme/Colors';
+import config from '~/Config';
 import Screen from '../utils/screen';
 import CommentCardHeader from './CommentCardHeader';
 import CommentCardImage from './CommentCardImage';

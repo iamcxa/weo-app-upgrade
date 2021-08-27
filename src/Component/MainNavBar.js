@@ -6,9 +6,9 @@ import { Actions } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Colors, Images, Metrics } from 'App/Theme';
-import { Screen } from 'App/Helpers';
-import { BaseIconButton, BaseButton } from 'App/Components';
+import { Colors, Images, Metrics } from '~/Theme';
+import { Screen } from '~/Helpers';
+import { BaseIconButton, BaseButton } from '~/Components';
 
 const hitSlop = {
   top: 8,

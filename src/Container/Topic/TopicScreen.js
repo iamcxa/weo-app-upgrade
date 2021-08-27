@@ -4,9 +4,9 @@ import { Keyboard } from 'react-native';
 import { has, isEmpty, isEqual, throttle } from 'lodash';
 import { Actions } from 'react-native-router-flux';
 
-import { AndroidBackKey } from 'App/Components';
-// import { Dialog } from 'App/Helpers';
-import { Config } from 'App/Config';
+import { AndroidBackKey } from '~/Components';
+// import { Dialog } from '~/Helpers';
+import { Config } from '~/Config';
 import TopicView from './TopicView';
 
 const { ON_END_REACHED_THROTTLE, CIRCLE_TYPE } = Config;

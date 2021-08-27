@@ -7,12 +7,12 @@ import { isEmpty, debounce } from 'lodash';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Config from 'App/Config';
-import { Colors, Metrics } from 'App/Theme';
-import { Screen } from 'App/Helpers';
-import { VoteActions } from 'App/Stores';
+import Config from '~/Config';
+import { Colors, Metrics } from '~/Theme';
+import { Screen } from '~/Helpers';
+import { VoteActions } from '~/Stores';
 
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import { DefaultText } from '../widget/Label';
 
 const { BUTTON_DEBOUNCE } = Config;

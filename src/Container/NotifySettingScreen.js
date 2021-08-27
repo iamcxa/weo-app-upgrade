@@ -6,11 +6,11 @@ import { isEmpty, isString } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { StyleSheet, Platform, View } from 'react-native';
 
-import { MainNavBar, SwitchListItem, AndroidBackKey } from 'App/Components';
-import { AppStateActions, UserActions } from 'App/Stores';
-import { translate as t } from 'App/Helpers/I18n';
-import { Screen, Dialog, Fcm } from 'App/Helpers';
-import { Colors } from 'App/Theme';
+import { MainNavBar, SwitchListItem, AndroidBackKey } from '~/Components';
+import { AppStateActions, UserActions } from '~/Stores';
+import { translate as t } from '~/Helpers/I18n';
+import { Screen, Dialog, Fcm } from '~/Helpers';
+import { Colors } from '~/Theme';
 
 const Separator = (props) => <View style={styles.separator} />;
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Animated, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import NotifyBox from './NotifyBox';
 import Screen from '../utils/screen';
 import { DefaultText } from '../widget/Label';

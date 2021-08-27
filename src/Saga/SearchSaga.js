@@ -1,9 +1,9 @@
 import { put, call, select } from 'redux-saga/effects';
 import { isEmpty } from 'lodash';
 
-import { AppStateActions, SearchActions } from 'App/Stores';
-import { Handler, Search } from 'App/Apis';
-import { Logger } from 'App/Helpers';
+import { AppStateActions, SearchActions } from '~/Stores';
+import { Handler, Search } from '~/Apis';
+import { Logger } from '~/Helpers';
 
 const TAG = '@SearchSaga';
 

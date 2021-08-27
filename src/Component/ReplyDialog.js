@@ -7,11 +7,11 @@ import { isString, isEmpty } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { ScrollView, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 
-import { Date as d, Screen } from 'App/Helpers';
-import { PostActions } from 'App/Stores';
-import { Fonts, Colors, Classes, Metrics } from 'App/Theme';
+import { Date as d, Screen } from '~/Helpers';
+import { PostActions } from '~/Stores';
+import { Fonts, Colors, Classes, Metrics } from '~/Theme';
 
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 
 import CommentCardHeader from './CommentCardHeader';
 import CommentCardImage from './CommentCardImage';

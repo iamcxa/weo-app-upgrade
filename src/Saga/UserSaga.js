@@ -2,10 +2,10 @@ import { put, call, select } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import { Platform } from 'react-native';
 
-import { AppStateActions, UserActions, CircleActions } from 'App/Stores';
-import { Handler, User } from 'App/Apis';
-import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from 'App/Helpers';
-import { translate as t } from 'App/Helpers/I18n';
+import { AppStateActions, UserActions, CircleActions } from '~/Stores';
+import { Handler, User } from '~/Apis';
+import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from '~/Helpers';
+import { translate as t } from '~/Helpers/I18n';
 
 const TAG = '@UserSaga';
 

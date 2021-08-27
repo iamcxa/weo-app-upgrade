@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import CheckboxList from 'App/Components/CheckboxList';
+import CheckboxList from '~/Components/CheckboxList';
 
 const styles = StyleSheet.create({
   container: {

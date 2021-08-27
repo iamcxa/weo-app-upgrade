@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { StyleSheet } from 'react-native';
 import { Tabs, Scene, Stack, Actions, ActionConst } from 'react-native-router-flux';
 
-import { store } from 'App/App';
-import { Colors, Metrics } from 'App/Theme';
-import { Dialog, Screen } from 'App/Helpers';
-import { CustomTabIcon } from 'App/Components';
+import { store } from '~/App';
+import { Colors, Metrics } from '~/Theme';
+import { Dialog, Screen } from '~/Helpers';
+import { CustomTabIcon } from '~/Components';
 
-import FaqScreen from 'App/Containers/FaqScreen';
-import PrivacyScreen from 'App/Containers/PrivacyScreen';
-import ThereYouAreIntro from 'App/Containers/ThereYouAreIntro';
-import ProfileScreen from 'App/Containers/Profile/ProfileScreen';
-import SignUpScreen from 'App/Containers/Authorize/SignUpScreen';
-import NotifySettingScreen from 'App/Containers/NotifySettingScreen';
-import TopicCreationScreen from 'App/Containers/Topic/TopicCreationScreen';
-import NotificationScreen from 'App/Containers/Notification/NotificationScreen';
-import HereYouAreTopicScreen from 'App/Containers/Topic/HereYouAreTopicScreen';
-import ThereYouAreTopicScreen from 'App/Containers/Topic/ThereYouAreTopicScreen';
+import FaqScreen from '~/Containers/FaqScreen';
+import PrivacyScreen from '~/Containers/PrivacyScreen';
+import ThereYouAreIntro from '~/Containers/ThereYouAreIntro';
+import ProfileScreen from '~/Containers/Profile/ProfileScreen';
+import SignUpScreen from '~/Containers/Authorize/SignUpScreen';
+import NotifySettingScreen from '~/Containers/NotifySettingScreen';
+import TopicCreationScreen from '~/Containers/Topic/TopicCreationScreen';
+import NotificationScreen from '~/Containers/Notification/NotificationScreen';
+import HereYouAreTopicScreen from '~/Containers/Topic/HereYouAreTopicScreen';
+import ThereYouAreTopicScreen from '~/Containers/Topic/ThereYouAreTopicScreen';
 import PanHandlers from './PanHandlers';
 
 const styles = StyleSheet.create({

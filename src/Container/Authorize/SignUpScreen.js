@@ -21,7 +21,7 @@ import {
   FooterLogo,
   AndroidBackKey,
   DismissKeyboardView as AvoidingView,
-} from 'App/Components';
+} from '~/Components';
 import {
   Dialog,
   Screen,
@@ -29,16 +29,16 @@ import {
   Fcm as FcmHelper,
   User as UserHelper,
   Content as ContentHelper,
-} from 'App/Helpers';
-import { translate as t } from 'App/Helpers/I18n';
-import { Classes, Images, Colors } from 'App/Theme';
-import { UserActions } from 'App/Stores';
-import Config from 'App/Config';
+} from '~/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { Classes, Images, Colors } from '~/Theme';
+import { UserActions } from '~/Stores';
+import Config from '~/Config';
 
-import { checkForm } from 'App/utils/form';
-import { Title } from 'App/widget/Label';
-import { PrimaryBtn } from 'App/widget/RoundButton';
-import BottomPopup from 'App/widget/BottomPopup';
+import { checkForm } from '~/utils/form';
+import { Title } from '~/widget/Label';
+import { PrimaryBtn } from '~/widget/RoundButton';
+import BottomPopup from '~/widget/BottomPopup';
 
 import SelectAvatar from './SelectAvatarScreen';
 import styles from './SignUpScreenStyle';

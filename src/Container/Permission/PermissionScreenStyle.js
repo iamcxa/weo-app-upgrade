@@ -1,5 +1,5 @@
-import { StyleSheet } from 'App/Helpers';
-import { Colors, Metrics, Classes } from 'App/Theme';
+import { StyleSheet } from '~/Helpers';
+import { Colors, Metrics, Classes } from '~/Theme';
 
 export default StyleSheet.create({
   container: {

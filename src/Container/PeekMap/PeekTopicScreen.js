@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
-import { Config } from 'App/Config';
-import { TopicActions } from 'App/Stores';
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { Config } from '~/Config';
+import { TopicActions } from '~/Stores';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import PeekTopicView from './PeekTopicView';
 
 const { ON_END_REACHED_THROTTLE, CIRCLE_TYPE } = Config;

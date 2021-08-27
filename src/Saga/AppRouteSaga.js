@@ -1,7 +1,7 @@
 import { put, call, select } from 'redux-saga/effects';
-import { AppConfigActions, AppPermissionActions, AppStateActions } from 'App/Stores';
-import Config from 'App/Config';
-import { Permission, Dialog } from 'App/Helpers';
+import { AppConfigActions, AppPermissionActions, AppStateActions } from '~/Stores';
+import Config from '~/Config';
+import { Permission, Dialog } from '~/Helpers';
 import * as StartupSaga from './StartupSaga';
 
 const { CIRCLE_TYPE } = Config;

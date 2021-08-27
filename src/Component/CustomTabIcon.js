@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View, Image } from 'react-native';
 
-import { Images } from 'App/Theme';
-import { StyleSheet, Screen } from 'App/Helpers';
+import { Images } from '~/Theme';
+import { StyleSheet, Screen } from '~/Helpers';
 
 const styles = StyleSheet.create({
   container: {

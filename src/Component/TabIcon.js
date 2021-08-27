@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, StyleSheet, View, Image, Platform } from 'react-native';
-import Colors from 'App/Theme/Colors';
-import NotifyBox from 'App/Components/NotifyBox';
+import Colors from '~/Theme/Colors';
+import NotifyBox from '~/Components/NotifyBox';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Screen from '../utils/screen';

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { isString, isEmpty } from 'lodash';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-import { Colors } from 'App/Theme';
-import { StyleSheet } from 'App/Helpers';
+import { Colors } from '~/Theme';
+import { StyleSheet } from '~/Helpers';
 import HyperlinkWrapper from '../widget/HyperlinkWrapper';
 
 const styles = StyleSheet.create({

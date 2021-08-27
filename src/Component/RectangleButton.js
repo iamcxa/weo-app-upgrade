@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import color from 'App/constant/color';
+import color from '~/constant/color';
 import Screen from '../utils/screen';
 
 const styles = StyleSheet.create({

@@ -1,11 +1,11 @@
 import { Alert, AppState } from 'react-native';
-import { translate as t } from 'App/Helpers/I18n';
+import { translate as t } from '~/Helpers/I18n';
 import { put, call, take } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import Permissions, { RESULTS } from 'react-native-permissions';
 
-import { AppPermissionActions } from 'App/Stores';
-import { Logger } from 'App/Helpers';
+import { AppPermissionActions } from '~/Stores';
+import { Logger } from '~/Helpers';
 
 export function* checkPermissions({ permissions, onSuccess, onFailure }) {
   console.log('permissions=>', permissions);

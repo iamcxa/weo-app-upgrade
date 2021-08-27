@@ -3,9 +3,9 @@ import { Platform, StyleSheet, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
-import { AndroidBackKey } from 'App/Components';
-import { Screen, isIphoneX } from 'App/Helpers';
-import { Colors } from 'App/Theme';
+import { AndroidBackKey } from '~/Components';
+import { Screen, isIphoneX } from '~/Helpers';
+import { Colors } from '~/Theme';
 import IconButton from './IconButton';
 import Modal from './BaseLightbox';
 

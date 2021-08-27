@@ -19,10 +19,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { isEqual } from 'lodash';
 
-import { Colors, Images } from 'App/Theme';
-import { translate as t } from 'App/Helpers/I18n';
-import { AppStateActions, AppPermissionSelectors } from 'App/Stores';
-import { Date as d, Dialog, Permission, Screen, ifIphoneX } from 'App/Helpers';
+import { Colors, Images } from '~/Theme';
+import { translate as t } from '~/Helpers/I18n';
+import { AppStateActions, AppPermissionSelectors } from '~/Stores';
+import { Date as d, Dialog, Permission, Screen, ifIphoneX } from '~/Helpers';
 
 import {
   MainNavBar,
@@ -30,10 +30,10 @@ import {
   IconButton,
   DismissKeyboardView,
   AndroidBackKey,
-} from 'App/Components';
+} from '~/Components';
 
-import soundAnimation from 'App/Assets/Images/lottie/animation-soundwave.json';
-import voiceAnimation from 'App/Assets/Images/lottie/animation-voice.json';
+import soundAnimation from '~/Assets/Images/lottie/animation-soundwave.json';
+import voiceAnimation from '~/Assets/Images/lottie/animation-voice.json';
 
 import VoiceControl from './VoiceControl';
 import VoiceReplyBar from './VoiceReplyBar';

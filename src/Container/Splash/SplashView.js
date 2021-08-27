@@ -1,9 +1,9 @@
 import React from 'react';
 import { StatusBar, View, StyleSheet, Image } from 'react-native';
 
-import { Screen } from 'App/Helpers';
-import { Images, Colors } from 'App/Theme';
-import { FooterLogo } from 'App/Components';
+import { Screen } from '~/Helpers';
+import { Images, Colors } from '~/Theme';
+import { FooterLogo } from '~/Components';
 
 export const SplashView = (props) => (
   <View style={styles.container}>

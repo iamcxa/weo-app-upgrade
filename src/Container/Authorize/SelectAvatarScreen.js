@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { Screen } from 'App/Helpers';
-import { BaseModal } from 'App/Components';
-import { Colors, Images } from 'App/Theme';
-import { AppStateActions } from 'App/Stores';
+import { Screen } from '~/Helpers';
+import { BaseModal } from '~/Components';
+import { Colors, Images } from '~/Theme';
+import { AppStateActions } from '~/Stores';
 
 const styles = StyleSheet.create({
   container: {

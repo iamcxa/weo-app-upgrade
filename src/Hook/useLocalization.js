@@ -23,7 +23,7 @@ export function useLocalization() {
 
     if (savedLocale !== localization.locale) {
       localization.currentUsedLanguageTag = locale || setI18nConfig();
-      dispatch(AppStateActions['app/onLocaleUpdate'](localization));
+      dispatch(AppStateActions['~/onLocaleUpdate'](localization));
       forceUpdate();
     }
   };

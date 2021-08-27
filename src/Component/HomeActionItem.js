@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import Colors from 'App/Theme/Colors';
-import Images from 'App/Theme/Images';
+import Colors from '~/Theme/Colors';
+import Images from '~/Theme/Images';
 import PropTypes from 'prop-types';
 import { H4 } from '../widget/Label';
 import Screen from '../utils/screen';

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { CircleActions, TopicActions, AppPermissionSelectors } from 'App/Stores';
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
-import { Permission } from 'App/Helpers';
-import { Config } from 'App/Config';
+import { CircleActions, TopicActions, AppPermissionSelectors } from '~/Stores';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
+import { Permission } from '~/Helpers';
+import { Config } from '~/Config';
 
 import TopicScreen from './TopicScreen';
 

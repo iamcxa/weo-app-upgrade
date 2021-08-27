@@ -11,12 +11,12 @@ import {
   ListHeader,
   Separator,
   TopicCard,
-} from 'App/Components';
-import { Colors, Metrics, Classes } from 'App/Theme';
-import { translate as t } from 'App/Helpers/I18n';
-import { ifIphoneX, Screen, Date as d, StyleSheet, Permission } from 'App/Helpers';
-import { PrimaryBtn } from 'App/widget/RoundButton';
-import HyperlinkWrapper from 'App/widget/HyperlinkWrapper';
+} from '~/Components';
+import { Colors, Metrics, Classes } from '~/Theme';
+import { translate as t } from '~/Helpers/I18n';
+import { ifIphoneX, Screen, Date as d, StyleSheet, Permission } from '~/Helpers';
+import { PrimaryBtn } from '~/widget/RoundButton';
+import HyperlinkWrapper from '~/widget/HyperlinkWrapper';
 
 const styles = StyleSheet.create({
   container: {

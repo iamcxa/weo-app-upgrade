@@ -2,10 +2,10 @@ import { put, call, take, delay, select } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import { Platform } from 'react-native';
 
-import { CircleActions, AppStateActions, AppConfigActions, AppPermissionActions } from 'App/Stores';
-import { AppStateTypes } from 'App/Stores/AppState/Actions';
-import * as WeoConfigSaga from 'App/Sagas/WeoConfigSaga';
-import { Logger, Permission, Dialog } from 'App/Helpers';
+import { CircleActions, AppStateActions, AppConfigActions, AppPermissionActions } from '~/Stores';
+import { AppStateTypes } from '~/Stores/AppState/Actions';
+import * as WeoConfigSaga from '~/Sagas/WeoConfigSaga';
+import { Logger, Permission, Dialog } from '~/Helpers';
 
 /**
  * The startup saga is the place to define behavior to execute when the application starts.

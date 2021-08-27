@@ -1,9 +1,9 @@
 import { put, call, select } from 'redux-saga/effects';
 import { isEmpty } from 'lodash';
 
-import { AppStateActions, TopicActions, PostActions, ReplyActions } from 'App/Stores';
-import { Handler, Vote } from 'App/Apis';
-import { Logger } from 'App/Helpers';
+import { AppStateActions, TopicActions, PostActions, ReplyActions } from '~/Stores';
+import { Handler, Vote } from '~/Apis';
+import { Logger } from '~/Helpers';
 
 const TAG = '@VoteSaga';
 const LIKE = 'LIKE';

@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 // import NotifyBox from './NotifyBox';
-import Images from 'App/Theme/Images';
-import Storage from 'App/constant/storage';
+import Images from '~/Theme/Images';
+import Storage from '~/constant/storage';
 import Screen from '../utils/screen';
 import { getItem } from '../utils/asyncStorage';
 

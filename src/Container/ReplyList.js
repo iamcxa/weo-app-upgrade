@@ -17,12 +17,12 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import { Date as d, ListenableEvent } from 'App/Helpers';
-import { translate as t } from 'App/Helpers/I18n';
-import { BackToTopButton, PostListFooter, MainNavBar, CommentCard, ReplyBar } from 'App/Components';
-import { Colors, Screen } from 'App/Theme';
-import { AppStateActions } from 'App/Stores';
-import Config from 'App/Config';
+import { Date as d, ListenableEvent } from '~/Helpers';
+import { translate as t } from '~/Helpers/I18n';
+import { BackToTopButton, PostListFooter, MainNavBar, CommentCard, ReplyBar } from '~/Components';
+import { Colors, Screen } from '~/Theme';
+import { AppStateActions } from '~/Stores';
+import Config from '~/Config';
 
 import {
   updateReply,
@@ -30,9 +30,9 @@ import {
   updateReplyByKey,
   deleteReplyById,
   createReply,
-} from 'App/Stores/List/Actions/reply';
-import { updatePostByKey, deletePostById } from 'App/Stores/List/Actions/post';
-import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+} from '~/Stores/List/Actions/reply';
+import { updatePostByKey, deletePostById } from '~/Stores/List/Actions/post';
+import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import { fetchAPI, apiHandler, apiAction } from '../utils/api';
 import MoreMenu from '../widget/MoreMenu';
 import BottomPopup from '../widget/BottomPopup';

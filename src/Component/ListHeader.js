@@ -6,10 +6,10 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PickerModal from 'react-native-picker-modal-view';
 
-import { ifIphoneX, Screen, StyleSheet } from 'App/Helpers';
-import { Metrics, Colors, Images, Classes } from 'App/Theme';
-import { translate as t } from 'App/Helpers/I18n';
-import Config from 'App/Config';
+import { ifIphoneX, Screen, StyleSheet } from '~/Helpers';
+import { Metrics, Colors, Images, Classes } from '~/Theme';
+import { translate as t } from '~/Helpers/I18n';
+import Config from '~/Config';
 import ImageButton from './ImageButton';
 import MainNavBar from './MainNavBar';
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-import { Images, Colors } from 'App/Theme';
-import { Screen, ScaledSheet } from 'App/Helpers';
+import { Images, Colors } from '~/Theme';
+import { Screen, ScaledSheet } from '~/Helpers';
 
 const styles = ScaledSheet.create({
   container: {

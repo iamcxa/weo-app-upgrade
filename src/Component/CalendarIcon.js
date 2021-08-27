@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 import Screen from '../utils/screen';
 
 const styles = StyleSheet.create({

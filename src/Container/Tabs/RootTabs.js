@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Scene, Stack, ActionConst } from 'react-native-router-flux';
 
-import Colors from 'App/Theme/Colors';
+import Colors from '~/Theme/Colors';
 
-import CustomTabIcon from 'App/Components/CustomTabIcon';
-import VoiceScreen from 'App/Containers/Voice/VoiceScreen';
-import PeekMapScreen from 'App/Containers/PeekMap/PeekMapScreen';
-import TopicScreenTabs from 'App/Containers/Tabs/TopicScreenTabs';
+import CustomTabIcon from '~/Components/CustomTabIcon';
+import VoiceScreen from '~/Containers/Voice/VoiceScreen';
+import PeekMapScreen from '~/Containers/PeekMap/PeekMapScreen';
+import TopicScreenTabs from '~/Containers/Tabs/TopicScreenTabs';
 
 const RootTabs = ({ handleUpdateList }) => (
   <Stack key="HomeScreen" hideNavBar type={ActionConst.REPLACE} panHandlers={null}>

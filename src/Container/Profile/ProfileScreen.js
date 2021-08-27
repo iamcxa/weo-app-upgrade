@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
-import { Classes, Images } from 'App/Theme';
-import { translate as t } from 'App/Helpers/I18n';
-import { MainNavBar, AvatarBlock, AndroidBackKey } from 'App/Components';
+import { Classes, Images } from '~/Theme';
+import { translate as t } from '~/Helpers/I18n';
+import { MainNavBar, AvatarBlock, AndroidBackKey } from '~/Components';
 import DrawerContent from './DrawerContent';
 import styles from './ProfileScreenStyle';
 

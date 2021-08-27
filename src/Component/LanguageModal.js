@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
-import Config from 'App/Config';
-import { translate as t } from 'App/Helpers/I18n';
-import { Fonts, Colors, Classes } from 'App/Theme';
-import { BaseModalSelector, BaseButton, IconButton } from 'App/Components';
+import Config from '~/Config';
+import { translate as t } from '~/Helpers/I18n';
+import { Fonts, Colors, Classes } from '~/Theme';
+import { BaseModalSelector, BaseButton, IconButton } from '~/Components';
 
 const SUPPORT_LANGUAGES = () =>
   [{ key: 0, label: t('drawer_content_select_prefer_locale'), section: true }].concat(
