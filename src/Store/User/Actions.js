@@ -19,17 +19,37 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  updateUserStore: ['data'],
+  updateUserConfig: ['data'],
+  updateUserProfile: ['data'],
+  cleanUser: null,
 
-  onUserLocaleChange: ['locale'],
+  fetchPostLogout: ['data'],
 
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
+  fetchPostAutoSignUp: {
+    fcmToken: null,
+    onSuccess: null,
+  },
 
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  fetchPostSignUp: {
+    nickname: '',
+    avatarKey: '',
+    identifier: '',
+    deviceInfo: {},
+  },
+
+  fetchPutUserProfile: {
+    nickname: '',
+    avatarKey: '',
+  },
+
+  fetchPutUserNotifyConfig: {
+    hasCircleNotify: true,
+    hasTopicNotify: true,
+    hasPostNotify: true,
+    hasReplyNotify: true,
+  },
 });
 
-export const AppConfigTypes = Types;
+export const UserTypes = Types;
 export default Creators;

@@ -20,16 +20,25 @@ import { createActions } from 'reduxsauce';
  */
 const { Types, Creators } = createActions({
   // update whole store
-  updateAppConfigStore: ['data'],
+  updateCircleStore: ['data'],
 
-  onUserLocaleChange: ['locale'],
+  updateWhenEnterCircle: ['circle'],
+  updateWhenExitCircle: ['circle'],
 
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
+  updateCircles: ['data'],
+  updateUserCircle: ['data'],
+  updateHomeCircle: ['data'],
+  updateLeftAppTime: ['data'],
+  updateLeftCircleTime: ['data'],
 
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  // saga action
+  getCurrentCircles: null,
+  getNearCircles: null,
+  putUserCircle: ['circleId'],
+  setUserCircle: ['circle'],
+  fetchPutHomeCircle: ['circle', 'onSuccess'],
+  fetchGetStayCircles: ['onSuccess', 'reason'],
 });
 
-export const AppConfigTypes = Types;
+export const CircleTypes = Types;
 export default Creators;

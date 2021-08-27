@@ -19,17 +19,24 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  updateAppPermissionStore: ['data'],
 
-  onUserLocaleChange: ['locale'],
-
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
-
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  resetPermissions: null,
+  checkPermissions: ['permissions'],
+  removePermission: ['permission'],
+  requestPermission: {
+    permission: '',
+    requestTitle: '',
+    requestDescription: '',
+    requestFromSystemTitle: '',
+    requestFromSystemDescription: '',
+    shouldForceGetPermission: true,
+    onSuccess: undefined,
+    onFailure: undefined,
+  },
+  requestPermissionSuccess: ['permission', 'permissionStatus'],
+  requestPermissionFailure: ['permission', 'permissionStatus'],
 });
 
-export const AppConfigTypes = Types;
+export const AppPermissionTypes = Types;
 export default Creators;

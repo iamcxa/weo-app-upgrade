@@ -19,17 +19,25 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  updatePostStore: ['data'],
 
-  onUserLocaleChange: ['locale'],
-
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
-
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  createPost: ['target', 'data'],
+  updatePost: ['belongsTo', 'data'],
+  updatePostSuccess: { belongsTo: '', data: {} },
+  updatePostByKey: { belongsTo: '', key: '', data: {} },
+  resetPost: ['target'],
+  deletePostById: { belongsTo: '', id: '' },
+  fetchGetPost: {
+    topicId: '',
+    curPage: '',
+    belongsTo: '',
+    handleNextPage: null,
+  },
+  fetchPostHidePost: ['id', 'type', 'belongsTo'],
+  fetchPostReply: ['id', 'data'],
+  fetchGetSinglePost: ['id', 'getSuccess'],
+  updateTopicByKey: { belongsTo: '', key: '', data: {} },
 });
 
-export const AppConfigTypes = Types;
+export const PostTypes = Types;
 export default Creators;

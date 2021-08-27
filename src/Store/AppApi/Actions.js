@@ -19,17 +19,13 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  // This action triggered when the app requires user to wait.
+  onApiFetching: ['method', 'url', 'options'],
 
-  onUserLocaleChange: ['locale'],
-
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
-
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  onApiFetchSuccess: ['data'],
+  onApiFetchFailure: ['error'],
 });
 
-export const AppConfigTypes = Types;
+export const AppApiTypes = Types;
+
 export default Creators;

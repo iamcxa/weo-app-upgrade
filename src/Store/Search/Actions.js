@@ -19,17 +19,21 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  updateSearchStore: ['data'],
 
-  onUserLocaleChange: ['locale'],
+  fetchGetPopularKeywords: {
+    circleId: 0,
+    belongsTo: '',
+  },
 
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
-
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  fetchGetSearchResult: {
+    circleId: 0,
+    curPage: 1,
+    perPage: 30,
+    keyword: '',
+    belongsTo: '',
+  },
 });
 
-export const AppConfigTypes = Types;
+export const SearchTypes = Types;
 export default Creators;

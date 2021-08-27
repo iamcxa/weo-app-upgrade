@@ -19,17 +19,20 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  updateNotificationStore: ['data'],
 
-  onUserLocaleChange: ['locale'],
+  fetchGetNotifications: {
+    sort: 'DESC',
+    curPage: 1,
+    perPage: 10,
+  },
+  fetchSetNotificationRead: ['id'],
 
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
-
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  replaceNotifications: { data: {}, paging: {} },
+  updateNotificationByKey: { key: '', data: {} },
+  updateNotifications: { data: {}, paging: {} },
+  resetNotifications: ['data'],
 });
 
-export const AppConfigTypes = Types;
+export const NotificationTypes = Types;
 export default Creators;

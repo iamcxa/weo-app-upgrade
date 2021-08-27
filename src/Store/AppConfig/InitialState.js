@@ -3,4 +3,10 @@
  */
 export const INITIAL_STATE = {
   customLocale: 'zh_HK',
+
+  weoBlockWords: [],
+
+  weoMinimalVersion: '',
+
+  weoCurrentVersion: '',
 };

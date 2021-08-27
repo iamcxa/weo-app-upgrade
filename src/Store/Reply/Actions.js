@@ -19,17 +19,14 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  // update whole store
-  updateAppConfigStore: ['data'],
+  updateReplyStore: ['data'],
 
-  onUserLocaleChange: ['locale'],
-
-  fetchGetWeoConfig: null,
-  fetchGetWeoCompatibleVersion: null,
-
-  getWeoUserNotifyConfig: null,
-  setWeoUserNotifyConfig: ['data'],
+  createReply: ['target', 'data'],
+  updateReply: ['target', 'data'],
+  updateReplyByKey: ['target', 'data'],
+  resetReply: ['target'],
+  deleteReplyById: ['target', 'id'],
 });
 
-export const AppConfigTypes = Types;
+export const ReplyTypes = Types;
 export default Creators;
