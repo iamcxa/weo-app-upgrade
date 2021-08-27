@@ -106,8 +106,5 @@
   "resolutions": {
     "react-devtools-core": "^4.11.0"
   },
-  "private": true,
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
-  }
+  "private": true
 }
