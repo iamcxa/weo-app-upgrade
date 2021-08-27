@@ -1,33 +1,27 @@
-import React from "react";
-import {
-  View,
-  Text,
-  Platform,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
-import IoniconIcon from "react-native-vector-icons/Ionicons";
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import PropTypes from "prop-types";
+import React from 'react';
+import { View, Text, Platform, TouchableOpacity, ActivityIndicator } from 'react-native';
+import IoniconIcon from 'react-native-vector-icons/Ionicons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import PropTypes from 'prop-types';
 
-import { Screen, StyleSheet } from "App/Helpers";
-import { Colors, Metrics, Classes } from "App/Theme";
+import { Screen, StyleSheet } from 'App/Helpers';
+import { Colors, Metrics, Classes } from 'App/Theme';
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "70@s",
+    width: '100%',
+    height: '70@s',
     backgroundColor: Colors.blackFour,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   carouselContainer: {
-    width: "100%",
+    width: '100%',
     paddingHorizontal: Screen.scale(30),
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    height: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+    height: '100%',
     // marginBottom: Screen.scale(16),
     // backgroundColor: 'red',
   },
@@ -37,21 +31,21 @@ const styles = StyleSheet.create({
     // top: Screen.scale(14),
   },
   headerWrapper: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   circleTitle: {
     fontSize: Screen.scale(16),
     paddingLeft: Screen.scale(10),
-    fontWeight: "600",
-    alignSelf: "center",
+    fontWeight: '600',
+    alignSelf: 'center',
     color: Colors.pureWhite,
-    minWidth: "auto", // Screen.scale(120),
+    minWidth: 'auto', // Screen.scale(120),
     maxWidth: Screen.scale(260),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: Metrics.baseMargin * 2,
     // width: '80%',
   },
@@ -102,14 +96,10 @@ const PaginationHeader = (props) => {
               color={Colors.pureWhite}
               style={styles.icon}
             />
-            <Text
-              style={styles.circleTitle}
-              numberOfLines={2}
-              ellipsizeMode="tail"
-            >
+            <Text style={styles.circleTitle} numberOfLines={2} ellipsizeMode="tail">
               {entries[activeSlide].name}
             </Text>
-            {Platform.OS === "ios" && isFetching && (
+            {Platform.OS === 'ios' && isFetching && (
               <ActivityIndicator size="small" animating={isFetching} />
             )}
           </View>

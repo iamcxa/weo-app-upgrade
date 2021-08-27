@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Actions } from "react-native-router-flux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
 
-import { Classes, Images } from "App/Theme";
-import { translate as t } from "App/Helpers/I18n";
-import { MainNavBar, AvatarBlock, AndroidBackKey } from "App/Components";
-import DrawerContent from "./DrawerContent";
-import styles from "./ProfileScreenStyle";
+import { Classes, Images } from 'App/Theme';
+import { translate as t } from 'App/Helpers/I18n';
+import { MainNavBar, AvatarBlock, AndroidBackKey } from 'App/Components';
+import DrawerContent from './DrawerContent';
+import styles from './ProfileScreenStyle';
 
 class ProfileScreen extends React.Component {
   static propTypes = {
@@ -24,7 +24,7 @@ class ProfileScreen extends React.Component {
   };
 
   static defaultProps = {
-    nickname: "Author",
+    nickname: 'Author',
   };
 
   render() {
@@ -32,7 +32,7 @@ class ProfileScreen extends React.Component {
     return (
       <View style={Classes.fill}>
         <MainNavBar
-          title={t("profile_nav_bar_title")}
+          title={t('profile_nav_bar_title')}
           leftComponent="cancel"
           style={styles.navBar}
         />
@@ -41,7 +41,7 @@ class ProfileScreen extends React.Component {
           <View style={styles.header}>
             <AvatarBlock
               name={nickname}
-              avatar={Images[avatarKey ? avatarKey.toLowerCase() : "avatar1"]}
+              avatar={Images[avatarKey ? avatarKey.toLowerCase() : 'avatar1']}
               onPress={Actions.ProfileUpdateScreen}
               editMode
             />
@@ -68,5 +68,5 @@ export default connect(
 
     customLocale: state.appConfig.customLocale,
   }),
-  (dispatch) => bindActionCreators({}, dispatch)
+  (dispatch) => bindActionCreators({}, dispatch),
 )(ProfileScreen);

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Image,
   Text,
@@ -9,25 +9,20 @@ import {
   RefreshControl,
   TouchableOpacity,
   KeyboardAvoidingView,
-} from "react-native";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { bindActionCreators } from "redux";
-import { debounce, throttle, isEmpty } from "lodash";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { debounce, throttle, isEmpty } from 'lodash';
 
-import Config from "App/Config";
-import { ifIphoneX } from "App/Helpers";
-import { SearchActions } from "App/Stores";
-import { translate as t } from "App/Helpers/I18n";
-import { Classes, Colors, Images, Metrics } from "App/Theme";
-import {
-  ModalCard,
-  SearchListItem,
-  ComposedTextInput,
-  DismissKeyboardView,
-} from "App/Components";
+import Config from 'App/Config';
+import { ifIphoneX } from 'App/Helpers';
+import { SearchActions } from 'App/Stores';
+import { translate as t } from 'App/Helpers/I18n';
+import { Classes, Colors, Images, Metrics } from 'App/Theme';
+import { ModalCard, SearchListItem, ComposedTextInput, DismissKeyboardView } from 'App/Components';
 
-import styles from "./SearchScreenStyle";
+import styles from './SearchScreenStyle';
 
 const { ON_END_REACHED_THROTTLE } = Config;
 
@@ -48,7 +43,7 @@ class SearchScreen extends React.Component {
   };
 
   state = {
-    search: "",
+    search: '',
     refreshTextInput: false,
   };
 
@@ -80,17 +75,17 @@ class SearchScreen extends React.Component {
   }, 600);
 
   onResultListEndReached = throttle(() => {
-    console.log("on end reached");
+    console.log('on end reached');
   }, ON_END_REACHED_THROTTLE);
 
   onChangeText = (text) => {
     // pattern 為所謂的特殊字元
     const pattern = new RegExp(
-      "[`~!@#$^&*()=|{}':;',\\[\\]<>/?~！@#￥……&*（）——|{}    【】‘；：”“'。，、？]"
+      "[`~!@#$^&*()=|{}':;',\\[\\]<>/?~！@#￥……&*（）——|{}    【】‘；：”“'。，、？]",
     );
-    console.log("text, =>", text);
+    console.log('text, =>', text);
     if (pattern.test(text)) {
-      text = "";
+      text = '';
       return false;
     }
     this.setState({ search: text }, () => {
@@ -124,7 +119,7 @@ class SearchScreen extends React.Component {
 
   renderListEmptyComponent = () => (
     <View style={styles.listEmptyContainer}>
-      <Text style={styles.listEmptyMessage}>{t("search_list_empty")}</Text>
+      <Text style={styles.listEmptyMessage}>{t('search_list_empty')}</Text>
     </View>
   );
 
@@ -132,9 +127,9 @@ class SearchScreen extends React.Component {
     const { poplarKeyWords, searchResult, belongsTo, isLoading } = this.props;
     const { search, refreshTextInput } = this.state;
     return (
-      <ModalCard title={`${t("search_nav_bar_title")}`}>
+      <ModalCard title={`${t('search_nav_bar_title')}`}>
         <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           // style={Classes.fill}
           style={styles.content}
           keyboardVerticalOffset={Platform.select({
@@ -187,22 +182,11 @@ class SearchScreen extends React.Component {
               keyExtractor={this.searchResultKeyExtractor}
               onEndReached={this.onResultLisEndReached}
               onEndReachedThreshold={0.3}
-              ListEmptyComponent={
-                !isLoading && !refreshTextInput && this.renderListEmptyComponent
-              }
-              refreshControl={
-                <RefreshControl
-                  refreshing={isLoading}
-                  onRefresh={this.onRefresh}
-                />
-              }
+              ListEmptyComponent={!isLoading && !refreshTextInput && this.renderListEmptyComponent}
+              refreshControl={<RefreshControl refreshing={isLoading} onRefresh={this.onRefresh} />}
               renderItem={({ item }) =>
                 !isLoading && (
-                  <SearchListItem
-                    searchWords={[search]}
-                    itemData={item}
-                    belongsTo={belongsTo}
-                  />
+                  <SearchListItem searchWords={[search]} itemData={item} belongsTo={belongsTo} />
                 )
               }
               onScrollBeginDrag={this.onResultListScroll}
@@ -227,6 +211,6 @@ export default connect(
         fetchGetSearchResult: SearchActions.fetchGetSearchResult,
         updateSearchStore: SearchActions.updateSearchStore,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(SearchScreen);

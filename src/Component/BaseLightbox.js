@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   SafeAreaView,
   View,
@@ -8,13 +8,13 @@ import {
   Dimensions,
   Button,
   Keyboard,
-} from "react-native";
-import { Actions } from "react-native-router-flux";
-import Colors from "App/Theme/Colors";
-import { PrimaryBtn, SubBtn, LineBtn, LogoBtn } from "../widget/Button";
-import Screen from "../utils/screen";
+} from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Colors from 'App/Theme/Colors';
+import { PrimaryBtn, SubBtn, LineBtn, LogoBtn } from '../widget/Button';
+import Screen from '../utils/screen';
 
-const { height: deviceHeight, width: deviceWidth } = Dimensions.get("window");
+const { height: deviceHeight, width: deviceWidth } = Dimensions.get('window');
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 export default class BaseLightbox extends Component {
   static propTypes = {
@@ -48,14 +48,14 @@ export default class BaseLightbox extends Component {
     }).start();
   }
 
-  closeModal = ({ type = "close" }) => {
+  closeModal = ({ type = 'close' }) => {
     Keyboard.dismiss();
     Animated.spring(this.state.opacity, {
       duration: 500,
       toValue: 0,
       useNativeDriver: true,
     }).start(() => {
-      if (type === "submit") {
+      if (type === 'submit') {
         this.props.onSubmit();
       }
       Actions.pop();
@@ -77,9 +77,7 @@ export default class BaseLightbox extends Component {
         ? deviceHeight * verticalPercent + heightOffset
         : deviceHeight + heightOffset;
     const width =
-      this.props.width || horizontalPercent
-        ? deviceWidth * horizontalPercent
-        : deviceWidth;
+      this.props.width || horizontalPercent ? deviceWidth * horizontalPercent : deviceWidth;
     return (
       <View
         style={[
@@ -129,15 +127,15 @@ export default class BaseLightbox extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F9FAFA",
+    backgroundColor: '#F9FAFA',
     // height: Screen.height,
     // width: Screen.width,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

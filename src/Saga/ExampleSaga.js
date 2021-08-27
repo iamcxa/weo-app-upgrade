@@ -1,9 +1,9 @@
-import { Alert } from "react-native";
-import { call, put } from "redux-saga/effects";
+import { Alert } from 'react-native';
+import { call, put } from 'redux-saga/effects';
 
-import { Example, Handler } from "~/Api";
-import { Logger, t } from "~/Helper";
-import { ExampleActions } from "~/Store/Actions";
+import { Example, Handler } from '~/Api';
+import { Logger, t } from '~/Helper';
+import { ExampleActions } from '~/Store/Actions';
 
 /**
  * A saga can contain multiple functions.
@@ -24,9 +24,7 @@ export function* fetchUser() {
       yield put(ExampleActions.fetchUserSuccess(res.data));
     } else {
       yield put(
-        ExampleActions.fetchUserFailure(
-          "There was an error while fetching user information."
-        )
+        ExampleActions.fetchUserFailure('There was an error while fetching user information.'),
       );
     }
   } catch (error) {
@@ -39,17 +37,17 @@ export function* createPost() {
     const res = yield call(
       Handler.post({
         data: {
-          title: "foo",
-          body: "bar",
+          title: 'foo',
+          body: 'bar',
           userId: 1,
         },
       }),
-      Example.postNewPost()
+      Example.postNewPost(),
     );
     if (res.data) {
-      Alert.alert(t("api.success.title"), `Post Id: ${res.data.id}`);
+      Alert.alert(t('api.success.title'), `Post Id: ${res.data.id}`);
     } else {
-      Alert.alert(t("api.success.failure"), JSON.stringify(res));
+      Alert.alert(t('api.success.failure'), JSON.stringify(res));
     }
   } catch (error) {
     Logger.error(error);

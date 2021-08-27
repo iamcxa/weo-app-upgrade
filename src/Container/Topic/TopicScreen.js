@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Keyboard } from "react-native";
-import { has, isEmpty, isEqual, throttle } from "lodash";
-import { Actions } from "react-native-router-flux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Keyboard } from 'react-native';
+import { has, isEmpty, isEqual, throttle } from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
-import { AndroidBackKey } from "App/Components";
+import { AndroidBackKey } from 'App/Components';
 // import { Dialog } from 'App/Helpers';
-import { Config } from "App/Config";
-import TopicView from "./TopicView";
+import { Config } from 'App/Config';
+import TopicView from './TopicView';
 
 const { ON_END_REACHED_THROTTLE, CIRCLE_TYPE } = Config;
 
@@ -51,11 +51,11 @@ class TopicScreen extends React.Component {
     curPage: 1,
     perPage: 100,
     circleId: null,
-    sort: "newest",
+    sort: 'newest',
   };
 
   componentDidMount() {
-    __DEV__ && console.log("@Enter TopicScreen");
+    __DEV__ && console.log('@Enter TopicScreen');
 
     setTimeout(() => {
       this.handleRefreshCircleAndGetTopics();
@@ -83,14 +83,7 @@ class TopicScreen extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      userCircle,
-      homeCircle,
-      belongsTo,
-      resetTopic,
-      routeName,
-      sceneKey,
-    } = this.props;
+    const { userCircle, homeCircle, belongsTo, resetTopic, routeName, sceneKey } = this.props;
     if (prevProps.routeName !== routeName && routeName.includes(sceneKey)) {
       Keyboard.dismiss();
     }
@@ -100,7 +93,7 @@ class TopicScreen extends React.Component {
           belongsTo,
           circleId: userCircle.id,
           curPage: 1,
-          sort: "newest",
+          sort: 'newest',
         });
       } else if (!userCircle || !userCircle.id) {
         resetTopic({ belongsTo });
@@ -112,7 +105,7 @@ class TopicScreen extends React.Component {
           belongsTo,
           circleId: homeCircle.id,
           curPage: 1,
-          sort: "newest",
+          sort: 'newest',
         });
       }
     }
@@ -153,7 +146,7 @@ class TopicScreen extends React.Component {
       perPage = this.state.perPage,
       circleId = this.state.circleId,
       belongsTo = this.props.belongsTo,
-    } = this.state
+    } = this.state,
   ) => {
     const { fetchGetTopics, userCircle, homeCircle } = this.props;
     if (!circleId) {
@@ -179,7 +172,7 @@ class TopicScreen extends React.Component {
       });
     } else {
       this.setState({
-        sort: "newest",
+        sort: 'newest',
         curPage: 1,
         perPage,
       });
@@ -187,11 +180,8 @@ class TopicScreen extends React.Component {
   };
 
   handleRefreshCircleAndGetTopics = (
-    {
-      sort = this.state.sort,
-      curPage = this.state.curPage,
-      perPage = this.state.perPage,
-    } = this.state
+    { sort = this.state.sort, curPage = this.state.curPage, perPage = this.state.perPage } = this
+      .state,
   ) => {
     // console.log('sort, curPage, perPage=>', sort, curPage, perPage);
     const { fetchGetStayCircles, belongsTo, sceneKey } = this.props;
@@ -233,10 +223,7 @@ class TopicScreen extends React.Component {
     const { sort, curPage } = this.state;
     return (
       <>
-        <AndroidBackKey
-          sceneKey={sceneKey}
-          onBackKeyPress={Actions.voiceView}
-        />
+        <AndroidBackKey sceneKey={sceneKey} onBackKeyPress={Actions.voiceView} />
         <TopicView
           sort={sort}
           topics={topics}
@@ -258,13 +245,13 @@ class TopicScreen extends React.Component {
           }
           onShowNewest={() =>
             this.handleFetchTopics({
-              sort: "newest",
+              sort: 'newest',
               curPage: 1,
             })
           }
           onShowHottest={() =>
             this.handleFetchTopics({
-              sort: "hottest",
+              sort: 'hottest',
               curPage: 1,
             })
           }

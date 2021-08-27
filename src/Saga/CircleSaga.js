@@ -1,19 +1,14 @@
-import { isEmpty, uniqBy, differenceBy } from "lodash";
-import moment from "moment";
-import { put, call, delay, select } from "redux-saga/effects";
+import { isEmpty, uniqBy, differenceBy } from 'lodash';
+import moment from 'moment';
+import { put, call, delay, select } from 'redux-saga/effects';
 
-import { Geolocation, Permission, Dialog, Logger, Fcm } from "App/Helpers";
-import {
-  AppStore,
-  CircleActions,
-  AppStateActions,
-  AppPermissionSelectors,
-} from "App/Stores";
-import { Handler, Circle } from "App/Apis";
-import { translate as t } from "App/Helpers/I18n";
-import Config from "App/Config";
+import { Geolocation, Permission, Dialog, Logger, Fcm } from 'App/Helpers';
+import { AppStore, CircleActions, AppStateActions, AppPermissionSelectors } from 'App/Stores';
+import { Handler, Circle } from 'App/Apis';
+import { translate as t } from 'App/Helpers/I18n';
+import Config from 'App/Config';
 
-const TAG = "@CircleSaga";
+const TAG = '@CircleSaga';
 
 export function* getCurrentCircles({
   latitude = 0,
@@ -25,7 +20,7 @@ export function* getCurrentCircles({
   radius,
 } = {}) {
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable
+    (state) => state.appState.currentNetworkInfo.isInternetReachable,
   );
   if (isInternetReachable) {
     try {
@@ -43,7 +38,7 @@ export function* getCurrentCircles({
             radius,
           },
         }),
-        Circle.getCurrentCircle()
+        Circle.getCurrentCircle(),
       );
 
       if (res.success) {
@@ -70,24 +65,17 @@ export function* getCurrentCircles({
 
         const existGeofences = yield call(Geolocation.getGeofences);
         // console.log('existGeofences=>', existGeofences);
-        const totalFences = uniqBy(
-          nearFences.concat(existGeofences),
-          "identifier"
-        );
+        const totalFences = uniqBy(nearFences.concat(existGeofences), 'identifier');
         // console.info('totalFences=>', totalFences);
 
         const duplicateFences = isEmpty(existGeofences)
           ? []
           : existGeofences.filter((old) =>
-              nearFences.map((nf) => nf.identifier === old.identifier)
+              nearFences.map((nf) => nf.identifier === old.identifier),
             );
         // console.info('duplicateFences=>', duplicateFences);
 
-        const newFences = differenceBy(
-          nearFences,
-          duplicateFences,
-          "identifier"
-        );
+        const newFences = differenceBy(nearFences, duplicateFences, 'identifier');
         // console.info('newFences=>', newFences);
         // console.groupEnd();
 
@@ -122,16 +110,16 @@ export function* getCurrentCircles({
             Geolocation.addGeofences,
             newFences,
             () => {
-              console.info("Successfully added geofences");
+              console.info('Successfully added geofences');
               // console.info(`Successfully added geofences [${newFences.map(e => e.identifier)}]`);
             },
             (error) => {
-              console.warn("Failed to add geofence", error);
-            }
+              console.warn('Failed to add geofence', error);
+            },
           );
         }
       }
-      console.log("res.data=>", res.data);
+      console.log('res.data=>', res.data);
       return res.data;
     } catch (error) {
       Logger.error(TAG, error);
@@ -147,20 +135,22 @@ export function* getCurrentCircles({
 
 export function* getNearCircles(data) {
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable
+    (state) => state.appState.currentNetworkInfo.isInternetReachable,
   );
   if (isInternetReachable) {
     try {
       const savedUserCircle = yield select((state) => state.circle.userCircle);
-      const { userCircle, currentCircle, insideCircles, nearCircles } =
-        yield call(getCurrentCircles, data);
+      const { userCircle, currentCircle, insideCircles, nearCircles } = yield call(
+        getCurrentCircles,
+        data,
+      );
       yield put(
         CircleActions.updateCircles({
           currentCircle,
           insideCircles,
           nearCircles,
           userCircle,
-        })
+        }),
       );
       // 沒有 userCircle 但有 currentCircle 時，直接更新 userCircle
       if (isEmpty(savedUserCircle) && !isEmpty(currentCircle)) {
@@ -189,7 +179,7 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
   const { STAY_CIRCLE_TIME, LEFT_APP_TIMEOUT } = Config;
   yield put(AppStateActions.onLoading(true, null, { hide: true }));
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable
+    (state) => state.appState.currentNetworkInfo.isInternetReachable,
   );
   if (isInternetReachable) {
     try {
@@ -202,40 +192,30 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
         const routeName = yield select((state) => state.appRoute.routeName);
         const apiToken = yield select((state) => state.user.apiToken);
         const hasHightGeolocationPermission = yield select((state) =>
-          AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_HIGH)(
-            state
-          )
+          AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_HIGH)(state),
         );
         const hasLowGeolocationPermission = yield select((state) =>
-          AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_LOW)(
-            state
-          )
+          AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_LOW)(state),
         );
         const hasGeolocationPermission =
           hasHightGeolocationPermission || hasLowGeolocationPermission;
         if (
           !apiToken ||
           !hasGeolocationPermission ||
-          ["SignUpScreen", "SplashScreen", "thereYouAre"].includes(routeName)
+          ['SignUpScreen', 'SplashScreen', 'thereYouAre'].includes(routeName)
         ) {
           __DEV__ &&
             console.log(
-              `stop get current circle due to no user or current routeName(${routeName}) is not allowed`
+              `stop get current circle due to no user or current routeName(${routeName}) is not allowed`,
             );
           return false;
         }
       }
 
       // step 1 - 取得當前座標與 circles
-      const {
-        latitude,
-        longitude,
-        accuracy,
-        speed,
-        heading,
-        altitude,
-        radius,
-      } = yield call(Geolocation.getCurrentPosition);
+      const { latitude, longitude, accuracy, speed, heading, altitude, radius } = yield call(
+        Geolocation.getCurrentPosition,
+      );
 
       // step 2 - 取得當前 circles，並比較 currentCircle 與 userCircle
       const { currentCircle } = yield call(getNearCircles, {
@@ -248,13 +228,8 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
         radius,
       });
 
-      const {
-        userCircle,
-        prevUserCircle,
-        insideCircles,
-        leftCircleTime,
-        leftAppTime,
-      } = yield select((state) => state.circle);
+      const { userCircle, prevUserCircle, insideCircles, leftCircleTime, leftAppTime } =
+        yield select((state) => state.circle);
 
       // 有 leftCircleTime 則表示目前倒數中
       // if (leftCircleTime !== null) {
@@ -268,16 +243,14 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
       // const nextCircleId = currentCircle ? currentCircle.id : null;
       // const shouldEnterNewCircle = userCircle && userCircle.id !== nextCircleId;
       const shouldEnterNewCircle =
-        userCircle &&
-        userCircle.id &&
-        !insideCircles.map((e) => e.id).includes(userCircle.id);
+        userCircle && userCircle.id && !insideCircles.map((e) => e.id).includes(userCircle.id);
       // const isBackToLastCircle = prevUserCircle
       //   ? prevUserCircle.id === userCircle.id
       //   : false;
 
       // 同時沒有 currentCircle/userCircle 則表示 user 到了沒有服務的地區
       if (isStillNoCircle) {
-        __DEV__ && console.log("stop get current circle due to isNoCircleArea");
+        __DEV__ && console.log('stop get current circle due to isNoCircleArea');
         // if (userCircle === currentCircle) {
         //   return Dialog.noCircleAlert();
         // }
@@ -291,7 +264,7 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
           },
           onNoPress: () => {},
           oldCircleName: userCircle.name,
-          newCircleName: t("__no_circle_area"),
+          newCircleName: t('__no_circle_area'),
         });
       } else if (shouldEnterNewCircle) {
         if (!isCountingDown) {
@@ -300,38 +273,33 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
           // leftAppTime 紀錄為 unix 毫秒，需要除以 1000 轉為秒後，
           // 再除以 60 兩次得到小時
           const isLongerEnough = leftAppTime
-            ? moment().diff(leftAppTime * 1000, "seconds") / 60 / 60 >
-              LEFT_APP_TIMEOUT
+            ? moment().diff(leftAppTime * 1000, 'seconds') / 60 / 60 > LEFT_APP_TIMEOUT
             : false;
 
           if (leftAppTime) {
             console.log(
-              "expire time(hours)=>",
-              moment().diff(leftAppTime * 1000, "seconds") / 60 / 60
+              'expire time(hours)=>',
+              moment().diff(leftAppTime * 1000, 'seconds') / 60 / 60,
             );
           }
-          console.log("isLongerEnough=>", isLongerEnough);
+          console.log('isLongerEnough=>', isLongerEnough);
 
           if (!isLongerEnough) {
             // 不在倒數中，且進入新 circle 範圍
-            const newLeftCircleTime = moment()
-              .add(STAY_CIRCLE_TIME, "seconds")
-              .unix();
-            console.log("set new time", newLeftCircleTime);
+            const newLeftCircleTime = moment().add(STAY_CIRCLE_TIME, 'seconds').unix();
+            console.log('set new time', newLeftCircleTime);
             yield put(CircleActions.updateLeftCircleTime(newLeftCircleTime));
 
-            const isEnableCircleNotification = yield select(
-              (state) => state.user.hasCircleNotify
-            );
+            const isEnableCircleNotification = yield select((state) => state.user.hasCircleNotify);
             if (isEnableCircleNotification && currentCircle) {
               yield (Fcm.presentNotification,
               {
-                title: t("__alert_leave_circle"),
-                body: t("__alert_leave_circle_content", {
+                title: t('__alert_leave_circle'),
+                body: t('__alert_leave_circle_content', {
                   oldCircleName: userCircle.name,
                   newCircleName: currentCircle.name,
                 }),
-                data: { action: "enter-circle" },
+                data: { action: 'enter-circle' },
               });
             }
 
@@ -340,9 +308,7 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
                 onYesPress: () => {
                   AppStore.dispatch(CircleActions.updateLeftAppTime(null));
                   AppStore.dispatch(CircleActions.updateLeftCircleTime(null));
-                  AppStore.dispatch(
-                    CircleActions.updateUserCircle(currentCircle)
-                  );
+                  AppStore.dispatch(CircleActions.updateUserCircle(currentCircle));
                 },
                 onNoPress: () => {},
                 oldCircleName: userCircle.name,
@@ -358,7 +324,7 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
               },
               onNoPress: () => {},
               oldCircleName: userCircle.name,
-              newCircleName: t("__no_circle_area"),
+              newCircleName: t('__no_circle_area'),
             });
           }
 
@@ -369,9 +335,7 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
           yield put(CircleActions.updateLeftCircleTime(null));
           yield put(CircleActions.updateUserCircle(currentCircle));
         } else {
-          console.log(
-            "wont show the leaveCircleAlert because user is dismiss the alert."
-          );
+          console.log('wont show the leaveCircleAlert because user is dismiss the alert.');
         }
       }
       // else if (isCountingDown && isBackToLastCircle && !isGetInNoCircle) {
@@ -379,7 +343,7 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
       //   yield put(CircleActions.updateLeftCircleTime(null));
       // }
 
-      if (typeof onSuccess === "function") {
+      if (typeof onSuccess === 'function') {
         yield call(onSuccess, {
           latitude,
           longitude,
@@ -401,23 +365,23 @@ export function* fetchGetStayCircles({ onSuccess } = {}) {
 export function* fetchPutHomeCircle({ circle, onSuccess }) {
   yield put(AppStateActions.onLoading(true, null, { hide: false }));
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable
+    (state) => state.appState.currentNetworkInfo.isInternetReachable,
   );
   if (isInternetReachable) {
     try {
-      console.info("fetchPutHomeCircle circle=>", circle);
-      console.info("fetchPutHomeCircle onSuccess=>", onSuccess);
+      console.info('fetchPutHomeCircle circle=>', circle);
+      console.info('fetchPutHomeCircle onSuccess=>', onSuccess);
       const apiToken = yield select((state) => state.user.apiToken);
       const { data: res } = yield call(
         Handler.put({
           Authorization: apiToken,
         }),
-        Circle.setHomeCircle({ id: circle.id })
+        Circle.setHomeCircle({ id: circle.id }),
       );
-      console.log("fetchPutHomeCircle res=>", res);
+      console.log('fetchPutHomeCircle res=>', res);
       if (res.success) {
         yield put(CircleActions.updateHomeCircle(circle));
-        if (typeof onSuccess === "function") {
+        if (typeof onSuccess === 'function') {
           yield call(onSuccess, { circle });
         }
       }

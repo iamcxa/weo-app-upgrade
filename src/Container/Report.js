@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { Text, View, TextInput, StyleSheet, Alert } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Actions } from "react-native-router-flux";
-import PropTypes from "prop-types";
-import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
-import ModalCard from "App/Components/ModalCard";
-import Colors from "App/Theme/Colors";
-import { AppStateActions } from "App/Stores";
-import AvoidingView from "App/Components/DismissKeyboardView";
-import { translate as t } from "App/Helpers/I18n";
-import { ReportActions } from "App/Stores/index";
-import { fetchAPI, apiAction, apiHandler } from "../utils/api";
-import RadioButton from "../widget/RadioButton";
-import Screen from "../utils/screen";
-import { PrimaryBtn } from "../widget/RoundButton";
+import React, { Component } from 'react';
+import { Text, View, TextInput, StyleSheet, Alert } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
+import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
+import ModalCard from 'App/Components/ModalCard';
+import Colors from 'App/Theme/Colors';
+import { AppStateActions } from 'App/Stores';
+import AvoidingView from 'App/Components/DismissKeyboardView';
+import { translate as t } from 'App/Helpers/I18n';
+import { ReportActions } from 'App/Stores/index';
+import { fetchAPI, apiAction, apiHandler } from '../utils/api';
+import RadioButton from '../widget/RadioButton';
+import Screen from '../utils/screen';
+import { PrimaryBtn } from '../widget/RoundButton';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     paddingTop: Screen.moderateScale(22),
     paddingBottom: Screen.moderateScale(28),
     paddingHorizontal: Screen.moderateScale(17),
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   reasonLabel: {
     fontSize: Screen.moderateScale(24),
     marginBottom: Screen.moderateScale(14),
-    fontWeight: "600",
+    fontWeight: '600',
     color: Colors.black,
   },
   reasonInput: {
@@ -56,8 +56,8 @@ class Report extends Component {
   static defaultProps = {};
 
   state = {
-    category: "這是詐騙內容",
-    reason: "",
+    category: '這是詐騙內容',
+    reason: '',
   };
 
   isActive = (label) => label === this.state.category;
@@ -84,35 +84,33 @@ class Report extends Component {
 
   render() {
     return (
-      <ModalCard title={t("report_nav_bar_title")}>
+      <ModalCard title={t('report_nav_bar_title')}>
         <View style={styles.container}>
           <AvoidingView keyboardVerticalOffset={Screen.moderateScale(100)}>
             <View style={styles.optionList}>
               <RadioButton
-                label={t("report_category_option1")}
-                active={this.isActive(t("report_category_option1"))}
+                label={t('report_category_option1')}
+                active={this.isActive(t('report_category_option1'))}
                 onPress={this.updateCategory}
               />
               <RadioButton
-                label={t("report_category_option2")}
-                active={this.isActive(t("report_category_option2"))}
+                label={t('report_category_option2')}
+                active={this.isActive(t('report_category_option2'))}
                 onPress={this.updateCategory}
               />
               <RadioButton
-                label={t("report_category_option3")}
-                active={this.isActive(t("report_category_option3"))}
+                label={t('report_category_option3')}
+                active={this.isActive(t('report_category_option3'))}
                 onPress={this.updateCategory}
               />
               <RadioButton
-                label={t("report_category_option4")}
-                active={this.isActive(t("report_category_option4"))}
+                label={t('report_category_option4')}
+                active={this.isActive(t('report_category_option4'))}
                 onPress={this.updateCategory}
               />
             </View>
             <View style={styles.reasonContainer}>
-              <Text style={styles.reasonLabel}>
-                {t("report_report_reason")}
-              </Text>
+              <Text style={styles.reasonLabel}>{t('report_report_reason')}</Text>
               <AutoGrowingTextInput
                 ref={(ref) => {
                   this.input = ref;
@@ -121,7 +119,7 @@ class Report extends Component {
                 multiline
                 underlineColorAndroid="transparent"
                 enableScrollToCaret
-                placeholder={t("report_report_leave_reason")}
+                placeholder={t('report_report_leave_reason')}
                 style={styles.reasonInput}
               />
             </View>
@@ -130,7 +128,7 @@ class Report extends Component {
             onPress={this.submit}
             text="Report"
             style={{
-              alignSelf: "center",
+              alignSelf: 'center',
               width: Screen.width - Screen.moderateScale(34),
             }}
           />
@@ -150,6 +148,6 @@ export default connect(
         fetchReportPost: ReportActions.fetchReportPost,
         updateLoading: AppStateActions.onLoading,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(Report);

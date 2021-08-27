@@ -1,12 +1,12 @@
-import { Colors } from "App/Theme";
-import { Screen, ScaledSheet } from "App/Helpers";
+import { Colors } from 'App/Theme';
+import { Screen, ScaledSheet } from 'App/Helpers';
 
 export default ScaledSheet.create({
   callout: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "auto",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 'auto',
     flex: 1,
     minWidth: Screen.moderateScale(120),
     minHeight: Screen.moderateScale(60),
@@ -16,7 +16,7 @@ export default ScaledSheet.create({
   },
   title: {
     color: Colors.blackFour,
-    fontWeight: "600",
+    fontWeight: '600',
     fontSize: Screen.moderateScale(16),
   },
   icon: {
@@ -26,17 +26,17 @@ export default ScaledSheet.create({
     padding: Screen.moderateScale(5),
     width: Screen.moderateScale(40),
     height: Screen.moderateScale(40),
-    alignSelf: "center",
+    alignSelf: 'center',
     marginBottom: Screen.moderateScale(-4),
   },
   marker: {
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
     zIndex: 100,
   },
   titleSmall: {
     fontSize: Screen.moderateScale(12),
-    textAlign: "center",
+    textAlign: 'center',
   },
 });

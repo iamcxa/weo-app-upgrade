@@ -1,47 +1,43 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { throttle } from "lodash";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
+import { connect } from 'react-redux';
 import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   BackHandler,
   Platform,
   View,
-} from "react-native";
-import {
-  NavBar,
-  IconButton,
-  LoadingIndicator,
-} from "@ublocks-react-native/component";
-import * as Animatable from "react-native-animatable";
-import { Actions } from "react-native-router-flux";
+} from 'react-native';
+import { NavBar, IconButton, LoadingIndicator } from '@ublocks-react-native/component';
+import * as Animatable from 'react-native-animatable';
+import { Actions } from 'react-native-router-flux';
 
-import { ScaledSheet, Screen } from "App/Helpers";
-import { Colors, Fonts, Metrics } from "App/Theme";
+import { ScaledSheet, Screen } from 'App/Helpers';
+import { Colors, Fonts, Metrics } from 'App/Theme';
 
 const styles = ScaledSheet.create({
   container: {
-    backgroundColor: "white",
-    position: "absolute",
-    width: "100%",
+    backgroundColor: 'white',
+    position: 'absolute',
+    width: '100%',
     flex: 1,
-    paddingBottom: Platform.OS === "ios" ? "30@vs" : 0,
+    paddingBottom: Platform.OS === 'ios' ? '30@vs' : 0,
     paddingTop: Metrics.baseMargin * 2,
     bottom: 0,
     zIndex: 10,
   },
   navBar: {
-    height: "44@vs",
+    height: '44@vs',
     // borderBottomWidth: 1,
     // borderBottomColor: Colors.shadow,
     paddingHorizontal: Metrics.baseMargin * 2,
   },
   loadingIndicatorWrapper: {
-    position: "absolute",
-    top: "44@vs",
-    height: "88%",
-    width: "100%",
+    position: 'absolute',
+    top: '44@vs',
+    height: '88%',
+    width: '100%',
     zIndex: 100,
   },
   title: {
@@ -51,10 +47,10 @@ const styles = ScaledSheet.create({
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
     borderWidth: Screen.onePixel * 2,
-    borderColor: Colors.shadow || "#00000019",
+    borderColor: Colors.shadow || '#00000019',
   },
   shadow: {
-    shadowColor: Colors.shadow || "#00000019",
+    shadowColor: Colors.shadow || '#00000019',
     shadowOffset: {
       width: 0,
       height: 0,
@@ -64,9 +60,9 @@ const styles = ScaledSheet.create({
     elevation: 100,
   },
   rightBox: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    position: "absolute",
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    position: 'absolute',
     right: Platform.select({
       ios: Metrics.baseMargin,
       android: Metrics.baseMargin * 1.5,
@@ -74,16 +70,16 @@ const styles = ScaledSheet.create({
   },
   darkBackground: {
     top: 0,
-    height: "100%",
-    width: "100%",
-    position: "absolute",
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
     flex: 1,
     // opacity: 0.1,
-    backgroundColor: Colors.shadow || "#00000019",
+    backgroundColor: Colors.shadow || '#00000019',
   },
   leftStyle: {
-    justifyContent: "flex-start",
-    position: "absolute",
+    justifyContent: 'flex-start',
+    position: 'absolute',
     left: Platform.select({
       ios: Metrics.baseMargin,
       android: Metrics.baseMargin * 1.5,
@@ -126,12 +122,12 @@ class BaseModal extends React.PureComponent {
     onClose: undefined,
     onPressLeft: undefined,
     onPressRight: undefined,
-    animation: "slideInUp",
-    closeAnimation: "bounceOutDown",
-    maskAnimation: "fadeIn",
+    animation: 'slideInUp',
+    closeAnimation: 'bounceOutDown',
+    maskAnimation: 'fadeIn',
     isLoading: false,
     style: {},
-    height: "50%",
+    height: '50%',
     duration: 400,
     headerComponent: null,
     leftComponent: null,
@@ -150,10 +146,10 @@ class BaseModal extends React.PureComponent {
 
   componentDidMount() {
     // Android "Back" button trigger event listener
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       this.backHandler = BackHandler.addEventListener(
-        "hardwareBackPress",
-        this.onAndroidBackButtonPressed
+        'hardwareBackPress',
+        this.onAndroidBackButtonPressed,
       );
     }
   }
@@ -163,14 +159,14 @@ class BaseModal extends React.PureComponent {
    */
   componentWillUnmount() {
     // Android "Back" button trigger event listener
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       this.backHandler.remove();
     }
   }
 
   onAndroidBackButtonPressed = () => {
     const { onClose } = this.props;
-    if (typeof onClose === "function") {
+    if (typeof onClose === 'function') {
       onClose();
       return true;
     }
@@ -183,7 +179,7 @@ class BaseModal extends React.PureComponent {
     const { onClose, closeAnimation } = this.props;
     return this.view[closeAnimation](250).then((endState) => {
       // console.log(endState.finished ? 'bounce finished' : 'bounce cancelled');
-      return typeof onClose === "function" ? onClose() : Actions.pop();
+      return typeof onClose === 'function' ? onClose() : Actions.pop();
     });
   }, 250);
 
@@ -228,13 +224,7 @@ class BaseModal extends React.PureComponent {
         </TouchableWithoutFeedback>
         <Animatable.View
           ref={this.handleViewRef}
-          style={[
-            styles.container,
-            styles.shadow,
-            styles.border,
-            { height },
-            style,
-          ]}
+          style={[styles.container, styles.shadow, styles.border, { height }, style]}
           animation={animation}
           duration={duration}
           useNativeDriver
@@ -263,12 +253,7 @@ class BaseModal extends React.PureComponent {
           {children}
           {isLoading && (
             <View style={styles.loadingIndicatorWrapper}>
-              <LoadingIndicator
-                height="100%"
-                width="100%"
-                cover={false}
-                open={isLoading}
-              />
+              <LoadingIndicator height="100%" width="100%" cover={false} open={isLoading} />
             </View>
           )}
         </Animatable.View>

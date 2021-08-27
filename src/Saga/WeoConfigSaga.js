@@ -1,10 +1,10 @@
-import { put, call, select } from "redux-saga/effects";
+import { put, call, select } from 'redux-saga/effects';
 
-import { AppStateActions, AppConfigActions } from "App/Stores";
-import { Handler, Config } from "App/Apis";
-import { Logger } from "App/Helpers";
+import { AppStateActions, AppConfigActions } from 'App/Stores';
+import { Handler, Config } from 'App/Apis';
+import { Logger } from 'App/Helpers';
 
-const TAG = "@WeoConfigSaga";
+const TAG = '@WeoConfigSaga';
 
 export function* fetchGetWeoVersion() {
   try {
@@ -13,18 +13,16 @@ export function* fetchGetWeoVersion() {
       Handler.get({
         Authorization: apiToken,
       }),
-      Config.getWeoVersion()
+      Config.getWeoVersion(),
     );
     if (res.success) {
       yield put(
         AppConfigActions.updateAppConfigStore({
           weoMinimalVersion: res.data.minimalVersion,
           weoCurrentVersion: res.data.currentVersion,
-        })
+        }),
       );
-      const { buildVersion } = yield select(
-        (state) => state.appState.currentVersion
-      );
+      const { buildVersion } = yield select((state) => state.appState.currentVersion);
 
       return parseInt(buildVersion, 10) >= res.data.minimalVersion;
     }
@@ -38,7 +36,7 @@ export function* fetchGetWeoVersion() {
 export function* fetchGetWeoConfig() {
   yield put(AppStateActions.onLoading(true, null, { hide: true }));
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable
+    (state) => state.appState.currentNetworkInfo.isInternetReachable,
   );
   if (isInternetReachable) {
     try {
@@ -47,13 +45,13 @@ export function* fetchGetWeoConfig() {
         Handler.get({
           Authorization: apiToken,
         }),
-        Config.getBlockWords()
+        Config.getBlockWords(),
       );
       if (res.success) {
         yield put(
           AppConfigActions.updateAppConfigStore({
             weoBlockWords: res.data.items,
-          })
+          }),
         );
       }
     } catch (error) {

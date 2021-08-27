@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Icon from "react-native-vector-icons/FontAwesome";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   View,
   Image,
@@ -10,18 +10,18 @@ import {
   Platform,
   TextInput,
   TouchableOpacity,
-} from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { isEmpty, throttle } from "lodash";
-import { Actions } from "react-native-router-flux";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { isEmpty, throttle } from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 import {
   MainNavBar,
   FooterLogo,
   AndroidBackKey,
   DismissKeyboardView as AvoidingView,
-} from "App/Components";
+} from 'App/Components';
 import {
   Dialog,
   Screen,
@@ -29,19 +29,19 @@ import {
   Fcm as FcmHelper,
   User as UserHelper,
   Content as ContentHelper,
-} from "App/Helpers";
-import { translate as t } from "App/Helpers/I18n";
-import { Classes, Images, Colors } from "App/Theme";
-import { UserActions } from "App/Stores";
-import Config from "App/Config";
+} from 'App/Helpers';
+import { translate as t } from 'App/Helpers/I18n';
+import { Classes, Images, Colors } from 'App/Theme';
+import { UserActions } from 'App/Stores';
+import Config from 'App/Config';
 
-import { checkForm } from "App/utils/form";
-import { Title } from "App/widget/Label";
-import { PrimaryBtn } from "App/widget/RoundButton";
-import BottomPopup from "App/widget/BottomPopup";
+import { checkForm } from 'App/utils/form';
+import { Title } from 'App/widget/Label';
+import { PrimaryBtn } from 'App/widget/RoundButton';
+import BottomPopup from 'App/widget/BottomPopup';
 
-import SelectAvatar from "./SelectAvatarScreen";
-import styles from "./SignUpScreenStyle";
+import SelectAvatar from './SelectAvatarScreen';
+import styles from './SignUpScreenStyle';
 
 const { BUTTON_THROTTLE } = Config;
 
@@ -60,16 +60,14 @@ class SignUp extends React.Component {
   static defaultProps = {
     isUpdateMember: false,
     profile: {},
-    apiToken: "",
-    fcmToken: "",
+    apiToken: '',
+    fcmToken: '',
   };
 
   constructor(props) {
     super(props);
-    const { profile: { avatarKey = null, nickname = "" } = {} } = props;
-    const avatarId = avatarKey
-      ? parseInt(avatarKey && avatarKey.split("Avatar")[1], 10)
-      : null;
+    const { profile: { avatarKey = null, nickname = '' } = {} } = props;
+    const avatarId = avatarKey ? parseInt(avatarKey && avatarKey.split('Avatar')[1], 10) : null;
     this.state = {
       name: nickname,
       isLoginBtnOnPress: false,
@@ -99,7 +97,7 @@ class SignUp extends React.Component {
     // if (this.notificationListener) {
     //   this.notificationListener.remove();
     // }
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       // NotificationsIOS.removeEventListener('notificationOpened');
     }
   }
@@ -132,7 +130,7 @@ class SignUp extends React.Component {
     Keyboard.dismiss();
     // check field
     if (!ContentHelper.validateEmpty(this.state.name)) {
-      return Alert.alert(t("__error"), t("signup_set_image_and_name"));
+      return Alert.alert(t('__error'), t('signup_set_image_and_name'));
     }
     // check block words
     const isValid = await ContentHelper.validateBlockWords(this.state.name);
@@ -147,12 +145,10 @@ class SignUp extends React.Component {
     const { fetchPutUserProfile, fetchPostSignUp, isUpdateMember } = this.props;
     const data = {
       avatarKey: `Avatar${this.state.avatarId || Math.random() * 12 + 1}`,
-      identifier: `${new Date().getTime()}-${Math.floor(
-        Math.random() * 100 + 1
-      )}`,
+      identifier: `${new Date().getTime()}-${Math.floor(Math.random() * 100 + 1)}`,
       nickname: this.state.name,
     };
-    console.log("data=>", data);
+    console.log('data=>', data);
     if (isUpdateMember) {
       fetchPutUserProfile(data);
     } else {
@@ -182,8 +178,8 @@ class SignUp extends React.Component {
           <View style={styles.skewed} />
           <AvoidingView
             behavior={Platform.select({
-              android: "height",
-              ios: "padding",
+              android: 'height',
+              ios: 'padding',
             })}
             keyboardVerticalOffset={Platform.select({
               ios: 0,
@@ -193,40 +189,26 @@ class SignUp extends React.Component {
             <View style={styles.titleContainer}>
               <Title style={styles.titleText}>
                 {avatarId === null
-                  ? t("signup_press_to_pickup_image")
-                  : t("signup_press_to_update_image")}
+                  ? t('signup_press_to_pickup_image')
+                  : t('signup_press_to_update_image')}
               </Title>
-              <TouchableOpacity
-                style={styles.selectAvatar}
-                onPress={this.onAvatarPress}
-              >
+              <TouchableOpacity style={styles.selectAvatar} onPress={this.onAvatarPress}>
                 {avatarId === null ? (
-                  <Icon
-                    name="plus"
-                    size={Screen.moderateScale(40)}
-                    color={Colors.black}
-                  />
+                  <Icon name="plus" size={Screen.moderateScale(40)} color={Colors.black} />
                 ) : (
-                  <Image
-                    source={Images[`avatar${avatarId}`]}
-                    style={styles.avatarImage}
-                  />
+                  <Image source={Images[`avatar${avatarId}`]} style={styles.avatarImage} />
                 )}
               </TouchableOpacity>
             </View>
             <View style={{ flex: 0.6 }}>
-              <View style={{ alignItems: "center" }}>
-                <Title style={styles.inputLabel}>
-                  {t("signup_set_new_name")}
-                </Title>
+              <View style={{ alignItems: 'center' }}>
+                <Title style={styles.inputLabel}>{t('signup_set_new_name')}</Title>
                 <TextInput
                   style={styles.nameInput}
                   defaultValue={nickname}
-                  onChangeText={(name) =>
-                    this.setState({ name }, this.checkForm)
-                  }
+                  onChangeText={(name) => this.setState({ name }, this.checkForm)}
                   maxLength={10}
-                  placeholder={t("signup_anonymous_placeholder")}
+                  placeholder={t('signup_anonymous_placeholder')}
                   placeholderTextColor={Colors.pinkishGrey}
                   underlineColorAndroid="transparent"
                   ref={(ref) => {
@@ -240,13 +222,13 @@ class SignUp extends React.Component {
             <View style={styles.primaryBtnContainer}>
               <PrimaryBtn
                 onPress={this.onBtnLoginPress}
-                text={t("signup_confirm_profile_start")}
+                text={t('signup_confirm_profile_start')}
                 style={styles.startBtn}
                 textStyle={styles.startBtnText}
               />
               <PrimaryBtn
                 onPress={this.onBtnRandomPress}
-                text={t("signup_random_profile")}
+                text={t('signup_random_profile')}
                 style={[styles.startBtn, styles.btnRandomName]}
                 textColor={Colors.black}
                 textStyle={styles.startBtnText}
@@ -288,6 +270,6 @@ export default connect(
         fetchPostSignUp: UserActions.fetchPostSignUp,
         fetchPutUserProfile: UserActions.fetchPutUserProfile,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(SignUp);

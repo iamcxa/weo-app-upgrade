@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import InputBox from "App/Components/InputBox";
-import { Actions } from "react-native-router-flux";
-import RoundButton from "App/Components/Button";
-import { checkRequired } from "../../utils/form";
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import InputBox from 'App/Components/InputBox';
+import { Actions } from 'react-native-router-flux';
+import RoundButton from 'App/Components/Button';
+import { checkRequired } from '../../utils/form';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginLeft: 20,
     marginRight: 20,
   },
@@ -21,10 +21,10 @@ export default class InputBoxPlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      pwd: "",
-      email: "",
-      phone: "",
+      id: '',
+      pwd: '',
+      email: '',
+      phone: '',
     };
   }
 
@@ -37,9 +37,9 @@ export default class InputBoxPlace extends Component {
           value={this.state.id}
           placeholder="請輸入身份證字號"
           isRequire
-          pattern={"^([A-Z]|[a-z])\\d{9}$"}
+          pattern={'^([A-Z]|[a-z])\\d{9}$'}
           onError={() => {
-            console.log("id validator fail!!");
+            console.log('id validator fail!!');
           }}
         />
         <InputBox
@@ -50,7 +50,7 @@ export default class InputBoxPlace extends Component {
           isRequire
           pattern="^.{6,}$"
           onError={() => {
-            console.log("pwd validator fail!!");
+            console.log('pwd validator fail!!');
           }}
         />
         <InputBox
@@ -58,9 +58,9 @@ export default class InputBoxPlace extends Component {
           onChangeText={(phone) => this.setState({ phone })}
           value={this.state.phone}
           placeholder="請輸入手機"
-          pattern={"^09\\d{2}-?\\d{3}-?\\d{3}$"}
+          pattern={'^09\\d{2}-?\\d{3}-?\\d{3}$'}
           onError={() => {
-            console.log("phone validator fail!!");
+            console.log('phone validator fail!!');
           }}
         />
         <InputBox
@@ -72,7 +72,7 @@ export default class InputBoxPlace extends Component {
             '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
           }
           onError={() => {
-            console.log("email validator fail!!");
+            console.log('email validator fail!!');
           }}
         />
         <View>
@@ -86,7 +86,7 @@ export default class InputBoxPlace extends Component {
               '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'
             }
             onError={() => {
-              console.log("email validator fail!!");
+              console.log('email validator fail!!');
             }}
           />
         </View>
@@ -94,7 +94,7 @@ export default class InputBoxPlace extends Component {
           text="送出"
           onPress={() => {
             const result = checkRequired(this.form);
-            console.log("checkRequired", result);
+            console.log('checkRequired', result);
           }}
         />
       </View>

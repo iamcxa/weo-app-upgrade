@@ -1,23 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Actions } from "react-native-router-flux";
-import { View, Text, Platform, FlatList, ScrollView } from "react-native";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
+import { View, Text, Platform, FlatList, ScrollView } from 'react-native';
 
-import { Colors, Fonts } from "App/Theme";
-import { Permission, Screen } from "App/Helpers";
-import { translate as t } from "App/Helpers/I18n";
-import { Separator, BaseButton, LanguageModal } from "App/Components";
-import {
-  AppPermissionSelectors,
-  AppConfigActions,
-  UserActions,
-} from "App/Stores";
+import { Colors, Fonts } from 'App/Theme';
+import { Permission, Screen } from 'App/Helpers';
+import { translate as t } from 'App/Helpers/I18n';
+import { Separator, BaseButton, LanguageModal } from 'App/Components';
+import { AppPermissionSelectors, AppConfigActions, UserActions } from 'App/Stores';
 
-import styles from "./PermissionScreenStyle";
+import styles from './PermissionScreenStyle';
 
 class PermissionScreen extends React.Component {
   static propTypes = {
@@ -38,7 +34,7 @@ class PermissionScreen extends React.Component {
   state = {};
 
   componentDidMount() {
-    __DEV__ && console.log("@Enter PermissionScreen");
+    __DEV__ && console.log('@Enter PermissionScreen');
   }
 
   checkPermission = (type) => {
@@ -52,15 +48,15 @@ class PermissionScreen extends React.Component {
       hasSpeechPermission,
     } = this.props;
     switch (type) {
-      case "location":
+      case 'location':
         return hasHightGeolocationPermission || hasLowGeolocationPermission;
-      case "notification":
+      case 'notification':
         return hasNotificationPermission;
-      case "photo":
+      case 'photo':
         return hasPhotoPermission;
-      case "camera":
+      case 'camera':
         return hasCameraPermission;
-      case "speech":
+      case 'speech':
         return Platform.select({
           ios: hasMicrophonePermission && hasSpeechPermission,
           android: hasMicrophonePermission,
@@ -77,48 +73,27 @@ class PermissionScreen extends React.Component {
       const hasPermission = this.checkPermission(item.type);
       return (
         <View style={styles.rowWrapper}>
-          <Icon
-            name={item.icon}
-            size={Screen.scale(28)}
-            style={styles.icon}
-            color={Colors.black}
-          />
+          <Icon name={item.icon} size={Screen.scale(28)} style={styles.icon} color={Colors.black} />
           <View
-            style={[
-              styles.contentWrapper,
-              index < permissions.length - 1 && styles.borderBottom,
-            ]}
+            style={[styles.contentWrapper, index < permissions.length - 1 && styles.borderBottom]}
           >
             <View style={styles.txtWrapper}>
-              <Text
-                style={
-                  item.required ? Fonts.style.mediumBold : Fonts.style.medium400
-                }
-              >
+              <Text style={item.required ? Fonts.style.mediumBold : Fonts.style.medium400}>
                 {t(`permission_item_title_${item.type}`)}
                 {item.required && <Text style={styles.txtRequestStar}>*</Text>}
               </Text>
               <Text
-                style={[
-                  Fonts.style.small,
-                  styles.txtSecondLine,
-                  item.required && Fonts.style.bold,
-                ]}
+                style={[Fonts.style.small, styles.txtSecondLine, item.required && Fonts.style.bold]}
               >
                 {t(`permission_item_desc_${item.type}`)}
               </Text>
             </View>
             <BaseButton
-              style={[
-                styles.btnRequest,
-                hasPermission && styles.btnHasPermission,
-              ]}
+              style={[styles.btnRequest, hasPermission && styles.btnHasPermission]}
               textColor={hasPermission ? Colors.pureWhite : Colors.dodgerblue}
               textStyle={Fonts.style.medium500}
               text={
-                hasPermission
-                  ? t("permission_btn_request_success")
-                  : t("permission_btn_request")
+                hasPermission ? t('permission_btn_request_success') : t('permission_btn_request')
               }
               onPress={item.onPress}
               disabled={hasPermission}
@@ -148,10 +123,8 @@ class PermissionScreen extends React.Component {
               style={styles.btnBase}
               textColor={Colors.dodgerblue}
               textStyle={Fonts.style.regular500}
-              text={t("permission_btn_done")}
-              disabled={
-                !(hasHightGeolocationPermission || hasLowGeolocationPermission)
-              }
+              text={t('permission_btn_done')}
+              disabled={!(hasHightGeolocationPermission || hasLowGeolocationPermission)}
               onPress={() => fetchPostAutoSignUp({ onSuccess: Actions.pop })}
               transparent
             />
@@ -163,9 +136,7 @@ class PermissionScreen extends React.Component {
               data={permissionRequired}
               ListHeaderComponent={
                 <View style={styles.titleWrapper}>
-                  <Text style={Fonts.style.input500}>
-                    {t("permission_nav_title")}
-                  </Text>
+                  <Text style={Fonts.style.input500}>{t('permission_nav_title')}</Text>
                 </View>
               }
             />
@@ -197,31 +168,31 @@ export default connect(
   (state, props) => ({
     permissionRequired: [
       {
-        type: "location",
-        icon: "near-me",
+        type: 'location',
+        icon: 'near-me',
         onPress: Permission.requestGeolocationPermission,
         required: true,
       },
     ],
     permissionOptional: [
       {
-        type: "notification",
-        icon: "bell",
+        type: 'notification',
+        icon: 'bell',
         onPress: Permission.requestNotificationPermission,
       },
       {
-        type: "speech",
-        icon: "microphone-settings",
+        type: 'speech',
+        icon: 'microphone-settings',
         onPress: Permission.requestMicrophonePermission,
       },
       {
-        type: "camera",
-        icon: "camera",
+        type: 'camera',
+        icon: 'camera',
         onPress: Permission.requestCameraPermission,
       },
       {
-        type: "photo",
-        icon: "image-multiple",
+        type: 'photo',
+        icon: 'image-multiple',
         onPress: Permission.requestPhotoPermission,
       },
     ],
@@ -230,15 +201,9 @@ export default connect(
     hasPhotoPermission: hasThisPermission(Permission.PHOTO)(state),
     hasCameraPermission: hasThisPermission(Permission.CAMERA)(state),
     hasMicrophonePermission: hasThisPermission(Permission.MICROPHONE)(state),
-    hasSpeechPermission: hasThisPermission(Permission.SPEECH_RECOGNITION)(
-      state
-    ),
-    hasLowGeolocationPermission: hasThisPermission(Permission.GEOLOCATION_LOW)(
-      state
-    ),
-    hasHightGeolocationPermission: hasThisPermission(
-      Permission.GEOLOCATION_HIGH
-    )(state),
+    hasSpeechPermission: hasThisPermission(Permission.SPEECH_RECOGNITION)(state),
+    hasLowGeolocationPermission: hasThisPermission(Permission.GEOLOCATION_LOW)(state),
+    hasHightGeolocationPermission: hasThisPermission(Permission.GEOLOCATION_HIGH)(state),
   }),
   (dispatch) =>
     bindActionCreators(
@@ -246,6 +211,6 @@ export default connect(
         fetchPostAutoSignUp: UserActions.fetchPostAutoSignUp,
         onUserLocaleChange: AppConfigActions.onUserLocaleChange,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(PermissionScreen);

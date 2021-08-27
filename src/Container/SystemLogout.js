@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Animated } from "react-native";
-import { Actions } from "react-native-router-flux";
-import Storage from "App/constant/storage";
-import Images from "App/Theme/Images";
-import IconTitle from "../widget/IconTitle";
-import { PrimaryBtn } from "../widget/Button";
-import { Title } from "../widget/Label";
-import Screen from "../utils/screen";
-import { removeItem, getItem } from "../utils/asyncStorage";
-import i18n, { i18nKey } from "../utils/i18n";
+import React, { Component } from 'react';
+import { StyleSheet, View, Animated } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Storage from 'App/constant/storage';
+import Images from 'App/Theme/Images';
+import IconTitle from '../widget/IconTitle';
+import { PrimaryBtn } from '../widget/Button';
+import { Title } from '../widget/Label';
+import Screen from '../utils/screen';
+import { removeItem, getItem } from '../utils/asyncStorage';
+import i18n, { i18nKey } from '../utils/i18n';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 16,
     marginTop: 22,
   },
@@ -31,7 +31,7 @@ export default class ForgetPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      identity: "",
+      identity: '',
       invalid: {},
     };
     this.iosKeyboardHeight = new Animated.Value(0);
@@ -43,7 +43,7 @@ export default class ForgetPassword extends Component {
         <IconTitle
           title={i18n.t(i18nKey.systemLogoutTitle)}
           logo={Images.logo}
-          subTitle={`${this.props.message || "請再次登入 APP"}`}
+          subTitle={`${this.props.message || '請再次登入 APP'}`}
           logoHeight={85}
           logoWidth={85}
         />

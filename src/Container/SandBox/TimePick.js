@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,14 +7,14 @@ import {
   Platform,
   TimePickerAndroid,
   TouchableOpacity,
-} from "react-native";
-import moment from "moment";
+} from 'react-native';
+import moment from 'moment';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -34,8 +34,7 @@ export default class TimePick extends Component {
     this.setState({ date });
   };
 
-  _formatTime = (hour, minute) =>
-    `${hour}:${minute < 10 ? `0${minute}` : minute}`;
+  _formatTime = (hour, minute) => `${hour}:${minute < 10 ? `0${minute}` : minute}`;
 
   showPicker = async (stateKey, options) => {
     try {
@@ -57,8 +56,8 @@ export default class TimePick extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{moment(this.state.date).format("HH:mm")}</Text>
-        {Platform.OS === "ios" ? (
+        <Text>{moment(this.state.date).format('HH:mm')}</Text>
+        {Platform.OS === 'ios' ? (
           <DatePickerIOS
             date={this.state.date}
             mode="time"

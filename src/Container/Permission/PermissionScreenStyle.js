@@ -1,26 +1,26 @@
-import { StyleSheet } from "App/Helpers";
-import { Colors, Metrics, Classes } from "App/Theme";
+import { StyleSheet } from 'App/Helpers';
+import { Colors, Metrics, Classes } from 'App/Theme';
 
 export default StyleSheet.create({
   container: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: Colors.shadowColor,
   },
   panel: {
     borderWidth: 1,
     borderColor: Colors.shadowColor,
-    borderRadius: "10@s",
+    borderRadius: '10@s',
     backgroundColor: Colors.pureWhite,
     padding: Metrics.baseMargin * 2,
     // paddingBottom: Metrics.baseMargin * 2,
-    width: "90%",
+    width: '90%',
     elevation: 1,
     shadowOpacity: 1,
-    shadowRadius: "10@s",
+    shadowRadius: '10@s',
     shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
@@ -29,26 +29,26 @@ export default StyleSheet.create({
   },
   headerWrapper: {
     paddingLeft: Metrics.baseMargin,
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
   },
   titleWrapper: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: Metrics.baseMargin * 2,
     // marginBottom: Metrics.baseMargin * 4,
   },
   txtWrapper: {
     margin: Metrics.baseMargin * 2,
     marginLeft: 0,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
   rowWrapper: {
     ...Classes.fillRowCenter,
     paddingHorizontal: Metrics.baseMargin * 2,
   },
   btnBase: {
-    width: "auto",
-    height: "auto",
+    width: 'auto',
+    height: 'auto',
   },
   btnHasPermission: {
     backgroundColor: Colors.dodgerblue,
@@ -56,21 +56,21 @@ export default StyleSheet.create({
     opacity: 1,
   },
   btnRequest: {
-    width: "100@s",
-    height: "auto",
-    alignSelf: "center",
+    width: '100@s',
+    height: 'auto',
+    alignSelf: 'center',
     padding: Metrics.baseMargin,
     backgroundColor: Colors.paleGrey,
     borderColor: Colors.paleGrey,
-    borderRadius: "20@s",
+    borderRadius: '20@s',
   },
   icon: {
     marginRight: Metrics.baseMargin,
   },
   contentWrapper: {
     ...Classes.fillRowCenter,
-    alignItems: "center",
-    justifyContent: "space-between",
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginLeft: Metrics.baseMargin,
   },
   borderBottom: {
@@ -80,10 +80,10 @@ export default StyleSheet.create({
   txtSecondLine: {
     marginTop: Metrics.baseMargin,
     color: Colors.warmGrey,
-    width: "140@s",
+    width: '140@s',
   },
   txtRequestStar: {
     color: Colors.red,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

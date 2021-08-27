@@ -1,5 +1,5 @@
-import { StyleSheet, Screen } from "App/Helpers";
-import { Colors, Metrics } from "App/Theme";
+import { StyleSheet, Screen } from 'App/Helpers';
+import { Colors, Metrics } from 'App/Theme';
 
 export default StyleSheet.create({
   navBar: {
@@ -8,8 +8,8 @@ export default StyleSheet.create({
   },
   content: {
     flex: 1,
-    alignSelf: "stretch",
-    justifyContent: "space-between",
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
     paddingHorizontal: Screen.moderateScale(24),
     paddingBottom: Screen.moderateScale(49),
     paddingTop: Screen.moderateScale(33),
@@ -23,6 +23,6 @@ export default StyleSheet.create({
     borderRadius: Screen.moderateScale(100),
     borderBottomColor: Colors.silverTwo,
     borderBottomWidth: 1,
-    borderStyle: "solid",
+    borderStyle: 'solid',
   },
 });

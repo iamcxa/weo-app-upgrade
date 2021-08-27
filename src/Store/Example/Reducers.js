@@ -4,10 +4,10 @@
  * @see https://redux.js.org/basics/reducers
  */
 
-import { createReducer } from "reduxsauce";
+import { createReducer } from 'reduxsauce';
 
-import { ExampleTypes } from "./Actions";
-import { INITIAL_STATE } from "./InitialState";
+import { ExampleTypes } from './Actions';
+import { INITIAL_STATE } from './InitialState';
 
 export const fetchUserLoading = (state) => ({
   ...state,

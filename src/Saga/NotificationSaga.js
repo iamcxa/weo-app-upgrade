@@ -1,11 +1,11 @@
-import { put, call, select } from "redux-saga/effects";
-import { keyBy } from "lodash";
+import { put, call, select } from 'redux-saga/effects';
+import { keyBy } from 'lodash';
 
-import { NotificationActions } from "App/Stores";
-import { Handler, Notification } from "App/Apis";
-import { Logger } from "App/Helpers";
+import { NotificationActions } from 'App/Stores';
+import { Handler, Notification } from 'App/Apis';
+import { Logger } from 'App/Helpers';
 
-const TAG = "@NotificationSaga";
+const TAG = '@NotificationSaga';
 
 export function* fetchGetNotifications({ sort, curPage = 1, perPage } = {}) {
   try {
@@ -14,12 +14,12 @@ export function* fetchGetNotifications({ sort, curPage = 1, perPage } = {}) {
       Handler.get({
         Authorization: apiToken,
         params: {
-          sort: "DESC",
+          sort: 'DESC',
           perPage: 10,
           curPage,
         },
       }),
-      Notification.getNotifications()
+      Notification.getNotifications(),
     );
     // console.log('fetchGetNotifications res=>', res);
     if (res.success) {
@@ -47,7 +47,7 @@ export function* fetchSetNotificationRead({ id }) {
       Handler.post({
         Authorization: apiToken,
       }),
-      Notification.setNotificationRead({ id })
+      Notification.setNotificationRead({ id }),
     );
     // console.log('fetchGetNotifications res=>', res);
   } catch (error) {
@@ -61,7 +61,7 @@ export function* fetchSetNotificationRead({ id }) {
           ...byId[id],
           isRead: false,
         },
-      })
+      }),
     );
   }
 }

@@ -1,6 +1,6 @@
-import { ApiConst } from "@udea-io/axios-wrapper";
+import { ApiConst } from '@udea-io/axios-wrapper';
 
-import ApiHandler from "./ApiHandler";
+import ApiHandler from './ApiHandler';
 
 export default {
   get: (config, options) => ApiHandler(ApiConst.GET, config, options),

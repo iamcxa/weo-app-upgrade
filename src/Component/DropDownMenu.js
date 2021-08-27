@@ -1,17 +1,10 @@
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  Platform,
-} from "react-native";
-import Colors from "App/Theme/Colors";
-import Images from "App/Theme/Images";
-import PropTypes from "prop-types";
-import Screen from "../utils/screen";
-import { H4 } from "../widget/Label";
+import React, { Component } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Platform } from 'react-native';
+import Colors from 'App/Theme/Colors';
+import Images from 'App/Theme/Images';
+import PropTypes from 'prop-types';
+import Screen from '../utils/screen';
+import { H4 } from '../widget/Label';
 
 const styles = StyleSheet.create({
   content: {
@@ -26,20 +19,20 @@ const styles = StyleSheet.create({
     height: Screen.moderateScale(50),
     backgroundColor: Colors.silver,
     padding: Screen.moderateScale(10),
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   text: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   listItem: {
     // height: Screen.moderateScale(44),
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: Colors.gray,
     borderBottomColor: Colors.mainBlue,
     // borderBottomWidth: StyleSheet.hairlineWidth,
@@ -103,17 +96,15 @@ export default class DropDownMenu extends Component {
           this.props.onClose();
         }}
       >
-        <H4 style={{ lineHeight: parseInt(Screen.moderateScale(16), 10) }}>
-          {title}
-        </H4>
+        <H4 style={{ lineHeight: parseInt(Screen.moderateScale(16), 10) }}>{title}</H4>
       </TouchableOpacity>
       <View
         style={{
-          width: "100%",
+          width: '100%',
           height: StyleSheet.hairlineWidth,
           flex: 1,
           backgroundColor: Colors.mainBlue,
-          position: "absolute",
+          position: 'absolute',
           bottom: StyleSheet.hairlineWidth * 2,
         }}
       />
@@ -126,17 +117,17 @@ export default class DropDownMenu extends Component {
       this.renderListItem({
         title: data,
         index,
-      })
+      }),
     );
-    if (Platform === "ios") {
+    if (Platform === 'ios') {
       if (this.state.showList) {
         return (
           <View
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 50,
-              width: "100%",
-              backgroundColor: "#fff",
+              width: '100%',
+              backgroundColor: '#fff',
               zIndex: 9999,
             }}
           >
@@ -149,10 +140,10 @@ export default class DropDownMenu extends Component {
     return (
       <View
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: this.state.showList ? menuHeight : -1000,
-          width: "100%",
-          backgroundColor: "#fff",
+          width: '100%',
+          backgroundColor: '#fff',
           zIndex: 9999,
         }}
       >
@@ -172,7 +163,7 @@ export default class DropDownMenu extends Component {
         } else {
           this.props.onClose();
         }
-      }
+      },
     );
   };
 
@@ -189,7 +180,7 @@ export default class DropDownMenu extends Component {
               });
             }}
             style={{
-              position: "absolute",
+              position: 'absolute',
               height: Screen.height,
               width: Screen.width,
             }}
@@ -210,7 +201,7 @@ export default class DropDownMenu extends Component {
             {menuComponent || (
               <View style={[styles.menu, style]}>
                 <View style={styles.text}>
-                  <H4 numberOfLines={1} style={{ fontWeight: "bold" }}>
+                  <H4 numberOfLines={1} style={{ fontWeight: 'bold' }}>
                     {target}
                   </H4>
                 </View>

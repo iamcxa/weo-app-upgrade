@@ -1,23 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import firebase from "react-native-firebase";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Actions } from "react-native-router-flux";
-import { isEqual, isEmpty, throttle } from "lodash";
-import { FlatList, RefreshControl, Text, View } from "react-native";
+import React from 'react';
+import PropTypes from 'prop-types';
+import firebase from 'react-native-firebase';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
+import { isEqual, isEmpty, throttle } from 'lodash';
+import { FlatList, RefreshControl, Text, View } from 'react-native';
 
-import {
-  ListSeparator,
-  NotifyCard,
-  MainNavBar,
-  AndroidBackKey,
-} from "App/Components";
-import { Config } from "App/Config";
-import { NotificationActions } from "App/Stores";
-import { translate as t } from "App/Helpers/I18n";
-import { Notification, StyleSheet } from "App/Helpers";
-import { Colors, Classes, Fonts } from "App/Theme";
+import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from 'App/Components';
+import { Config } from 'App/Config';
+import { NotificationActions } from 'App/Stores';
+import { translate as t } from 'App/Helpers/I18n';
+import { Notification, StyleSheet } from 'App/Helpers';
+import { Colors, Classes, Fonts } from 'App/Theme';
 
 const { ON_END_REACHED_THROTTLE } = Config;
 
@@ -27,25 +22,25 @@ const styles = StyleSheet.create({
   },
   listContent: {},
   emptyListTextWrapper: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 10,
-    marginTop: "16@s",
+    marginTop: '16@s',
     flex: 1,
   },
   emptyListText: {
-    textAlign: "center",
+    textAlign: 'center',
     color: Colors.steel,
     fontSize: Fonts.size.regular,
   },
   txtNotEnableNotificationWrapper: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 10,
     flex: 1,
   },
   txtNotEnableNotification: {
-    textAlign: "center",
+    textAlign: 'center',
     color: Colors.steel,
     fontSize: Fonts.size.medium,
   },
@@ -73,13 +68,13 @@ class NotificationScreen extends React.Component {
   static defaultProps = {
     userCircle: null,
     homeCircle: null,
-    fcmToken: "",
+    fcmToken: '',
   };
 
   state = {
     curPage: 1,
     perPage: 50,
-    sort: "DESC",
+    sort: 'DESC',
   };
 
   componentDidMount() {
@@ -97,10 +92,7 @@ class NotificationScreen extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     const { routeName } = this.props;
-    if (
-      nextProps.routeName !== routeName &&
-      nextProps.sceneKey.includes(nextProps.routeName)
-    ) {
+    if (nextProps.routeName !== routeName && nextProps.sceneKey.includes(nextProps.routeName)) {
       this.handleRefresh();
     }
     return (
@@ -110,8 +102,7 @@ class NotificationScreen extends React.Component {
   }
 
   onNotifyPress = (id) => async () => {
-    const { fetchSetNotificationRead, updateNotificationByKey, byId } =
-      this.props;
+    const { fetchSetNotificationRead, updateNotificationByKey, byId } = this.props;
 
     // check is this notification already read.
     if (!byId[id].isRead) {
@@ -137,11 +128,8 @@ class NotificationScreen extends React.Component {
   };
 
   handleRefresh = (
-    {
-      sort = this.state.sort,
-      curPage = this.state.curPage,
-      perPage = this.state.perPage,
-    } = this.state
+    { sort = this.state.sort, curPage = this.state.curPage, perPage = this.state.perPage } = this
+      .state,
   ) => {
     const { fetchGetNotifications, fcmToken } = this.props;
     if (!isEmpty(fcmToken)) {
@@ -188,7 +176,7 @@ class NotificationScreen extends React.Component {
       <View style={Classes.fill}>
         <AndroidBackKey sceneKey={sceneKey} backTo={Actions.hereYouAre} />
         <MainNavBar
-          title={t("notify_list_nav_bar_title")}
+          title={t('notify_list_nav_bar_title')}
           leftComponent={null}
           style={styles.navBar}
         />
@@ -206,22 +194,17 @@ class NotificationScreen extends React.Component {
           }}
           onEndReached={this.handleListReachEnd}
           onEndReachedThreshold={0.3}
-          refreshControl={
-            <RefreshControl
-              refreshing={isFetching}
-              onRefresh={this.handleRefresh}
-            />
-          }
+          refreshControl={<RefreshControl refreshing={isFetching} onRefresh={this.handleRefresh} />}
           ListEmptyComponent={
             <View style={styles.emptyListTextWrapper}>
-              <Text style={styles.emptyListText}>{t("notify_list_empty")}</Text>
+              <Text style={styles.emptyListText}>{t('notify_list_empty')}</Text>
             </View>
           }
           ListFooterComponent={
             isEmpty(fcmToken) && (
               <View style={styles.txtNotEnableNotificationWrapper}>
                 <Text style={styles.txtNotEnableNotification}>
-                  {t("notify_list_empty_cuz_disabled_notification")}
+                  {t('notify_list_empty_cuz_disabled_notification')}
                 </Text>
               </View>
             )
@@ -252,6 +235,6 @@ export default connect(
         fetchSetNotificationRead: NotificationActions.fetchSetNotificationRead,
         updateNotificationByKey: NotificationActions.updateNotificationByKey,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(NotificationScreen);

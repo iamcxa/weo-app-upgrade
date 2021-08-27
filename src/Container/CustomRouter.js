@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Router,
   Reducer,
@@ -8,8 +8,8 @@ import {
   // Drawer,
   Lightbox,
   Stack,
-} from "react-native-router-flux";
-import { connect } from "react-redux";
+} from 'react-native-router-flux';
+import { connect } from 'react-redux';
 
 class CustomRouter extends Component {
   onStateChange = (data) => {
@@ -32,7 +32,7 @@ class CustomRouter extends Component {
         {...this.props}
         sceneStyle={{
           flex: 1,
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           shadowColor: null,
           shadowOffset: null,
           shadowOpacity: null,

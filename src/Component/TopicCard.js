@@ -1,13 +1,13 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { View, Alert } from "react-native";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { View, Alert } from 'react-native';
 
-import { translate as t } from "App/Helpers/I18n";
-import { BaseButton } from "App/Components";
-import { Colors, Metrics, Fonts } from "App/Theme";
-import { Screen, StyleSheet } from "App/Helpers";
-import { DefaultText } from "../widget/Label";
-import VoteBox from "./VoteBox";
+import { translate as t } from 'App/Helpers/I18n';
+import { BaseButton } from 'App/Components';
+import { Colors, Metrics, Fonts } from 'App/Theme';
+import { Screen, StyleSheet } from 'App/Helpers';
+import { DefaultText } from '../widget/Label';
+import VoteBox from './VoteBox';
 
 export default class TopicCard extends PureComponent {
   static propTypes = {
@@ -28,9 +28,9 @@ export default class TopicCard extends PureComponent {
   };
 
   static defaultProps = {
-    title: "",
-    time: "",
-    desc: "",
+    title: '',
+    time: '',
+    desc: '',
     likeNumber: 0,
     disLikeNumber: 0,
     onPress: () => {},
@@ -42,12 +42,11 @@ export default class TopicCard extends PureComponent {
   state = {};
 
   disableAlert = () => {
-    Alert.alert("無法進行此動作", "PEEK 模式下只能預覽，不能做任何動作");
+    Alert.alert('無法進行此動作', 'PEEK 模式下只能預覽，不能做任何動作');
   };
 
   render() {
-    const { title, time, authorName, authorHash, replyCount, dark, onPress } =
-      this.props;
+    const { title, time, authorName, authorHash, replyCount, dark, onPress } = this.props;
     return (
       <BaseButton
         transparent
@@ -56,15 +55,12 @@ export default class TopicCard extends PureComponent {
         onPress={onPress}
       >
         <View style={styles.leftBlock}>
-          <DefaultText
-            numberOfLines={2}
-            style={[styles.title, dark && styles.dark]}
-          >
+          <DefaultText numberOfLines={2} style={[styles.title, dark && styles.dark]}>
             {title}
           </DefaultText>
           <View style={styles.timeRow}>
             <DefaultText style={styles.timeLabel}>
-              {t("topic_list_reply_counts", {
+              {t('topic_list_reply_counts', {
                 replyCount,
               })}
             </DefaultText>
@@ -106,10 +102,10 @@ export default class TopicCard extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: Metrics.baseMargin * 2,
-    height: "100%",
+    height: '100%',
   },
   dark: {
     color: Colors.white,
@@ -123,8 +119,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: Fonts.size.regular,
-    justifyContent: "flex-start",
-    fontWeight: "bold",
+    justifyContent: 'flex-start',
+    fontWeight: 'bold',
     letterSpacing: 0,
     color: Colors.greyishBrown,
     marginVertical: Metrics.baseMargin / 4,
@@ -133,7 +129,7 @@ const styles = StyleSheet.create({
   },
   timeLabel: {
     fontSize: Fonts.size.medium,
-    fontWeight: "500",
+    fontWeight: '500',
     color: Colors.warmGrey,
     // marginBottom: Metrics.baseMargin,
     paddingLeft: Metrics.baseMargin / 4,
@@ -141,6 +137,6 @@ const styles = StyleSheet.create({
     // lineHeight: parseInt(Screen.scale(17), 10)
   },
   timeRow: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 });

@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View } from "react-native";
-import { Colors } from "App/Theme";
-import { Screen, StyleSheet } from "App/Helpers";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import { Colors } from 'App/Theme';
+import { Screen, StyleSheet } from 'App/Helpers';
 
 const styles = StyleSheet.create({
   separator: {
-    marginTop: "20@vs",
-    marginBottom: "15@vs",
-    borderStyle: "solid",
+    marginTop: '20@vs',
+    marginBottom: '15@vs',
+    borderStyle: 'solid',
 
     // flex: 1,
-    height: "1@vs",
+    height: '1@vs',
     width: 200,
-    alignItems: "center",
-    alignSelf: "center",
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   fullWidth: {
     flex: 1,

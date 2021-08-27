@@ -1,34 +1,29 @@
-import { put, call, select } from "redux-saga/effects";
-import { isEmpty } from "lodash";
+import { put, call, select } from 'redux-saga/effects';
+import { isEmpty } from 'lodash';
 
-import {
-  AppStateActions,
-  TopicActions,
-  PostActions,
-  ReplyActions,
-} from "App/Stores";
-import { Handler, Vote } from "App/Apis";
-import { Logger } from "App/Helpers";
+import { AppStateActions, TopicActions, PostActions, ReplyActions } from 'App/Stores';
+import { Handler, Vote } from 'App/Apis';
+import { Logger } from 'App/Helpers';
 
-const TAG = "@VoteSaga";
-const LIKE = "LIKE";
-const DISLIKE = "DISLIKE";
+const TAG = '@VoteSaga';
+const LIKE = 'LIKE';
+const DISLIKE = 'DISLIKE';
 const TARGET_TYPE = {
-  TOPIC: "topics",
-  POST: "posts",
-  REPLY: "replies",
-  HERE_YOU_ARE: "hereYouAre",
-  THERE_YOU_ARE: "thereYouAre",
+  TOPIC: 'topics',
+  POST: 'posts',
+  REPLY: 'replies',
+  HERE_YOU_ARE: 'hereYouAre',
+  THERE_YOU_ARE: 'thereYouAre',
 };
 
 function* updateVoteData(contentType, data) {
-  if (contentType === "TOPIC") {
+  if (contentType === 'TOPIC') {
     yield put(TopicActions.updateTopicByKey(data));
   }
-  if (contentType === "POST") {
+  if (contentType === 'POST') {
     yield put(PostActions.updatePostByKey(data));
   }
-  if (contentType === "REPLY") {
+  if (contentType === 'REPLY') {
     yield put(ReplyActions.updateReplyByKey(data));
   }
 }
@@ -37,17 +32,15 @@ export function* handleVote({ contentType, voteType, belongsTo, id } = {}) {
   // yield put(AppStateActions.onLoading(false, null, { hide: true }));
   // yield put(AppStateActions.onLoading(false, 'vote', { hide: true, message: '' }));
   const contentById = yield select(
-    (state) => state[TARGET_TYPE[belongsTo]][TARGET_TYPE[contentType]].byId
+    (state) => state[TARGET_TYPE[belongsTo]][TARGET_TYPE[contentType]].byId,
   );
   const { vote: sourceVoteData = {} } = contentById[id];
   try {
     if (isEmpty(sourceVoteData)) {
-      throw Error(
-        `handle vote error: id(${id}) or contentType(${contentType}) not exists.`
-      );
+      throw Error(`handle vote error: id(${id}) or contentType(${contentType}) not exists.`);
     }
 
-    let apiUrl = "",
+    let apiUrl = '',
       vote = {};
 
     if (voteType === LIKE) {
@@ -59,19 +52,14 @@ export function* handleVote({ contentType, voteType, belongsTo, id } = {}) {
         apiUrl = Vote.like({ type: contentType, id });
       } else if (sourceVoteData.current === LIKE) {
         vote = {
-          like:
-            sourceVoteData.like >= 1
-              ? sourceVoteData.like - 1
-              : sourceVoteData.like,
+          like: sourceVoteData.like >= 1 ? sourceVoteData.like - 1 : sourceVoteData.like,
           current: null,
         };
         apiUrl = Vote.cancelVote({ type: contentType, id });
       } else if (sourceVoteData.current === DISLIKE) {
         vote = {
           dislike:
-            sourceVoteData.dislike >= 1
-              ? sourceVoteData.dislike - 1
-              : sourceVoteData.dislike,
+            sourceVoteData.dislike >= 1 ? sourceVoteData.dislike - 1 : sourceVoteData.dislike,
           like: sourceVoteData.like + 1,
           current: LIKE,
         };
@@ -87,19 +75,14 @@ export function* handleVote({ contentType, voteType, belongsTo, id } = {}) {
       } else if (sourceVoteData.current === LIKE) {
         vote = {
           dislike: sourceVoteData.dislike + 1,
-          like:
-            sourceVoteData.like >= 1
-              ? sourceVoteData.like - 1
-              : sourceVoteData.like,
+          like: sourceVoteData.like >= 1 ? sourceVoteData.like - 1 : sourceVoteData.like,
           current: DISLIKE,
         };
         apiUrl = Vote.dislike({ type: contentType, id });
       } else if (sourceVoteData.current === DISLIKE) {
         vote = {
           dislike:
-            sourceVoteData.dislike >= 1
-              ? sourceVoteData.dislike - 1
-              : sourceVoteData.dislike,
+            sourceVoteData.dislike >= 1 ? sourceVoteData.dislike - 1 : sourceVoteData.dislike,
           current: null,
         };
         apiUrl = Vote.cancelVote({ type: contentType, id });
@@ -120,7 +103,7 @@ export function* handleVote({ contentType, voteType, belongsTo, id } = {}) {
       Handler.post({
         Authorization: apiToken,
       }),
-      apiUrl
+      apiUrl,
     );
 
     if (!res.success) {

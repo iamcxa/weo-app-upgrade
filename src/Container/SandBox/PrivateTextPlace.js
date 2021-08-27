@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import PrivateText from "App/Components/PrivateText";
-import { Actions } from "react-native-router-flux";
-import { Title, H1, H2, H3, H4, DefaultText } from "../../widget/Label";
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import PrivateText from 'App/Components/PrivateText';
+import { Actions } from 'react-native-router-flux';
+import { Title, H1, H2, H3, H4, DefaultText } from '../../widget/Label';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -27,9 +27,7 @@ export default class PrivateTextPlace extends Component {
         <PrivateText type="telephone">(02)123-4567</PrivateText>
         <PrivateText type="phone">09123456789</PrivateText>
         <PrivateText type="identity">A111111111</PrivateText>
-        <PrivateText type="billingAddress">
-          台灣台中市西區台灣大道二段2號
-        </PrivateText>
+        <PrivateText type="billingAddress">台灣台中市西區台灣大道二段2號</PrivateText>
         <PrivateText type="address">台灣台中市西區台灣大道二段2號</PrivateText>
         <PrivateText type="name">小明</PrivateText>
         <Title type="name">Title</Title>

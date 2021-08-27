@@ -1,30 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { StyleSheet } from "react-native";
-import {
-  Tabs,
-  Scene,
-  Stack,
-  Actions,
-  ActionConst,
-} from "react-native-router-flux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet } from 'react-native';
+import { Tabs, Scene, Stack, Actions, ActionConst } from 'react-native-router-flux';
 
-import { store } from "App/App";
-import { Colors, Metrics } from "App/Theme";
-import { Dialog, Screen } from "App/Helpers";
-import { CustomTabIcon } from "App/Components";
+import { store } from 'App/App';
+import { Colors, Metrics } from 'App/Theme';
+import { Dialog, Screen } from 'App/Helpers';
+import { CustomTabIcon } from 'App/Components';
 
-import FaqScreen from "App/Containers/FaqScreen";
-import PrivacyScreen from "App/Containers/PrivacyScreen";
-import ThereYouAreIntro from "App/Containers/ThereYouAreIntro";
-import ProfileScreen from "App/Containers/Profile/ProfileScreen";
-import SignUpScreen from "App/Containers/Authorize/SignUpScreen";
-import NotifySettingScreen from "App/Containers/NotifySettingScreen";
-import TopicCreationScreen from "App/Containers/Topic/TopicCreationScreen";
-import NotificationScreen from "App/Containers/Notification/NotificationScreen";
-import HereYouAreTopicScreen from "App/Containers/Topic/HereYouAreTopicScreen";
-import ThereYouAreTopicScreen from "App/Containers/Topic/ThereYouAreTopicScreen";
-import PanHandlers from "./PanHandlers";
+import FaqScreen from 'App/Containers/FaqScreen';
+import PrivacyScreen from 'App/Containers/PrivacyScreen';
+import ThereYouAreIntro from 'App/Containers/ThereYouAreIntro';
+import ProfileScreen from 'App/Containers/Profile/ProfileScreen';
+import SignUpScreen from 'App/Containers/Authorize/SignUpScreen';
+import NotifySettingScreen from 'App/Containers/NotifySettingScreen';
+import TopicCreationScreen from 'App/Containers/Topic/TopicCreationScreen';
+import NotificationScreen from 'App/Containers/Notification/NotificationScreen';
+import HereYouAreTopicScreen from 'App/Containers/Topic/HereYouAreTopicScreen';
+import ThereYouAreTopicScreen from 'App/Containers/Topic/ThereYouAreTopicScreen';
+import PanHandlers from './PanHandlers';
 
 const styles = StyleSheet.create({
   floatingButton: {
@@ -34,7 +28,7 @@ const styles = StyleSheet.create({
     zIndex: 100000,
   },
   tabBarStyle: {
-    alignItems: "stretch",
+    alignItems: 'stretch',
     backgroundColor: Colors.white,
     height: Screen.scale(64),
     shadowColor: Colors.steel10,
@@ -44,17 +38,17 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: Screen.scale(17),
-    width: "100%",
+    width: '100%',
   },
 });
 
-const TAB_CREATE_TOPIC_KEY = "tab_create";
+const TAB_CREATE_TOPIC_KEY = 'tab_create';
 
 const tabOnPress =
   (handleUpdateList) =>
   ({ navigation: { state: { key } = {} } = {} }) => {
     // detect if the list needs to backing to the top
-    if (key.includes("thereYouAre") || key.includes("hereYouAre")) {
+    if (key.includes('thereYouAre') || key.includes('hereYouAre')) {
       handleUpdateList({
         isBackToTop: true,
       });
@@ -65,7 +59,7 @@ const tabOnPress =
       circle: { homeCircle = {} },
     } = store.getState();
     // console.log('storageSetThereYouAre=>', storageSetThereYouAre);
-    if (key.includes("thereYouAre") && (!homeCircle || !homeCircle.id)) {
+    if (key.includes('thereYouAre') && (!homeCircle || !homeCircle.id)) {
       return Actions.thereYouAre_intro();
     }
 
@@ -79,10 +73,7 @@ const tabOnPress =
       // console.log('userCircle=>', userCircle);
       // console.log('prevRoute=>', prevRoute);
       // console.log('routeName=>', routeName);
-      if (
-        (!userCircle || !userCircle.id) &&
-        !routeName.includes("thereYouAre")
-      ) {
+      if ((!userCircle || !userCircle.id) && !routeName.includes('thereYouAre')) {
         return Dialog.noCircleAlert();
       }
 
@@ -90,11 +81,9 @@ const tabOnPress =
       //   type: 'jump',
       //   belongsTo: routeName.includes('thereYouAre') ? 'THERE_YOU_ARE' : 'HERE_YOU_ARE',
       // });
-      return Actions.jump("createNewTopic", {
-        type: "jump",
-        belongsTo: routeName.includes("thereYouAre")
-          ? "THERE_YOU_ARE"
-          : "HERE_YOU_ARE",
+      return Actions.jump('createNewTopic', {
+        type: 'jump',
+        belongsTo: routeName.includes('thereYouAre') ? 'THERE_YOU_ARE' : 'HERE_YOU_ARE',
       });
     }
     return Actions.jump(key, { swipeEnabled: false });

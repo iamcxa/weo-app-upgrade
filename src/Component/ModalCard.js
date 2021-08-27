@@ -1,13 +1,13 @@
-import React from "react";
-import { Platform, StyleSheet, View, Text } from "react-native";
-import { Actions } from "react-native-router-flux";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Platform, StyleSheet, View, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 
-import { AndroidBackKey } from "App/Components";
-import { Screen, isIphoneX } from "App/Helpers";
-import { Colors } from "App/Theme";
-import IconButton from "./IconButton";
-import Modal from "./BaseLightbox";
+import { AndroidBackKey } from 'App/Components';
+import { Screen, isIphoneX } from 'App/Helpers';
+import { Colors } from 'App/Theme';
+import IconButton from './IconButton';
+import Modal from './BaseLightbox';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   headerBlock: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: Screen.moderateScale(16),
     paddingVertical: Screen.verticalScale(11),
     height: Screen.verticalScale(45),
@@ -49,35 +49,33 @@ const styles = StyleSheet.create({
   headerTitle: {
     flex: 2,
     fontSize: Screen.moderateScale(17),
-    fontWeight: "600",
+    fontWeight: '600',
     letterSpacing: -0.41,
-    textAlign: "center",
-    justifyContent: "center",
+    textAlign: 'center',
+    justifyContent: 'center',
     color: Colors.blackThree,
   },
   childrenContainerStyle: {
-    paddingTop: isIphoneX()
-      ? Screen.verticalScale(10)
-      : Screen.verticalScale(-30),
+    paddingTop: isIphoneX() ? Screen.verticalScale(10) : Screen.verticalScale(-30),
     paddingBottom: isIphoneX() ? Screen.verticalScale(15) : 0,
     paddingHorizontal: Screen.moderateScale(0),
     ...Platform.select({
       android: {
-        height: "100%",
+        height: '100%',
       },
     }),
   },
   headerWrapper: {
     flex: 1,
-    alignItems: "flex-start",
-    justifyContent: "center",
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   backButtonWrapper: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "flex-start",
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
-  rightComponent: { flex: 1, alignItems: "flex-end", justifyContent: "center" },
+  rightComponent: { flex: 1, alignItems: 'flex-end', justifyContent: 'center' },
 });
 
 const ModalCard = ({ showBackButton, ...props }) => (

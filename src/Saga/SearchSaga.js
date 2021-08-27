@@ -1,23 +1,18 @@
-import { put, call, select } from "redux-saga/effects";
-import { isEmpty } from "lodash";
+import { put, call, select } from 'redux-saga/effects';
+import { isEmpty } from 'lodash';
 
-import { AppStateActions, SearchActions } from "App/Stores";
-import { Handler, Search } from "App/Apis";
-import { Logger } from "App/Helpers";
+import { AppStateActions, SearchActions } from 'App/Stores';
+import { Handler, Search } from 'App/Apis';
+import { Logger } from 'App/Helpers';
 
-const TAG = "@SearchSaga";
+const TAG = '@SearchSaga';
 
-export function* fetchGetSearchResult({
-  circleId,
-  belongsTo,
-  keyword,
-  curPage,
-} = {}) {
+export function* fetchGetSearchResult({ circleId, belongsTo, keyword, curPage } = {}) {
   yield put(AppStateActions.onLoading(true, null, { hide: true }));
   // yield put(AppStateActions.onLoading(false, 'vote', { hide: true, message: '' }));
   try {
     if (!circleId) {
-      if (belongsTo === "HERE_YOU_ARE") {
+      if (belongsTo === 'HERE_YOU_ARE') {
         ({ id: circleId } = yield select((state) => state.circle.userCircle));
       } else {
         ({ id: circleId } = yield select((state) => state.circle.homeCircle));
@@ -34,7 +29,7 @@ export function* fetchGetSearchResult({
           curPage,
         },
       }),
-      Search.searchTopicAndPosts()
+      Search.searchTopicAndPosts(),
     );
 
     if (res.success) {
@@ -43,7 +38,7 @@ export function* fetchGetSearchResult({
           circleId: res.data.circleId,
           searchResult: res.data.items,
           paging: res.data.paging,
-        })
+        }),
       );
     }
   } catch (error) {
@@ -57,7 +52,7 @@ export function* fetchGetPopularKeywords({ circleId, belongsTo } = {}) {
   yield put(AppStateActions.onLoading(false, null, { hide: true }));
   try {
     if (!circleId) {
-      if (belongsTo === "HERE_YOU_ARE") {
+      if (belongsTo === 'HERE_YOU_ARE') {
         ({ id: circleId } = yield select((state) => state.circle.userCircle));
       } else {
         ({ id: circleId } = yield select((state) => state.circle.homeCircle));
@@ -69,7 +64,7 @@ export function* fetchGetPopularKeywords({ circleId, belongsTo } = {}) {
         Authorization: apiToken,
         params: { circleId },
       }),
-      Search.getPoplarKeyWords()
+      Search.getPoplarKeyWords(),
     );
 
     if (res.success) {
@@ -77,7 +72,7 @@ export function* fetchGetPopularKeywords({ circleId, belongsTo } = {}) {
         SearchActions.updateSearchStore({
           poplarKeyWords: res.data.items,
           circleId,
-        })
+        }),
       );
     }
   } catch (error) {

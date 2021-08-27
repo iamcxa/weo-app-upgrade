@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View, StyleSheet, Text, Switch, Platform } from "react-native";
-import { Screen } from "App/Helpers";
-import { Classes, Colors, Metrics, Fonts } from "App/Theme";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, StyleSheet, Text, Switch, Platform } from 'react-native';
+import { Screen } from 'App/Helpers';
+import { Classes, Colors, Metrics, Fonts } from 'App/Theme';
 
 const styles = StyleSheet.create({
   content: {
     backgroundColor: Colors.whiteThree,
-    alignItems: "center",
+    alignItems: 'center',
     borderBottomColor: Colors.silver,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingHorizontal: Metrics.baseMargin * 4,
     paddingVertical: Metrics.baseMargin * 2,
   },
@@ -32,8 +32,8 @@ export default class SwitchListItem extends React.PureComponent {
   static defaultProps = {
     onValueChange: () => {},
     value: false,
-    title: "",
-    description: "",
+    title: '',
+    description: '',
   };
 
   constructor(props) {
@@ -47,19 +47,13 @@ export default class SwitchListItem extends React.PureComponent {
       <View style={[styles.content, style]}>
         <View style={Classes.fill}>
           <Text style={Fonts.style.regular}>{title}</Text>
-          {!!description && (
-            <Text style={[Fonts.style.medium, styles.txtDesc]}>
-              {description}
-            </Text>
-          )}
+          {!!description && <Text style={[Fonts.style.medium, styles.txtDesc]}>{description}</Text>}
         </View>
         <View style={Classes.crossEnd}>
           <Switch
             value={value}
             trackColor={Colors.lightishGreen}
-            thumbTintColor={
-              Platform.OS === "android" ? Colors.whiteThree : null
-            }
+            thumbTintColor={Platform.OS === 'android' ? Colors.whiteThree : null}
             onValueChange={onValueChange}
           />
         </View>

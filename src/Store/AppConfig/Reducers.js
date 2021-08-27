@@ -4,10 +4,10 @@
  * @see https://redux.js.org/basics/reducers
  */
 
-import { createReducer } from "reduxsauce";
+import { createReducer } from 'reduxsauce';
 
-import { AppConfigTypes } from "./Actions";
-import { INITIAL_STATE } from "./InitialState";
+import { AppConfigTypes } from './Actions';
+import { INITIAL_STATE } from './InitialState';
 
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer

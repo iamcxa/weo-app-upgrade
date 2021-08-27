@@ -1,58 +1,58 @@
-import {} from "react-native";
-import { Screen, ScaledSheet, ifIphoneX } from "App/Helpers";
-import { Metrics } from "App/Theme";
+import {} from 'react-native';
+import { Screen, ScaledSheet, ifIphoneX } from 'App/Helpers';
+import { Metrics } from 'App/Theme';
 
 export default ScaledSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
     width: Screen.width,
   },
   navBar: {
     height: Metrics.navBarHeight,
-    width: "auto",
+    width: 'auto',
   },
   wording: {
     marginTop: 13,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 16,
   },
   titleContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     zIndex: 100,
   },
   //
   replyBar: {
-    position: "absolute",
+    position: 'absolute',
     // left: 0,
     bottom: ifIphoneX(-16, 0),
-    backgroundColor: "white",
+    backgroundColor: 'white',
     zIndex: 500,
   },
   welcome: {
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10,
   },
   action: {
-    textAlign: "center",
-    color: "#0000FF",
+    textAlign: 'center',
+    color: '#0000FF',
     marginVertical: 5,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   instructions: {
-    textAlign: "center",
-    color: "#333333",
+    textAlign: 'center',
+    color: '#333333',
     marginBottom: 5,
   },
   stat: {
-    textAlign: "center",
-    color: "#B0171F",
+    textAlign: 'center',
+    color: '#B0171F',
     marginBottom: 1,
   },
   micButton: {
@@ -61,14 +61,14 @@ export default ScaledSheet.create({
     zIndex: 500,
   },
   micAnimation: {
-    width: "260@s",
-    height: "260@s",
+    width: '260@s',
+    height: '260@s',
     // backgroundColor: 'gray',
     zIndex: -1,
   },
   selectedLanguage: {
-    flexWrap: "wrap",
-    alignItems: "center",
-    flexDirection: "row",
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });

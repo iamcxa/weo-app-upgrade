@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Text, TouchableOpacity } from "react-native";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Text, TouchableOpacity } from 'react-native';
 
-import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default class IconButton extends Component {
   static propTypes = {
@@ -25,10 +25,10 @@ export default class IconButton extends Component {
     onPress: () => {},
     disabled: false,
     style: {},
-    iconName: "",
-    iconType: "",
+    iconName: '',
+    iconType: '',
     iconSize: 24,
-    iconColor: "black",
+    iconColor: 'black',
     iconParams: {},
     width: 48,
     height: 48,
@@ -70,45 +70,19 @@ export default class IconButton extends Component {
     } = this.props;
     const getIcon = () => {
       switch (iconType) {
-        case "Ionicons": {
+        case 'Ionicons': {
+          return <Ionicons name={iconName} size={iconSize} color={iconColor} {...iconParams} />;
+        }
+        case 'MaterialIcons': {
           return (
-            <Ionicons
-              name={iconName}
-              size={iconSize}
-              color={iconColor}
-              {...iconParams}
-            />
+            <MaterialIcons name={iconName} size={iconSize} color={iconColor} {...iconParams} />
           );
         }
-        case "MaterialIcons": {
-          return (
-            <MaterialIcons
-              name={iconName}
-              size={iconSize}
-              color={iconColor}
-              {...iconParams}
-            />
-          );
+        case 'FontAwesome': {
+          return <FontAwesome name={iconName} size={iconSize} color={iconColor} {...iconParams} />;
         }
-        case "FontAwesome": {
-          return (
-            <FontAwesome
-              name={iconName}
-              size={iconSize}
-              color={iconColor}
-              {...iconParams}
-            />
-          );
-        }
-        case "FontAwesome5": {
-          return (
-            <FontAwesome5
-              name={iconName}
-              size={iconSize}
-              color={iconColor}
-              {...iconParams}
-            />
-          );
+        case 'FontAwesome5': {
+          return <FontAwesome5 name={iconName} size={iconSize} color={iconColor} {...iconParams} />;
         }
         default:
           return <Text>{iconName}</Text>;
@@ -118,8 +92,8 @@ export default class IconButton extends Component {
       <TouchableOpacity
         style={[
           {
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: 'center',
+            alignItems: 'center',
             height,
             width,
             // backgroundColor: 'blue',

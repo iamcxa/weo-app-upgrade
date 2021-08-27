@@ -1,28 +1,22 @@
-import React, { Component } from "react";
-import {
-  Text,
-  View,
-  Animated,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import AnimateTransition from "./AnimateTransition";
+import React, { Component } from 'react';
+import { Text, View, Animated, ScrollView, TouchableOpacity } from 'react-native';
+import AnimateTransition from './AnimateTransition';
 
 const template = [
-  "40%",
-  "60%",
-  "50%",
-  "50%",
-  "100%",
-  "60%",
-  "40%",
-  "40%",
-  "60%",
-  "50%",
-  "50%",
-  "60%",
-  "40%",
-  "100%",
+  '40%',
+  '60%',
+  '50%',
+  '50%',
+  '100%',
+  '60%',
+  '40%',
+  '40%',
+  '60%',
+  '50%',
+  '50%',
+  '60%',
+  '40%',
+  '100%',
 ];
 
 export default class Hello extends Component {
@@ -33,7 +27,7 @@ export default class Hello extends Component {
       tH: 0,
       tX: 0,
       tY: 0,
-      tUri: "",
+      tUri: '',
       scrollViewPosition: 0,
     };
     this.scrollViewPosition = 0;
@@ -42,24 +36,22 @@ export default class Hello extends Component {
 
   getImagePosition = (image, w, uri) => {
     if (image) {
-      image
-        .getNode()
-        .measure((soruceX, soruceY, width, height, pageX, pageY) => {
-          console.log({
-            width,
-            height,
-            pageX,
-            pageY,
-          });
-          this.setState({
-            tW: w,
-            tH: height,
-            tX: pageX,
-            tY: this.scrollViewPosition + pageY,
-            tUri: uri,
-            scrollViewPosition: this.scrollViewPosition,
-          });
+      image.getNode().measure((soruceX, soruceY, width, height, pageX, pageY) => {
+        console.log({
+          width,
+          height,
+          pageX,
+          pageY,
         });
+        this.setState({
+          tW: w,
+          tH: height,
+          tX: pageX,
+          tY: this.scrollViewPosition + pageY,
+          tUri: uri,
+          scrollViewPosition: this.scrollViewPosition,
+        });
+      });
     }
   };
 
@@ -100,8 +92,8 @@ export default class Hello extends Component {
       >
         <View
           style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
+            flexDirection: 'row',
+            flexWrap: 'wrap',
           }}
         >
           {this.renderImage()}

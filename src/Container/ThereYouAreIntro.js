@@ -1,29 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Actions } from "react-native-router-flux";
-import { Alert, Text, View, StyleSheet, SafeAreaView } from "react-native";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
+import { Alert, Text, View, StyleSheet, SafeAreaView } from 'react-native';
 
-import { MainNavBar, IconButton } from "App/Components";
-import { translate as t } from "App/Helpers/I18n";
-import { Screen, Dialog } from "App/Helpers";
-import { Colors } from "App/Theme";
+import { MainNavBar, IconButton } from 'App/Components';
+import { translate as t } from 'App/Helpers/I18n';
+import { Screen, Dialog } from 'App/Helpers';
+import { Colors } from 'App/Theme';
 
 // import { setItem } from '../utils/asyncStorage';
-import { PrimaryBtn } from "../widget/RoundButton";
+import { PrimaryBtn } from '../widget/RoundButton';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Screen.moderateScale(10),
     paddingBottom: Screen.moderateScale(49),
-    alignItems: "center",
+    alignItems: 'center',
   },
   content: {
     flex: 1,
-    alignSelf: "stretch",
-    justifyContent: "space-between",
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
     paddingHorizontal: Screen.moderateScale(30),
     paddingBottom: Screen.moderateScale(49),
     paddingTop: Screen.moderateScale(55),
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: Screen.moderateScale(24),
-    fontWeight: "800",
+    fontWeight: '800',
     color: Colors.greyishBrown,
     // textDecorationLine: 'underline',
     // textDecorationColor: Colors.mainYellow
@@ -63,7 +63,7 @@ class ThereYouAreIntro extends React.Component {
     if (userCircle.id) {
       Dialog.choseHomeCircleAlert(userCircle);
     } else {
-      Alert.alert(t("there_you_are_intro_alert_not_in_circle"));
+      Alert.alert(t('there_you_are_intro_alert_not_in_circle'));
     }
   };
 
@@ -72,26 +72,19 @@ class ThereYouAreIntro extends React.Component {
       <SafeAreaView style={styles.container}>
         <MainNavBar
           leftComponent={
-            <IconButton
-              iconName="md-close"
-              iconType="Ionicons"
-              onPress={Actions.hereYouAre}
-            />
+            <IconButton iconName="md-close" iconType="Ionicons" onPress={Actions.hereYouAre} />
           }
         />
         <View style={styles.content}>
           <View>
             <View style={styles.titleWrapper}>
-              <Text style={styles.title}>{t("there_you_are_intro_title")}</Text>
+              <Text style={styles.title}>{t('there_you_are_intro_title')}</Text>
             </View>
             <Text style={styles.desc} numberOfLines={15}>
-              {t("there_you_are_intro_description")}
+              {t('there_you_are_intro_description')}
             </Text>
           </View>
-          <PrimaryBtn
-            onPress={this.confirm}
-            text={t("there_you_are_intro_chose_now_circle")}
-          />
+          <PrimaryBtn onPress={this.confirm} text={t('there_you_are_intro_chose_now_circle')} />
         </View>
       </SafeAreaView>
     );
@@ -103,5 +96,5 @@ export default connect(
     routeName: state.appRoute.routeName,
     userCircle: state.circle.userCircle,
   }),
-  (dispatch) => bindActionCreators({}, dispatch)
+  (dispatch) => bindActionCreators({}, dispatch),
 )(ThereYouAreIntro);

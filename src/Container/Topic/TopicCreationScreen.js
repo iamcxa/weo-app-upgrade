@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   TouchableOpacity,
   TextInput,
@@ -9,18 +9,18 @@ import {
   Text,
   View,
   Alert,
-} from "react-native";
-import { isString, isEmpty, debounce } from "lodash";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
-import ImagePicker from "react-native-image-crop-picker";
-import Icon from "react-native-vector-icons/MaterialIcons";
+} from 'react-native';
+import { isString, isEmpty, debounce } from 'lodash';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
+import ImagePicker from 'react-native-image-crop-picker';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Config from "App/Config";
-import { translate as t } from "App/Helpers/I18n";
-import { Classes, Colors, Fonts, Images } from "App/Theme";
-import { AppStateActions, TopicActions } from "App/Stores";
+import Config from 'App/Config';
+import { translate as t } from 'App/Helpers/I18n';
+import { Classes, Colors, Fonts, Images } from 'App/Theme';
+import { AppStateActions, TopicActions } from 'App/Stores';
 import {
   Date as d,
   Dialog,
@@ -28,14 +28,11 @@ import {
   StyleSheet,
   ListenableEvent,
   Content as ContentHelper,
-} from "App/Helpers";
+} from 'App/Helpers';
 
-import { PrimaryBtn } from "App/widget/RoundButton";
-import { AvatarBlock, ModalCard, DismissKeyboardView } from "App/Components";
-import {
-  checkAndRequestPermission,
-  permissionType,
-} from "App/utils/permission";
+import { PrimaryBtn } from 'App/widget/RoundButton';
+import { AvatarBlock, ModalCard, DismissKeyboardView } from 'App/Components';
+import { checkAndRequestPermission, permissionType } from 'App/utils/permission';
 
 const { BUTTON_DEBOUNCE, CREATE_TOPIC_PERIOD } = Config;
 
@@ -49,7 +46,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: Screen.scale(20),
-    fontWeight: "600",
+    fontWeight: '600',
     color: Colors.black,
   },
   titleBlock: {
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
   },
   titleInput: {
     fontSize: Screen.scale(18),
-    fontWeight: "500",
+    fontWeight: '500',
     color: Colors.black,
     height: Screen.scale(48),
     borderColor: Colors.warmGreyTwo,
@@ -76,7 +73,7 @@ const styles = StyleSheet.create({
   },
   descBlock: {
     flex: 1,
-    height: "100%",
+    height: '100%',
     marginTop: Screen.scale(20),
     paddingLeft: Screen.scale(10),
   },
@@ -84,37 +81,37 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: Screen.verticalScale(120),
     fontSize: Screen.scale(18),
-    fontWeight: "500",
+    fontWeight: '500',
     color: Colors.black,
     marginTop: Screen.scale(10),
     height: Screen.scale(300),
-    width: "100%",
-    textAlignVertical: "top",
+    width: '100%',
+    textAlignVertical: 'top',
     backgroundColor: Colors.paleGrey50,
   },
   submitBtn: {
     width: Screen.width - Screen.scale(34),
   },
   descHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   selectImageButton: {
     marginLeft: Screen.scale(15),
   },
   uploadImageContainer: {
     height: Screen.scale(100),
-    width: "100%",
+    width: '100%',
     marginVertical: Screen.scale(15),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   uploadImage: {
     paddingVertical: Screen.scale(15),
-    height: "100%",
+    height: '100%',
   },
   removeButton: {
-    position: "absolute",
+    position: 'absolute',
     top: Screen.scale(10),
     right: Screen.scale(25),
   },
@@ -122,19 +119,19 @@ const styles = StyleSheet.create({
     minHeight: Screen.scale(64),
     paddingHorizontal: Screen.scale(17),
     paddingBottom: Screen.verticalScale(32),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   hidden: {
-    display: "none",
+    display: 'none',
   },
   btnRightTopSubmit: {
     backgroundColor: Colors.mainYellow,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "16@s",
-    height: "32@s",
-    width: "64@s",
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '16@s',
+    height: '32@s',
+    width: '64@s',
   },
   txtRightTopSubmit: {
     color: Colors.greyish,
@@ -148,7 +145,7 @@ const styles = StyleSheet.create({
 class TopicCreationScreen extends React.Component {
   static propTypes = {
     // content type
-    belongsTo: PropTypes.oneOf(["HERE_YOU_ARE", "THERE_YOU_ARE"]).isRequired,
+    belongsTo: PropTypes.oneOf(['HERE_YOU_ARE', 'THERE_YOU_ARE']).isRequired,
 
     // loading
     isLoading: PropTypes.bool.isRequired,
@@ -179,13 +176,13 @@ class TopicCreationScreen extends React.Component {
     lastCreateTopicAt: null,
     userCircle: {},
     homeCircle: {},
-    belongsTo: "HERE_YOU_ARE",
-    nickname: "Author",
-    prevRoute: "",
+    belongsTo: 'HERE_YOU_ARE',
+    nickname: 'Author',
+    prevRoute: '',
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.belongsTo === "HERE_YOU_ARE") {
+    if (nextProps.belongsTo === 'HERE_YOU_ARE') {
       if (!nextProps.userCircle) {
         return {
           ...prevState,
@@ -199,7 +196,7 @@ class TopicCreationScreen extends React.Component {
         };
       }
     }
-    if (nextProps.belongsTo === "THERE_YOU_ARE") {
+    if (nextProps.belongsTo === 'THERE_YOU_ARE') {
       if (!nextProps.homeCircle) {
         return {
           ...prevState,
@@ -228,11 +225,11 @@ class TopicCreationScreen extends React.Component {
   async componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener(
       ListenableEvent.KEYBOARD_SHOW,
-      this.keyboardDidShow
+      this.keyboardDidShow,
     );
     this.keyboardDidHideListener = Keyboard.addListener(
       ListenableEvent.KEYBOARD_HIDE,
-      this.keyboardDidHide
+      this.keyboardDidHide,
     );
   }
 
@@ -263,30 +260,29 @@ class TopicCreationScreen extends React.Component {
 
     if (
       lastCreateTopicAt &&
-      d.moment(lastCreateTopicAt).add(CREATE_TOPIC_PERIOD, "s") > d.moment()
+      d.moment(lastCreateTopicAt).add(CREATE_TOPIC_PERIOD, 's') > d.moment()
     ) {
       return Dialog.createContentIntervalTooShortTooAlert(
-        t("create_topic_interval_too_short", { period: CREATE_TOPIC_PERIOD })
+        t('create_topic_interval_too_short', { period: CREATE_TOPIC_PERIOD }),
       );
     }
     if (isInternetReachable !== true || !isInternetReachable) {
       return Dialog.internetNotReachableAlert();
     }
-    if (belongsTo === "HERE_YOU_ARE" && !userCircle.id) {
+    if (belongsTo === 'HERE_YOU_ARE' && !userCircle.id) {
       return Dialog.noCircleAlert();
     }
-    if (belongsTo === "THERE_YOU_ARE" && !homeCircle.id) {
+    if (belongsTo === 'THERE_YOU_ARE' && !homeCircle.id) {
       return Dialog.noCircleAlert();
     }
     if (!circleId) {
       return Dialog.noCircleAlert();
     }
     if (!ContentHelper.validateEmpty(title)) {
-      return Alert.alert(t("create_topic_no_topic_title"));
+      return Alert.alert(t('create_topic_no_topic_title'));
     }
     const isContentLegal =
-      ContentHelper.validateBlockWords(title) &&
-      ContentHelper.validateBlockWords(content);
+      ContentHelper.validateBlockWords(title) && ContentHelper.validateBlockWords(content);
 
     if (!isContentLegal) {
       return Dialog.containBlockedWordAlert(this.handleFetchAddTopic);
@@ -298,7 +294,7 @@ class TopicCreationScreen extends React.Component {
   handleFetchAddTopic = () => {
     const { fetchAddTopic, belongsTo } = this.props;
     const { circleId, title, content, selectedImage } = this.state;
-    console.log("this.state=>", this.state);
+    console.log('this.state=>', this.state);
 
     return fetchAddTopic({
       title,
@@ -321,20 +317,16 @@ class TopicCreationScreen extends React.Component {
   };
 
   pickImageByLibrary = async () => {
-    const havePermission = await checkAndRequestPermission(
-      permissionType.photo
-    );
+    const havePermission = await checkAndRequestPermission(permissionType.photo);
     if (havePermission) {
       ImagePicker.openPicker({
-        mediaType: "photo",
+        mediaType: 'photo',
       }).then(this.handleSelectedImage);
     }
   };
 
   pickImageByCamera = async () => {
-    const havePermission = await checkAndRequestPermission(
-      permissionType.camera
-    );
+    const havePermission = await checkAndRequestPermission(permissionType.camera);
     if (havePermission) {
       ImagePicker.openCamera({}).then(this.handleSelectedImage);
     }
@@ -356,20 +348,12 @@ class TopicCreationScreen extends React.Component {
     const hasTitle = isString(title) && !isEmpty(title.trim());
     return (
       <ModalCard
-        title={t("create_topic_modal_title")}
+        title={t('create_topic_modal_title')}
         showBackButton
         rightComponent={
-          <TouchableOpacity
-            style={styles.btnRightTopSubmit}
-            onPress={this.handleSubmit}
-          >
-            <Text
-              style={[
-                styles.txtRightTopSubmit,
-                hasTitle && styles.txtRightTopSubmitHasText,
-              ]}
-            >
-              {t("create_topic_submit")}
+          <TouchableOpacity style={styles.btnRightTopSubmit} onPress={this.handleSubmit}>
+            <Text style={[styles.txtRightTopSubmit, hasTitle && styles.txtRightTopSubmitHasText]}>
+              {t('create_topic_submit')}
             </Text>
           </TouchableOpacity>
         }
@@ -382,17 +366,15 @@ class TopicCreationScreen extends React.Component {
         >
           <AvatarBlock
             name={nickname}
-            avatar={Images[avatarKey ? avatarKey.toLowerCase() : "avatar1"]}
+            avatar={Images[avatarKey ? avatarKey.toLowerCase() : 'avatar1']}
           />
           <View style={styles.titleBlock}>
-            <Text style={styles.label}>
-              {t("create_topic_input_label_title")}
-            </Text>
+            <Text style={styles.label}>{t('create_topic_input_label_title')}</Text>
             <View style={styles.titleInputWrapper}>
               <TextInput
                 autoFocus
                 numberOfLines={1}
-                placeholder={t("create_topic_max_word_length", { length: 30 })}
+                placeholder={t('create_topic_max_word_length', { length: 30 })}
                 placeholderTextColor={Colors.pinkishGrey}
                 maxLength={30}
                 // onEndEditing={evt => this.setState({ title: evt.nativeEvent.text })}
@@ -405,12 +387,9 @@ class TopicCreationScreen extends React.Component {
           </View>
           <View style={styles.descBlock}>
             <View style={styles.descHeader}>
-              <Text style={styles.label}>{t("create_topic_content_desc")}</Text>
+              <Text style={styles.label}>{t('create_topic_content_desc')}</Text>
               <View style={Classes.row}>
-                <TouchableOpacity
-                  style={styles.selectImageButton}
-                  onPress={this.pickImageByCamera}
-                >
+                <TouchableOpacity style={styles.selectImageButton} onPress={this.pickImageByCamera}>
                   <Icon name="add-a-photo" size={30} color={Colors.black} />
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -421,9 +400,9 @@ class TopicCreationScreen extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
-            {Platform.OS === "ios" && (
+            {Platform.OS === 'ios' && (
               <AutoGrowingTextInput
-                placeholder={t("create_topic_max_word_length", {
+                placeholder={t('create_topic_max_word_length', {
                   length: 2000,
                 })}
                 multiline
@@ -437,9 +416,9 @@ class TopicCreationScreen extends React.Component {
                 underlineColorAndroid="transparent"
               />
             )}
-            {Platform.OS === "android" && (
+            {Platform.OS === 'android' && (
               <TextInput
-                placeholder={t("create_topic_max_word_length", {
+                placeholder={t('create_topic_max_word_length', {
                   length: 2000,
                 })}
                 multiline
@@ -457,28 +436,18 @@ class TopicCreationScreen extends React.Component {
 
         <View style={styles.footer}>
           {selectedImage && (
-            <View
-              style={[
-                styles.uploadImageContainer,
-                showKeyboard && styles.hidden,
-              ]}
-            >
+            <View style={[styles.uploadImageContainer, showKeyboard && styles.hidden]}>
               <Image
                 source={{ uri: selectedImage.path }}
                 style={[
                   styles.uploadImage,
                   {
                     height: Screen.scale(100),
-                    width: Screen.scale(
-                      (100 * selectedImage.width) / selectedImage.height
-                    ),
+                    width: Screen.scale((100 * selectedImage.width) / selectedImage.height),
                   },
                 ]}
               />
-              <TouchableOpacity
-                style={styles.removeButton}
-                onPress={this.removeSelectedImage}
-              >
+              <TouchableOpacity style={styles.removeButton} onPress={this.removeSelectedImage}>
                 <Icon name="cancel" size={30} color={Colors.black} />
               </TouchableOpacity>
             </View>
@@ -487,7 +456,7 @@ class TopicCreationScreen extends React.Component {
             btnColor={Colors.mainYellow}
             textColor={hasTitle ? Colors.black : Colors.greyish}
             onPress={this.handleSubmit}
-            text={t("create_topic_submit")}
+            text={t('create_topic_submit')}
             style={[styles.submitBtn, showKeyboard && styles.hidden]}
           />
         </View>
@@ -525,6 +494,6 @@ export default connect(
         fetchAddTopic: TopicActions.fetchAddTopic,
         updateLoading: AppStateActions.onLoading,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(TopicCreationScreen);

@@ -1,20 +1,20 @@
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-console */
 // @flow
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Alert, StyleSheet } from "react-native";
-import Voice from "@react-native-community/voice";
-import { Permissions } from "react-native-unimodules";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Alert, StyleSheet } from 'react-native';
+import Voice from '@react-native-community/voice';
+import { Permissions } from 'react-native-unimodules';
 // import Permissions, { PERMISSIONS } from 'react-native-permissions';
-import { translate as t } from "App/Helpers/I18n";
+import { translate as t } from 'App/Helpers/I18n';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
     // position: 'absolute',
     // bottom: 0,
   },
@@ -22,10 +22,7 @@ const styles = StyleSheet.create({
 
 class VoiceControl extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.func.isRequired,
-      PropTypes.object.isRequired,
-    ]),
+    children: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.object.isRequired]),
     onSpeechEnd: PropTypes.func,
     onSpeechError: PropTypes.func,
     onSpeechStart: PropTypes.func,
@@ -59,13 +56,13 @@ class VoiceControl extends Component {
 
   state = {
     circleAvailable: false,
-    sentence: "",
-    recognized: "",
-    raw: "",
-    pitch: "",
-    error: "",
-    end: "",
-    started: "",
+    sentence: '',
+    recognized: '',
+    raw: '',
+    pitch: '',
+    error: '',
+    end: '',
+    started: '',
     results: [],
     partialResults: [],
     isListening: false,
@@ -100,32 +97,32 @@ class VoiceControl extends Component {
   // };
 
   onSpeechStart = (e) => {
-    console.log("onSpeechStart: ", e);
+    console.log('onSpeechStart: ', e);
     this.setState({
-      started: "√",
+      started: '√',
       waitVoiceControlLoad: false,
     });
     this.props.onSpeechStart(e);
   };
 
   onSpeechRecognized = (e) => {
-    console.log("onSpeechRecognized: ", e);
+    console.log('onSpeechRecognized: ', e);
     this.setState({
-      recognized: "√",
+      recognized: '√',
     });
     this.props.onSpeechRecognized(e);
   };
 
   onSpeechEnd = () => {
-    console.log("onSpeechEnd!");
+    console.log('onSpeechEnd!');
     this.setState({
-      end: "√",
+      end: '√',
     });
     this.props.onSpeechEnd(this.state.results);
   };
 
   onSpeechError = (e) => {
-    console.warn("onSpeechError: ", e);
+    console.warn('onSpeechError: ', e);
     this.setState({
       error: JSON.stringify(e.error),
     });
@@ -133,7 +130,7 @@ class VoiceControl extends Component {
   };
 
   onSpeechResults = (e) => {
-    console.log("onSpeechResults: ", e);
+    console.log('onSpeechResults: ', e);
     this.setState({
       results: e.value,
       // sentence: e.value[0], //e.value.toString().replace(',', ' '),
@@ -142,7 +139,7 @@ class VoiceControl extends Component {
   };
 
   onSpeechPartialResults = (e) => {
-    console.log("onSpeechPartialResults: ", e);
+    console.log('onSpeechPartialResults: ', e);
     this.setState({
       partialResults: e.value,
       sentence: e.value[0],
@@ -152,7 +149,7 @@ class VoiceControl extends Component {
   };
 
   onSpeechVolumeChanged = (e) => {
-    console.log("onSpeechVolumeChanged: ", e);
+    console.log('onSpeechVolumeChanged: ', e);
     this.setState({
       pitch: e.value,
     });
@@ -161,21 +158,21 @@ class VoiceControl extends Component {
 
   isListening = () => this.state.isListening;
 
-  startListening = async (locale = "zh_Hant_HK") => {
+  startListening = async (locale = 'zh_Hant_HK') => {
     this.setState({
-      recognized: "",
-      pitch: "",
-      error: "",
-      started: "",
+      recognized: '',
+      pitch: '',
+      error: '',
+      started: '',
       results: [],
       partialResults: [],
-      end: "",
+      end: '',
     });
     try {
       const isAvailable = await Voice.isAvailable();
       if (isAvailable) {
         const result = await Voice.start(locale, {
-          RECOGNIZER_ENGINE: "GOOGLE",
+          RECOGNIZER_ENGINE: 'GOOGLE',
           EXTRA_MAX_RESULTS: 1,
           EXTRA_PARTIAL_RESULTS: false,
           REQUEST_PERMISSIONS_AUTO: true,
@@ -187,7 +184,7 @@ class VoiceControl extends Component {
           });
         }
       } else {
-        throw new Error("Voice Recognizing not available now");
+        throw new Error('Voice Recognizing not available now');
       }
     } catch (e) {
       // eslint-disable-next-line
@@ -202,9 +199,9 @@ class VoiceControl extends Component {
       this.setState(
         {
           isListening: false,
-          sentence: "",
+          sentence: '',
         },
-        onSuccess
+        onSuccess,
       );
     } catch (e) {
       // eslint-disable-next-line
@@ -216,7 +213,7 @@ class VoiceControl extends Component {
     const { children } = this.props;
     return (
       <>
-        {typeof children === "object"
+        {typeof children === 'object'
           ? children
           : children({
               state: this.state,

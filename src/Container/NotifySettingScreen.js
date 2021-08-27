@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Permissions from "react-native-permissions";
-import { connect } from "react-redux";
-import { isEmpty, isString } from "lodash";
-import { bindActionCreators } from "redux";
-import { StyleSheet, Platform, View } from "react-native";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Permissions from 'react-native-permissions';
+import { connect } from 'react-redux';
+import { isEmpty, isString } from 'lodash';
+import { bindActionCreators } from 'redux';
+import { StyleSheet, Platform, View } from 'react-native';
 
-import { MainNavBar, SwitchListItem, AndroidBackKey } from "App/Components";
-import { AppStateActions, UserActions } from "App/Stores";
-import { translate as t } from "App/Helpers/I18n";
-import { Screen, Dialog, Fcm } from "App/Helpers";
-import { Colors } from "App/Theme";
+import { MainNavBar, SwitchListItem, AndroidBackKey } from 'App/Components';
+import { AppStateActions, UserActions } from 'App/Stores';
+import { translate as t } from 'App/Helpers/I18n';
+import { Screen, Dialog, Fcm } from 'App/Helpers';
+import { Colors } from 'App/Theme';
 
 const Separator = (props) => <View style={styles.separator} />;
 
@@ -35,8 +35,8 @@ class NotifySettingScreen extends React.Component {
   };
 
   static defaultProps = {
-    fcmToken: "",
-    currentState: "",
+    fcmToken: '',
+    currentState: '',
     config: {
       hasCircleNotify: true,
       hasTopicNotify: false,
@@ -73,29 +73,24 @@ class NotifySettingScreen extends React.Component {
 
   componentDidMount() {
     const { fcmToken } = this.props;
-    console.log("componentDidMount fcmToken=>", fcmToken);
+    console.log('componentDidMount fcmToken=>', fcmToken);
     // if (!fcmToken) {
     //   Dialog.requestFcmPermissionAlert();
     // }
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    const {
-      currentState,
-      fcmToken,
-      updateUserStore,
-      fetchPutUserNotifyConfig,
-    } = this.props;
-    console.log("currentState=>", currentState);
-    console.log("fcmToken=>", fcmToken);
+    const { currentState, fcmToken, updateUserStore, fetchPutUserNotifyConfig } = this.props;
+    console.log('currentState=>', currentState);
+    console.log('fcmToken=>', fcmToken);
     if (
       currentState !== prevProps.currentState &&
-      currentState === "active"
+      currentState === 'active'
       // &&
       // Platform.OS === 'ios'
     ) {
       const hasPermission = await Fcm.hasPermission();
-      console.log("hasPermission=>", hasPermission);
+      console.log('hasPermission=>', hasPermission);
       if (hasPermission && !fcmToken && prevProps.fcmToken) {
         Dialog.requestFcmPermissionAlert();
       } else if (!hasPermission && fcmToken) {
@@ -126,7 +121,7 @@ class NotifySettingScreen extends React.Component {
         },
       });
     } else {
-      if (Platform.OS === "ios") {
+      if (Platform.OS === 'ios') {
         Permissions.openSettings();
       } else {
         updateUserStore({ fcmToken: null });
@@ -155,23 +150,23 @@ class NotifySettingScreen extends React.Component {
       <View style={styles.container}>
         <MainNavBar
           showLeftBlock={false}
-          title={t("notify_setting_nav_bar_title")}
+          title={t('notify_setting_nav_bar_title')}
           style={styles.navBar}
         />
         <AndroidBackKey backTo="profile_view" />
         <Separator />
 
         <SwitchListItem
-          title={t("notify_setting_push_notification")}
-          description={t("notify_setting_push_notification_desc")}
+          title={t('notify_setting_push_notification')}
+          description={t('notify_setting_push_notification_desc')}
           value={pushSetting}
           onValueChange={this.onPushSettingChanged}
           style={{ marginBottom: Screen.scale(20) }}
         />
 
         <SwitchListItem
-          title={t("notify_setting_switch_list_circle_notification")}
-          description={t("notify_setting_switch_list_circle_notification_desc")}
+          title={t('notify_setting_switch_list_circle_notification')}
+          description={t('notify_setting_switch_list_circle_notification_desc')}
           value={hasCircleNotify}
           onValueChange={this.onCircleSettingPress}
         />
@@ -193,6 +188,6 @@ export default connect(
         updateUserStore: UserActions.updateUserStore,
         updateLoading: AppStateActions.onLoading,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(NotifySettingScreen);

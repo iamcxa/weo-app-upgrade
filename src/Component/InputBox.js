@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
@@ -10,18 +10,18 @@ import {
   Alert,
   Platform,
   PixelRatio,
-} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import Colors from "App/Theme/Colors";
-import Screen from "../utils/screen";
-import { Bage } from "../widget/RoundButton";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Colors from 'App/Theme/Colors';
+import Screen from '../utils/screen';
+import { Bage } from '../widget/RoundButton';
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     // marginBottom: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderBottomWidth: Screen.onePixel,
     borderBottomColor: Colors.silver,
     // paddingBottom: 12
@@ -38,16 +38,14 @@ const styles = StyleSheet.create({
       },
     }),
     flex: 1,
-    borderColor: "#666",
+    borderColor: '#666',
     borderWidth: 0,
     ...Platform.select({
       ios: {
         fontSize: Screen.moderateScale(18),
       },
       android: {
-        fontSize: Screen.moderateScale(
-          Math.floor(18 / PixelRatio.getFontScale())
-        ),
+        fontSize: Screen.moderateScale(Math.floor(18 / PixelRatio.getFontScale())),
       },
     }),
     color: Colors.black,
@@ -55,17 +53,17 @@ const styles = StyleSheet.create({
   equalWidthfont: {
     ...Platform.select({
       ios: {
-        fontFamily: "Verdana",
+        fontFamily: 'Verdana',
       },
       android: {
-        fontFamily: "monospace",
+        fontFamily: 'monospace',
       },
     }),
   },
   label: {
     fontSize: Screen.moderateScale(16),
     letterSpacing: -0.22,
-    textAlign: "left",
+    textAlign: 'left',
     color: Colors.greyishBrown,
   },
   labelImage: {
@@ -76,9 +74,9 @@ const styles = StyleSheet.create({
   afterText: {
     height: Screen.moderateScale(18),
     fontSize: Screen.moderateScale(16),
-    fontWeight: "500",
+    fontWeight: '500',
     letterSpacing: -0.22,
-    textAlign: "right",
+    textAlign: 'right',
     color: Colors.greyishBrown,
   },
   errorText: {
@@ -86,11 +84,11 @@ const styles = StyleSheet.create({
     color: Colors.dustyRed,
   },
   mask: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1,
     ...Platform.select({
       ios: {
-        backgroundColor: "rgba(0,0,0,0)",
+        backgroundColor: 'rgba(0,0,0,0)',
         left: Screen.moderateScale(30),
         height: Screen.moderateScale(25),
       },
@@ -116,31 +114,15 @@ export default class InputBox extends Component {
   static propTypes = {
     label: PropTypes.string,
     labelImage: PropTypes.number,
-    labelStyle: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number,
-      PropTypes.array,
-    ]),
+    labelStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     labelColor: PropTypes.string,
-    inputStyle: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number,
-      PropTypes.array,
-    ]),
+    inputStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     onChangeText: PropTypes.func.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     placeholder: PropTypes.string,
     placeholderTextColor: PropTypes.string,
-    style: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number,
-      PropTypes.array,
-    ]),
-    errorContainerStyle: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number,
-      PropTypes.array,
-    ]),
+    style: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+    errorContainerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     keyboardType: PropTypes.string,
     autoCapitalize: PropTypes.string,
     returnKeyType: PropTypes.string,
@@ -155,11 +137,7 @@ export default class InputBox extends Component {
     onFocus: PropTypes.func,
     onChangeValid: PropTypes.bool,
     afterText: PropTypes.string,
-    afterTextStyle: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.number,
-      PropTypes.array,
-    ]),
+    afterTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     isError: PropTypes.bool,
     hideValue: PropTypes.bool,
     hideType: PropTypes.string,
@@ -179,22 +157,22 @@ export default class InputBox extends Component {
   };
 
   static defaultProps = {
-    returnKeyType: "next",
+    returnKeyType: 'next',
     autoCorrect: false,
-    autoCapitalize: "none",
+    autoCapitalize: 'none',
     onError: () => {},
     onPass: () => {},
     onEndEditing: () => {},
     onChangeValid: true,
     // isError: false,
     hideValue: false,
-    hideType: "none",
+    hideType: 'none',
     editable: true,
-    errorText: "",
+    errorText: '',
     placeholderTextColor: Colors.silver,
     onSubmitEditing: () => {},
     isMaskInput: false,
-    maskPattern: "none",
+    maskPattern: 'none',
     multiline: false,
     blurOnSubmit: true,
     rightContent: null,
@@ -208,7 +186,7 @@ export default class InputBox extends Component {
     this.state = {
       isHide: true,
       isError: false,
-      str: "",
+      str: '',
     };
   }
 
@@ -221,7 +199,7 @@ export default class InputBox extends Component {
   }
 
   test = (str) => {
-    Alert.alert(str, "I catch you");
+    Alert.alert(str, 'I catch you');
   };
 
   focus = () => {
@@ -231,19 +209,18 @@ export default class InputBox extends Component {
   };
 
   onChange = (str) => {
-    const { onChangeValid, onChangeText, maxNum, minNum, maxLength } =
-      this.props;
+    const { onChangeValid, onChangeText, maxNum, minNum, maxLength } = this.props;
     if (maxLength && str.length > maxLength) {
       return;
     }
-    if (onChangeValid) this.checkPattern(str || "");
+    if (onChangeValid) this.checkPattern(str || '');
     this.setState({ str });
     onChangeText(str);
   };
 
   onEnd = () => {
     const { value, onEndEditing, minNum, onChangeText } = this.props;
-    const result = this.checkPattern(value || "");
+    const result = this.checkPattern(value || '');
     onEndEditing();
     return result;
   };
@@ -272,14 +249,7 @@ export default class InputBox extends Component {
     const errorStyle = this.getErrorStyle();
     if (label) {
       dom = (
-        <Text
-          style={[
-            styles.label,
-            labelStyle,
-            { color: labelColor },
-            errorStyle.text,
-          ]}
-        >
+        <Text style={[styles.label, labelStyle, { color: labelColor }, errorStyle.text]}>
           {label}
         </Text>
       );
@@ -297,8 +267,7 @@ export default class InputBox extends Component {
   };
 
   checkPattern = (str) => {
-    const { pattern, onError, onPass, isRequire, isError, maxNum, minNum } =
-      this.props;
+    const { pattern, onError, onPass, isRequire, isError, maxNum, minNum } = this.props;
     if (str.length === 0) {
       if (isRequire) {
         this.setState({ isError: true });
@@ -310,7 +279,7 @@ export default class InputBox extends Component {
       return true;
     }
     if (this.props.pattern || maxNum !== null || minNum !== null) {
-      const re = new RegExp(pattern, "g");
+      const re = new RegExp(pattern, 'g');
       const invalid = !re.test(str);
       let rangeFail = false;
       if (maxNum && parseInt(str, 10) > maxNum) {
@@ -370,19 +339,18 @@ export default class InputBox extends Component {
 
     const hide = {
       none: (str) => str,
-      telephone: (str) => str.replace(/.{3}$/, "***"),
-      phone: (str) => str.replace(/(.{5}).{3}/, "$1***"),
-      identity: (str) =>
-        this.state.isHide ? str.replace(/.{4}$/, "****") : str,
-      billingAddress: (str) => str.replace(/(區|里).*$/, "$1******"),
-      address: (str) => str.replace(/.{6}$/, "******"),
+      telephone: (str) => str.replace(/.{3}$/, '***'),
+      phone: (str) => str.replace(/(.{5}).{3}/, '$1***'),
+      identity: (str) => (this.state.isHide ? str.replace(/.{4}$/, '****') : str),
+      billingAddress: (str) => str.replace(/(區|里).*$/, '$1******'),
+      address: (str) => str.replace(/.{6}$/, '******'),
       name: (str) => {
         if (str.length === 2) {
-          return str.replace(/.$/, "*");
+          return str.replace(/.$/, '*');
         } else if (str.length === 3) {
-          return str.replace(/(.)./, "$1*");
+          return str.replace(/(.)./, '$1*');
         }
-        return str.replace(/(^.)(.*)(.$)/, "$1**$3");
+        return str.replace(/(^.)(.*)(.$)/, '$1**$3');
       },
     };
     // isMaskInput ? { color: 'rgba(0,0,0,0)' }: {}
@@ -390,22 +358,15 @@ export default class InputBox extends Component {
       <View
         style={[
           {
-            flexDirection: "column",
+            flexDirection: 'column',
             marginBottom: 10,
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
           },
           style,
         ]}
       >
-        <View
-          style={[
-            styles.inputContainer,
-            style,
-            errorStyle.container,
-            errorContainerStyle,
-          ]}
-        >
+        <View style={[styles.inputContainer, style, errorStyle.container, errorContainerStyle]}>
           {this.before()}
           {isMaskInput ? (
             <TouchableOpacity
@@ -415,13 +376,10 @@ export default class InputBox extends Component {
                   this.input.focus();
                 }
               }}
-              style={[
-                styles.mask,
-                label || labelImage ? {} : styles.noLabelMask,
-              ]}
+              style={[styles.mask, label || labelImage ? {} : styles.noLabelMask]}
             >
               <Text
-                allowFontScaling={Platform.OS === "android"}
+                allowFontScaling={Platform.OS === 'android'}
                 style={[
                   styles.input,
                   isMaskInput ? styles.equalWidthfont : {},
@@ -439,7 +397,7 @@ export default class InputBox extends Component {
               styles.input,
               inputStyle,
               errorStyle.text,
-              isMaskInput ? { color: "rgba(0,0,0,0)" } : {},
+              isMaskInput ? { color: 'rgba(0,0,0,0)' } : {},
               isMaskInput ? styles.equalWidthfont : {},
             ]}
             onChangeText={this.onChange}
@@ -447,15 +405,11 @@ export default class InputBox extends Component {
             onEndEditing={this.onEnd}
             value={value}
             placeholder={placeholder}
-            placeholderTextColor={
-              errorStyle.placeholderTextColor || placeholderTextColor
-            }
+            placeholderTextColor={errorStyle.placeholderTextColor || placeholderTextColor}
             keyboardType={keyboardType}
             autoCapitalize={autoCapitalize}
             returnKeyType={returnKeyType}
-            secureTextEntry={
-              !isMaskInput && secureTextEntry && this.state.isHide
-            }
+            secureTextEntry={!isMaskInput && secureTextEntry && this.state.isHide}
             autoCorrect={autoCorrect}
             underlineColorAndroid="transparent"
             editable={editable}
@@ -470,14 +424,12 @@ export default class InputBox extends Component {
             <Text
               style={[
                 style.afterText,
-                this.state.isError || this.props.isError
-                  ? { color: Colors.dustyRed }
-                  : null,
+                this.state.isError || this.props.isError ? { color: Colors.dustyRed } : null,
                 { fontSize: Screen.moderateScale(16) },
                 afterTextStyle,
               ]}
             >
-              {afterText}{" "}
+              {afterText}{' '}
             </Text>
           ) : null}
           {secureTextEntry && showSecureBtn ? (
@@ -486,7 +438,7 @@ export default class InputBox extends Component {
                 paddingLeft: Screen.moderateScale(9),
                 paddingRight: Screen.moderateScale(9),
               }}
-              text={`${this.state.isHide ? "顯示" : "隱藏"}`}
+              text={`${this.state.isHide ? '顯示' : '隱藏'}`}
               color={Colors.coolBlue}
               onPress={() => this.setState({ isHide: !this.state.isHide })}
             />

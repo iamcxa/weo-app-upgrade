@@ -1,23 +1,15 @@
-import _ from "lodash";
-import React, { Component } from "react";
-import {
-  RefreshControl,
-  Animated,
-  Platform,
-  ScrollView,
-  View,
-} from "react-native";
-import PropTypes from "prop-types";
-import Screen from "App/utils/screen";
+import _ from 'lodash';
+import React, { Component } from 'react';
+import { RefreshControl, Animated, Platform, ScrollView, View } from 'react-native';
+import PropTypes from 'prop-types';
+import Screen from 'App/utils/screen';
 
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 
 const isCloseToBottom = (
   { layoutMeasurement, contentOffset, contentSize },
-  onEndReachedThreshold
-) =>
-  layoutMeasurement.height + contentOffset.y >=
-  contentSize.height * (1 - onEndReachedThreshold);
+  onEndReachedThreshold,
+) => layoutMeasurement.height + contentOffset.y >= contentSize.height * (1 - onEndReachedThreshold);
 
 export default class Collapsible extends Component {
   static propTypes = {
@@ -42,7 +34,7 @@ export default class Collapsible extends Component {
   position = Animated.add(this.scroll, this.offset).interpolate({
     inputRange: [-1 * this.max, 0, this.max],
     outputRange: [-1 * (this.min - this.max), 0, this.min - this.max],
-    extrapolate: "clamp",
+    extrapolate: 'clamp',
   });
 
   opacity = this.scroll.interpolate({
@@ -56,15 +48,10 @@ export default class Collapsible extends Component {
   });
 
   render() {
-    const {
-      backgroundColor,
-      contentWrapperStyle,
-      renderHeader,
-      fixedHeader,
-      ...props
-    } = this.props;
+    const { backgroundColor, contentWrapperStyle, renderHeader, fixedHeader, ...props } =
+      this.props;
     return (
-      <View style={{ flex: 1, overflow: "hidden" }}>
+      <View style={{ flex: 1, overflow: 'hidden' }}>
         {fixedHeader}
         <ScrollView
           ref={this.props.scrollViewRef}
@@ -74,12 +61,10 @@ export default class Collapsible extends Component {
           //   { nativeEvent: { contentOffset: { y: this.scroll } } }
           // ])}
           onScroll={({ nativeEvent }) => {
-            if (
-              isCloseToBottom(nativeEvent, this.props.onEndReachedThreshold)
-            ) {
+            if (isCloseToBottom(nativeEvent, this.props.onEndReachedThreshold)) {
               this.props.onEndReached();
             }
-            if (typeof this.props.onScroll === "function") {
+            if (typeof this.props.onScroll === 'function') {
               this.props.onScroll(nativeEvent);
             }
           }}
@@ -95,7 +80,7 @@ export default class Collapsible extends Component {
               height: this.max,
               left: 0,
               paddingTop: this.min,
-              position: "absolute",
+              position: 'absolute',
               right: 0,
               top: 0,
               // transform: [{ translateY: this.position }],
@@ -106,16 +91,14 @@ export default class Collapsible extends Component {
               style={{
                 flex: 1,
                 opacity: this.opacity,
-                justifyContent: "center",
+                justifyContent: 'center',
               }}
             >
               {renderHeader}
             </Animated.View>
           </Animated.View>
 
-          <View style={[{ flex: 1 }, contentWrapperStyle]}>
-            {this.props.content}
-          </View>
+          <View style={[{ flex: 1 }, contentWrapperStyle]}>{this.props.content}</View>
         </ScrollView>
       </View>
     );

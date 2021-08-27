@@ -1,30 +1,24 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { Actions } from "react-native-router-flux";
-import Colors from "App/Theme/Colors";
-import Images from "App/Theme/Images";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Colors from 'App/Theme/Colors';
+import Images from 'App/Theme/Images';
 import {
   ThreeLineListItem,
   RowStatusListItm,
   RightIconListItm,
   TowRowListItm,
-} from "../../widget/ListItem";
-import CheckBox from "../../widget/CheckBox";
-import Screen from "../../utils/screen";
+} from '../../widget/ListItem';
+import CheckBox from '../../widget/CheckBox';
+import Screen from '../../utils/screen';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     // padding: 30
   },
 });
@@ -35,7 +29,7 @@ export default class Gec3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: "",
+      password: '',
       checked: false,
     };
   }
@@ -95,11 +89,7 @@ export default class Gec3 extends Component {
           line2="Still have to turn in 3 papers Still have to turn in 3 papers Still have to turn in 3 papers Still have to turn in 3 papers"
           right="2017/9/28"
         />
-        <TowRowListItm
-          line1="Military"
-          line2="Still have to turn in 3 papers"
-          right="2017/9/28"
-        />
+        <TowRowListItm line1="Military" line2="Still have to turn in 3 papers" right="2017/9/28" />
       </ScrollView>
     );
   }

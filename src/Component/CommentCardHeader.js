@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
-import Colors from "App/Theme/Colors";
-import Screen from "../utils/screen";
+import Colors from 'App/Theme/Colors';
+import Screen from '../utils/screen';
 
 const topicListHeaderStyles = StyleSheet.create({
   avatar: {
@@ -34,14 +34,14 @@ const listItemStyles = StyleSheet.create({
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: "row",
+    flexDirection: 'row',
     height: Screen.moderateScale(61),
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   avatarContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     width: Screen.moderateScale(48),
     height: Screen.moderateScale(48),
   },
@@ -85,10 +85,10 @@ export default class CommentCardHeader extends Component {
   static defaultProps = {
     isPeekMode: false,
     children: undefined,
-    avatar: "",
-    authorName: "",
-    createdAt: "",
-    type: "",
+    avatar: '',
+    authorName: '',
+    createdAt: '',
+    type: '',
     listHeader: false,
   };
 
@@ -96,40 +96,27 @@ export default class CommentCardHeader extends Component {
 
   getSpecificStyle = (key) => [
     styles[key],
-    this.props.type === "TOPIC" && this.props.listHeader
+    this.props.type === 'TOPIC' && this.props.listHeader
       ? topicListHeaderStyles[key]
       : listItemStyles[key],
-    this.props.type === "POST" &&
-      this.props.listHeader &&
-      postListHeaderStyles[key],
-    this.props.type === "REPLY" &&
-      !this.props.listHeader &&
-      replyListItemHeaderStyles[key],
+    this.props.type === 'POST' && this.props.listHeader && postListHeaderStyles[key],
+    this.props.type === 'REPLY' && !this.props.listHeader && replyListItemHeaderStyles[key],
   ];
 
   render() {
     const { children, isPeekMode, avatar, authorName, createdAt } = this.props;
     return (
       <View style={styles.header}>
-        <View style={[styles.avatarContainer, this.getSpecificStyle("avatar")]}>
-          {!!avatar && (
-            <Image
-              style={this.getSpecificStyle("avatar")}
-              source={{ uri: avatar }}
-            />
-          )}
+        <View style={[styles.avatarContainer, this.getSpecificStyle('avatar')]}>
+          {!!avatar && <Image style={this.getSpecificStyle('avatar')} source={{ uri: avatar }} />}
         </View>
         <View style={styles.author}>
-          <Text
-            style={[styles.authorName, isPeekMode && styles.peekModeAuthorName]}
-          >
+          <Text style={[styles.authorName, isPeekMode && styles.peekModeAuthorName]}>
             {authorName}
           </Text>
           <Text style={styles.timeLabel}>{createdAt}</Text>
         </View>
-        <View style={styles.voteBlock}>
-          {typeof children === "object" && children}
-        </View>
+        <View style={styles.voteBlock}>{typeof children === 'object' && children}</View>
       </View>
     );
   }

@@ -1,5 +1,5 @@
-import { StyleSheet, Screen } from "App/Helpers";
-import { Fonts, Styles, Colors, Metrics } from "App/Theme";
+import { StyleSheet, Screen } from 'App/Helpers';
+import { Fonts, Styles, Colors, Metrics } from 'App/Theme';
 
 export default StyleSheet.create({
   content: {
@@ -11,17 +11,17 @@ export default StyleSheet.create({
     borderRadius: Screen.moderateScale(10),
     backgroundColor: Colors.steel10,
     // justifyContent: 'center',
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: Screen.moderateScale(6),
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   searchInput: {
     fontSize: Screen.moderateScale(18),
-    fontWeight: "500",
+    fontWeight: '500',
     color: Colors.black,
     // marginTop: Screen.moderateScale(15),
     // height: Screen.moderateScale(100),
-    textAlignVertical: "top",
+    textAlignVertical: 'top',
     flex: 1,
   },
   searchIcon: {
@@ -38,19 +38,19 @@ export default StyleSheet.create({
   },
   hotSearchKeyword: {
     fontSize: Screen.moderateScale(16),
-    fontWeight: "500",
-    fontStyle: "normal",
+    fontWeight: '500',
+    fontStyle: 'normal',
     color: Colors.greyishBrown,
   },
   listEmptyContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
   listEmptyMessage: {
-    alignSelf: "center",
-    textAlign: "center",
+    alignSelf: 'center',
+    textAlign: 'center',
     lineHeight: 30,
   },
 });

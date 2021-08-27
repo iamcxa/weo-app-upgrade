@@ -1,9 +1,9 @@
-import _ from "lodash";
-import PropTypes from "prop-types";
-import React from "react";
-import { bindActionCreators } from "redux";
-import { Actions } from "react-native-router-flux";
-import { connect } from "react-redux";
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import {
   KeyboardAvoidingView,
   RefreshControl,
@@ -17,11 +17,11 @@ import {
   AppState,
   TouchableOpacity,
   Text,
-} from "react-native";
-import * as Animatable from "react-native-animatable";
+} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
-import { translate as t } from "App/Helpers/I18n";
-import { Date as d, Screen, ListenableEvent, ifIphoneX } from "App/Helpers";
+import { translate as t } from 'App/Helpers/I18n';
+import { Date as d, Screen, ListenableEvent, ifIphoneX } from 'App/Helpers';
 import {
   MainNavBar,
   CommentCard,
@@ -29,9 +29,9 @@ import {
   PostListFooter,
   ReplyBar,
   ReplyDialog,
-} from "App/Components";
-import { Colors, Fonts, Metrics } from "App/Theme";
-import Config from "App/Config";
+} from 'App/Components';
+import { Colors, Fonts, Metrics } from 'App/Theme';
+import Config from 'App/Config';
 import {
   AppStore,
   PostActions,
@@ -39,13 +39,13 @@ import {
   AppStateActions,
   AppAlertActions,
   ReportActions,
-} from "App/Stores";
+} from 'App/Stores';
 
-import { getStateKeyByBelongsTo } from "App/Stores/List/Reducers";
-import { onUpdateList } from "App/Stores/List/Actions/list";
-import { getRoutePrefix } from "../utils/route";
-import BottomPopup from "../widget/BottomPopup";
-import MoreMenu from "../widget/MoreMenu";
+import { getStateKeyByBelongsTo } from 'App/Stores/List/Reducers';
+import { onUpdateList } from 'App/Stores/List/Actions/list';
+import { getRoutePrefix } from '../utils/route';
+import BottomPopup from '../widget/BottomPopup';
+import MoreMenu from '../widget/MoreMenu';
 
 const { ON_END_REACHED_THROTTLE, CIRCLE_TYPE } = Config;
 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.paleGrey,
   },
   replyBar: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     backgroundColor: Colors.pureWhite,
   },
@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
     borderColor: Colors.darkGray,
   },
   networkBox: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     backgroundColor: Colors.black,
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     zIndex: 899999,
     ...Platform.select({
       ios: ifIphoneX(
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         },
         {
           height: Screen.scale(64),
-        }
+        },
       ),
       android: {
         height: Screen.scale(64),
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
   },
   retryBtn: {
     width: Screen.scale(82),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   retryText: {
     color: Colors.white,
@@ -167,7 +167,7 @@ class PostList extends React.Component {
     updateTopicByKey: PropTypes.func.isRequired,
     circleName: PropTypes.string,
     updateLoading: PropTypes.func.isRequired,
-    belongsTo: PropTypes.oneOf(["HERE_YOU_ARE", "THERE_YOU_ARE", "BROWSE"]),
+    belongsTo: PropTypes.oneOf(['HERE_YOU_ARE', 'THERE_YOU_ARE', 'BROWSE']),
     highlightHeader: PropTypes.bool,
     isPeekMode: PropTypes.bool,
     fetchGetPost: PropTypes.func.isRequired,
@@ -186,10 +186,10 @@ class PostList extends React.Component {
     highlightHeader: false,
     topic: {},
     storeTopic: {},
-    content: "",
-    title: "",
-    circleName: "",
-    belongsTo: "THERE_YOU_ARE",
+    content: '',
+    title: '',
+    circleName: '',
+    belongsTo: 'THERE_YOU_ARE',
     isPeekMode: false,
     userCircle: {},
     homeCircle: {},
@@ -210,8 +210,8 @@ class PostList extends React.Component {
     popupPostVisible: false,
     popupPostId: null,
     replyToId: this.props.topicId,
-    replyType: "POST",
-    replyToAuthorName: "",
+    replyType: 'POST',
+    replyToAuthorName: '',
     isScrollAtTop: true,
     backToScreen: undefined,
     isShowAlert: null,
@@ -220,18 +220,12 @@ class PostList extends React.Component {
   componentDidMount() {
     this.props.resetPost(this.props.belongsTo);
     this.onRefresh();
-    this.keyboardShowSub = Keyboard.addListener(
-      ListenableEvent.KEYBOARD_SHOW,
-      this.keyboardShow
-    );
-    this.keyboardHideSub = Keyboard.addListener(
-      ListenableEvent.KEYBOARD_HIDE,
-      this.keyboardHide
-    );
-    if (Platform.OS === "android") {
+    this.keyboardShowSub = Keyboard.addListener(ListenableEvent.KEYBOARD_SHOW, this.keyboardShow);
+    this.keyboardHideSub = Keyboard.addListener(ListenableEvent.KEYBOARD_HIDE, this.keyboardHide);
+    if (Platform.OS === 'android') {
       this.backHandler = BackHandler.addEventListener(
         ListenableEvent.HARDWARE_BACK_PRESS,
-        () => Actions.pop() && true
+        () => Actions.pop() && true,
       );
     }
     this.routePrefix = getRoutePrefix();
@@ -265,11 +259,7 @@ class PostList extends React.Component {
       isComponentMounted = false;
     }
     setTimeout(() => {
-      if (
-        isComponentMounted &&
-        !nextState.isShowAlert &&
-        !nextProps.isInternetReachable
-      ) {
+      if (isComponentMounted && !nextState.isShowAlert && !nextProps.isInternetReachable) {
         this.setState({
           isShowAlert: true,
         });
@@ -289,11 +279,11 @@ class PostList extends React.Component {
     if (
       isComponentMounted &&
       prevRoute !== routeName &&
-      prevRoute === "voiceView" &&
+      prevRoute === 'voiceView' &&
       sceneKey.includes(routeName)
     ) {
       this.setState({
-        backToScreen: "voiceView",
+        backToScreen: 'voiceView',
       });
     }
   }
@@ -302,7 +292,7 @@ class PostList extends React.Component {
     this.keyboardShowSub && this.keyboardShowSub.remove();
     this.keyboardHideSub && this.keyboardHideSub.remove();
 
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       this.backHandler.remove();
     }
 
@@ -313,19 +303,19 @@ class PostList extends React.Component {
     const { belongsTo } = this.props;
     const { backToScreen } = this.state;
     switch (backToScreen) {
-      case "voiceView":
+      case 'voiceView':
         requestAnimationFrame(() => {
           if (belongsTo === CIRCLE_TYPE.THERE_YOU_ARE) {
             Actions.thereYouAre({
               hideTabBar: false,
               statusBarColor: Colors.paleGrey,
-              type: "jump",
+              type: 'jump',
             });
           } else {
             Actions.hereYouAre({
               hideTabBar: false,
               statusBarColor: Colors.paleGrey,
-              type: "jump",
+              type: 'jump',
             });
           }
         });
@@ -355,7 +345,7 @@ class PostList extends React.Component {
       },
       () => {
         this.getPostList();
-      }
+      },
     );
   };
 
@@ -376,7 +366,7 @@ class PostList extends React.Component {
       // const data = {
       //   [res.data.id]: res.data,
       // };
-      if (type === "REPLY") {
+      if (type === 'REPLY') {
         updatePostByKey({
           belongsTo,
           key: id,
@@ -386,15 +376,12 @@ class PostList extends React.Component {
       this.setState({
         newPostId: res.data.id,
         replyToId: topicId,
-        replyType: "POST",
-        replyToAuthorName: "",
+        replyType: 'POST',
+        replyToAuthorName: '',
       });
 
       const targetList = getStateKeyByBelongsTo(belongsTo);
-      const listSortType = _.get(
-        AppStore.getState(),
-        `${targetList}.topics.paging.by`
-      );
+      const listSortType = _.get(AppStore.getState(), `${targetList}.topics.paging.by`);
 
       createPost({ target: belongsTo, data: res.data });
       updateTopicByKey({
@@ -407,11 +394,8 @@ class PostList extends React.Component {
         sortBy: listSortType,
       });
       // 前端排序
-      if (listSortType === "hottest") {
-        const allTopics = _.get(
-          AppStore.getState(),
-          `${targetList}.topics.byId`
-        );
+      if (listSortType === 'hottest') {
+        const allTopics = _.get(AppStore.getState(), `${targetList}.topics.byId`);
         // console.log('allTopics=>', allTopics);
         const sortedTopics = Object.values(allTopics).sort(function (a, b) {
           return b.count - a.count;
@@ -419,7 +403,7 @@ class PostList extends React.Component {
         // console.log('sortedTopics=>', sortedTopics);
         replaceTopics({
           belongsTo,
-          data: _.keyBy(sortedTopics, "id"),
+          data: _.keyBy(sortedTopics, 'id'),
         });
       }
       this.scrollToLast();
@@ -438,7 +422,7 @@ class PostList extends React.Component {
   onEndReached = _.throttle(async () => {
     // if (!this.onEndReachedCalledDuringMomentum && !this.state.isEnd) {
     const { curPage, isEnd } = this.state;
-    console.log("onEndReached ============?");
+    console.log('onEndReached ============?');
     if (curPage > 0) {
       await this.getPostList();
     }
@@ -468,7 +452,7 @@ class PostList extends React.Component {
         const time = d.humanize(data.createdAt, currentTimeZone);
         return {
           ...data,
-          type: "POST",
+          type: 'POST',
           id: data.id,
           title: data.title,
           createdAt: time,
@@ -483,7 +467,7 @@ class PostList extends React.Component {
             Actions[`${this.routePrefix}_replyList`]({
               postId: data.id,
               content: data.content,
-              title: "REPLY",
+              title: 'REPLY',
               createdAt: time,
               avatar: data.memberAvatar,
               authorName: data.memberName,
@@ -495,7 +479,7 @@ class PostList extends React.Component {
           onPress: () => {},
           onMoreBtnPress: () => {
             this.focusedMoreItem = {
-              type: "POST",
+              type: 'POST',
               id: data.id,
             };
             this.BottomPopup.open();
@@ -507,7 +491,7 @@ class PostList extends React.Component {
   keyExtractor = (data) => data.id;
 
   keyboardShow = (event) => {
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       Animated.timing(this.keyboardHeight, {
         toValue: event.endCoordinates.height,
         duration: 150,
@@ -516,7 +500,7 @@ class PostList extends React.Component {
   };
 
   keyboardHide = () => {
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       Animated.timing(this.keyboardHeight, {
         toValue: 0,
         duration: 100,
@@ -598,7 +582,7 @@ class PostList extends React.Component {
         onReplyPress={() => {
           this.setState({
             replyToId: topicId,
-            replyType: "POST",
+            replyType: 'POST',
             replyToAuthorName: `${topic.memberName}`,
           });
           this.replyBar.focus();
@@ -607,7 +591,7 @@ class PostList extends React.Component {
         topic={this.props.topic}
         onMoreBtnPress={() => {
           this.focusedMoreItem = {
-            type: "TOPIC",
+            type: 'TOPIC',
             id: this.props.topicId,
           };
           this.BottomPopup.open();
@@ -636,7 +620,7 @@ class PostList extends React.Component {
         onReplyPress={() => {
           this.setState({
             replyToId: item.id,
-            replyType: "REPLY",
+            replyType: 'REPLY',
             replyToAuthorName: `${item.memberName}`,
           });
           this.replyBar.focus();
@@ -659,22 +643,8 @@ class PostList extends React.Component {
   };
 
   render() {
-    const {
-      title,
-      topic,
-      posts,
-      isLoading,
-      belongsTo,
-      isPeekMode,
-      currentTimeZone,
-    } = this.props;
-    const {
-      replyToId,
-      replyType,
-      replyToAuthorName,
-      isScrollAtTop,
-      isShowAlert,
-    } = this.state;
+    const { title, topic, posts, isLoading, belongsTo, isPeekMode, currentTimeZone } = this.props;
+    const { replyToId, replyType, replyToAuthorName, isScrollAtTop, isShowAlert } = this.state;
     // console.log('posts=>', posts);
     // const ITEM_HEIGHT = 200;
     return (
@@ -686,15 +656,9 @@ class PostList extends React.Component {
         ]}
       >
         {isPeekMode ? (
-          <StatusBar
-            backgroundColor={Colors.blackFour}
-            barStyle="light-content"
-          />
+          <StatusBar backgroundColor={Colors.blackFour} barStyle="light-content" />
         ) : (
-          <StatusBar
-            backgroundColor={Colors.paleGrey}
-            barStyle="dark-content"
-          />
+          <StatusBar backgroundColor={Colors.paleGrey} barStyle="dark-content" />
         )}
         <MainNavBar
           leftOnPress={this.onNavLeftOnPress}
@@ -737,9 +701,7 @@ class PostList extends React.Component {
           ListHeaderComponent={this.renderListHeader}
           renderItem={this.renderItem}
           contentContainerStyle={styles.listContent}
-          refreshControl={
-            <RefreshControl refreshing={isLoading} onRefresh={this.onRefresh} />
-          }
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={this.onRefresh} />}
           // onEndReached={this.onEndReached}
           onEndReachedThreshold={0.3}
           ListFooterComponent={PostListFooter}
@@ -755,26 +717,21 @@ class PostList extends React.Component {
 
         {isShowAlert !== null && (
           <Animatable.View
-            animation={isShowAlert ? "fadeInUp" : "fadeOutDown"}
+            animation={isShowAlert ? 'fadeInUp' : 'fadeOutDown'}
             duration={isShowAlert === null ? 0 : 1000}
             style={styles.networkBox}
             useNativeDriver
           >
             <Text style={styles.message} textTransform="textTransform">{`${t(
-              "_fail_to_load_network_error"
+              '_fail_to_load_network_error',
             )}`}</Text>
-            <TouchableOpacity
-              style={styles.retryBtn}
-              onPress={this.onPressRetry}
-            >
-              <Text style={styles.retryText}>{t("_retry")}</Text>
+            <TouchableOpacity style={styles.retryBtn} onPress={this.onPressRetry}>
+              <Text style={styles.retryText}>{t('_retry')}</Text>
             </TouchableOpacity>
           </Animatable.View>
         )}
         {!isPeekMode && (
-          <Animated.View
-            style={[styles.replyBar, { bottom: this.keyboardHeight }]}
-          >
+          <Animated.View style={[styles.replyBar, { bottom: this.keyboardHeight }]}>
             <ReplyBar
               ref={(ref) => {
                 this.replyBar = ref;
@@ -786,8 +743,8 @@ class PostList extends React.Component {
               onRemoveReplyToAuthorName={() =>
                 this.setState({
                   replyToId: null,
-                  replyType: "POST",
-                  replyToAuthorName: "",
+                  replyType: 'POST',
+                  replyToAuthorName: '',
                 })
               }
               onReplySuccess={this.onReplySuccess}
@@ -798,11 +755,8 @@ class PostList extends React.Component {
             />
           </Animated.View>
         )}
-        {!isScrollAtTop && Platform.OS === "android" && (
-          <BackToTopButton
-            onPress={this.scrollToTop}
-            style={styles.backToTop}
-          />
+        {!isScrollAtTop && Platform.OS === 'android' && (
+          <BackToTopButton onPress={this.scrollToTop} style={styles.backToTop} />
         )}
         <BottomPopup
           // animateDuration={ANIMATE_DURATION}
@@ -814,15 +768,15 @@ class PostList extends React.Component {
           <MoreMenu
             options={[
               {
-                label: t("__more_menu_report"),
+                label: t('__more_menu_report'),
                 onPress: this.onReportSubmit,
               },
               {
-                label: t("__more_menu_hide"),
+                label: t('__more_menu_hide'),
                 onPress: this.onHidePost,
               },
               {
-                label: t("__more_menu_cancel"),
+                label: t('__more_menu_cancel'),
                 onPress: () => {
                   this.clearFocusedMoreItem();
                   this.BottomPopup.close();
@@ -847,13 +801,12 @@ export default connect(
       postsById: state[targetList].posts.byId,
       routeName: state.appRoute.routeName,
       prevRoute: state.appRoute.prevRoute,
-      circleName: state.circle.userCircle ? state.circle.userCircle.name : "",
+      circleName: state.circle.userCircle ? state.circle.userCircle.name : '',
       userCircle: state.circle.userCircle,
       homeCircle: state.circle.homeCircle,
       currentTimeZone: state.appState.currentTimeZone,
       isLoading: state.appState.isLoading,
-      isInternetReachable:
-        state.appState.currentNetworkInfo.isInternetReachable,
+      isInternetReachable: state.appState.currentNetworkInfo.isInternetReachable,
     };
   },
   (dispatch) =>
@@ -873,6 +826,6 @@ export default connect(
         updatePostByKey: PostActions.updatePostByKey,
         showAlert: AppAlertActions.showAlert,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(PostList);

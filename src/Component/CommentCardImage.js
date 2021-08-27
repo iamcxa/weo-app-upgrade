@@ -1,26 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { ActivityIndicator, View } from "react-native";
-import Image from "react-native-image-cache-wrapper";
-import { Screen, StyleSheet } from "App/Helpers";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ActivityIndicator, View } from 'react-native';
+import Image from 'react-native-image-cache-wrapper';
+import { Screen, StyleSheet } from 'App/Helpers';
 
 const styles = StyleSheet.create({
   imageContainer: {
     marginBottom: Screen.verticalScale(16),
     flex: 1,
-    width: "100%",
-    height: "auto",
+    width: '100%',
+    height: 'auto',
     maxHeight: 400,
     // height: 400,
     minHeight: 200,
   },
   image: {
     // flex: 1,
-    width: "100%",
+    width: '100%',
     maxHeight: 400,
     // height: 400,
     minHeight: 200,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
 });
 

@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Actions } from "react-native-router-flux";
-import ScrollableTabView from "react-native-scrollable-tab-view";
-import DefaultTabBar from "App/Components/ScrollableDefaultTabBar";
-import Colors from "App/Theme/Colors";
-import Gec from "./Gec";
-import Gec2 from "./Gec2";
-import GecList from "./GecList";
-import { Title } from "../../widget/Label";
-import { PrimaryBtn, LineBtn } from "../../widget/Button";
-import { PrimaryInput } from "../../widget/InputBox";
-import CheckBox from "../../widget/CheckBox";
-import Screen from "../../utils/screen";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+import DefaultTabBar from 'App/Components/ScrollableDefaultTabBar';
+import Colors from 'App/Theme/Colors';
+import Gec from './Gec';
+import Gec2 from './Gec2';
+import GecList from './GecList';
+import { Title } from '../../widget/Label';
+import { PrimaryBtn, LineBtn } from '../../widget/Button';
+import { PrimaryInput } from '../../widget/InputBox';
+import CheckBox from '../../widget/CheckBox';
+import Screen from '../../utils/screen';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +30,7 @@ export default class Gec3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: "",
+      password: '',
       checked: false,
     };
   }
@@ -64,9 +64,9 @@ export default class Gec3 extends Component {
             );
           }}
         >
-          <GecList tabLabel={JSON.stringify({ title: "未處理", notify: 0 })} />
-          <Gec tabLabel={JSON.stringify({ title: "處理中", notify: 0 })} />
-          <Gec2 tabLabel={JSON.stringify({ title: "已完成", notify: 0 })} />
+          <GecList tabLabel={JSON.stringify({ title: '未處理', notify: 0 })} />
+          <Gec tabLabel={JSON.stringify({ title: '處理中', notify: 0 })} />
+          <Gec2 tabLabel={JSON.stringify({ title: '已完成', notify: 0 })} />
         </ScrollableTabView>
       </View>
     );

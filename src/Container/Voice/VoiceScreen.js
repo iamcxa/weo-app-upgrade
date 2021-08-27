@@ -1,8 +1,8 @@
 // @flow
 
-import React from "react";
-import PropTypes from "prop-types";
-import PickerModal from "react-native-picker-modal-view";
+import React from 'react';
+import PropTypes from 'prop-types';
+import PickerModal from 'react-native-picker-modal-view';
 import {
   View,
   Text,
@@ -13,16 +13,16 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ImageBackground,
-} from "react-native";
-import { Actions } from "react-native-router-flux";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { isEqual } from "lodash";
+} from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { isEqual } from 'lodash';
 
-import { Colors, Images } from "App/Theme";
-import { translate as t } from "App/Helpers/I18n";
-import { AppStateActions, AppPermissionSelectors } from "App/Stores";
-import { Date as d, Dialog, Permission, Screen, ifIphoneX } from "App/Helpers";
+import { Colors, Images } from 'App/Theme';
+import { translate as t } from 'App/Helpers/I18n';
+import { AppStateActions, AppPermissionSelectors } from 'App/Stores';
+import { Date as d, Dialog, Permission, Screen, ifIphoneX } from 'App/Helpers';
 
 import {
   MainNavBar,
@@ -30,16 +30,16 @@ import {
   IconButton,
   DismissKeyboardView,
   AndroidBackKey,
-} from "App/Components";
+} from 'App/Components';
 
-import soundAnimation from "App/Assets/Images/lottie/animation-soundwave.json";
-import voiceAnimation from "App/Assets/Images/lottie/animation-voice.json";
+import soundAnimation from 'App/Assets/Images/lottie/animation-soundwave.json';
+import voiceAnimation from 'App/Assets/Images/lottie/animation-voice.json';
 
-import VoiceControl from "./VoiceControl";
-import VoiceReplyBar from "./VoiceReplyBar";
-import VoiceDebugView from "./VoiceDebugView";
+import VoiceControl from './VoiceControl';
+import VoiceReplyBar from './VoiceReplyBar';
+import VoiceDebugView from './VoiceDebugView';
 
-import styles from "./VoiceScreenStyle";
+import styles from './VoiceScreenStyle';
 
 const SUPPORT_LANGUAGES = () =>
   [
@@ -50,20 +50,20 @@ const SUPPORT_LANGUAGES = () =>
       https://stackoverflow.com/questions/7973023/what-is-the-list-of-supported-languages-locales-on-android
   */
     {
-      label: t("__speech_auto"),
+      label: t('__speech_auto'),
       value: undefined,
     },
     {
-      label: t("__speech_en_us"),
-      value: "en_US",
+      label: t('__speech_en_us'),
+      value: 'en_US',
     },
     {
-      label: t("__speech_zh_hant_hk"),
-      value: Platform.OS === "ios" ? "zh_Hant_HK" : "zh_HK",
+      label: t('__speech_zh_hant_hk'),
+      value: Platform.OS === 'ios' ? 'zh_Hant_HK' : 'zh_HK',
     },
     {
-      label: t("__speech_zh_hant_tw"),
-      value: Platform.OS === "ios" ? "zh_Hant_TW" : "zh_TW",
+      label: t('__speech_zh_hant_tw'),
+      value: Platform.OS === 'ios' ? 'zh_Hant_TW' : 'zh_TW',
     },
   ].map((e) => ({
     Id: e.value,
@@ -105,8 +105,8 @@ class VoiceScreen extends React.Component {
       isWaitVoiceControlLoad: false,
       animation: voiceAnimation,
       locale: SUPPORT_LANGUAGES()[0],
-      voiceInputText: "",
-      voiceInputTextTemp: "",
+      voiceInputText: '',
+      voiceInputTextTemp: '',
       isButtonPressed: false,
     };
   }
@@ -181,13 +181,13 @@ class VoiceScreen extends React.Component {
                 isButtonPressed: false,
                 animation: voiceAnimation,
                 voiceInputText: state.voiceInputTextTemp,
-                voiceInputTextTemp: "",
+                voiceInputTextTemp: '',
               }));
             });
           }
         },
         // 雙平台需要的等待時間不同
-        Platform.OS === "ios" ? 1000 : 3000
+        Platform.OS === 'ios' ? 1000 : 3000,
       );
     }
   };
@@ -201,24 +201,24 @@ class VoiceScreen extends React.Component {
   };
 
   onSpeechEnd = (text) => {
-    console.log("onSpeechEnd text=>", text);
+    console.log('onSpeechEnd text=>', text);
     this.setState({
       animation: voiceAnimation,
       // voiceInputText: typeof text === 'string' ? text : text[0],
-      voiceInputText: "",
-      voiceInputTextTemp: "",
+      voiceInputText: '',
+      voiceInputTextTemp: '',
     });
   };
 
   onSpeechResults = (text) => {
     // Android / ios 語音辨識結果會在不同週期出現
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       this.setState({
-        voiceInputTextTemp: typeof text === "string" ? text : text[0],
+        voiceInputTextTemp: typeof text === 'string' ? text : text[0],
       });
     } else {
       this.setState({
-        voiceInputText: typeof text === "string" ? text : text[0],
+        voiceInputText: typeof text === 'string' ? text : text[0],
       });
     }
   };
@@ -259,9 +259,9 @@ class VoiceScreen extends React.Component {
     <ImageBackground
       source={Images.voice.background}
       style={{
-        position: "absolute",
-        width: "100%",
-        height: "100%",
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
         zIndex: -100,
       }}
     />
@@ -274,7 +274,7 @@ class VoiceScreen extends React.Component {
         Actions.hereYouAre_topicList({
           hideTabBar: false,
           statusBarColor: Colors.paleGrey,
-          type: "jump",
+          type: 'jump',
         });
       }}
       leftComponent={null}
@@ -309,12 +309,12 @@ class VoiceScreen extends React.Component {
     >
       <Text
         style={{
-          fontWeight: selected.Name === item.Name ? "bold" : "100",
+          fontWeight: selected.Name === item.Name ? 'bold' : '100',
           padding: 15,
         }}
       >
         {item.Name}
-        {selected.Name === item.Name ? "✅" : ""}
+        {selected.Name === item.Name ? '✅' : ''}
       </Text>
     </View>
   );
@@ -329,9 +329,7 @@ class VoiceScreen extends React.Component {
             iconColor={Colors.black}
             onPress={showModal}
           />
-          <Text style={{}}>
-            {SUPPORT_LANGUAGES().find((e) => e.Value === selected.Value).Name}
-          </Text>
+          <Text style={{}}>{SUPPORT_LANGUAGES().find((e) => e.Value === selected.Value).Name}</Text>
         </TouchableOpacity>
       )}
       renderListItem={this.renderPickerListItem}
@@ -351,7 +349,7 @@ class VoiceScreen extends React.Component {
     const { isButtonPressed, isPlay, animation } = this.state;
     return (
       <>
-        <Text style={styles.wording}>{t("voice_anonymous_title1")}</Text>
+        <Text style={styles.wording}>{t('voice_anonymous_title1')}</Text>
         <LottieButton
           ref={this._getAnimatedButtonRef}
           onPressIn={this.onPressStartRecord(voiceControl)}
@@ -365,7 +363,7 @@ class VoiceScreen extends React.Component {
           disabled={!isInternetReachable || !isPlay || isButtonPressed}
           animationStyle={styles.micAnimation}
         />
-        <Text>{t("voice_anonymous_title2")}</Text>
+        <Text>{t('voice_anonymous_title2')}</Text>
       </>
     );
   };
@@ -383,15 +381,7 @@ class VoiceScreen extends React.Component {
   );
 
   renderComponents =
-    ({
-      isPlay,
-      isButtonPressed,
-      voiceInputText,
-      userCircle,
-      animation,
-      locale,
-      isDebug,
-    }) =>
+    ({ isPlay, isButtonPressed, voiceInputText, userCircle, animation, locale, isDebug }) =>
     (voiceControl) =>
       (
         <DismissKeyboardView
@@ -416,10 +406,7 @@ class VoiceScreen extends React.Component {
     const { isDebug, voiceInputText, locale } = this.state;
     return (
       <>
-        <AndroidBackKey
-          sceneKey={sceneKey}
-          onBackKeyPress={Dialog.requestAndroidExitAppAlert}
-        />
+        <AndroidBackKey sceneKey={sceneKey} onBackKeyPress={Dialog.requestAndroidExitAppAlert} />
         <VoiceControl
           ref={this._getVoiceRef}
           onSpeechStart={this.onSpeechStart}
@@ -445,12 +432,10 @@ export default connect(
     routeName: state.appRoute.routeName,
     circle: state.circle,
     userCircle: state.circle.userCircle,
-    hasMicrophonePermission: AppPermissionSelectors.hasThisPermission(
-      Permission.MICROPHONE
-    )(state),
-    hasSpeechPermission: AppPermissionSelectors.hasThisPermission(
-      Permission.SPEECH_RECOGNITION
-    )(state),
+    hasMicrophonePermission: AppPermissionSelectors.hasThisPermission(Permission.MICROPHONE)(state),
+    hasSpeechPermission: AppPermissionSelectors.hasThisPermission(Permission.SPEECH_RECOGNITION)(
+      state,
+    ),
     currentNetworkInfo: state.appState.currentNetworkInfo,
   }),
   (dispatch) =>
@@ -458,6 +443,6 @@ export default connect(
       {
         onRootTabIndexChange: AppStateActions.onRootTabIndexChange,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(VoiceScreen);

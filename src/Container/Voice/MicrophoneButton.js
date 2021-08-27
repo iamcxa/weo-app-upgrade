@@ -1,17 +1,17 @@
 // @flow
-import React from "react";
-import PropTypes from "prop-types";
-import { View, StyleSheet } from "react-native";
-import * as Animatable from "react-native-animatable";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, StyleSheet } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
-import Images from "App/Theme/Images";
-import ImageButton from "App/Components/ImageButton";
-import Screen from "../../utils/screen";
+import Images from 'App/Theme/Images';
+import ImageButton from 'App/Components/ImageButton';
+import Screen from '../../utils/screen';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "flex-start",
-    alignItems: "center",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   microphone: {
     width: Screen.moderateScale(152),
@@ -22,16 +22,8 @@ const styles = StyleSheet.create({
 
 const MicrophoneButton = ({ onPress }) => (
   <View style={styles.container}>
-    <Animatable.View
-      animation="pulse"
-      easing="ease-out"
-      iterationCount="infinite"
-    >
-      <ImageButton
-        source={Images.voice.microphone}
-        style={styles.microphone}
-        onPress={onPress}
-      />
+    <Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite">
+      <ImageButton source={Images.voice.microphone} style={styles.microphone} onPress={onPress} />
     </Animatable.View>
   </View>
 );

@@ -1,5 +1,5 @@
-import { ScaledSheet, Screen } from "App/Helpers";
-import { Metrics, Colors, Classes } from "App/Theme";
+import { ScaledSheet, Screen } from 'App/Helpers';
+import { Metrics, Colors, Classes } from 'App/Theme';
 
 export default ScaledSheet.create({
   container: {
@@ -11,8 +11,8 @@ export default ScaledSheet.create({
   },
   map: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   clusterContainer: {
     width: Screen.scale(48),
@@ -20,26 +20,26 @@ export default ScaledSheet.create({
     padding: 6,
     borderWidth: 1,
     borderRadius: 24,
-    alignItems: "center",
-    borderColor: "#65bc46",
-    justifyContent: "center",
-    backgroundColor: "white",
+    alignItems: 'center',
+    borderColor: '#65bc46',
+    justifyContent: 'center',
+    backgroundColor: 'white',
   },
   clusterText: {
     fontSize: 13,
-    color: "#65bc46",
-    fontWeight: "500",
-    textAlign: "center",
+    color: '#65bc46',
+    fontWeight: '500',
+    textAlign: 'center',
   },
   userLocationButton: {
-    position: "absolute",
+    position: 'absolute',
     right: Screen.scale(19),
     bottom: Screen.verticalScale(48),
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
     width: Screen.scale(32),
     height: Screen.scale(32),
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
@@ -63,7 +63,7 @@ export default ScaledSheet.create({
     paddingHorizontal: Screen.scale(10),
   },
   titleLoading: {
-    position: "absolute",
+    position: 'absolute',
     right: Screen.scale(-16),
   },
 });

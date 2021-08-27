@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Animated, Dimensions } from "react-native";
-import { Actions } from "react-native-router-flux";
+import React, { Component } from 'react';
+import { Animated, Dimensions } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
-const ScreenWidth = Dimensions.get("window").width;
-const ScreenHeight = Dimensions.get("window").height;
+const ScreenWidth = Dimensions.get('window').width;
+const ScreenHeight = Dimensions.get('window').height;
 
 export default class AnimateTransition extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ export default class AnimateTransition extends Component {
 
     const width = this.fadeAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: [this.props.width, "100%"],
+      outputRange: [this.props.width, '100%'],
     });
 
     const height = this.fadeAnim.interpolate({
@@ -65,7 +65,7 @@ export default class AnimateTransition extends Component {
           opacity,
           // zIndex: 100,
           // backgroundColor: 'red',
-          position: "absolute",
+          position: 'absolute',
           left: this.props.x,
           top: this.props.y,
           width,

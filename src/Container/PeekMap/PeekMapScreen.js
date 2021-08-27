@@ -1,36 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 // import ClusteredMapView from 'react-native-maps-super-cluster';
-import MaterialIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { throttle, isEqual } from "lodash";
-import { Marker } from "react-native-maps";
-import { Actions } from "react-native-router-flux";
-import {
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { throttle, isEqual } from 'lodash';
+import { Marker } from 'react-native-maps';
+import { Actions } from 'react-native-router-flux';
+import { Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-import { MainNavBar, AndroidBackKey } from "App/Components";
-import { Screen, Geolocation, Permission } from "App/Helpers";
-import { translate as t } from "App/Helpers/I18n";
-import { Colors, Images, Classes } from "App/Theme";
-import {
-  AppStateActions,
-  CircleActions,
-  AppPermissionSelectors,
-} from "App/Stores";
+import { MainNavBar, AndroidBackKey } from 'App/Components';
+import { Screen, Geolocation, Permission } from 'App/Helpers';
+import { translate as t } from 'App/Helpers/I18n';
+import { Colors, Images, Classes } from 'App/Theme';
+import { AppStateActions, CircleActions, AppPermissionSelectors } from 'App/Stores';
 
-import { Config } from "App/Config";
-import styles from "./PeekMapScreenStyle";
+import { Config } from 'App/Config';
+import styles from './PeekMapScreenStyle';
 // import CircleMarker from './CircleMarker';
 
-const PROVIDER_GOOGLE = "google";
+const PROVIDER_GOOGLE = 'google';
 const GET_CIRCLE_RADIUS = 5000 * 1000 * 1000;
 const MIN_ZOOM_LEVEL = 5;
 const ASPECT_RATIO = Screen.width / Screen.height;
@@ -113,7 +103,7 @@ class PeekMapScreen extends React.Component {
   loadingTimer = null;
 
   async componentDidMount() {
-    __DEV__ && console.log("@Enter PeekMapScreen");
+    __DEV__ && console.log('@Enter PeekMapScreen');
 
     setTimeout(() => {
       this.showMyLocation();
@@ -189,10 +179,8 @@ class PeekMapScreen extends React.Component {
     }
   }
 
-  moveCameraToCircle = (
-    { latitude, longitude, id } = this.props.activeMarker
-  ) => {
-    console.log("move to circle");
+  moveCameraToCircle = ({ latitude, longitude, id } = this.props.activeMarker) => {
+    console.log('move to circle');
 
     this.setState(
       {
@@ -209,7 +197,7 @@ class PeekMapScreen extends React.Component {
               ...CAMERA_OPTIONS,
               zoom: 18,
             },
-            500
+            500,
           );
         }
         setTimeout(() => {
@@ -223,9 +211,9 @@ class PeekMapScreen extends React.Component {
             isMoveToCenter: true,
           });
         }, 3000);
-      }
+      },
     );
-    console.log("move to circle ok");
+    console.log('move to circle ok');
   };
 
   componentWillUnmount() {
@@ -250,8 +238,7 @@ class PeekMapScreen extends React.Component {
     if (hasGeolocationPermission) {
       setTimeout(
         async () => {
-          const { latitude, longitude } =
-            await Geolocation.getCurrentPosition();
+          const { latitude, longitude } = await Geolocation.getCurrentPosition();
           if (this.map) {
             this.map.mapview.animateCamera(
               {
@@ -261,25 +248,25 @@ class PeekMapScreen extends React.Component {
                 },
                 ...CAMERA_OPTIONS,
               },
-              500
+              500,
             );
             this.setState(
               () => ({
                 // isMapLoaded: true,
                 isMoveToCenter: true,
-              })
+              }),
               // () => this.handleGetNearCircles(),
             );
           }
         },
-        this.state.isMapLoaded ? 1000 : 5000
+        this.state.isMapLoaded ? 1000 : 5000,
       );
     }
     if (CircleMarker === null) {
-      CircleMarker = require("./CircleMarker").default;
+      CircleMarker = require('./CircleMarker').default;
     }
     if (ClusteredMapView === null) {
-      ClusteredMapView = require("react-native-maps-super-cluster").default;
+      ClusteredMapView = require('react-native-maps-super-cluster').default;
     }
     this.setState({ isMapLoaded: true });
   };
@@ -336,10 +323,7 @@ class PeekMapScreen extends React.Component {
       const { nearCircles } = this.props;
       const { id } = circleData;
       const otherCircles = nearCircles.filter((circle) => circle.id !== id);
-      const circleList = [
-        circleData,
-        ...otherCircles.sort((a, b) => b.topicCount - a.topicCount),
-      ];
+      const circleList = [circleData, ...otherCircles.sort((a, b) => b.topicCount - a.topicCount)];
       // console.log('circleList', circleList);
       this.setState(
         () => ({
@@ -352,7 +336,7 @@ class PeekMapScreen extends React.Component {
               isWaitingForLoadPeekTopList: false,
             });
           }, 2000);
-        }
+        },
       );
     }, 3000);
 
@@ -392,7 +376,7 @@ class PeekMapScreen extends React.Component {
               if (this.map) {
                 this.map.mapview.animateCamera(camera, { duration: 500 });
               }
-            }
+            },
           );
         }}
         onCalloutPress={this.handleCalloutPress(circleData)}
@@ -425,10 +409,10 @@ class PeekMapScreen extends React.Component {
             },
             () => {
               this.setCircleColor();
-            }
+            },
           );
         }, 200);
-      }
+      },
     );
   };
 
@@ -460,7 +444,7 @@ class PeekMapScreen extends React.Component {
       <View style={Classes.fillCenter}>
         <View style={styles.navTitleContainer}>
           <MaterialIcons name="eye-outline" size={23} color={Colors.black} />
-          <Text style={styles.titleText}>{t("peek_map_title_peek_only")}</Text>
+          <Text style={styles.titleText}>{t('peek_map_title_peek_only')}</Text>
           <View style={styles.titleLoading}>
             <ActivityIndicator animating={isLoading} />
           </View>
@@ -471,12 +455,7 @@ class PeekMapScreen extends React.Component {
 
   render() {
     const { sceneKey, hasGeolocationPermission } = this.props;
-    const {
-      isMapLoaded,
-      isWaitingForLoadPeekTopList,
-      INITIAL_CAMERA,
-      INITIAL_REGION,
-    } = this.state;
+    const { isMapLoaded, isWaitingForLoadPeekTopList, INITIAL_CAMERA, INITIAL_REGION } = this.state;
     return (
       <View style={styles.container}>
         <AndroidBackKey sceneKey={sceneKey} backTo={Actions.hereYouAre} />
@@ -521,9 +500,7 @@ class PeekMapScreen extends React.Component {
         <TouchableOpacity
           style={styles.userLocationButton}
           onPress={
-            hasGeolocationPermission
-              ? this.showMyLocation
-              : Permission.requestGeolocationPermission
+            hasGeolocationPermission ? this.showMyLocation : Permission.requestGeolocationPermission
           }
         >
           <Image source={Images.userLocation} style={styles.userLocationIcon} />
@@ -532,9 +509,9 @@ class PeekMapScreen extends React.Component {
         {isWaitingForLoadPeekTopList && (
           <View
             style={{
-              position: "absolute",
-              height: "100%",
-              width: "100%",
+              position: 'absolute',
+              height: '100%',
+              width: '100%',
               top: 0,
               zIndex: 1000,
               backgroundColor: Colors.paleGrey50,
@@ -560,12 +537,8 @@ export default connect(
     prevRoute: state.appRoute.prevRoute,
     isLoading: state.appState.isLoading,
     hasGeolocationPermission:
-      AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_LOW)(
-        state
-      ) ||
-      AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_HIGH)(
-        state
-      ),
+      AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_LOW)(state) ||
+      AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_HIGH)(state),
   }),
   (dispatch) =>
     bindActionCreators(
@@ -574,6 +547,6 @@ export default connect(
         updateLoading: AppStateActions.onLoading,
         fetchGetStayCircles: CircleActions.fetchGetStayCircles,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(PeekMapScreen);

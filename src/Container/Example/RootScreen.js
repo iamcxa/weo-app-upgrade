@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Alert, Button, DevSettings, Platform, Text, View } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Alert, Button, DevSettings, Platform, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { Logger as l, t } from "~/Helper";
+import { Logger as l, t } from '~/Helper';
 
-import styles from "./RootScreenStyle";
+import styles from './RootScreenStyle';
 
 const Separator = () => {
   return <View style={styles.separator} />;
@@ -18,54 +18,54 @@ class RootScreen extends React.Component {
 
     this.state = {};
 
-    if (Platform.OS !== "web") {
-      DevSettings.addMenuItem("--> Show RootScreen <--", () => {
-        Alert.alert("Change me at the RootScreen");
-        prop.navigation.navigate("RootScreen");
+    if (Platform.OS !== 'web') {
+      DevSettings.addMenuItem('--> Show RootScreen <--', () => {
+        Alert.alert('Change me at the RootScreen');
+        prop.navigation.navigate('RootScreen');
       });
     }
   }
 
   componentDidMount() {
-    __DEV__ && l.debug("@Mount RootScreen!");
+    __DEV__ && l.debug('@Mount RootScreen!');
   }
 
   onPressOpenApiExample = () => {
     const { navigation } = this.props;
-    navigation.navigate("ApiExampleScreen");
+    navigation.navigate('ApiExampleScreen');
   };
 
   onPressOpenFcmExample = () => {
     const { navigation } = this.props;
-    navigation.navigate("FcmExampleScreen");
+    navigation.navigate('FcmExampleScreen');
   };
 
   render() {
     const instructions = Platform.select({
-      ios: t("example.api.instructions_ios"),
+      ios: t('example.api.instructions_ios'),
       // 'Press Cmd+R to reload,\nCmd+D or shake for dev menu.',
-      android: t("example.api.instructions_android"),
+      android: t('example.api.instructions_android'),
       // 'Double tap R on your keyboard to reload,\nShake or press menu button for dev menu.',
     });
     return (
       <View style={styles.container}>
         <View style={styles.bodyWrapper}>
-          <Text style={styles.title}>{t("example.root.hello_world")}</Text>
-          <Text style={styles.greeting}>{t("example.root.greeting")}</Text>
-          <Text style={styles.text}>{t("example.root.description")}</Text>
+          <Text style={styles.title}>{t('example.root.hello_world')}</Text>
+          <Text style={styles.greeting}>{t('example.root.greeting')}</Text>
+          <Text style={styles.text}>{t('example.root.description')}</Text>
 
           <Text style={styles.text}>{instructions}</Text>
           <View>
             <Button
               style={styles.button}
               onPress={this.onPressOpenApiExample}
-              title={t("example.root.btnOpenApiExample")}
+              title={t('example.root.btnOpenApiExample')}
             />
             <Separator />
             <Button
               style={styles.button}
               onPress={this.onPressOpenFcmExample}
-              title={t("example.root.btnOpenFcmExample")}
+              title={t('example.root.btnOpenFcmExample')}
             />
           </View>
         </View>
@@ -87,6 +87,6 @@ export default connect(
       {
         // startup: StartupActions.startup,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )(RootScreen);

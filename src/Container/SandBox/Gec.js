@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Actions } from "react-native-router-flux";
-import Colors from "App/Theme/Colors";
-import DropDownMenu from "App/Components/DropDownMenu";
-import { Title } from "../../widget/Label";
-import { PrimaryBtn, LineBtn } from "../../widget/Button";
-import { PrimaryInput, ListInput } from "../../widget/InputBox";
-import CheckBox from "../../widget/CheckBox";
-import Screen from "../../utils/screen";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import Colors from 'App/Theme/Colors';
+import DropDownMenu from 'App/Components/DropDownMenu';
+import { Title } from '../../widget/Label';
+import { PrimaryBtn, LineBtn } from '../../widget/Button';
+import { PrimaryInput, ListInput } from '../../widget/InputBox';
+import CheckBox from '../../widget/CheckBox';
+import Screen from '../../utils/screen';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +26,7 @@ export default class Gec extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: "",
+      password: '',
       checked: false,
     };
   }
@@ -36,16 +36,16 @@ export default class Gec extends Component {
       <View style={styles.container}>
         <DropDownMenu
           list={[
-            "測試",
-            "測試2",
-            "哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦",
+            '測試',
+            '測試2',
+            '哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦',
           ]}
         />
         <View
           style={{
             flex: 1,
-            justifyContent: "space-between",
-            alignItems: "center",
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <Title>Welcome to GEC.</Title>
@@ -73,8 +73,8 @@ export default class Gec extends Component {
         <View
           style={{
             flex: 1,
-            justifyContent: "space-between",
-            alignItems: "center",
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <CheckBox
@@ -94,9 +94,9 @@ export default class Gec extends Component {
             }}
             isChecked={this.state.checked}
             rightText={[
-              "我已詳細閱讀且同意",
+              '我已詳細閱讀且同意',
               <LineBtn text="隱私條款" onPress={() => {}} />,
-              "和",
+              '和',
               <LineBtn text="使用者條款" onPress={() => {}} />,
             ]}
           />

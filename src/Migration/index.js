@@ -1,4 +1,4 @@
-import { createMigrate } from "redux-persist";
+import { createMigrate } from 'redux-persist';
 
 const migrations = {
   // 0: (state) => {

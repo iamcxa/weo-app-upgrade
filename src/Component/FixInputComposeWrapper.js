@@ -1,18 +1,18 @@
-import React, { PureComponent } from "react";
-import { TextInput, Platform } from "react-native";
-import ReactNativeVersion from "react-native/Libraries/Core/ReactNativeVersion";
+import React, { PureComponent } from 'react';
+import { TextInput, Platform } from 'react-native';
+import ReactNativeVersion from 'react-native/Libraries/Core/ReactNativeVersion';
 
 const rnVer = ReactNativeVersion.version.minor;
 
 // https://github.com/facebook/react-native/issues/18403#issuecomment-411666696
 const fixComposeInput = (Component) =>
   class MyTextInput extends PureComponent {
-    state = { diffKey: 0, value: "", display: "" };
+    state = { diffKey: 0, value: '', display: '' };
 
     static getDerivedStateFromProps(props, state) {
       if (!state || !state.props || props.value !== state.props.value) {
-        const value = props.value || "";
-        const display = (state && state.display) || "";
+        const value = props.value || '';
+        const display = (state && state.display) || '';
         if (value !== display) {
           const diffKey = ((state && state.diffKey) >>> 0) + 1;
           return {
@@ -40,15 +40,10 @@ const fixComposeInput = (Component) =>
     blur = () => this.input.blur();
 
     render() {
-      const {
-        refInput,
-        value: valueProp,
-        onChangeText,
-        ...inputProps
-      } = this.props;
+      const { refInput, value: valueProp, onChangeText, ...inputProps } = this.props;
       const { value, diffKey } = this.state;
 
-      return Platform.OS === "ios" && rnVer >= 54 && rnVer <= 56 ? (
+      return Platform.OS === 'ios' && rnVer >= 54 && rnVer <= 56 ? (
         <Component
           {...inputProps}
           key={`TextInput${diffKey}`}

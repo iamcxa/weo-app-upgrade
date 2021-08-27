@@ -1,21 +1,16 @@
-import { put, call, take, delay, select } from "redux-saga/effects";
-import { Actions } from "react-native-router-flux";
-import { Platform } from "react-native";
+import { put, call, take, delay, select } from 'redux-saga/effects';
+import { Actions } from 'react-native-router-flux';
+import { Platform } from 'react-native';
 
-import {
-  CircleActions,
-  AppStateActions,
-  AppConfigActions,
-  AppPermissionActions,
-} from "App/Stores";
-import { AppStateTypes } from "App/Stores/AppState/Actions";
-import * as WeoConfigSaga from "App/Sagas/WeoConfigSaga";
-import { Logger, Permission, Dialog } from "App/Helpers";
+import { CircleActions, AppStateActions, AppConfigActions, AppPermissionActions } from 'App/Stores';
+import { AppStateTypes } from 'App/Stores/AppState/Actions';
+import * as WeoConfigSaga from 'App/Sagas/WeoConfigSaga';
+import { Logger, Permission, Dialog } from 'App/Helpers';
 
 /**
  * The startup saga is the place to define behavior to execute when the application starts.
  */
-const TAG = "@StartupSaga";
+const TAG = '@StartupSaga';
 
 export function* startup() {
   yield put(AppStateActions.onLoading(true));
@@ -23,12 +18,12 @@ export function* startup() {
     // 1. Check permission status when app startups
     yield put(
       AppPermissionActions.checkPermissions([
-        Platform.OS === "ios" && Permission.SPEECH_RECOGNITION,
+        Platform.OS === 'ios' && Permission.SPEECH_RECOGNITION,
         Permission.MICROPHONE,
         Permission.GEOLOCATION_LOW,
         Permission.BODY_SENSORS,
         // Permission.NOTIFICATION,
-      ])
+      ]),
     );
 
     // 2. wait
@@ -59,7 +54,7 @@ export function* startup() {
 
       while (true) {
         const { currentState } = yield take(AppStateTypes.ON_STATE_CHANGE);
-        if (currentState === "active") {
+        if (currentState === 'active') {
           yield call(Dialog.requestInstallNewestVersionAppAlert);
         }
       }

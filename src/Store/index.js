@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import configureStore from "../CreateStore";
-import rootSaga from "../Saga";
-import reducers from "./Reducers";
+import configureStore from '../CreateStore';
+import rootSaga from '../Saga';
+import reducers from './Reducers';
 
 /**
  * Export default reducers

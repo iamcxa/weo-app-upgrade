@@ -1,23 +1,18 @@
-import { put, call, select } from "redux-saga/effects";
-import { Actions } from "react-native-router-flux";
-import { Platform } from "react-native";
+import { put, call, select } from 'redux-saga/effects';
+import { Actions } from 'react-native-router-flux';
+import { Platform } from 'react-native';
 
-import { AppStateActions, UserActions, CircleActions } from "App/Stores";
-import { Handler, User } from "App/Apis";
-import {
-  Logger,
-  Dialog,
-  User as UserHelper,
-  Content as ContentHelper,
-} from "App/Helpers";
-import { translate as t } from "App/Helpers/I18n";
+import { AppStateActions, UserActions, CircleActions } from 'App/Stores';
+import { Handler, User } from 'App/Apis';
+import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from 'App/Helpers';
+import { translate as t } from 'App/Helpers/I18n';
 
-const TAG = "@UserSaga";
+const TAG = '@UserSaga';
 
 export function* fetchPostSignUp({
-  nickname = "",
-  avatarKey = "",
-  identifier = "",
+  nickname = '',
+  avatarKey = '',
+  identifier = '',
   deviceInfo = {},
 }) {
   yield put(AppStateActions.onLoading(true));
@@ -33,16 +28,13 @@ export function* fetchPostSignUp({
           identifier,
           deviceInfo: {
             deviceToken: deviceInfo.deviceToken || fcmToken || false,
-            platform:
-              deviceInfo.platform || Platform.OS === "ios"
-                ? "IOS_FCM"
-                : "ANDROID",
+            platform: deviceInfo.platform || Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
           },
         },
       }),
-      User.signUp()
+      User.signUp(),
     );
-    console.log("fetchPostSignUp res=>", res);
+    console.log('fetchPostSignUp res=>', res);
 
     if (res.success) {
       yield put(UserActions.updateUserProfile(res.data));
@@ -59,7 +51,7 @@ export function* fetchPostSignUp({
   }
 }
 
-export function* fetchPutUserProfile({ nickname = "", avatarKey = "" }) {
+export function* fetchPutUserProfile({ nickname = '', avatarKey = '' }) {
   yield put(AppStateActions.onLoading(true));
   try {
     const apiToken = yield select((state) => state.user.apiToken);
@@ -72,13 +64,13 @@ export function* fetchPutUserProfile({ nickname = "", avatarKey = "" }) {
           avatarKey,
           deviceInfo: {
             deviceToken: fcmToken || false,
-            platform: Platform.OS === "ios" ? "IOS_FCM" : "ANDROID",
+            platform: Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
           },
         },
       }),
-      User.updateProfile()
+      User.updateProfile(),
     );
-    console.log("fetchPutUserProfile res=>", res);
+    console.log('fetchPutUserProfile res=>', res);
 
     if (res.success) {
       yield put(UserActions.updateUserProfile(res.data));
@@ -109,7 +101,7 @@ export function* fetchPutUserNotifyConfig({
         hasTopicNotify,
         hasPostNotify,
         hasReplyNotify,
-      })
+      }),
     );
     const apiToken = yield select((state) => state.user.apiToken);
     const fcmToken = yield select((state) => state.user.fcmToken);
@@ -123,13 +115,13 @@ export function* fetchPutUserNotifyConfig({
           hasReplyNotify,
           deviceInfo: {
             deviceToken: fcmToken || false,
-            platform: Platform.OS === "ios" ? "IOS_FCM" : "ANDROID",
+            platform: Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
           },
         },
       }),
-      User.updateConfig()
+      User.updateConfig(),
     );
-    console.log("fetchPutUserNotifyConfig res=>", res);
+    console.log('fetchPutUserNotifyConfig res=>', res);
     if (res.success) {
       yield call(Dialog.configUpdatedSuccessAlert);
     } else {
@@ -153,9 +145,9 @@ export function* fetchPostLogout() {
       Handler.post({
         Authorization: apiToken,
       }),
-      User.logout()
+      User.logout(),
     );
-    console.log("fetchPostLogout res=>", res);
+    console.log('fetchPostLogout res=>', res);
 
     if (res.success) {
       yield put(UserActions.cleanUser());
@@ -164,7 +156,7 @@ export function* fetchPostLogout() {
         Actions.HomeScreen,
         {
           panHandlers: null,
-          type: "replace",
+          type: 'replace',
         },
       ]);
     } else {
@@ -189,9 +181,7 @@ export function* fetchPostAutoSignUp({ fcmToken, onSuccess }) {
     const data = {
       avatarKey: `Avatar${avatarId}`,
       nickname: nickName,
-      identifier: `${new Date().getTime()}${Math.floor(
-        Math.random() * 100 + 1
-      )}`,
+      identifier: `${new Date().getTime()}${Math.floor(Math.random() * 100 + 1)}`,
       deviceInfo: {
         deviceToken: fcmToken,
       },
@@ -200,7 +190,7 @@ export function* fetchPostAutoSignUp({ fcmToken, onSuccess }) {
     const res = yield call(fetchPostSignUp, data);
     if (res.success) {
       yield put(CircleActions.fetchGetStayCircles());
-      if (typeof onSuccess === "function") {
+      if (typeof onSuccess === 'function') {
         onSuccess(res.success);
       }
     }

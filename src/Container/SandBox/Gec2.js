@@ -1,55 +1,51 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StyleSheet, View, Image } from "react-native";
-import Carousel, { Pagination } from "react-native-snap-carousel";
-import SliderCard, {
-  sliderWidth,
-  itemWidth,
-  sliderHeight,
-} from "App/Components/SliderCard";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, View, Image } from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import SliderCard, { sliderWidth, itemWidth, sliderHeight } from 'App/Components/SliderCard';
 
-import Colors from "App/Theme/Colors";
-import CheckboxList from "App/Components/CheckboxList";
-import Screen from "../../utils/screen";
+import Colors from 'App/Theme/Colors';
+import CheckboxList from 'App/Components/CheckboxList';
+import Screen from '../../utils/screen';
 
 const { width, height } = Screen;
 
 const images = [
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "NY Summer Guide",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: 'NY Summer Guide',
   },
   {
-    image: "https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large",
-    title: "正妹4",
+    image: 'https://pbs.twimg.com/media/Cg4L2t0UYAAgHCD.jpg:large',
+    title: '正妹4',
   },
 ];
 
@@ -58,9 +54,9 @@ const newItemWidth = itemWidth;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
     padding: 30,
   },
 });
@@ -71,7 +67,7 @@ export default class Gec2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: "",
+      password: '',
       checked: false,
       slider1ActiveSlide: 0,
     };

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Keyboard,
@@ -9,14 +9,14 @@ import {
   // Picker,
   // Modal,
   // TouchableWithoutFeedback,
-} from "react-native";
+} from 'react-native';
 
-import { Colors } from "App/Theme";
-import { Screen, ListenableEvent } from "App/Helpers";
-import ReplyBar from "App/Components/ReplyBar";
+import { Colors } from 'App/Theme';
+import { Screen, ListenableEvent } from 'App/Helpers';
+import ReplyBar from 'App/Components/ReplyBar';
 
-import Config from "App/Config";
-import KeyboardUtil from "../../utils/keyboard";
+import Config from 'App/Config';
+import KeyboardUtil from '../../utils/keyboard';
 
 const { CIRCLE_TYPE } = Config;
 
@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   buttonContainer: {
-    justifyContent: "flex-end",
-    flexDirection: "row",
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
     padding: 4,
-    backgroundColor: "#ececec",
+    backgroundColor: '#ececec',
   },
   pickerContainer: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   lottieAnimation: {
     // flex: 1,
@@ -57,20 +57,20 @@ const styles = StyleSheet.create({
     // zIndex: 500,
   },
   localeBtnWrapper: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -10,
     padding: 10,
-    width: "100%",
+    width: '100%',
     // backgroundColor: '#333',
     // flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    display: "none",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    display: 'none',
   },
   micBtnWrapper: {
     height: 0,
     width: Screen.width,
-    display: "flex",
+    display: 'flex',
     backgroundColor: Colors.paleGrey50,
   },
   micBtn: {
@@ -95,7 +95,7 @@ export default class VoiceReplyBar extends Component {
   };
 
   static defaultProps = {
-    voiceInputText: "",
+    voiceInputText: '',
     currentCircleId: 0,
   };
 
@@ -108,7 +108,7 @@ export default class VoiceReplyBar extends Component {
   componentWillMount() {
     this.keyboardShowSub = Keyboard.addListener(
       ListenableEvent.KEYBOARD_SHOW,
-      KeyboardUtil.keyboardShow
+      KeyboardUtil.keyboardShow,
     );
     // this.keyboardHideSub = Keyboard.addListener(
     //   Screen.keyboardHide,
@@ -165,11 +165,7 @@ export default class VoiceReplyBar extends Component {
             type="TOPIC"
             appendContent={voiceInputText}
             id={`${currentCircleId}`}
-            belongsTo={
-              currentCircleId
-                ? CIRCLE_TYPE.HERE_YOU_ARE
-                : CIRCLE_TYPE.THERE_YOU_ARE
-            }
+            belongsTo={currentCircleId ? CIRCLE_TYPE.HERE_YOU_ARE : CIRCLE_TYPE.THERE_YOU_ARE}
             onReplySuccess={onCreateTopicSuccess}
             maxLength={180}
             allowPhotoWithEmptyContent={false}

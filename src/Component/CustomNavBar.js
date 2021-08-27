@@ -1,32 +1,22 @@
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import React from "react";
-import { Actions } from "react-native-router-flux";
-import { bindActionCreators } from "redux";
-import _ from "lodash";
-import Icon from "react-native-vector-icons/FontAwesome";
-import IoniconsIcon from "react-native-vector-icons/Ionicons";
-import { connect } from "react-redux";
-import Colors from "App/Theme/Colors";
-import Images from "App/Theme/Images";
-import PropTypes from "prop-types";
-import Screen from "../utils/screen";
-import NotifyBox from "./NotifyBox";
-import { DefaultText } from "../widget/Label";
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
+import _ from 'lodash';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import IoniconsIcon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import Colors from 'App/Theme/Colors';
+import Images from 'App/Theme/Images';
+import PropTypes from 'prop-types';
+import Screen from '../utils/screen';
+import NotifyBox from './NotifyBox';
+import { DefaultText } from '../widget/Label';
 
 const styles = StyleSheet.create({
   container: {
-    height:
-      Platform.OS === "ios"
-        ? Screen.moderateScale(64)
-        : Screen.moderateScale(54),
-    flexDirection: "row",
+    height: Platform.OS === 'ios' ? Screen.moderateScale(64) : Screen.moderateScale(54),
+    flexDirection: 'row',
     // paddingTop: (Platform.OS === 'ios') ? Screen.moderateScale(20) : 0,
     // marginTop: (Platform.OS === 'ios') ? Screen.moderateScale(-20) : 0,
     // backgroundColor: Colors.black,
@@ -34,18 +24,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: Screen.onePixel,
   },
   drawerContainer: {
-    height:
-      Platform.OS === "ios"
-        ? Screen.moderateScale(112)
-        : Screen.moderateScale(102),
-    paddingTop: Platform.OS === "ios" ? Screen.moderateScale(20) : 0,
+    height: Platform.OS === 'ios' ? Screen.moderateScale(112) : Screen.moderateScale(102),
+    paddingTop: Platform.OS === 'ios' ? Screen.moderateScale(20) : 0,
     // backgroundColor: 'transparent',
     borderBottomColor: Colors.silver,
     borderBottomWidth: Screen.onePixel,
   },
   navBarItem: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     // alignItems: 'center',
   },
 });
@@ -54,7 +41,7 @@ const styles = StyleSheet.create({
   (state) => ({
     routes: state.appRoute,
   }),
-  (dispatch) => bindActionCreators({}, dispatch)
+  (dispatch) => bindActionCreators({}, dispatch),
 )
 class CustomNavBar extends React.Component {
   // constructor(props) {
@@ -81,7 +68,7 @@ class CustomNavBar extends React.Component {
               fontSize: 8.5 * 2,
             }}
           >
-            {this.props.backTitle}{" "}
+            {this.props.backTitle}{' '}
           </Text>
         </TouchableOpacity>
       );
@@ -92,9 +79,9 @@ class CustomNavBar extends React.Component {
           style={[
             styles.navBarItem,
             {
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
             },
           ]}
         >
@@ -113,7 +100,7 @@ class CustomNavBar extends React.Component {
             right: 15,
           }}
           onPress={() => {
-            if (this.props.scene.drawer == "DrawerClose") {
+            if (this.props.scene.drawer == 'DrawerClose') {
               Actions.drawerOpen();
             } else {
               Actions.drawerClose();
@@ -121,7 +108,7 @@ class CustomNavBar extends React.Component {
           }}
           style={[
             styles.navBarItem,
-            { paddingLeft: 10, flexDirection: "row", alignItems: "center" },
+            { paddingLeft: 10, flexDirection: 'row', alignItems: 'center' },
           ]}
         >
           {/* <Icon size={35} color={Colors.whiteThree} name="navicon" /> */}
@@ -149,25 +136,21 @@ class CustomNavBar extends React.Component {
         onPress={() => Actions.pop()}
         style={[styles.navBarItem, { paddingLeft: 10 }]}
       >
-        <Icon
-          size={35}
-          color={this.props.textColor || Colors.whiteThree}
-          name="angle-left"
-        />
+        <Icon size={35} color={this.props.textColor || Colors.whiteThree} name="angle-left" />
       </TouchableOpacity>
     );
   }
 
   _renderMiddle() {
     return (
-      <View style={[styles.navBarItem, { flex: 3, alignItems: "center" }]}>
+      <View style={[styles.navBarItem, { flex: 3, alignItems: 'center' }]}>
         <Text
           numberOfLines={1}
           allowFontScaling={false}
           style={{
             color: this.props.textColor || Colors.whiteThree,
             fontSize: Screen.moderateScale(8.5 * 2),
-            fontWeight: "600",
+            fontWeight: '600',
           }}
         >
           {this.props.title}
@@ -183,16 +166,13 @@ class CustomNavBar extends React.Component {
           style={[
             styles.navBarItem,
             {
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
             },
           ]}
         >
-          <TouchableOpacity
-            onPress={this.props.onRight}
-            style={{ paddingRight: 10 }}
-          >
+          <TouchableOpacity onPress={this.props.onRight} style={{ paddingRight: 10 }}>
             <Text
               allowFontScaling={false}
               style={{
@@ -212,9 +192,9 @@ class CustomNavBar extends React.Component {
           style={[
             styles.navBarItem,
             {
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
             },
           ]}
         >
@@ -229,28 +209,19 @@ class CustomNavBar extends React.Component {
           style={[
             styles.navBarItem,
             {
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
               marginRight: 10,
             },
           ]}
         >
-          <IoniconsIcon
-            size={Screen.moderateScale(30)}
-            color={Colors.whiteThree}
-            name="md-close"
-          />
+          <IoniconsIcon size={Screen.moderateScale(30)} color={Colors.whiteThree} name="md-close" />
         </TouchableOpacity>
       );
     }
     return (
-      <View
-        style={[
-          styles.navBarItem,
-          { flexDirection: "row", justifyContent: "flex-end" },
-        ]}
-      >
+      <View style={[styles.navBarItem, { flexDirection: 'row', justifyContent: 'flex-end' }]}>
         <Text />
       </View>
     );
@@ -262,9 +233,9 @@ class CustomNavBar extends React.Component {
         <DefaultText
           style={{
             fontSize: 34,
-            color: "#fff",
+            color: '#fff',
             paddingLeft: 10,
-            fontWeight: Platform.OS === "ios" ? "600" : "300",
+            fontWeight: Platform.OS === 'ios' ? '600' : '300',
           }}
         >
           {this.props.title}

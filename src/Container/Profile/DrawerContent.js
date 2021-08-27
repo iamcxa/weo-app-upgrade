@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Alert,
@@ -8,32 +8,32 @@ import {
   StyleSheet,
   AsyncStorage,
   TouchableOpacity,
-} from "react-native";
-import { Actions, ActionConst } from "react-native-router-flux";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import VersionNumber from "react-native-version-number";
+} from 'react-native';
+import { Actions, ActionConst } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import VersionNumber from 'react-native-version-number';
 
-import Config from "App/Config";
-import { Colors } from "App/Theme";
-import { Screen } from "App/Helpers";
-import { AppConfigActions, AppStateActions } from "App/Stores";
-import { BaseModalSelector } from "App/Components";
-import { translate as t } from "App/Helpers/I18n";
+import Config from 'App/Config';
+import { Colors } from 'App/Theme';
+import { Screen } from 'App/Helpers';
+import { AppConfigActions, AppStateActions } from 'App/Stores';
+import { BaseModalSelector } from 'App/Components';
+import { translate as t } from 'App/Helpers/I18n';
 
-import { H3, H4 } from "App/widget/Label";
-import { cleanUser } from "App/Stores/User/Actions";
+import { H3, H4 } from 'App/widget/Label';
+import { cleanUser } from 'App/Stores/User/Actions';
 
-import i18n, { i18nKey } from "App/utils/i18n";
-import { fetchAPI, apiHandler, apiAction } from "App/utils/api";
-import * as fcm from "App/utils/fcm";
+import i18n, { i18nKey } from 'App/utils/i18n';
+import { fetchAPI, apiHandler, apiAction } from 'App/utils/api';
+import * as fcm from 'App/utils/fcm';
 
 const styles = StyleSheet.create({
   container: {
     zIndex: 100,
     flex: 1,
     backgroundColor: Colors.transparent,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     height: Screen.height,
     ...Platform.select({
       ios: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   item: {
     paddingBottom: Screen.moderateScale(22),
-    fontWeight: "600",
+    fontWeight: '600',
   },
   appInfoText: {
     color: Colors.warmGrey,
@@ -56,13 +56,11 @@ const styles = StyleSheet.create({
 });
 
 const SUPPORT_LANGUAGES = () =>
-  [
-    { key: 0, label: t("drawer_content_select_prefer_locale"), section: true },
-  ].concat(
+  [{ key: 0, label: t('drawer_content_select_prefer_locale'), section: true }].concat(
     Config.UI_SUPPORT_LANGUAGES.map((lang) => ({
       label: t(`__support_language_${lang}`),
       key: lang,
-    }))
+    })),
   );
 
 @connect(
@@ -77,8 +75,8 @@ const SUPPORT_LANGUAGES = () =>
         updateLoading: AppStateActions.onLoading,
         onUserLocaleChange: AppConfigActions.onUserLocaleChange,
       },
-      dispatch
-    )
+      dispatch,
+    ),
 )
 class DrawerContent extends React.Component {
   static propTypes = {
@@ -94,19 +92,17 @@ class DrawerContent extends React.Component {
   };
 
   onContactUs = () => {
-    const contactMail = "admin@letsweo.com";
+    const contactMail = 'admin@letsweo.com';
     const url = `mailto:${contactMail}`;
     Linking.canOpenURL(url)
       .then((supported) => {
         if (!supported) {
-          Alert.alert(
-            t("drawer_content_dialog_contact_us_by_mail", { mail: contactMail })
-          );
+          Alert.alert(t('drawer_content_dialog_contact_us_by_mail', { mail: contactMail }));
         } else {
           return Linking.openURL(url);
         }
       })
-      .catch((err) => console.error("An error occurred", err));
+      .catch((err) => console.error('An error occurred', err));
   };
 
   logout = async () => {
@@ -122,7 +118,7 @@ class DrawerContent extends React.Component {
             try {
               updateLoading(true);
               const res = await fetchAPI(apiAction.LOGOUT, {
-                platform: Platform.OS === "ios" ? "IOS_FCM" : "ANDROID",
+                platform: Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
                 deviceToken: await fcm.getToken(),
               });
               await apiHandler({
@@ -146,7 +142,7 @@ class DrawerContent extends React.Component {
           },
         },
       ],
-      { cancelable: false }
+      { cancelable: false },
     );
   };
 
@@ -156,7 +152,7 @@ class DrawerContent extends React.Component {
   };
 
   renderLanguagePickerModal = () => {
-    const { customLocale = "zh_HK" } = this.props;
+    const { customLocale = 'zh_HK' } = this.props;
     return (
       <BaseModalSelector
         visible={this.state.languageModalShow}
@@ -165,8 +161,7 @@ class DrawerContent extends React.Component {
       >
         <TouchableOpacity>
           <H3 style={styles.item}>
-            {t("drawer_content_setting_language")}(
-            {t(`__support_language_${customLocale}`)})
+            {t('drawer_content_setting_language')}({t(`__support_language_${customLocale}`)})
           </H3>
         </TouchableOpacity>
       </BaseModalSelector>
@@ -191,21 +186,19 @@ class DrawerContent extends React.Component {
           </TouchableOpacity>
           */}
           <TouchableOpacity onPress={Actions.notifySetting}>
-            <H3 style={styles.item}>
-              {t("drawer_content_setting_notification")}
-            </H3>
+            <H3 style={styles.item}>{t('drawer_content_setting_notification')}</H3>
           </TouchableOpacity>
 
           {this.renderLanguagePickerModal()}
 
           <TouchableOpacity onPress={Actions.faq}>
-            <H3 style={styles.item}>{t("drawer_content_setting_faq")}</H3>
+            <H3 style={styles.item}>{t('drawer_content_setting_faq')}</H3>
           </TouchableOpacity>
           <TouchableOpacity onPress={Actions.privacy_view}>
-            <H3 style={styles.item}>{t("drawer_content_setting_privacy")}</H3>
+            <H3 style={styles.item}>{t('drawer_content_setting_privacy')}</H3>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.onContactUs}>
-            <H3 style={styles.item}>{t("drawer_content_setting_contact")}</H3>
+            <H3 style={styles.item}>{t('drawer_content_setting_contact')}</H3>
           </TouchableOpacity>
           {/*
             <TouchableOpacity onPress={this.logout}>
@@ -220,16 +213,14 @@ class DrawerContent extends React.Component {
         </View>
         <View
           style={{
-            justifyContent: "center",
-            alignItems: "flex-start",
+            justifyContent: 'center',
+            alignItems: 'flex-start',
           }}
         >
           <H4
             style={styles.appInfoText}
           >{`Version ${VersionNumber.appVersion}(${VersionNumber.buildVersion})`}</H4>
-          <H4 style={styles.appInfoText}>
-            WaiThere Inc. {new Date().getFullYear()}
-          </H4>
+          <H4 style={styles.appInfoText}>WaiThere Inc. {new Date().getFullYear()}</H4>
         </View>
       </View>
     );
