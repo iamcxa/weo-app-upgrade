@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Date as d } from '~/Helpers';
+import { Date as d } from '~/Helper';
 import { Colors, Metrics, Fonts } from '~/Theme';
 import { H3, H5 } from '../widget/Label.js';
 

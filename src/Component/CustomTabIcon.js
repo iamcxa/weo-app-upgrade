@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { View, Image } from 'react-native';
 
 import { Images } from '~/Theme';
-import { StyleSheet, Screen } from '~/Helpers';
+import { StyleSheet, Screen } from '~/Helper';
 
 const styles = StyleSheet.create({
   container: {

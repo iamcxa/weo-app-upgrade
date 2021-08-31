@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { Colors, Classes } from '~/Theme';
-import { Screen, ScaledSheet } from '~/Helpers';
+import { Screen, ScaledSheet } from '~/Helper';
 
 import { onUpdateList } from '~/Stores/List/Actions/list';
 import TopicScreen from '~/Containers/Topic/TopicScreen';

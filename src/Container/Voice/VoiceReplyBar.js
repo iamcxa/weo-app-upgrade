@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import { Colors } from '~/Theme';
-import { Screen, ListenableEvent } from '~/Helpers';
+import { Screen, ListenableEvent } from '~/Helper';
 import ReplyBar from '~/Components/ReplyBar';
 
 import Config from '~/Config';

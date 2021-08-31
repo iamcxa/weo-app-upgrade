@@ -1,7 +1,7 @@
 import { call, select } from 'redux-saga/effects';
 
 import { Handler, Upload } from '~/Apis';
-import { Logger, Image as ImageHelper } from '~/Helpers';
+import { Logger, Image as ImageHelper } from '~/Helper';
 
 const TAG = '@UploadSaga';
 

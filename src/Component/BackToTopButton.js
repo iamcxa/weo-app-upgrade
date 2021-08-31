@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 import { Images, Colors } from '~/Theme';
-import { Screen, ScaledSheet } from '~/Helpers';
+import { Screen, ScaledSheet } from '~/Helper';
 
 const styles = ScaledSheet.create({
   container: {

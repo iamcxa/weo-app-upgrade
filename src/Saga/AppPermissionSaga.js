@@ -5,7 +5,7 @@ import { eventChannel } from 'redux-saga';
 import Permissions, { RESULTS } from 'react-native-permissions';
 
 import { AppPermissionActions } from '~/Stores';
-import { Logger } from '~/Helpers';
+import { Logger } from '~/Helper';
 
 export function* checkPermissions({ permissions, onSuccess, onFailure }) {
   console.log('permissions=>', permissions);

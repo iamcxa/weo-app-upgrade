@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { Colors, Images, Metrics } from '~/Theme';
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 import { BaseIconButton, BaseButton } from '~/Components';
 
 const hitSlop = {

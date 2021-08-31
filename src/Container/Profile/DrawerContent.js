@@ -16,7 +16,7 @@ import VersionNumber from 'react-native-version-number';
 
 import Config from '~/Config';
 import { Colors } from '~/Theme';
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 import { AppConfigActions, AppStateActions } from '~/Stores';
 import { BaseModalSelector } from '~/Components';
 import { translate as t } from '~/Helpers/I18n';

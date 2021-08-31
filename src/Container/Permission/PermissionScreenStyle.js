@@ -1,4 +1,4 @@
-import { StyleSheet } from '~/Helpers';
+import { StyleSheet } from '~/Helper';
 import { Colors, Metrics, Classes } from '~/Theme';
 
 export default StyleSheet.create({

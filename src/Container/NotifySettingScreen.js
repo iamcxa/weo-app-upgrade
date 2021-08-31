@@ -9,7 +9,7 @@ import { StyleSheet, Platform, View } from 'react-native';
 import { MainNavBar, SwitchListItem, AndroidBackKey } from '~/Components';
 import { AppStateActions, UserActions } from '~/Stores';
 import { translate as t } from '~/Helpers/I18n';
-import { Screen, Dialog, Fcm } from '~/Helpers';
+import { Screen, Dialog, Fcm } from '~/Helper';
 import { Colors } from '~/Theme';
 
 const Separator = (props) => <View style={styles.separator} />;

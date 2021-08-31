@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, View, StyleSheet } from 'react-native';
 import Image from 'react-native-image-cache-wrapper';
 
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 import { Classes, Colors } from '~/Theme';
 import { Badge } from '~/widget/RoundButton';
 

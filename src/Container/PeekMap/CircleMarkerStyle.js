@@ -1,5 +1,5 @@
 import { Colors } from '~/Theme';
-import { Screen, ScaledSheet } from '~/Helpers';
+import { Screen, ScaledSheet } from '~/Helper';
 
 export default ScaledSheet.create({
   callout: {

@@ -4,7 +4,7 @@ import IoniconIcon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 
-import { Screen, StyleSheet } from '~/Helpers';
+import { Screen, StyleSheet } from '~/Helper';
 import { Colors, Metrics, Classes } from '~/Theme';
 
 const styles = StyleSheet.create({

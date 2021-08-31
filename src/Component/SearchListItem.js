@@ -4,7 +4,7 @@ import Highlighter from 'react-native-highlight-words';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { Date as d, Screen } from '~/Helpers';
+import { Date as d, Screen } from '~/Helper';
 import { Colors } from '~/Theme';
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 

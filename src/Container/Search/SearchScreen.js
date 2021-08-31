@@ -16,7 +16,7 @@ import { bindActionCreators } from 'redux';
 import { debounce, throttle, isEmpty } from 'lodash';
 
 import Config from '~/Config';
-import { ifIphoneX } from '~/Helpers';
+import { ifIphoneX } from '~/Helper';
 import { SearchActions } from '~/Stores';
 import { translate as t } from '~/Helpers/I18n';
 import { Classes, Colors, Images, Metrics } from '~/Theme';

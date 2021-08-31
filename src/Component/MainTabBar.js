@@ -6,7 +6,7 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import CustomTabIcon from '~/Components/CustomTabIcon';
 
 import { Colors } from '~/Theme';
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 
 const styles = StyleSheet.create({
   container: {

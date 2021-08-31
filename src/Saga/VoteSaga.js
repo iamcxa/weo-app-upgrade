@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 
 import { AppStateActions, TopicActions, PostActions, ReplyActions } from '~/Stores';
 import { Handler, Vote } from '~/Apis';
-import { Logger } from '~/Helpers';
+import { Logger } from '~/Helper';
 
 const TAG = '@VoteSaga';
 const LIKE = 'LIKE';

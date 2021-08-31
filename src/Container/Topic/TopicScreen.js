@@ -5,7 +5,7 @@ import { has, isEmpty, isEqual, throttle } from 'lodash';
 import { Actions } from 'react-native-router-flux';
 
 import { AndroidBackKey } from '~/Components';
-// import { Dialog } from '~/Helpers';
+// import { Dialog } from '~/Helper';
 import { Config } from '~/Config';
 import TopicView from './TopicView';
 

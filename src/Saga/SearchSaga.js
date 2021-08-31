@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 
 import { AppStateActions, SearchActions } from '~/Stores';
 import { Handler, Search } from '~/Apis';
-import { Logger } from '~/Helpers';
+import { Logger } from '~/Helper';
 
 const TAG = '@SearchSaga';
 

@@ -28,7 +28,7 @@ import {
   StyleSheet,
   ListenableEvent,
   Content as ContentHelper,
-} from '~/Helpers';
+} from '~/Helper';
 
 import { PrimaryBtn } from '~/widget/RoundButton';
 import { AvatarBlock, ModalCard, DismissKeyboardView } from '~/Components';

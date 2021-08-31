@@ -29,7 +29,7 @@ import {
   Fcm as FcmHelper,
   User as UserHelper,
   Content as ContentHelper,
-} from '~/Helpers';
+} from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { Classes, Images, Colors } from '~/Theme';
 import { UserActions } from '~/Stores';

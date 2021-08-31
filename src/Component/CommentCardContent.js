@@ -4,7 +4,7 @@ import { isString, isEmpty } from 'lodash';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import { Colors } from '~/Theme';
-import { StyleSheet } from '~/Helpers';
+import { StyleSheet } from '~/Helper';
 import HyperlinkWrapper from '../widget/HyperlinkWrapper';
 
 const styles = StyleSheet.create({

@@ -8,7 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import { View, Text, Platform, FlatList, ScrollView } from 'react-native';
 
 import { Colors, Fonts } from '~/Theme';
-import { Permission, Screen } from '~/Helpers';
+import { Permission, Screen } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { Separator, BaseButton, LanguageModal } from '~/Components';
 import { AppPermissionSelectors, AppConfigActions, UserActions } from '~/Stores';

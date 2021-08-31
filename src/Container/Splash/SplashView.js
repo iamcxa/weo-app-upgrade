@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, View, StyleSheet, Image } from 'react-native';
 
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 import { Images, Colors } from '~/Theme';
 import { FooterLogo } from '~/Components';
 

@@ -6,7 +6,7 @@ import { WebView } from 'react-native-webview';
 
 import { translate as t } from '~/Helpers/I18n';
 import { MainNavBar, AndroidBackKey } from '~/Components';
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 import { Classes, Colors } from '~/Theme';
 
 import Storage from '~/constant/storage';

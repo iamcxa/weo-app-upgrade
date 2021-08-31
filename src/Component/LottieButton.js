@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native';
 import { Animated, Easing } from 'react-native';
 import { RoundButton } from '@ublocks-react-native/component';
 
-import { StyleSheet } from '~/Helpers';
+import { StyleSheet } from '~/Helper';
 import { Classes } from '~/Theme';
 
 const styles = StyleSheet.create({

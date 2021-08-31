@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Colors } from '~/Theme';
-import { Screen, StyleSheet } from '~/Helpers';
+import { Screen, StyleSheet } from '~/Helper';
 
 const styles = StyleSheet.create({
   separator: {

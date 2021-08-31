@@ -12,7 +12,7 @@ import {
   User as UserHelper,
   Content as ContentHelper,
   Date as d,
-} from '~/Helpers';
+} from '~/Helper';
 import { CIRCLE_TYPE } from '~/Config';
 
 import * as UploadSaga from './UploadSaga';

@@ -5,7 +5,7 @@ import { Tabs, Scene, Stack, Actions, ActionConst } from 'react-native-router-fl
 
 import { store } from '~/App';
 import { Colors, Metrics } from '~/Theme';
-import { Dialog, Screen } from '~/Helpers';
+import { Dialog, Screen } from '~/Helper';
 import { CustomTabIcon } from '~/Components';
 
 import FaqScreen from '~/Containers/FaqScreen';

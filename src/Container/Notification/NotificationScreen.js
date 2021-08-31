@@ -11,7 +11,7 @@ import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from '~/Compone
 import { Config } from '~/Config';
 import { NotificationActions } from '~/Stores';
 import { translate as t } from '~/Helpers/I18n';
-import { Notification, StyleSheet } from '~/Helpers';
+import { Notification, StyleSheet } from '~/Helper';
 import { Colors, Classes, Fonts } from '~/Theme';
 
 const { ON_END_REACHED_THROTTLE } = Config;

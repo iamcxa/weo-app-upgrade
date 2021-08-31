@@ -13,7 +13,7 @@ import { NavBar, IconButton, LoadingIndicator } from '@ublocks-react-native/comp
 import * as Animatable from 'react-native-animatable';
 import { Actions } from 'react-native-router-flux';
 
-import { ScaledSheet, Screen } from '~/Helpers';
+import { ScaledSheet, Screen } from '~/Helper';
 import { Colors, Fonts, Metrics } from '~/Theme';
 
 const styles = ScaledSheet.create({

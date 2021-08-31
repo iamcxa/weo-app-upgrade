@@ -1,5 +1,5 @@
 import { Platform, StyleSheet as RNStyleSheet } from 'react-native';
-import { StyleSheet, Screen } from '~/Helpers';
+import { StyleSheet, Screen } from '~/Helper';
 import { Colors } from '~/Theme';
 
 export default StyleSheet.create({

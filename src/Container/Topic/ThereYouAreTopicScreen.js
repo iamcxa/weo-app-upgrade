@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { CircleActions, TopicActions, AppPermissionSelectors } from '~/Stores';
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
-import { Permission } from '~/Helpers';
+import { Permission } from '~/Helper';
 import { Config } from '~/Config';
 
 import TopicScreen from './TopicScreen';

@@ -3,7 +3,7 @@ import { TabView, SceneMap } from 'react-native-tab-view';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 import AppStateActions from '~/Stores/AppState/Actions';
 import VoiceScreen from '~/Containers/Voice/VoiceScreen';
 import PeekMapScreen from '~/Containers/PeekMap/PeekMapScreen';

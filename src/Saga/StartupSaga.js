@@ -5,7 +5,7 @@ import { Platform } from 'react-native';
 import { CircleActions, AppStateActions, AppConfigActions, AppPermissionActions } from '~/Stores';
 import { AppStateTypes } from '~/Stores/AppState/Actions';
 import * as WeoConfigSaga from '~/Sagas/WeoConfigSaga';
-import { Logger, Permission, Dialog } from '~/Helpers';
+import { Logger, Permission, Dialog } from '~/Helper';
 
 /**
  * The startup saga is the place to define behavior to execute when the application starts.

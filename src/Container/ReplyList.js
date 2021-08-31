@@ -17,7 +17,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import { Date as d, ListenableEvent } from '~/Helpers';
+import { Date as d, ListenableEvent } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { BackToTopButton, PostListFooter, MainNavBar, CommentCard, ReplyBar } from '~/Components';
 import { Colors, Screen } from '~/Theme';

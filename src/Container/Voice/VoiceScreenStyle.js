@@ -1,5 +1,5 @@
 import {} from 'react-native';
-import { Screen, ScaledSheet, ifIphoneX } from '~/Helpers';
+import { Screen, ScaledSheet, ifIphoneX } from '~/Helper';
 import { Metrics } from '~/Theme';
 
 export default ScaledSheet.create({

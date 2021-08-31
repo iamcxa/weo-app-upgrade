@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 import { AppStateActions, UserActions, CircleActions } from '~/Stores';
 import { Handler, User } from '~/Apis';
-import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from '~/Helpers';
+import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 
 const TAG = '@UserSaga';

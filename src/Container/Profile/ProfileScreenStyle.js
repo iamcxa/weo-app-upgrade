@@ -1,4 +1,4 @@
-import { StyleSheet, Screen } from '~/Helpers';
+import { StyleSheet, Screen } from '~/Helper';
 import { Colors, Metrics } from '~/Theme';
 
 export default StyleSheet.create({

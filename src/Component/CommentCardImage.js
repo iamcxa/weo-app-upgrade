@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ActivityIndicator, View } from 'react-native';
 import Image from 'react-native-image-cache-wrapper';
-import { Screen, StyleSheet } from '~/Helpers';
+import { Screen, StyleSheet } from '~/Helper';
 
 const styles = StyleSheet.create({
   imageContainer: {

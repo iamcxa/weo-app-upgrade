@@ -9,7 +9,7 @@ import { Actions } from 'react-native-router-flux';
 
 import Config from '~/Config';
 import { Colors, Images } from '~/Theme';
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 
 import { updateUser, cleanUser } from '~/Stores/User/Actions';
 import Storage from '~/constant/storage';

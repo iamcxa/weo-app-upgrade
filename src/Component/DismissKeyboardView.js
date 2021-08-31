@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import { Screen } from '~/Helpers';
+import { Screen } from '~/Helper';
 
 const AvoidingView = ({ children, ...props }) => (
   <KeyboardAvoidingView

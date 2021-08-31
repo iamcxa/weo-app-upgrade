@@ -7,7 +7,7 @@ import { isString, isEmpty } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { ScrollView, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 
-import { Date as d, Screen } from '~/Helpers';
+import { Date as d, Screen } from '~/Helper';
 import { PostActions } from '~/Stores';
 import { Fonts, Colors, Classes, Metrics } from '~/Theme';
 

@@ -26,7 +26,7 @@ import {
   Screen,
   Date as d,
   Content as ContentHelper,
-} from '~/Helpers';
+} from '~/Helper';
 import { Colors, Metrics, Fonts, Classes } from '~/Theme';
 import { AppStateActions, TopicActions } from '~/Stores';
 import { translate as t } from '~/Helpers/I18n';

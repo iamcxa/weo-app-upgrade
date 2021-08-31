@@ -7,7 +7,7 @@ import { Alert, Text, View, StyleSheet, SafeAreaView } from 'react-native';
 
 import { MainNavBar, IconButton } from '~/Components';
 import { translate as t } from '~/Helpers/I18n';
-import { Screen, Dialog } from '~/Helpers';
+import { Screen, Dialog } from '~/Helper';
 import { Colors } from '~/Theme';
 
 // import { setItem } from '../utils/asyncStorage';

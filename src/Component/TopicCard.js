@@ -5,7 +5,7 @@ import { View, Alert } from 'react-native';
 import { translate as t } from '~/Helpers/I18n';
 import { BaseButton } from '~/Components';
 import { Colors, Metrics, Fonts } from '~/Theme';
-import { Screen, StyleSheet } from '~/Helpers';
+import { Screen, StyleSheet } from '~/Helper';
 import { DefaultText } from '../widget/Label';
 import VoteBox from './VoteBox';
 

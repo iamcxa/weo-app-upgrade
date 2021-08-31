@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { ScaledSheet } from '~/Helpers';
+import { ScaledSheet } from '~/Helper';
 import Colors from '~/Theme/Colors';
 import Styles from '~/Theme/Styles';
 import Fonts from '~/Theme/Fonts';

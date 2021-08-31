@@ -22,7 +22,7 @@ import { isEqual } from 'lodash';
 import { Colors, Images } from '~/Theme';
 import { translate as t } from '~/Helpers/I18n';
 import { AppStateActions, AppPermissionSelectors } from '~/Stores';
-import { Date as d, Dialog, Permission, Screen, ifIphoneX } from '~/Helpers';
+import { Date as d, Dialog, Permission, Screen, ifIphoneX } from '~/Helper';
 
 import {
   MainNavBar,

@@ -3,7 +3,7 @@ import { keyBy } from 'lodash';
 
 import { NotificationActions } from '~/Stores';
 import { Handler, Notification } from '~/Apis';
-import { Logger } from '~/Helpers';
+import { Logger } from '~/Helper';
 
 const TAG = '@NotificationSaga';
 

@@ -2,7 +2,7 @@ import { isEmpty, uniqBy, differenceBy } from 'lodash';
 import moment from 'moment';
 import { put, call, delay, select } from 'redux-saga/effects';
 
-import { Geolocation, Permission, Dialog, Logger, Fcm } from '~/Helpers';
+import { Geolocation, Permission, Dialog, Logger, Fcm } from '~/Helper';
 import { AppStore, CircleActions, AppStateActions, AppPermissionSelectors } from '~/Stores';
 import { Handler, Circle } from '~/Apis';
 import { translate as t } from '~/Helpers/I18n';
