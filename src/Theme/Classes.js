@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
-
-import Colors from './Colors';
-import Metrics from './Metrics';
+import { StyleSheet } from 'App/Helpers';
+import { Metrics } from 'App/Theme';
 
 export default StyleSheet.create({
-  absolute: {
-    position: 'absolute',
-  },
+  // eslint-disable-next-line react-native/no-color-literals
   backgroundReset: {
-    backgroundColor: Colors.transparent,
+    backgroundColor: 'transparent',
+  },
+  margin: {
+    marginHorizontal: Metrics.baseMargin,
+    marginVertical: Metrics.baseVerticalMargin,
   },
   center: {
     alignItems: 'center',
@@ -101,9 +101,6 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row-reverse',
   },
-  fullHeight: {
-    height: '100%',
-  },
   fullWidth: {
     width: '100%',
   },
@@ -121,18 +118,6 @@ export default StyleSheet.create({
   },
   mainStart: {
     justifyContent: 'flex-start',
-  },
-  marginBottom: {
-    marginBottom: Metrics.baseMargin,
-  },
-  marginLeft: {
-    marginLeft: Metrics.baseMargin,
-  },
-  marginRight: {
-    marginRight: Metrics.baseMargin,
-  },
-  marginTop: {
-    marginTop: Metrics.baseMargin,
   },
   row: {
     flexDirection: 'row',
@@ -167,5 +152,32 @@ export default StyleSheet.create({
   },
   textRight: {
     textAlign: 'right',
+  },
+  marginRight: {
+    marginRight: Metrics.baseMargin,
+  },
+  marginLeft: {
+    marginLeft: Metrics.baseMargin,
+  },
+  marginTop: {
+    marginTop: Metrics.baseMargin,
+  },
+  marginBottom: {
+    marginBottom: Metrics.baseMargin,
+  },
+  padding: {
+    padding: Metrics.baseMargin,
+  },
+  paddingRight: {
+    paddingRight: Metrics.baseMargin,
+  },
+  paddingLeft: {
+    paddingLeft: Metrics.baseMargin,
+  },
+  paddingTop: {
+    paddingTop: Metrics.baseMargin,
+  },
+  paddingBottom: {
+    paddingBottom: Metrics.baseMargin,
   },
 });

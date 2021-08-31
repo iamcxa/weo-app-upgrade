@@ -1,4 +1,4 @@
-import { Screen } from '~/Helper';
+import { Screen } from 'App/Helpers';
 
 const size = {
   h1: Screen.scale(38),
@@ -6,7 +6,7 @@ const size = {
   h3: Screen.scale(30),
   h4: Screen.scale(26),
   input: Screen.scale(18),
-  regular: Screen.scale(16),
+  regular: Screen.scale(17),
   medium: Screen.scale(14),
   small: Screen.scale(12),
 };
@@ -24,15 +24,48 @@ const style = {
   h4: {
     fontSize: size.h4,
   },
+  small: {
+    fontSize: size.small,
+  },
+  small500: {
+    fontSize: size.small,
+    fontWeight: '500',
+  },
+  normal: {
+    fontSize: size.normal,
+  },
+  normal500: {
+    fontSize: size.normal,
+    fontWeight: 'bold',
+  },
   regular: {
+    fontSize: size.regular,
+  },
+  regular500: {
     fontSize: size.regular,
     fontWeight: '500',
   },
   medium: {
     fontSize: size.medium,
   },
-  small: {
-    fontSize: size.small,
+  medium400: {
+    fontSize: size.medium,
+    fontWeight: '400',
+  },
+  medium500: {
+    fontSize: size.medium,
+    fontWeight: '500',
+  },
+  mediumBold: {
+    fontSize: size.medium,
+    fontWeight: 'bold',
+  },
+  input: {
+    fontSize: size.input,
+  },
+  input500: {
+    fontSize: size.input,
+    fontWeight: '500',
   },
   bold: { fontWeight: 'bold' },
   italic: { fontStyle: 'italic' },
