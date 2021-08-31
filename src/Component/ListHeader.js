@@ -8,7 +8,7 @@ import PickerModal from 'react-native-picker-modal-view';
 
 import { ifIphoneX, Screen, StyleSheet } from '~/Helper';
 import { Metrics, Colors, Images, Classes } from '~/Theme';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import Config from '~/Config';
 import ImageButton from './ImageButton';
 import MainNavBar from './MainNavBar';

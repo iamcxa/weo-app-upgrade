@@ -2,7 +2,7 @@
  * This file contains metric values that are global to the application.
  */
 
-import { Screen } from 'App/Helpers';
+import { Screen } from '~/Helper';
 
 export default {
   // Examples of metrics you can define:

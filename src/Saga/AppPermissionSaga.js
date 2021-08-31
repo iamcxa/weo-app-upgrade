@@ -1,5 +1,5 @@
 import { Alert, AppState } from 'react-native';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { put, call, take } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import Permissions, { RESULTS } from 'react-native-permissions';

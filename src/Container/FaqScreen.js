@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Text, StyleSheet, View, FlatList } from 'react-native';
 
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { MainNavBar, AndroidBackKey } from '~/Component';
 import { Screen } from '~/Helper';
 import { Classes, Colors, Metrics } from '~/Theme';

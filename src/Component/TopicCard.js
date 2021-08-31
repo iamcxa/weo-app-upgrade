@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { BaseButton } from '~/Component';
 import { Colors, Metrics, Fonts } from '~/Theme';
 import { Screen, StyleSheet } from '~/Helper';

@@ -5,7 +5,7 @@ import { call, put, select } from 'redux-saga/effects';
 
 import { Handler, Post } from '~/Apis';
 import { AppStateActions, TopicActions, PostActions } from '~/Store';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { deletePostById } from '~/Stores/List/Actions/post';
 
 export function* fetchGetPost({ topicId, curPage, belongsTo, handleNextPage }) {

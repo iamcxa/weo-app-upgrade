@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
 import Config from '~/Config';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Fonts, Colors, Classes } from '~/Theme';
 import { BaseModalSelector, BaseButton, IconButton } from '~/Component';
 

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'App/Helpers';
-import { Metrics } from 'App/Theme';
+import { StyleSheet } from '~/Helper';
+import { Metrics } from '~/Theme';
 
 export default StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals

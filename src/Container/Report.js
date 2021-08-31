@@ -9,7 +9,7 @@ import ModalCard from '~/Components/ModalCard';
 import Colors from '~/Theme/Colors';
 import { AppStateActions } from '~/Store';
 import AvoidingView from '~/Components/DismissKeyboardView';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { ReportActions } from '~/Stores/index';
 import { fetchAPI, apiAction, apiHandler } from '../utils/api';
 import RadioButton from '../widget/RadioButton';

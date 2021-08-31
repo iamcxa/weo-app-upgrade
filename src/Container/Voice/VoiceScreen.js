@@ -20,7 +20,7 @@ import { connect } from 'react-redux';
 import { isEqual } from 'lodash';
 
 import { Colors, Images } from '~/Theme';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { AppStateActions, AppPermissionSelectors } from '~/Store';
 import { Date as d, Dialog, Permission, Screen, ifIphoneX } from '~/Helper';
 

@@ -7,9 +7,7 @@
 import { INITIAL_STATE } from './InitialState';
 import { createReducer } from 'reduxsauce';
 import { combineReducers } from 'redux';
-import { get } from 'lodash';
 import { TopicTypes } from './Actions';
-import { AppStore } from 'App/Stores';
 
 const stateKey = {
   HERE_YOU_ARE: 'hereYouAre',

@@ -8,7 +8,7 @@ import { StyleSheet, Platform, View } from 'react-native';
 
 import { MainNavBar, SwitchListItem, AndroidBackKey } from '~/Component';
 import { AppStateActions, UserActions } from '~/Store';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Screen, Dialog, Fcm } from '~/Helper';
 import { Colors } from '~/Theme';
 

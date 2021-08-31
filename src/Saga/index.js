@@ -14,7 +14,7 @@ import * as Example from './ExampleSaga';
 // import { VoteTypes } from '~/Store/Vote/Actions';
 // import { PostTypes } from '~/Store/Post/Actions';
 // import { ReportTypes } from '~/Store/Report/Actions';
-// import { FirebaseTypes } from 'App/Stores/Firebase/Actions';
+// import { FirebaseTypes } from '~/Store/Firebase/Actions';
 
 // import * as AppPermissionSaga from './AppPermissionSaga';
 // import * as AppRouteSaga from './AppRouteSaga';

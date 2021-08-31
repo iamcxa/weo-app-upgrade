@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Colors, Images } from '~/Theme';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import Screen from '../utils/screen';
 
 const styles = StyleSheet.create({

@@ -5,7 +5,7 @@ import { put, call, delay, select } from 'redux-saga/effects';
 import { Geolocation, Permission, Dialog, Logger, Fcm } from '~/Helper';
 import { AppStore, CircleActions, AppStateActions, AppPermissionSelectors } from '~/Store';
 import { Handler, Circle } from '~/Apis';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import Config from '~/Config';
 
 const TAG = '@CircleSaga';

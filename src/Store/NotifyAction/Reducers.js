@@ -1,7 +1,7 @@
 import {
   RECEIVED_NOTIFY_ACTION,
   RESET_NOTIFY_ACTION,
-} from 'App/Stores/NotifyAction/Actions';
+} from '~/Store/NotifyAction/Actions';
 
 export const initialState = {
   isAction: true,

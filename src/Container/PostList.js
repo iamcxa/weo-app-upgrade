@@ -20,7 +20,7 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Date as d, Screen, ListenableEvent, ifIphoneX } from '~/Helper';
 import {
   MainNavBar,

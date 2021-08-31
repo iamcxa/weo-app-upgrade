@@ -19,7 +19,7 @@ import { Colors } from '~/Theme';
 import { Screen } from '~/Helper';
 import { AppConfigActions, AppStateActions } from '~/Store';
 import { BaseModalSelector } from '~/Component';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 
 import { H3, H4 } from '~/widget/Label';
 import { cleanUser } from '~/Stores/User/Actions';

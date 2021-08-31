@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Screen, StyleSheet, Date as d } from '~/Helper';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Colors, Classes } from '~/Theme';
 import Config from '~/Config';
 import {

@@ -30,7 +30,7 @@ import {
   User as UserHelper,
   Content as ContentHelper,
 } from '~/Helper';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Classes, Images, Colors } from '~/Theme';
 import { UserActions } from '~/Store';
 import Config from '~/Config';

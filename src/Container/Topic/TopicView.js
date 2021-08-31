@@ -13,7 +13,7 @@ import {
   TopicCard,
 } from '~/Component';
 import { Colors, Metrics, Classes } from '~/Theme';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { ifIphoneX, Screen, Date as d, StyleSheet, Permission } from '~/Helper';
 import { PrimaryBtn } from '~/widget/RoundButton';
 import HyperlinkWrapper from '~/widget/HyperlinkWrapper';

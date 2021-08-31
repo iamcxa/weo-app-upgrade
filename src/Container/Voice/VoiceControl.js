@@ -7,7 +7,7 @@ import { Alert, StyleSheet } from 'react-native';
 import Voice from '@react-native-community/voice';
 import { Permissions } from 'react-native-unimodules';
 // import Permissions, { PERMISSIONS } from 'react-native-permissions';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 
 const styles = StyleSheet.create({
   container: {

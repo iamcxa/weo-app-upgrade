@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Text, View, Button, SafeAreaView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { NavBar } from '@ublocks-react-native/component';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 
 import StartupActions from '~/Stores/Startup/Actions';
 import styles from './RootScreenStyle';

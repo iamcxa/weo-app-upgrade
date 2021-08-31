@@ -10,7 +10,7 @@ import { FlatList, RefreshControl, Text, View } from 'react-native';
 import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from '~/Component';
 import { Config } from '~/Config';
 import { NotificationActions } from '~/Store';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Notification, StyleSheet } from '~/Helper';
 import { Colors, Classes, Fonts } from '~/Theme';
 

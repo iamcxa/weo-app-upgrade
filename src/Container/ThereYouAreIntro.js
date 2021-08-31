@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import { Alert, Text, View, StyleSheet, SafeAreaView } from 'react-native';
 
 import { MainNavBar, IconButton } from '~/Component';
-import { translate as t } from '~/Helpers/I18n';
+import { translate as t } from '~/Helper/I18n';
 import { Screen, Dialog } from '~/Helper';
 import { Colors } from '~/Theme';
 

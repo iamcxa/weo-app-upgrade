@@ -1,4 +1,4 @@
-import { Screen } from 'App/Helpers';
+import { Screen } from '~/Helper';
 
 const size = {
   h1: Screen.scale(38),
