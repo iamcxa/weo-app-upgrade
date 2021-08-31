@@ -8,23 +8,6 @@ import { CircleActions, UserActions } from '~/Store/Actions';
 import SplashView from './SplashView';
 
 class SplashScreen extends React.Component {
-  static propTypes = {
-    updateUserStore: PropTypes.func.isRequired,
-    fetchPostSignUp: PropTypes.func.isRequired,
-    fetchGetStayCircles: PropTypes.func.isRequired,
-    cleanUser: PropTypes.func.isRequired,
-    apiToken: PropTypes.string,
-    fcmToken: PropTypes.string,
-    currentState: PropTypes.string,
-    sceneKey: PropTypes.string.isRequired,
-    // hasGeolocationPermission: PropTypes.bool.isRequired,
-  };
-
-  static defaultProps = {
-    apiToken: '',
-    currentState: '',
-  };
-
   timer = null;
 
   async componentDidMount() {
@@ -116,6 +99,23 @@ class SplashScreen extends React.Component {
     return <SplashView />;
   }
 }
+
+SplashScreen.propTypes = {
+  // updateUserStore: PropTypes.func.isRequired,
+  // fetchPostSignUp: PropTypes.func.isRequired,
+  // fetchGetStayCircles: PropTypes.func.isRequired,
+  cleanUser: PropTypes.func.isRequired,
+  apiToken: PropTypes.string,
+  // fcmToken: PropTypes.string,
+  // currentState: PropTypes.string,
+  // sceneKey: PropTypes.string.isRequired,
+  // hasGeolocationPermission: PropTypes.bool.isRequired,
+};
+
+SplashScreen.defaultProps = {
+  apiToken: '',
+  // currentState: '',
+};
 
 export default connect(
   (state, props) => ({

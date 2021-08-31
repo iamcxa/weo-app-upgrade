@@ -5,7 +5,7 @@ import { Screen } from '~/Helper';
 import { Images, Colors } from '~/Theme';
 import { FooterLogo } from '~/Component';
 
-export const SplashView = (props) => (
+const SplashView = (props) => (
   <View style={styles.container}>
     <StatusBar backgroundColor={Colors.mainYellow} />
     <Image source={Images.splashBackground} style={styles.backgroundImage} />
