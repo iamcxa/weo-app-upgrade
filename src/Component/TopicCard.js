@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 
 import { translate as t } from '~/Helpers/I18n';
-import { BaseButton } from '~/Components';
+import { BaseButton } from '~/Component';
 import { Colors, Metrics, Fonts } from '~/Theme';
 import { Screen, StyleSheet } from '~/Helper';
 import { DefaultText } from '../widget/Label';

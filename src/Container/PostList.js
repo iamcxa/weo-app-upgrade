@@ -29,7 +29,7 @@ import {
   PostListFooter,
   ReplyBar,
   ReplyDialog,
-} from '~/Components';
+} from '~/Component';
 import { Colors, Fonts, Metrics } from '~/Theme';
 import Config from '~/Config';
 import {

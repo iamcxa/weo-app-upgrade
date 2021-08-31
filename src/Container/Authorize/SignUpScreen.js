@@ -21,7 +21,7 @@ import {
   FooterLogo,
   AndroidBackKey,
   DismissKeyboardView as AvoidingView,
-} from '~/Components';
+} from '~/Component';
 import {
   Dialog,
   Screen,

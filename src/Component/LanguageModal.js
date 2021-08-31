@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 import Config from '~/Config';
 import { translate as t } from '~/Helpers/I18n';
 import { Fonts, Colors, Classes } from '~/Theme';
-import { BaseModalSelector, BaseButton, IconButton } from '~/Components';
+import { BaseModalSelector, BaseButton, IconButton } from '~/Component';
 
 const SUPPORT_LANGUAGES = () =>
   [{ key: 0, label: t('drawer_content_select_prefer_locale'), section: true }].concat(

@@ -3,7 +3,7 @@ import { Platform, StyleSheet, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
-import { AndroidBackKey } from '~/Components';
+import { AndroidBackKey } from '~/Component';
 import { Screen, isIphoneX } from '~/Helper';
 import { Colors } from '~/Theme';
 import IconButton from './IconButton';

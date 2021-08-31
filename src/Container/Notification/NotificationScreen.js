@@ -7,7 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import { isEqual, isEmpty, throttle } from 'lodash';
 import { FlatList, RefreshControl, Text, View } from 'react-native';
 
-import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from '~/Components';
+import { ListSeparator, NotifyCard, MainNavBar, AndroidBackKey } from '~/Component';
 import { Config } from '~/Config';
 import { NotificationActions } from '~/Stores';
 import { translate as t } from '~/Helpers/I18n';

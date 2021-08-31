@@ -3,7 +3,7 @@ import { StatusBar, View, StyleSheet, Image } from 'react-native';
 
 import { Screen } from '~/Helper';
 import { Images, Colors } from '~/Theme';
-import { FooterLogo } from '~/Components';
+import { FooterLogo } from '~/Component';
 
 export const SplashView = (props) => (
   <View style={styles.container}>

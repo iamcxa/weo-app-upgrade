@@ -4,7 +4,7 @@ import { Keyboard } from 'react-native';
 import { has, isEmpty, isEqual, throttle } from 'lodash';
 import { Actions } from 'react-native-router-flux';
 
-import { AndroidBackKey } from '~/Components';
+import { AndroidBackKey } from '~/Component';
 // import { Dialog } from '~/Helper';
 import { Config } from '~/Config';
 import TopicView from './TopicView';

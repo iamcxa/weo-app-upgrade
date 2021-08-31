@@ -10,7 +10,7 @@ import { Marker } from 'react-native-maps';
 import { Actions } from 'react-native-router-flux';
 import { Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-import { MainNavBar, AndroidBackKey } from '~/Components';
+import { MainNavBar, AndroidBackKey } from '~/Component';
 import { Screen, Geolocation, Permission } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { Colors, Images, Classes } from '~/Theme';

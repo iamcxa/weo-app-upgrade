@@ -20,7 +20,7 @@ import { ifIphoneX } from '~/Helper';
 import { SearchActions } from '~/Stores';
 import { translate as t } from '~/Helpers/I18n';
 import { Classes, Colors, Images, Metrics } from '~/Theme';
-import { ModalCard, SearchListItem, ComposedTextInput, DismissKeyboardView } from '~/Components';
+import { ModalCard, SearchListItem, ComposedTextInput, DismissKeyboardView } from '~/Component';
 
 import styles from './SearchScreenStyle';
 

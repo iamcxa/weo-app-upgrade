@@ -11,7 +11,7 @@ import {
   ListHeader,
   Separator,
   TopicCard,
-} from '~/Components';
+} from '~/Component';
 import { Colors, Metrics, Classes } from '~/Theme';
 import { translate as t } from '~/Helpers/I18n';
 import { ifIphoneX, Screen, Date as d, StyleSheet, Permission } from '~/Helper';

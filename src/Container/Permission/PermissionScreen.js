@@ -10,7 +10,7 @@ import { View, Text, Platform, FlatList, ScrollView } from 'react-native';
 import { Colors, Fonts } from '~/Theme';
 import { Permission, Screen } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
-import { Separator, BaseButton, LanguageModal } from '~/Components';
+import { Separator, BaseButton, LanguageModal } from '~/Component';
 import { AppPermissionSelectors, AppConfigActions, UserActions } from '~/Stores';
 
 import styles from './PermissionScreenStyle';

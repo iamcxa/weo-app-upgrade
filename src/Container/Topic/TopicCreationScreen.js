@@ -31,7 +31,7 @@ import {
 } from '~/Helper';
 
 import { PrimaryBtn } from '~/widget/RoundButton';
-import { AvatarBlock, ModalCard, DismissKeyboardView } from '~/Components';
+import { AvatarBlock, ModalCard, DismissKeyboardView } from '~/Component';
 import { checkAndRequestPermission, permissionType } from '~/utils/permission';
 
 const { BUTTON_DEBOUNCE, CREATE_TOPIC_PERIOD } = Config;

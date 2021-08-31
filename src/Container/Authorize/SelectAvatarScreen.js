@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { Screen } from '~/Helper';
-import { BaseModal } from '~/Components';
+import { BaseModal } from '~/Component';
 import { Colors, Images } from '~/Theme';
 import { AppStateActions } from '~/Stores';
 

@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { WebView } from 'react-native-webview';
 
 import { translate as t } from '~/Helpers/I18n';
-import { MainNavBar, AndroidBackKey } from '~/Components';
+import { MainNavBar, AndroidBackKey } from '~/Component';
 import { Screen } from '~/Helper';
 import { Classes, Colors } from '~/Theme';
 

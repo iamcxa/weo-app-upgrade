@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import { Colors, Images, Metrics } from '~/Theme';
 import { Screen } from '~/Helper';
-import { BaseIconButton, BaseButton } from '~/Components';
+import { BaseIconButton, BaseButton } from '~/Component';
 
 const hitSlop = {
   top: 8,

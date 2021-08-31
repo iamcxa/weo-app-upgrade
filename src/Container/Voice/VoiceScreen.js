@@ -30,7 +30,7 @@ import {
   IconButton,
   DismissKeyboardView,
   AndroidBackKey,
-} from '~/Components';
+} from '~/Component';
 
 import soundAnimation from '~/Assets/Images/lottie/animation-soundwave.json';
 import voiceAnimation from '~/Assets/Images/lottie/animation-voice.json';

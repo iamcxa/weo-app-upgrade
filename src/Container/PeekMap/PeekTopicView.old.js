@@ -22,7 +22,7 @@ import {
   BaseIconButton,
   BackToTopButton,
   CollapsibleHeader,
-} from '~/Components';
+} from '~/Component';
 import { SortOptionRow } from '~/Components/ListHeader';
 
 import HyperlinkWrapper from '~/widget/HyperlinkWrapper';
