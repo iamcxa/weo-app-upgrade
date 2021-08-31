@@ -17,7 +17,7 @@ import { debounce, throttle, isEmpty } from 'lodash';
 
 import Config from '~/Config';
 import { ifIphoneX } from '~/Helper';
-import { SearchActions } from '~/Stores';
+import { SearchActions } from '~/Store';
 import { translate as t } from '~/Helpers/I18n';
 import { Classes, Colors, Images, Metrics } from '~/Theme';
 import { ModalCard, SearchListItem, ComposedTextInput, DismissKeyboardView } from '~/Component';

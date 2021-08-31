@@ -2,7 +2,7 @@ import { put, call, select } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import { Platform } from 'react-native';
 
-import { AppStateActions, UserActions, CircleActions } from '~/Stores';
+import { AppStateActions, UserActions, CircleActions } from '~/Store';
 import { Handler, User } from '~/Apis';
 import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';

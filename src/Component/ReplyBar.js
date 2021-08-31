@@ -28,7 +28,7 @@ import {
   Content as ContentHelper,
 } from '~/Helper';
 import { Colors, Metrics, Fonts, Classes } from '~/Theme';
-import { AppStateActions, TopicActions } from '~/Stores';
+import { AppStateActions, TopicActions } from '~/Store';
 import { translate as t } from '~/Helpers/I18n';
 import Config from '~/Config';
 

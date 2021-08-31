@@ -21,7 +21,7 @@ import { isEqual } from 'lodash';
 
 import { Colors, Images } from '~/Theme';
 import { translate as t } from '~/Helpers/I18n';
-import { AppStateActions, AppPermissionSelectors } from '~/Stores';
+import { AppStateActions, AppPermissionSelectors } from '~/Store';
 import { Date as d, Dialog, Permission, Screen, ifIphoneX } from '~/Helper';
 
 import {

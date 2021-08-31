@@ -1,5 +1,5 @@
 import { put, call, select } from 'redux-saga/effects';
-import { AppConfigActions, AppPermissionActions, AppStateActions } from '~/Stores';
+import { AppConfigActions, AppPermissionActions, AppStateActions } from '~/Store';
 import Config from '~/Config';
 import { Permission, Dialog } from '~/Helper';
 import * as StartupSaga from './StartupSaga';

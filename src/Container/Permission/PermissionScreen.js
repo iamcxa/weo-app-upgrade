@@ -11,7 +11,7 @@ import { Colors, Fonts } from '~/Theme';
 import { Permission, Screen } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { Separator, BaseButton, LanguageModal } from '~/Component';
-import { AppPermissionSelectors, AppConfigActions, UserActions } from '~/Stores';
+import { AppPermissionSelectors, AppConfigActions, UserActions } from '~/Store';
 
 import styles from './PermissionScreenStyle';
 

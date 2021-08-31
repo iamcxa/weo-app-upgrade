@@ -1,7 +1,7 @@
 import { put, call, select } from 'redux-saga/effects';
 import { keyBy } from 'lodash';
 
-import { NotificationActions } from '~/Stores';
+import { NotificationActions } from '~/Store';
 import { Handler, Notification } from '~/Apis';
 import { Logger } from '~/Helper';
 

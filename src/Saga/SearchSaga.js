@@ -1,7 +1,7 @@
 import { put, call, select } from 'redux-saga/effects';
 import { isEmpty } from 'lodash';
 
-import { AppStateActions, SearchActions } from '~/Stores';
+import { AppStateActions, SearchActions } from '~/Store';
 import { Handler, Search } from '~/Apis';
 import { Logger } from '~/Helper';
 

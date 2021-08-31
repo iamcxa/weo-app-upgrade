@@ -14,7 +14,7 @@ import { MainNavBar, AndroidBackKey } from '~/Component';
 import { Screen, Geolocation, Permission } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { Colors, Images, Classes } from '~/Theme';
-import { AppStateActions, CircleActions, AppPermissionSelectors } from '~/Stores';
+import { AppStateActions, CircleActions, AppPermissionSelectors } from '~/Store';
 
 import { Config } from '~/Config';
 import styles from './PeekMapScreenStyle';

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
 import { Config } from '~/Config';
-import { TopicActions } from '~/Stores';
+import { TopicActions } from '~/Store';
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import PeekTopicView from './PeekTopicView';
 

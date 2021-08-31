@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { ScrollView, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 
 import { Date as d, Screen } from '~/Helper';
-import { PostActions } from '~/Stores';
+import { PostActions } from ''~/Component';
 import { Fonts, Colors, Classes, Metrics } from '~/Theme';
 
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';

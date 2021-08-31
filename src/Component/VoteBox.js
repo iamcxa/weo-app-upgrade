@@ -10,7 +10,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Config from '~/Config';
 import { Colors, Metrics } from '~/Theme';
 import { Screen } from '~/Helper';
-import { VoteActions } from '~/Stores';
+import { VoteActions } from '~/Store';
 
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import { DefaultText } from '../widget/Label';

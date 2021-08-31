@@ -9,7 +9,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Screen } from '~/Helper';
 import { BaseModal } from '~/Component';
 import { Colors, Images } from '~/Theme';
-import { AppStateActions } from '~/Stores';
+import { AppStateActions } from '~/Store';
 
 const styles = StyleSheet.create({
   container: {

@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 import { keyBy, isEmpty } from 'lodash';
 
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
-import { AppStateActions, TopicActions, CircleActions } from '~/Stores';
+import { AppStateActions, TopicActions, CircleActions } from '~/Store';
 import { Handler, Topic } from '~/Apis';
 import {
   Logger,

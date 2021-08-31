@@ -39,7 +39,7 @@ import {
   AppStateActions,
   AppAlertActions,
   ReportActions,
-} from '~/Stores';
+} from '~/Store';
 
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import { onUpdateList } from '~/Stores/List/Actions/list';

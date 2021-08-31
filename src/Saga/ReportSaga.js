@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { call, put, select } from 'redux-saga/effects';
 
 import { Handler, Post, Report } from '~/Apis';
-import { AppStateActions, TopicActions, PostActions, AppAlertActions } from '~/Stores';
+import { AppStateActions, TopicActions, PostActions, AppAlertActions } from '~/Store';
 import { translate as t } from '~/Helpers/I18n';
 
 export function* fetchPostHidePost({ id, mode, belongsTo }) {

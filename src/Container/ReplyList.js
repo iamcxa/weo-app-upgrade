@@ -21,7 +21,7 @@ import { Date as d, ListenableEvent } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { BackToTopButton, PostListFooter, MainNavBar, CommentCard, ReplyBar } from '~/Component';
 import { Colors, Screen } from '~/Theme';
-import { AppStateActions } from '~/Stores';
+import { AppStateActions } from '~/Store';
 import Config from '~/Config';
 
 import {

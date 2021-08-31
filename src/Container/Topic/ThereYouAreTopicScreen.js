@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { CircleActions, TopicActions, AppPermissionSelectors } from '~/Stores';
+import { CircleActions, TopicActions, AppPermissionSelectors } from '~/Store';
 import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
 import { Permission } from '~/Helper';
 import { Config } from '~/Config';

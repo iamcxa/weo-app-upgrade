@@ -32,7 +32,7 @@ import {
 } from '~/Helper';
 import { translate as t } from '~/Helpers/I18n';
 import { Classes, Images, Colors } from '~/Theme';
-import { UserActions } from '~/Stores';
+import { UserActions } from '~/Store';
 import Config from '~/Config';
 
 import { checkForm } from '~/utils/form';

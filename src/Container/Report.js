@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
 import ModalCard from '~/Components/ModalCard';
 import Colors from '~/Theme/Colors';
-import { AppStateActions } from '~/Stores';
+import { AppStateActions } from '~/Store';
 import AvoidingView from '~/Components/DismissKeyboardView';
 import { translate as t } from '~/Helpers/I18n';
 import { ReportActions } from '~/Stores/index';

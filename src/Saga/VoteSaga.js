@@ -1,7 +1,7 @@
 import { put, call, select } from 'redux-saga/effects';
 import { isEmpty } from 'lodash';
 
-import { AppStateActions, TopicActions, PostActions, ReplyActions } from '~/Stores';
+import { AppStateActions, TopicActions, PostActions, ReplyActions } from '~/Store';
 import { Handler, Vote } from '~/Apis';
 import { Logger } from '~/Helper';
 

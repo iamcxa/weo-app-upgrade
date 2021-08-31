@@ -1,6 +1,6 @@
 import { put, call, select } from 'redux-saga/effects';
 
-import { AppStateActions, AppConfigActions } from '~/Stores';
+import { AppStateActions, AppConfigActions } from '~/Store';
 import { Handler, Config } from '~/Apis';
 import { Logger } from '~/Helper';
 

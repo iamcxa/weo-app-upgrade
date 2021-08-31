@@ -20,7 +20,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Config from '~/Config';
 import { translate as t } from '~/Helpers/I18n';
 import { Classes, Colors, Fonts, Images } from '~/Theme';
-import { AppStateActions, TopicActions } from '~/Stores';
+import { AppStateActions, TopicActions } from '~/Store';
 import {
   Date as d,
   Dialog,
