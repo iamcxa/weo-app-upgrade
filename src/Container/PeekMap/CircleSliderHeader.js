@@ -1,16 +1,16 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import IoniconIcon from 'react-native-vector-icons/Ionicons';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Carousel from 'react-native-snap-carousel';
-import Screen from '~/utils/screen';
-import Colors from '~/Theme/Colors';
-import PropTypes from 'prop-types';
-import { SortOptionRow } from '~/Components/ListHeader';
-import Pagination from 'react-native-pagination';
-import { Actions } from 'react-native-router-flux';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import IoniconIcon from "react-native-vector-icons/Ionicons";
+import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import Carousel from "react-native-snap-carousel";
+import { Screen } from "~/Helper";
+import Colors from "~/Theme/Colors";
+import PropTypes from "prop-types";
+import { SortOptionRow } from "~/Component/ListHeader";
+import Pagination from "react-native-pagination";
+import { Actions } from "react-native-router-flux";
 
-const PAGINATION_DOT_ICON_NAME = 'checkbox-blank-circle';
+const PAGINATION_DOT_ICON_NAME = "checkbox-blank-circle";
 
 const SLIDER_WIDTH = 250;
 const ITEM_WIDTH = 250;
@@ -23,7 +23,7 @@ const renderItem = ({ item, index }) => (
       name="eye-outline"
       size={26}
       color={Colors.pureWhite}
-      style={{ marginTop: Screen.moderateScale(3) }}
+      style={{ marginTop: Screen.scale(3) }}
     />
     <Text style={styles.slideTitle}>{item.name}</Text>
   </View>
@@ -43,7 +43,9 @@ const CircleSliderHeader = (props) => {
     getCarousel,
   } = props;
 
-  const activeIndex = paginationVisibleItems[0] ? paginationVisibleItems[0].index : null;
+  const activeIndex = paginationVisibleItems[0]
+    ? paginationVisibleItems[0].index
+    : null;
   let padSize = 0;
   if (activeIndex !== null) {
     padSize =
@@ -89,9 +91,12 @@ const CircleSliderHeader = (props) => {
           startDotIconSize={5}
           endDotIconSize={5}
           edgeDotIconNotActiveSize={5}
-          startDotIconHide={activeIndex === null || activeIndex <= PAGINATION_PAD_SIZE}
+          startDotIconHide={
+            activeIndex === null || activeIndex <= PAGINATION_PAD_SIZE
+          }
           endDotIconHide={
-            activeIndex === null || entries.length - activeIndex <= PAGINATION_PAD_SIZE + 1
+            activeIndex === null ||
+            entries.length - activeIndex <= PAGINATION_PAD_SIZE + 1
           }
           // debugMode
           dotEmptyHide
@@ -107,7 +112,12 @@ const CircleSliderHeader = (props) => {
         </TouchableOpacity>
       </View>
       <View>
-        <SortOptionRow dark active={sort} showNewest={showNewest} showHottest={showHottest} />
+        <SortOptionRow
+          dark
+          active={sort}
+          showNewest={showNewest}
+          showHottest={showHottest}
+        />
       </View>
     </View>
   );
@@ -128,38 +138,38 @@ export default CircleSliderHeader;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
     backgroundColor: Colors.black,
   },
   carouselContainer: {
     // flex: 1,
-    width: '100%',
-    height: Screen.moderateScale(77),
+    width: "100%",
+    height: Screen.scale(77),
     backgroundColor: Colors.blackFour,
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-    paddingTop: Screen.moderateScale(5),
-    marginBottom: Screen.moderateScale(5),
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+    paddingTop: Screen.scale(5),
+    marginBottom: Screen.scale(5),
   },
   paginationContainer: {
-    paddingTop: Screen.moderateScale(5),
-    width: '40%',
-    alignSelf: 'center',
+    paddingTop: Screen.scale(5),
+    width: "40%",
+    alignSelf: "center",
   },
   exitButton: {
-    position: 'absolute',
-    right: Screen.moderateScale(24),
-    top: Screen.moderateScale(14),
+    position: "absolute",
+    right: Screen.scale(24),
+    top: Screen.scale(14),
   },
   dotContainer: {
     padding: 0,
     margin: 0,
-    marginHorizontal: Screen.moderateScale(2),
+    marginHorizontal: Screen.scale(2),
   },
   dot: {
-    // width: Screen.moderateScale(10),
-    // height: Screen.moderateScale(10),
+    // width: Screen.scale(10),
+    // height: Screen.scale(10),
     borderRadius: 3,
     marginHorizontal: 0,
   },
@@ -168,22 +178,22 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     marginHorizontal: 2,
-    backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    backgroundColor: "rgba(255, 255, 255, 0.92)",
   },
   slide: {
-    width: '100%',
-    height: Screen.moderateScale(40),
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginBottom: Screen.moderateScale(12),
+    width: "100%",
+    height: Screen.scale(40),
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    marginBottom: Screen.scale(12),
   },
   slideTitle: {
-    fontSize: Screen.moderateScale(16),
-    paddingLeft: Screen.moderateScale(10),
-    fontWeight: '600',
-    alignSelf: 'center',
+    fontSize: Screen.scale(16),
+    paddingLeft: Screen.scale(10),
+    fontWeight: "600",
+    alignSelf: "center",
     color: Colors.pureWhite,
   },
 });

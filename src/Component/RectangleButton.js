@@ -1,13 +1,12 @@
-import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
-import PropTypes from 'prop-types';
-import color from '~/constant/color';
-import Screen from '../utils/screen';
+import React from "react";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import PropTypes from "prop-types";
+import { Screen } from "~/Helper";
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {},
 });
@@ -51,11 +50,11 @@ RectangleButton.propTypes = {
 };
 
 RectangleButton.defaultProps = {
-  backgroundColor: 'black',
-  textColor: 'white',
-  radius: Screen.moderateScale(100),
-  height: Screen.moderateScale(23),
-  width: Screen.moderateScale(46),
+  backgroundColor: "black",
+  textColor: "white",
+  radius: Screen.scale(100),
+  height: Screen.scale(23),
+  width: Screen.scale(46),
   style: {},
 };
 

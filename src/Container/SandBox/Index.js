@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Platform, ScrollView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import DeviceInfo from 'react-native-device-info';
-import DropdownAlert from 'react-native-dropdownalert';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import config from '~/Config';
-import RoundButton from '~/Components/Button';
-import { updateAlert } from '~/Stores/AppAlert/Actions';
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Platform,
+  ScrollView,
+} from "react-native";
+import { Actions } from "react-native-router-flux";
+import Icon from "react-native-vector-icons/FontAwesome";
+import DeviceInfo from "react-native-device-info";
+import DropdownAlert from "react-native-dropdownalert";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import config from "~/Config";
+import RoundButton from "~/Component/Button";
+import { updateAlert } from "~/Store/AppAlert/Actions";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,8 +30,8 @@ const styles = StyleSheet.create({
       {
         updateAlert,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )
 class Index extends Component {
   static propTypes = {};
@@ -32,7 +39,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pushToken: '',
+      pushToken: "",
     };
   }
 
@@ -41,7 +48,7 @@ class Index extends Component {
   }
 
   iosOnly = () => {
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === "ios") {
       return [];
     }
   };
@@ -53,7 +60,10 @@ class Index extends Component {
         <Text>{DeviceInfo.getUniqueID()}</Text>
         <Text>{this.state.pushToken}</Text>
         <Text>{config.domain}</Text>
-        <RoundButton onPress={Actions.sandBoxHereYouAre} text="HereYouAre List" />
+        <RoundButton
+          onPress={Actions.sandBoxHereYouAre}
+          text="HereYouAre List"
+        />
         <RoundButton onPress={Actions.gec} text="GEC 通用元件 drawer" />
         <RoundButton onPress={Actions.gec} text="GEC 通用元件" />
         <RoundButton onPress={Actions.gec3} text="GEC 通用元件3" />
@@ -67,9 +77,9 @@ class Index extends Component {
           onPress={() => {
             setTimeout(() => {
               this.props.updateAlert({
-                title: 'Good',
-                desc: 'XXX 正在關心',
-                status: 'show',
+                title: "Good",
+                desc: "XXX 正在關心",
+                status: "show",
               });
             }, 5000);
           }}
@@ -80,7 +90,7 @@ class Index extends Component {
           ref={(ref) => (this.dropdown = ref)}
           onClose={(data) => {}}
           onPress={() => {
-            console.log('!!!!!!!!!!!');
+            console.log("!!!!!!!!!!!");
           }}
         />
       </ScrollView>

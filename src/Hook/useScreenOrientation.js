@@ -1,8 +1,8 @@
-import * as ScreenOrientation from 'expo-screen-orientation';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import * as ScreenOrientation from "expo-screen-orientation";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AppStateActions } from '~/Store/Actions';
+import { AppStateActions } from "~/Store/Actions";
 
 export function useScreenOrientation(lock) {
   const [lockError, setLockError] = React.useState();
@@ -15,17 +15,17 @@ export function useScreenOrientation(lock) {
     () =>
       ScreenOrientation.getOrientationAsync().then((info) => {
         if (currentOrientation !== info) {
-          dispatch(AppStateActions['~/onOrientationUpdate'](info));
+          dispatch(AppStateActions["app/onOrientationUpdate"](info));
         }
         return info;
       }),
-    [currentOrientation, dispatch],
+    [currentOrientation, dispatch]
   );
 
   React.useEffect(() => {
     if (lock && lock !== ScreenOrientation.OrientationLock.DEFAULT) {
       ScreenOrientation.lockAsync(lock)
-        .then(() => dispatch(AppStateActions['~/onOrientationUpdate'](lock)))
+        .then(() => dispatch(AppStateActions["~/onOrientationUpdate"](lock)))
         .catch(setLockError);
     } else {
       ScreenOrientation.unlockAsync();
@@ -33,14 +33,16 @@ export function useScreenOrientation(lock) {
     }
 
     const handleOrientationChange = (event) => {
-      console.log('event=>', event);
-      console.log('currentOrientation=>', currentOrientation);
+      console.log("event=>", event);
+      console.log("currentOrientation=>", currentOrientation);
       if (currentOrientation !== event) {
-        dispatch(AppStateActions['~/onOrientationUpdate'](event));
+        dispatch(AppStateActions["~/onOrientationUpdate"](event));
       }
     };
 
-    const subscription = ScreenOrientation.addOrientationChangeListener(handleOrientationChange);
+    const subscription = ScreenOrientation.addOrientationChangeListener(
+      handleOrientationChange
+    );
 
     return () => {
       subscription.remove();

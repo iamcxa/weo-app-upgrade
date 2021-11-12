@@ -1,14 +1,14 @@
-import { Alert, AppState } from 'react-native';
-import { translate as t } from '~/Helper/I18n';
-import { put, call, take } from 'redux-saga/effects';
-import { eventChannel } from 'redux-saga';
-import Permissions, { RESULTS } from 'react-native-permissions';
+import { Alert, AppState } from "react-native";
+import Permissions, { RESULTS } from "react-native-permissions";
+import { eventChannel } from "redux-saga";
+import { call, put, take } from "redux-saga/effects";
 
-import { AppPermissionActions } from '~/Store';
-import { Logger } from '~/Helper';
+import { Logger } from "~/Helper";
+import { translate as t } from "~/Helper/I18n";
+import { AppPermissionActions } from "~/Store/Actions";
 
 export function* checkPermissions({ permissions, onSuccess, onFailure }) {
-  console.log('permissions=>', permissions);
+  console.log("permissions=>", permissions);
 
   // ensure that "permissions" is an array.
   if (permissions instanceof Array) {
@@ -17,21 +17,31 @@ export function* checkPermissions({ permissions, onSuccess, onFailure }) {
       if (eachPermission) {
         const permissionStatus = yield call(Permissions.check, eachPermission);
         __DEV__ &&
-          console.log('checkPermissions permissionStatus=>', eachPermission, permissionStatus);
+          console.log(
+            "checkPermissions permissionStatus=>",
+            eachPermission,
+            permissionStatus
+          );
 
         // if returns "granted" then record it to the store.
         if (permissionStatus === RESULTS.GRANTED) {
           yield put(
-            AppPermissionActions.requestPermissionSuccess(eachPermission, permissionStatus),
+            AppPermissionActions.requestPermissionSuccess(
+              eachPermission,
+              permissionStatus
+            )
           );
-          if (typeof onSuccess === 'function') {
+          if (typeof onSuccess === "function") {
             yield call(onSuccess);
           }
         } else {
           yield put(
-            AppPermissionActions.requestPermissionFailure(eachPermission, permissionStatus),
+            AppPermissionActions.requestPermissionFailure(
+              eachPermission,
+              permissionStatus
+            )
           );
-          if (typeof onFailure === 'function') {
+          if (typeof onFailure === "function") {
             yield call(onFailure);
           }
         }
@@ -58,10 +68,10 @@ export function* requestPermission({
   onFailure,
 }) {
   const appStateChannel = eventChannel((emit) => {
-    AppState.addEventListener('change', (state) => emit(state));
+    AppState.addEventListener("change", (state) => emit(state));
 
     return () => {
-      AppState.removeEventListener('change');
+      AppState.removeEventListener("change");
     };
   });
 
@@ -69,12 +79,17 @@ export function* requestPermission({
   // console.log('requestPermission permission=>', permission);
   try {
     let permissionStatus = yield call(Permissions.check, permission);
-    console.log('requestPermission permissionStatus=>', permissionStatus);
+    console.log("requestPermission permissionStatus=>", permissionStatus);
 
     // 如果成功，跳過
     if (permissionStatus === RESULTS.GRANTED) {
-      yield put(AppPermissionActions.requestPermissionSuccess(permission, permissionStatus));
-      if (typeof onSuccess === 'function') {
+      yield put(
+        AppPermissionActions.requestPermissionSuccess(
+          permission,
+          permissionStatus
+        )
+      );
+      if (typeof onSuccess === "function") {
         yield call(onSuccess);
       }
       return true;
@@ -84,13 +99,13 @@ export function* requestPermission({
     else if (permissionStatus === RESULTS.UNAVAILABLE) {
       yield call(
         Alert.alert,
-        t('permission_unsupported_title'),
-        t('permission_unsupported_content', { permission }),
+        t("permission_unsupported_title"),
+        t("permission_unsupported_content", { permission }),
         {
           cancelable: false,
-        },
+        }
       );
-      if (typeof onFailure === 'function') {
+      if (typeof onFailure === "function") {
         yield call(onFailure);
       }
       return false;
@@ -102,7 +117,7 @@ export function* requestPermission({
       // if user had denied permission, you can only request him setting manually enable from setting
       const buttons = [
         {
-          text: t('__open_system_setting'),
+          text: t("__open_system_setting"),
           onPress: Permissions.openSettings,
         },
       ];
@@ -110,24 +125,30 @@ export function* requestPermission({
       // 如果強制必須給予權限
       if (!shouldForceGetPermission) {
         buttons.push({
-          style: 'cancel',
-          text: t('__cancel'),
+          style: "cancel",
+          text: t("__cancel"),
         });
       }
 
-      yield call(Alert.alert, requestFromSystemTitle, requestFromSystemDescription, buttons, {
-        cancelable: false,
-      });
+      yield call(
+        Alert.alert,
+        requestFromSystemTitle,
+        requestFromSystemDescription,
+        buttons,
+        {
+          cancelable: false,
+        }
+      );
 
       if (shouldForceGetPermission) {
         while (true) {
           const appState = yield take(appStateChannel);
 
-          console.log('while delaying...appState=>', appState);
+          console.log("while delaying...appState=>", appState);
 
-          if (appState === 'active') {
+          if (appState === "active") {
             const result = yield call(Permissions.check, permission);
-            console.log('while delaying...permission=>', result);
+            console.log("while delaying...permission=>", result);
             if (result !== RESULTS.GRANTED) {
               yield put(
                 AppPermissionActions.requestPermission(
@@ -136,13 +157,18 @@ export function* requestPermission({
                   requestDescription,
                   requestFromSystemTitle,
                   requestFromSystemDescription,
-                  shouldForceGetPermission,
-                ),
+                  shouldForceGetPermission
+                )
               );
             }
             if (result === RESULTS.GRANTED) {
-              yield put(AppPermissionActions.requestPermissionSuccess(permission, result));
-              if (typeof onSuccess === 'function') {
+              yield put(
+                AppPermissionActions.requestPermissionSuccess(
+                  permission,
+                  result
+                )
+              );
+              if (typeof onSuccess === "function") {
                 yield call(onSuccess);
               }
               return true;
@@ -155,8 +181,8 @@ export function* requestPermission({
 
     // 如果沒有要求過權限
     else if (permissionStatus === RESULTS.DENIED) {
-      console.log('requestTitle=>', requestTitle);
-      console.log('requestDescription=>', requestDescription);
+      console.log("requestTitle=>", requestTitle);
+      console.log("requestDescription=>", requestDescription);
       if (requestTitle && requestDescription) {
         const alertChannel = eventChannel((emit) => {
           Alert.alert(
@@ -164,13 +190,13 @@ export function* requestPermission({
             requestDescription,
             [
               {
-                text: t('__ok'),
-                onPress: () => emit('ok'),
+                text: t("__ok"),
+                onPress: () => emit("ok"),
               },
             ],
             {
               cancelable: false,
-            },
+            }
           );
 
           return () => {};
@@ -179,7 +205,7 @@ export function* requestPermission({
         while (true) {
           const alert = yield take(alertChannel);
           // console.log('alert=>', alert);
-          if (alert === 'ok') {
+          if (alert === "ok") {
             break;
           }
         }
@@ -188,8 +214,13 @@ export function* requestPermission({
       // if have no permission, request it
       permissionStatus = yield call(Permissions.request, permission);
       if (permissionStatus === RESULTS.GRANTED) {
-        yield put(AppPermissionActions.requestPermissionSuccess(permission, permissionStatus));
-        if (typeof onSuccess === 'function') {
+        yield put(
+          AppPermissionActions.requestPermissionSuccess(
+            permission,
+            permissionStatus
+          )
+        );
+        if (typeof onSuccess === "function") {
           yield call(onSuccess);
         }
         return true;
@@ -203,11 +234,16 @@ export function* requestPermission({
               requestFromSystemTitle,
               requestFromSystemDescription,
               shouldForceGetPermission,
-            }),
+            })
           );
         } else {
-          yield put(AppPermissionActions.requestPermissionFailure(permission, permissionStatus));
-          if (typeof onFailure === 'function') {
+          yield put(
+            AppPermissionActions.requestPermissionFailure(
+              permission,
+              permissionStatus
+            )
+          );
+          if (typeof onFailure === "function") {
             yield call(onFailure);
           }
         }
@@ -215,7 +251,7 @@ export function* requestPermission({
       return false;
     }
   } catch (err) {
-    console.log('err=>', err);
+    console.log("err=>", err);
     // Logger.error(err);
   }
 }

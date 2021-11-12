@@ -16,4 +16,7 @@ export const INITIAL_STATE = {
 
   // user fav circle - there your are circle
   homeCircle: null,
+
+  // circle ranking - based on current location
+  ranking: [],
 };

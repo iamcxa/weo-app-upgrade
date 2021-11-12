@@ -1,4 +1,4 @@
-import { createActions } from 'reduxsauce';
+import { createActions } from "reduxsauce";
 
 /**
  * We use reduxsauce's `createActions()` helper to easily create redux actions.
@@ -20,24 +20,26 @@ import { createActions } from 'reduxsauce';
  */
 const { Types, Creators } = createActions({
   // update whole store
-  updateCircleStore: ['data'],
+  updateCircleStore: ["data"],
 
-  updateWhenEnterCircle: ['circle'],
-  updateWhenExitCircle: ['circle'],
+  updateWhenEnterCircle: ["circle"],
+  updateWhenExitCircle: ["circle"],
 
-  updateCircles: ['data'],
-  updateUserCircle: ['data'],
-  updateHomeCircle: ['data'],
-  updateLeftAppTime: ['data'],
-  updateLeftCircleTime: ['data'],
+  updateCircles: ["data"],
+  updateUserCircle: ["data"],
+  updateHomeCircle: ["data"],
+  updateLeftAppTime: ["data"],
+  updateLeftCircleTime: ["data"],
 
   // saga action
   getCurrentCircles: null,
   getNearCircles: null,
-  putUserCircle: ['circleId'],
-  setUserCircle: ['circle'],
-  fetchPutHomeCircle: ['circle', 'onSuccess'],
-  fetchGetStayCircles: ['onSuccess', 'reason'],
+  putUserCircle: ["circleId"],
+  setUserCircle: ["circle"],
+
+  fetchPutHomeCircle: ["circle", "onSuccess"],
+  fetchGetStayCircles: ["onSuccess", "reason"],
+  fetchGetCircleRanking: ["onSuccess"],
 });
 
 export const CircleTypes = Types;

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
 
-import Colors from '~/Theme/Colors';
-import Screen from '../utils/screen';
+import Colors from "~/Theme/Colors";
+import { Screen } from "~/Helper";
 
 const topicListHeaderStyles = StyleSheet.create({
   avatar: {
@@ -13,16 +13,16 @@ const topicListHeaderStyles = StyleSheet.create({
 
 const postListHeaderStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: Screen.moderateScale(16),
-    paddingBottom: Screen.moderateScale(14),
-    borderLeftWidth: Screen.moderateScale(1),
+    paddingHorizontal: Screen.scale(16),
+    paddingBottom: Screen.scale(14),
+    borderLeftWidth: Screen.scale(1),
   },
 });
 
 const replyListItemHeaderStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: Screen.moderateScale(16),
-    paddingBottom: Screen.moderateScale(14),
+    paddingHorizontal: Screen.scale(16),
+    paddingBottom: Screen.scale(14),
   },
 });
 
@@ -34,38 +34,38 @@ const listItemStyles = StyleSheet.create({
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    height: Screen.moderateScale(61),
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    height: Screen.scale(61),
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   avatarContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: Screen.moderateScale(48),
-    height: Screen.moderateScale(48),
+    justifyContent: "center",
+    alignItems: "center",
+    width: Screen.scale(48),
+    height: Screen.scale(48),
   },
   avatar: {
     // resizeMode: 'cover',
-    width: Screen.moderateScale(48),
-    height: Screen.moderateScale(48),
-    borderRadius: Screen.moderateScale(24),
-    borderWidth: Screen.moderateScale(5),
+    width: Screen.scale(48),
+    height: Screen.scale(48),
+    borderRadius: Screen.scale(24),
+    borderWidth: Screen.scale(5),
   },
   author: {
     flex: 1,
-    marginLeft: Screen.moderateScale(6),
+    marginLeft: Screen.scale(6),
   },
   authorName: {
-    fontSize: Screen.moderateScale(12),
+    fontSize: Screen.scale(12),
     color: Colors.blackTwo,
-    marginBottom: Screen.moderateScale(1),
+    marginBottom: Screen.scale(1),
   },
   peekModeAuthorName: {
     color: Colors.white,
   },
   timeLabel: {
-    fontSize: Screen.moderateScale(12),
+    fontSize: Screen.scale(12),
     color: Colors.warmGrey,
   },
   voteBlock: {},
@@ -85,10 +85,10 @@ export default class CommentCardHeader extends Component {
   static defaultProps = {
     isPeekMode: false,
     children: undefined,
-    avatar: '',
-    authorName: '',
-    createdAt: '',
-    type: '',
+    avatar: "",
+    authorName: "",
+    createdAt: "",
+    type: "",
     listHeader: false,
   };
 
@@ -96,27 +96,40 @@ export default class CommentCardHeader extends Component {
 
   getSpecificStyle = (key) => [
     styles[key],
-    this.props.type === 'TOPIC' && this.props.listHeader
+    this.props.type === "TOPIC" && this.props.listHeader
       ? topicListHeaderStyles[key]
       : listItemStyles[key],
-    this.props.type === 'POST' && this.props.listHeader && postListHeaderStyles[key],
-    this.props.type === 'REPLY' && !this.props.listHeader && replyListItemHeaderStyles[key],
+    this.props.type === "POST" &&
+      this.props.listHeader &&
+      postListHeaderStyles[key],
+    this.props.type === "REPLY" &&
+      !this.props.listHeader &&
+      replyListItemHeaderStyles[key],
   ];
 
   render() {
     const { children, isPeekMode, avatar, authorName, createdAt } = this.props;
     return (
       <View style={styles.header}>
-        <View style={[styles.avatarContainer, this.getSpecificStyle('avatar')]}>
-          {!!avatar && <Image style={this.getSpecificStyle('avatar')} source={{ uri: avatar }} />}
+        <View style={[styles.avatarContainer, this.getSpecificStyle("avatar")]}>
+          {!!avatar && (
+            <Image
+              style={this.getSpecificStyle("avatar")}
+              source={{ uri: avatar }}
+            />
+          )}
         </View>
         <View style={styles.author}>
-          <Text style={[styles.authorName, isPeekMode && styles.peekModeAuthorName]}>
+          <Text
+            style={[styles.authorName, isPeekMode && styles.peekModeAuthorName]}
+          >
             {authorName}
           </Text>
           <Text style={styles.timeLabel}>{createdAt}</Text>
         </View>
-        <View style={styles.voteBlock}>{typeof children === 'object' && children}</View>
+        <View style={styles.voteBlock}>
+          {typeof children === "object" && children}
+        </View>
       </View>
     );
   }

@@ -1,28 +1,28 @@
-import { put, call, delay, select } from 'redux-saga/effects';
-import { Actions } from 'react-native-router-flux';
-import { Platform } from 'react-native';
-import { keyBy, isEmpty } from 'lodash';
+import { put, call, delay, select } from "redux-saga/effects";
+import { Actions } from "react-native-router-flux";
+import { Platform } from "react-native";
+import { keyBy, isEmpty } from "lodash";
 
-import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
-import { AppStateActions, TopicActions, CircleActions } from '~/Store';
-import { Handler, Topic } from '~/Apis';
+import { getStateKeyByBelongsTo } from "~/Store/List/Reducers";
+import { AppStateActions, TopicActions, CircleActions } from "~/Store";
+import { Handler, Topic } from "~/Apis";
 import {
   Logger,
   Dialog,
   User as UserHelper,
   Content as ContentHelper,
   Date as d,
-} from '~/Helper';
-import { CIRCLE_TYPE } from '~/Config';
+} from "~/Helper";
+import { CIRCLE_TYPE } from "~/Config";
 
-import * as UploadSaga from './UploadSaga';
+import * as UploadSaga from "./UploadSaga";
 
-// import { updateTopics, resetTopic, updateTopicByKey } from '~/Stores/List/Actions/topic';
+// import { updateTopics, resetTopic, updateTopicByKey } from '~/Store/List/Actions/topic';
 
-const TAG = '@TopicSaga';
+const TAG = "@TopicSaga";
 
 export function* fetchGetTopics({
-  sort = 'newest',
+  sort = "newest",
   curPage = 1,
   perPage,
   circleId,
@@ -33,7 +33,7 @@ export function* fetchGetTopics({
   // console.log('circleId=>', circleId);
   // console.log('belongsTo=>', belongsTo);
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable,
+    (state) => state.appState.netInfo.isInternetReachable
   );
   if (isInternetReachable) {
     try {
@@ -48,7 +48,7 @@ export function* fetchGetTopics({
             circleId,
           },
         }),
-        Topic.getTopics(),
+        Topic.getTopics()
       );
       // console.log('getTopics res=>', res);
 
@@ -73,7 +73,7 @@ export function* fetchGetTopics({
 
 export function* fetchPostTopic({ id, data, replySuccess }) {
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable,
+    (state) => state.appState.netInfo.isInternetReachable
   );
   if (isInternetReachable) {
     try {
@@ -81,16 +81,16 @@ export function* fetchPostTopic({ id, data, replySuccess }) {
       const apiToken = yield select((state) => state.user.apiToken);
       const { data: res } = yield call(
         Handler.post({ Authorization: apiToken, data }),
-        Topic.fetchPostTopic({ id }),
+        Topic.fetchPostTopic({ id })
       );
       if (res.success) {
-        console.log('fetchPostTopic res =>', res);
-        if (typeof replySuccess === 'function') {
+        console.log("fetchPostTopic res =>", res);
+        if (typeof replySuccess === "function") {
           yield call(replySuccess, res);
         }
       }
     } catch (err) {
-      console.log('err', err);
+      console.log("err", err);
     } finally {
       yield put(AppStateActions.onLoading(false));
     }
@@ -99,7 +99,7 @@ export function* fetchPostTopic({ id, data, replySuccess }) {
 
 export function* fetchPostTopicPost({ id, data, replySuccess }) {
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable,
+    (state) => state.appState.netInfo.isInternetReachable
   );
   if (isInternetReachable) {
     try {
@@ -118,15 +118,15 @@ export function* fetchPostTopicPost({ id, data, replySuccess }) {
 
       const { data: res } = yield call(
         Handler.post({ Authorization: apiToken, data }),
-        Topic.fetchPostTopicPost({ id }),
+        Topic.fetchPostTopicPost({ id })
       );
       if (res.success) {
-        if (typeof replySuccess === 'function') {
+        if (typeof replySuccess === "function") {
           yield call(replySuccess, res);
         }
       }
     } catch (err) {
-      console.log('err', err);
+      console.log("err", err);
     } finally {
       yield put(AppStateActions.onLoading(false));
     }
@@ -135,7 +135,7 @@ export function* fetchPostTopicPost({ id, data, replySuccess }) {
 
 export function* fetchReplyPostPost({ id, data, replySuccess }) {
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable,
+    (state) => state.appState.netInfo.isInternetReachable
   );
   if (isInternetReachable) {
     try {
@@ -154,15 +154,15 @@ export function* fetchReplyPostPost({ id, data, replySuccess }) {
 
       const { data: res } = yield call(
         Handler.post({ Authorization: apiToken, data }),
-        Topic.fetchReplyPostPost({ id }),
+        Topic.fetchReplyPostPost({ id })
       );
       if (res.success) {
-        if (typeof replySuccess === 'function') {
+        if (typeof replySuccess === "function") {
           yield call(replySuccess, res);
         }
       }
     } catch (err) {
-      console.log('err', err);
+      console.log("err", err);
     } finally {
       yield put(AppStateActions.onLoading(false));
     }
@@ -178,10 +178,18 @@ export function* fetchAddTopic({
   media = [],
   onSuccess,
 } = {}) {
-  console.log('fetchAddTopic=>', title, content, circleId, belongsTo, selectedImage, onSuccess);
+  console.log(
+    "fetchAddTopic=>",
+    title,
+    content,
+    circleId,
+    belongsTo,
+    selectedImage,
+    onSuccess
+  );
   yield put(AppStateActions.onLoading(true, null, { hide: false }));
   const isInternetReachable = yield select(
-    (state) => state.appState.currentNetworkInfo.isInternetReachable,
+    (state) => state.appState.netInfo.isInternetReachable
   );
   if (isInternetReachable) {
     try {
@@ -204,14 +212,17 @@ export function* fetchAddTopic({
             media,
           },
         }),
-        Topic.createTopic(),
+        Topic.createTopic()
       );
-      console.log('fetchAddTopic res=>', res);
-      console.log('getStateKeyByBelongsTo(belongsTo)=>', getStateKeyByBelongsTo(belongsTo));
+      console.log("fetchAddTopic res=>", res);
+      console.log(
+        "getStateKeyByBelongsTo(belongsTo)=>",
+        getStateKeyByBelongsTo(belongsTo)
+      );
 
       if (res.success) {
         const pData = res.data;
-        console.log('pData=>', pData);
+        console.log("pData=>", pData);
         // yield call(requestAnimationFrame, Actions.pop);
         yield call(requestAnimationFrame, () => {
           Actions.pop();
@@ -229,9 +240,9 @@ export function* fetchAddTopic({
           TopicActions.createTopic({
             belongsTo,
             data: res.data,
-          }),
+          })
         );
-        if (typeof onSuccess === 'function') {
+        if (typeof onSuccess === "function") {
           yield call(onSuccess, res);
         }
       } else {

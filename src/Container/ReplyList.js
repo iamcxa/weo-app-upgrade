@@ -1,9 +1,9 @@
-import _ from 'lodash';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
+import _ from "lodash";
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { Actions } from "react-native-router-flux";
+import { connect } from "react-redux";
 import {
   RefreshControl,
   View,
@@ -15,14 +15,20 @@ import {
   AppState,
   Alert,
   SafeAreaView,
-} from 'react-native';
+} from "react-native";
 
-import { Date as d, ListenableEvent } from '~/Helper';
-import { translate as t } from '~/Helper/I18n';
-import { BackToTopButton, PostListFooter, MainNavBar, CommentCard, ReplyBar } from '~/Component';
-import { Colors, Screen } from '~/Theme';
-import { AppStateActions } from '~/Store';
-import Config from '~/Config';
+import { Date as d, ListenableEvent } from "~/Helper";
+import { translate as t } from "~/Helper/I18n";
+import {
+  BackToTopButton,
+  PostListFooter,
+  MainNavBar,
+  CommentCard,
+  ReplyBar,
+} from "~/Component";
+import { Colors, Screen } from "~/Theme";
+import { AppStateActions } from "~/Store";
+import Config from "~/Config";
 
 import {
   updateReply,
@@ -30,21 +36,21 @@ import {
   updateReplyByKey,
   deleteReplyById,
   createReply,
-} from '~/Stores/List/Actions/reply';
-import { updatePostByKey, deletePostById } from '~/Stores/List/Actions/post';
-import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
-import { fetchAPI, apiHandler, apiAction } from '../utils/api';
-import MoreMenu from '../widget/MoreMenu';
-import BottomPopup from '../widget/BottomPopup';
+} from "~/Store/List/Actions/reply";
+import { updatePostByKey, deletePostById } from "~/Store/List/Actions/post";
+import { getStateKeyByBelongsTo } from "~/Store/List/Reducers";
+import { fetchAPI, apiHandler, apiAction } from "../utils/api";
+import MoreMenu from "../widget/MoreMenu";
+import BottomPopup from "../widget/BottomPopup";
 
 const { REPLY_BAR_HEIGHT, ON_END_REACHED_THROTTLE } = Config;
-const replyBarHeight = Screen.moderateScale(REPLY_BAR_HEIGHT);
+const replyBarHeight = Screen.scale(REPLY_BAR_HEIGHT);
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingBottom: 0,
   },
   flatList: {
@@ -52,34 +58,34 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.paleGrey,
   },
   replyBar: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
   },
   nav: {
-    backgroundColor: 'white',
-    paddingHorizontal: Screen.moderateScale(16),
+    backgroundColor: "white",
+    paddingHorizontal: Screen.scale(16),
   },
   listContent: {
     backgroundColor: Colors.paleGrey,
     minHeight: Screen.height - 70,
-    paddingBottom: Screen.moderateScale(70),
+    paddingBottom: Screen.scale(70),
   },
   listHeader: {
-    marginHorizontal: Screen.moderateScale(28),
-    marginLeft: Screen.moderateScale(29),
-    borderLeftWidth: Screen.moderateScale(1),
-    borderBottomWidth: Screen.moderateScale(1),
+    marginHorizontal: Screen.scale(28),
+    marginLeft: Screen.scale(29),
+    borderLeftWidth: Screen.scale(1),
+    borderBottomWidth: Screen.scale(1),
     borderColor: Colors.silver,
   },
   listItem: {
-    marginHorizontal: Screen.moderateScale(28),
-    marginLeft: Screen.moderateScale(50),
-    borderLeftWidth: Screen.moderateScale(1),
-    borderBottomWidth: Screen.moderateScale(1),
+    marginHorizontal: Screen.scale(28),
+    marginLeft: Screen.scale(50),
+    borderLeftWidth: Screen.scale(1),
+    borderBottomWidth: Screen.scale(1),
     borderColor: Colors.silver,
   },
   backToTop: {
-    bottom: Screen.moderateScale(66),
+    bottom: Screen.scale(66),
   },
   highlightPostBorder: {
     borderWidth: 1,
@@ -110,8 +116,8 @@ const styles = StyleSheet.create({
         createReply,
         updatePostByKey,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )
 class ReplyList extends Component {
   static propTypes = {
@@ -126,7 +132,7 @@ class ReplyList extends Component {
     createReply: PropTypes.func.isRequired,
     updateReplyByKey: PropTypes.func.isRequired,
     updatePostByKey: PropTypes.func.isRequired,
-    belongsTo: PropTypes.oneOf(['HERE_YOU_ARE', 'THERE_YOU_ARE']).isRequired,
+    belongsTo: PropTypes.oneOf(["HERE_YOU_ARE", "THERE_YOU_ARE"]).isRequired,
     highlightHeader: PropTypes.bool,
     highlightReplyId: PropTypes.string,
   };
@@ -134,7 +140,7 @@ class ReplyList extends Component {
   static defaultProps = {
     highlightHeader: false,
     highlightReplyId: null,
-    title: 'REPLY',
+    title: "REPLY",
     post: {},
   };
 
@@ -156,15 +162,21 @@ class ReplyList extends Component {
     if (this.props.replyId) {
       this.replyList.scrollToItem(this.props.replies[this.props.replyId]);
     }
-    this.keyboardShowSub = Keyboard.addListener(ListenableEvent.KEYBOARD_SHOW, this.keyboardShow);
-    this.keyboardHideSub = Keyboard.addListener(ListenableEvent.KEYBOARD_HIDE, this.keyboardHide);
-    AppState.addEventListener('change', this.handleAppStateChange);
+    this.keyboardShowSub = Keyboard.addListener(
+      ListenableEvent.KEYBOARD_SHOW,
+      this.keyboardShow
+    );
+    this.keyboardHideSub = Keyboard.addListener(
+      ListenableEvent.KEYBOARD_HIDE,
+      this.keyboardHide
+    );
+    AppState.addEventListener("change", this.handleAppStateChange);
   }
 
   componentWillUnmount() {
     this.keyboardShowSub && this.keyboardShowSub.remove();
     this.keyboardHideSub && this.keyboardHideSub.remove();
-    AppState.removeEventListener('change', this.handleAppStateChange);
+    AppState.removeEventListener("change", this.handleAppStateChange);
     // this.props.refreshPost();
   }
 
@@ -177,7 +189,7 @@ class ReplyList extends Component {
       () => {
         this.resetReply();
         this.getReplyList();
-      },
+      }
     );
   };
 
@@ -226,12 +238,12 @@ class ReplyList extends Component {
       {},
       {
         id,
-      },
+      }
     );
     await apiHandler({
       res,
       done: () => {
-        if (type === 'POST') {
+        if (type === "POST") {
           this.props.deletePostById({ target: this.props.belongsTo, id });
           Actions.pop();
         } else {
@@ -240,7 +252,10 @@ class ReplyList extends Component {
         }
       },
       fail: () => {
-        Alert.alert(t('__alert_request_failed_title'), t('__alert_request_failed_content'));
+        Alert.alert(
+          t("__alert_request_failed_title"),
+          t("__alert_request_failed_content")
+        );
       },
     });
     this.props.updateLoading(false);
@@ -256,10 +271,12 @@ class ReplyList extends Component {
         },
         {
           postId: this.props.postId,
-        },
+        }
       );
       const perPageObj =
-        this.props.replyId && this.props.replyId.length > 0 ? { perPage: 999999 } : {};
+        this.props.replyId && this.props.replyId.length > 0
+          ? { perPage: 999999 }
+          : {};
       await apiHandler({
         res,
         done: (_res) => {
@@ -283,7 +300,7 @@ class ReplyList extends Component {
                 curPage: prevState.curPage + 1,
                 ...perPageObj,
               }),
-              cb,
+              cb
             );
           }
         },
@@ -303,10 +320,10 @@ class ReplyList extends Component {
     const { routeName } = this.props;
     if (
       appState.match(/inactive|background/) &&
-      nextAppState === 'active' &&
-      routeName === 'hereYouAre_replyList'
+      nextAppState === "active" &&
+      routeName === "hereYouAre_replyList"
     ) {
-      console.log('App has come to the foreground!');
+      console.log("App has come to the foreground!");
       this.onRefresh();
     }
     this.setState({ appState: nextAppState });
@@ -317,8 +334,8 @@ class ReplyList extends Component {
   };
 
   keyboardShow = (event) => {
-    console.log('keyboard height: ', event.endCoordinates.height);
-    if (Platform.OS === 'ios') {
+    console.log("keyboard height: ", event.endCoordinates.height);
+    if (Platform.OS === "ios") {
       Animated.timing(this.keyboardHeight, {
         toValue: event.endCoordinates.height,
         duration: 150,
@@ -327,7 +344,7 @@ class ReplyList extends Component {
   };
 
   keyboardHide = () => {
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === "ios") {
       Animated.timing(this.keyboardHeight, {
         toValue: 0,
         duration: 100,
@@ -340,7 +357,7 @@ class ReplyList extends Component {
       const data = this.props.repliesById[key];
       const time = d.humanize(data.createdAt);
       return {
-        type: 'REPLY',
+        type: "REPLY",
         id: data.id,
         title: data.title,
         createdAt: time,
@@ -368,7 +385,7 @@ class ReplyList extends Component {
         },
         onMoreBtnPress: () => {
           this.focusedMoreItem = {
-            type: 'REPLY',
+            type: "REPLY",
             id: data.id,
           };
           this.BottomPopup.open();
@@ -394,7 +411,9 @@ class ReplyList extends Component {
       style={[
         styles.listItem,
         this.state.newPostId === item.id ? styles.highlightPostBorder : {},
-        this.props.highlightReplyId === item.id ? styles.highlightPostBorder : {},
+        this.props.highlightReplyId === item.id
+          ? styles.highlightPostBorder
+          : {},
       ]}
       repliesLength={null}
       topic={this.props.topic}
@@ -406,14 +425,19 @@ class ReplyList extends Component {
       <CommentCard
         id={this.props.postId}
         listHeader
-        style={[styles.listHeader, this.props.highlightHeader ? styles.highlightPostBorder : {}]}
+        style={[
+          styles.listHeader,
+          this.props.highlightHeader ? styles.highlightPostBorder : {},
+        ]}
         type="POST"
         belongsTo={this.props.belongsTo}
         authorName={this.props.post.memberName}
         authorHash={this.props.post.memberHash}
         avatar={this.props.post.memberAvatar}
         {...this.props.post}
-        createdAt={this.props.post.createdAt ? d.humanize(this.props.post.createdAt) : ''}
+        createdAt={
+          this.props.post.createdAt ? d.humanize(this.props.post.createdAt) : ""
+        }
         onReplyPress={() => {
           if (this.replyBar.getWrappedInstance) {
             this.replyBar.getWrappedInstance().focus();
@@ -422,7 +446,7 @@ class ReplyList extends Component {
         repliesLength={this.props.post.count}
         onMoreBtnPress={() => {
           this.focusedMoreItem = {
-            type: 'POST',
+            type: "POST",
             id: this.props.postId,
           };
           this.BottomPopup.open();
@@ -434,7 +458,9 @@ class ReplyList extends Component {
 
   render() {
     return (
-      <Animated.View style={[styles.container, { paddingBottom: this.keyboardHeight }]}>
+      <Animated.View
+        style={[styles.container, { paddingBottom: this.keyboardHeight }]}
+      >
         <MainNavBar title={this.props.title} style={styles.nav} />
         <FlatList
           ref={(ref) => {
@@ -446,14 +472,19 @@ class ReplyList extends Component {
           renderItem={this.renderItem}
           contentContainerStyle={styles.listContent}
           refreshControl={
-            <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this.onRefresh}
+            />
           }
           onEndReached={this.onEndReached}
           onEndReachedThreshold={0.3}
           style={styles.flatList}
           ListFooterComponent={PostListFooter}
         />
-        <Animated.View style={[styles.replyBar, { bottom: this.keyboardHeight }]}>
+        <Animated.View
+          style={[styles.replyBar, { bottom: this.keyboardHeight }]}
+        >
           <ReplyBar
             ref={(ref) => {
               this.replyBar = ref;
@@ -475,15 +506,15 @@ class ReplyList extends Component {
           <MoreMenu
             options={[
               {
-                label: t('__more_menu_report'),
+                label: t("__more_menu_report"),
                 onPress: this.onReportSubmit,
               },
               {
-                label: t('__more_menu_report'),
+                label: t("__more_menu_report"),
                 onPress: this.onHidePost,
               },
               {
-                label: t('__more_menu_report'),
+                label: t("__more_menu_report"),
                 onPress: () => {
                   this.clearFocusedMoreItem();
                   this.BottomPopup.close();

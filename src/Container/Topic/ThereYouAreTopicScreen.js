@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { CircleActions, TopicActions, AppPermissionSelectors } from '~/Store';
-import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
-import { Permission } from '~/Helper';
-import { Config } from '~/Config';
+import { CircleActions, TopicActions, AppPermissionSelectors } from "~/Store";
+import { getStateKeyByBelongsTo } from "~/Store/List/Reducers";
+import { Permission } from "~/Helper";
+import { Config } from "~/Config";
 
-import TopicScreen from './TopicScreen';
+import TopicScreen from "./TopicScreen";
 
 const { CIRCLE_TYPE } = Config;
 
@@ -69,8 +69,12 @@ export default connect(
       userCircle: state.circle.userCircle,
       homeCircle: state.circle.homeCircle,
       hasGeolocationPermission:
-        AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_LOW)(state) ||
-        AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_HIGH)(state),
+        AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_LOW)(
+          state
+        ) ||
+        AppPermissionSelectors.hasThisPermission(Permission.GEOLOCATION_HIGH)(
+          state
+        ),
     };
   },
   (dispatch) =>
@@ -81,6 +85,6 @@ export default connect(
         fetchGetTopics: TopicActions.fetchGetThereYouAreTopics,
         resetTopic: TopicActions.resetTopic,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(ThereYouAreTopicScreen);

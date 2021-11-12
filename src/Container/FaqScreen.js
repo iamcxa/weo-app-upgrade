@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Text, StyleSheet, View, FlatList } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Text, StyleSheet, View, FlatList } from "react-native";
 
-import { translate as t } from '~/Helper/I18n';
-import { MainNavBar, AndroidBackKey } from '~/Component';
-import { Screen } from '~/Helper';
-import { Classes, Colors, Metrics } from '~/Theme';
+import { translate as t } from "~/Helper/I18n";
+import { MainNavBar, AndroidBackKey } from "~/Component";
+import { Screen } from "~/Helper";
+import { Classes, Colors, Metrics } from "~/Theme";
 
 const styles = StyleSheet.create({
   navBar: {
@@ -14,28 +14,28 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: Screen.moderateScale(30),
-    paddingVertical: Screen.moderateScale(12),
+    paddingHorizontal: Screen.scale(30),
+    paddingVertical: Screen.scale(12),
     backgroundColor: Colors.paleGrey,
   },
   listItem: {
     marginBottom: Metrics.baseMargin * 2,
   },
   question: {
-    fontSize: Screen.moderateScale(16),
+    fontSize: Screen.scale(16),
     color: Colors.greyishBrownTwo,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   answer: {
-    fontSize: Screen.moderateScale(14),
+    fontSize: Screen.scale(14),
     color: Colors.greyishBrownTwo,
   },
   separator: {
     marginRight: Metrics.baseMargin,
-    width: Screen.moderateScale(6),
-    height: Screen.moderateScale(6),
+    width: Screen.scale(6),
+    height: Screen.scale(6),
     backgroundColor: Colors.mainYellow,
-    marginVertical: Screen.moderateScale(15),
+    marginVertical: Screen.scale(15),
   },
 });
 
@@ -49,24 +49,24 @@ class FaqScreen extends React.PureComponent {
   state = {
     data: [
       {
-        question: t('faq_question_1'),
-        answer: t('faq_question_1_answer'),
+        question: t("faq_question_1"),
+        answer: t("faq_question_1_answer"),
       },
       {
-        question: t('faq_question_2'),
-        answer: t('faq_question_2_answer'),
+        question: t("faq_question_2"),
+        answer: t("faq_question_2_answer"),
       },
       {
-        question: t('faq_question_3'),
-        answer: t('faq_question_3_answer'),
+        question: t("faq_question_3"),
+        answer: t("faq_question_3_answer"),
       },
       {
-        question: t('faq_question_4'),
-        answer: t('faq_question_4_answer'),
+        question: t("faq_question_4"),
+        answer: t("faq_question_4_answer"),
       },
       {
-        question: t('faq_question_5'),
-        answer: t('faq_question_5_answer'),
+        question: t("faq_question_5"),
+        answer: t("faq_question_5_answer"),
       },
     ],
   };
@@ -88,7 +88,11 @@ class FaqScreen extends React.PureComponent {
     const { sceneKey } = this.props;
     return (
       <View style={Classes.fill}>
-        <MainNavBar showLeftBlock title={t('faq_freq_question')} style={styles.navBar} />
+        <MainNavBar
+          showLeftBlock
+          title={t("faq_freq_question")}
+          style={styles.navBar}
+        />
         <AndroidBackKey backTo="profile_view" sceneKey={sceneKey} />
         <FlatList
           contentContainerStyle={styles.content}

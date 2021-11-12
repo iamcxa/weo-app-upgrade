@@ -1,7 +1,7 @@
-import config from '~/Config';
+import config from "~/Config";
 
 const version = config.API_VERSION;
-const prefix = `/api/app${version}`;
+const prefix = `/api${version}/app`;
 
 export default {
   like: ({ type, id }) => `${prefix}/vote/${type}/${id}/like`,

@@ -1,4 +1,4 @@
-import { createActions } from 'reduxsauce';
+import { createActions } from "reduxsauce";
 
 /**
  * We use reduxsauce's `createActions()` helper to easily create redux actions.
@@ -19,28 +19,31 @@ import { createActions } from 'reduxsauce';
  * @see https://github.com/infinitered/reduxsauce#createactions
  */
 const { Types, Creators } = createActions({
-  updateUserStore: ['data'],
-  updateUserConfig: ['data'],
-  updateUserProfile: ['data'],
+  updateUserStore: ["data"],
+  updateUserConfig: ["data"],
+  updateUserProfile: ["data"],
   cleanUser: null,
 
-  fetchPostLogout: ['data'],
+  updateTooltipVisibility: ["sceneKey", "key", "value"],
+
+  fetchPostLogout: ["data"],
 
   fetchPostAutoSignUp: {
+    forceRequest: false,
     fcmToken: null,
     onSuccess: null,
   },
 
   fetchPostSignUp: {
-    nickname: '',
-    avatarKey: '',
-    identifier: '',
+    nickname: "",
+    avatarKey: "",
+    identifier: "",
     deviceInfo: {},
   },
 
   fetchPutUserProfile: {
-    nickname: '',
-    avatarKey: '',
+    nickname: "",
+    avatarKey: "",
   },
 
   fetchPutUserNotifyConfig: {

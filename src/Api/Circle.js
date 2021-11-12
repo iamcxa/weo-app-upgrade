@@ -1,10 +1,12 @@
-import config from '~/Config';
+import config from "~/Config";
 
 const version = config.API_VERSION;
-const prefix = `/api/app${version}`;
+const prefix = `/api${version}/app`;
 
 export default {
-  getCurrentCircle: () => `${prefix}/member/circle`,
+  getCurrentCircle: () => `${prefix}/circle/current`,
+
+  getCircleRanking: () => `${prefix}/circle/ranking`,
 
   setUserCircle: ({ id }) => `${prefix}/member/circle/${id}`,
 

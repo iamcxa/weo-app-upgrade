@@ -1,58 +1,17 @@
-import { put, call, select } from 'redux-saga/effects';
-import { Actions } from 'react-native-router-flux';
-import { Platform } from 'react-native';
+import { Platform } from "react-native";
+import { Actions } from "react-native-router-flux";
+import { call, put, select } from "redux-saga/effects";
 
-import { AppStateActions, UserActions, CircleActions } from '~/Store';
-import { Handler, User } from '~/Apis';
-import { Logger, Dialog, User as UserHelper, Content as ContentHelper } from '~/Helper';
-import { translate as t } from '~/Helper/I18n';
+import { Handler, User } from "~/Api";
+import { Dialog, Fcm, Logger, UserHelper } from "~/Helper";
+import { AppStateActions, CircleActions, UserActions } from "~/Store/Actions";
 
-const TAG = '@UserSaga';
+const helpers = require("~/Helper");
 
-export function* fetchPostSignUp({
-  nickname = '',
-  avatarKey = '',
-  identifier = '',
-  deviceInfo = {},
-}) {
-  yield put(AppStateActions.onLoading(true));
-  try {
-    const apiToken = yield select((state) => state.user.apiToken);
-    const fcmToken = yield select((state) => state.user.fcmToken);
-    const { data: res } = yield call(
-      Handler.post({
-        Authorization: apiToken,
-        data: {
-          nickname,
-          avatarKey,
-          identifier,
-          deviceInfo: {
-            deviceToken: deviceInfo.deviceToken || fcmToken || false,
-            platform: deviceInfo.platform || Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
-          },
-        },
-      }),
-      User.signUp(),
-    );
-    console.log('fetchPostSignUp res=>', res);
+const TAG = "@UserSaga";
 
-    if (res.success) {
-      yield put(UserActions.updateUserProfile(res.data));
-      yield call(requestAnimationFrame, Actions.HomeScreen);
-    } else {
-      // yield call(requestAnimationFrame, Actions.Signup);
-    }
-    return res;
-  } catch (error) {
-    Logger.error(TAG, error);
-    return error;
-  } finally {
-    yield put(AppStateActions.onLoading(false));
-  }
-}
-
-export function* fetchPutUserProfile({ nickname = '', avatarKey = '' }) {
-  yield put(AppStateActions.onLoading(true));
+export function* fetchPutUserProfile({ nickname = "", avatarKey = "" }) {
+  yield put(AppStateActions["app/onLoading"](true));
   try {
     const apiToken = yield select((state) => state.user.apiToken);
     const fcmToken = yield select((state) => state.user.fcmToken);
@@ -64,13 +23,13 @@ export function* fetchPutUserProfile({ nickname = '', avatarKey = '' }) {
           avatarKey,
           deviceInfo: {
             deviceToken: fcmToken || false,
-            platform: Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
+            platform: Platform.OS === "ios" ? "IOS_FCM" : "ANDROID",
           },
         },
       }),
-      User.updateProfile(),
+      User.updateProfile()
     );
-    console.log('fetchPutUserProfile res=>', res);
+    console.log("fetchPutUserProfile res=>", res);
 
     if (res.success) {
       yield put(UserActions.updateUserProfile(res.data));
@@ -82,7 +41,7 @@ export function* fetchPutUserProfile({ nickname = '', avatarKey = '' }) {
     Logger.error(TAG, error);
     return error;
   } finally {
-    yield put(AppStateActions.onLoading(false));
+    yield put(AppStateActions["app/onLoading"](false));
   }
 }
 
@@ -92,7 +51,7 @@ export function* fetchPutUserNotifyConfig({
   hasPostNotify,
   hasReplyNotify,
 }) {
-  yield put(AppStateActions.onLoading(true, null, { hide: true }));
+  yield put(AppStateActions["app/onLoading"](true, null, { hide: true }));
   try {
     const lastConfig = yield select((state) => state.user.config);
     yield put(
@@ -101,7 +60,7 @@ export function* fetchPutUserNotifyConfig({
         hasTopicNotify,
         hasPostNotify,
         hasReplyNotify,
-      }),
+      })
     );
     const apiToken = yield select((state) => state.user.apiToken);
     const fcmToken = yield select((state) => state.user.fcmToken);
@@ -115,13 +74,13 @@ export function* fetchPutUserNotifyConfig({
           hasReplyNotify,
           deviceInfo: {
             deviceToken: fcmToken || false,
-            platform: Platform.OS === 'ios' ? 'IOS_FCM' : 'ANDROID',
+            platform: Platform.OS === "ios" ? "IOS_FCM" : "ANDROID",
           },
         },
       }),
-      User.updateConfig(),
+      User.updateConfig()
     );
-    console.log('fetchPutUserNotifyConfig res=>', res);
+    console.log("fetchPutUserNotifyConfig res=>", res);
     if (res.success) {
       yield call(Dialog.configUpdatedSuccessAlert);
     } else {
@@ -133,70 +92,6 @@ export function* fetchPutUserNotifyConfig({
     Logger.error(TAG, error);
     return error;
   } finally {
-    yield put(AppStateActions.onLoading(false));
-  }
-}
-
-export function* fetchPostLogout() {
-  yield put(AppStateActions.onLoading(true));
-  try {
-    const apiToken = yield select((state) => state.user.apiToken);
-    const { data: res } = yield call(
-      Handler.post({
-        Authorization: apiToken,
-      }),
-      User.logout(),
-    );
-    console.log('fetchPostLogout res=>', res);
-
-    if (res.success) {
-      yield put(UserActions.cleanUser());
-      yield call(requestAnimationFrame, [
-        Actions,
-        Actions.HomeScreen,
-        {
-          panHandlers: null,
-          type: 'replace',
-        },
-      ]);
-    } else {
-    }
-    return res;
-  } catch (error) {
-    Logger.error(TAG, error);
-    return error;
-  } finally {
-    yield put(AppStateActions.onLoading(false));
-  }
-}
-
-export function* fetchPostAutoSignUp({ fcmToken, onSuccess }) {
-  try {
-    if (!fcmToken) {
-      fcmToken = yield select((state) => state.user.fcmToken);
-    }
-
-    const avatarId = UserHelper.getRandomSeed(12);
-    const nickName = UserHelper.getRandomNickName();
-    const data = {
-      avatarKey: `Avatar${avatarId}`,
-      nickname: nickName,
-      identifier: `${new Date().getTime()}${Math.floor(Math.random() * 100 + 1)}`,
-      deviceInfo: {
-        deviceToken: fcmToken,
-      },
-    };
-
-    const res = yield call(fetchPostSignUp, data);
-    if (res.success) {
-      yield put(CircleActions.fetchGetStayCircles());
-      if (typeof onSuccess === 'function') {
-        onSuccess(res.success);
-      }
-    }
-    return res;
-  } catch (error) {
-    Logger.error(TAG, error);
-    return error;
+    yield put(AppStateActions["app/onLoading"](false));
   }
 }

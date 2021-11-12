@@ -1,36 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-import { Colors, Images } from '~/Theme';
-import { translate as t } from '~/Helper/I18n';
-import Screen from '../utils/screen';
+import { Colors, Images } from "~/Theme";
+import { translate as t } from "~/Helper/I18n";
+import { Screen } from "~/Helper";
 
 const styles = StyleSheet.create({
   footer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: Screen.moderateScale(20),
+    flexDirection: "row",
+    alignItems: "center",
+    height: Screen.scale(20),
   },
   toolBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: Screen.moderateScale(20),
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: Screen.scale(20),
   },
   toolBtnLabel: {
-    fontSize: Screen.moderateScale(10),
+    fontSize: Screen.scale(10),
     color: Colors.warmGrey,
-    marginLeft: Screen.moderateScale(8),
+    marginLeft: Screen.scale(8),
   },
   toolBtnNumber: {
-    marginLeft: Screen.moderateScale(5),
-    fontSize: Screen.moderateScale(10),
-    color: 'black',
+    marginLeft: Screen.scale(5),
+    fontSize: Screen.scale(10),
+    color: "black",
   },
   moreBtn: {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
-    padding: Screen.moderateScale(12),
+    padding: Screen.scale(12),
   },
   peekModeDisabled: {
     opacity: 0.8,
@@ -57,7 +57,7 @@ const CommentCardFooter = ({
       disabled={isPeekMode}
     >
       <Image source={Images.reply} />
-      <Text style={styles.toolBtnLabel}>{t('__reply')}</Text>
+      <Text style={styles.toolBtnLabel}>{t("__reply")}</Text>
       <Text style={styles.toolBtnNumber}>{repliesLength}</Text>
     </TouchableOpacity>
     <TouchableOpacity
@@ -72,7 +72,7 @@ const CommentCardFooter = ({
       disabled={isPeekMode}
     >
       <Image source={Images.share} />
-      <Text style={styles.toolBtnLabel}>{t('__share')}</Text>
+      <Text style={styles.toolBtnLabel}>{t("__share")}</Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={[styles.moreBtn, isPeekMode && styles.peekModeDisabled]}

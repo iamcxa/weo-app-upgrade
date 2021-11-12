@@ -4,10 +4,11 @@
  * @see https://redux.js.org/basics/reducers
  */
 
-import { INITIAL_STATE } from './InitialState';
-import { createReducer } from 'reduxsauce';
-import { CircleTypes } from './Actions';
-import { uniqBy, isEmpty } from 'lodash';
+import { isEmpty, uniqBy } from "lodash";
+import { createReducer } from "reduxsauce";
+
+import { CircleTypes } from "./Actions";
+import { INITIAL_STATE } from "./InitialState";
 
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer
@@ -36,7 +37,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [CircleTypes.UPDATE_WHEN_ENTER_CIRCLE]: (state, { circle }) => ({
     ...state,
-    insideCircles: uniqBy([circle, ...state.insideCircles], 'id'),
+    insideCircles: uniqBy([circle, ...state.insideCircles], "id"),
     currentCircle: circle,
   }),
 

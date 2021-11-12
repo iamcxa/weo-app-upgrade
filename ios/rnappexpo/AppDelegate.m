@@ -1,9 +1,15 @@
 #import "AppDelegate.h"
-
+#import "RNFBMessagingModule.h"
+#import <Firebase.h>
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
+
+// IMPORTANT:  Paste import ABOVE the DEBUG macro
+#import <TSBackgroundFetch/TSBackgroundFetch.h>
+
+#import <GoogleMaps/GoogleMaps.h>
 
 #import <UMCore/UMModuleRegistry.h>
 #import <UMReactNativeAdapter/UMNativeModulesProxy.h>
@@ -41,6 +47,8 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FIRApp configure];
+
 #if defined(FB_SONARKIT_ENABLED) && __has_include(<FlipperKit/FlipperClient.h>)
   InitializeFlipper(application);
 #endif
@@ -58,13 +66,25 @@ static void InitializeFlipper(UIApplication *application) {
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
+  [GMSServices provideAPIKey:@"AIzaSyDP7DhW9EFsajAcrrhltCmtIRSNTMa0MRQ"]; // add this line using the api key obtained from Google Console
+
+  // [REQUIRED] Register BackgroundFetch
+  [[TSBackgroundFetch sharedInstance] didFinishLaunching];
   return YES;
 }
 
 - (RCTBridge *)initializeReactNativeApp
 {
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:self.launchOptions];
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:@"main" initialProperties:nil];
+
+  // For `withLaunchOptions` please pass in `launchOptions` object
+  NSDictionary *appProperties = [RNFBMessagingModule addCustomPropsToUserProps:nil withLaunchOptions:self.launchOptions];
+
+  // Find the `RCTRootView` instance and update the `initialProperties` with your `appProperties` instance
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                               moduleName:@"main"
+                                               initialProperties:appProperties];
+
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
 //   UIViewController *rootViewController = [UIViewController new];

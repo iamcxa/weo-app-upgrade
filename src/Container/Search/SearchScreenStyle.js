@@ -1,56 +1,56 @@
-import { StyleSheet, Screen } from '~/Helper';
-import { Fonts, Styles, Colors, Metrics } from '~/Theme';
+import { StyleSheet, Screen } from "~/Helper";
+import { Fonts, Styles, Colors, Metrics } from "~/Theme";
 
 export default StyleSheet.create({
   content: {
     flex: 1,
-    paddingTop: Screen.moderateScale(26),
-    paddingHorizontal: Screen.moderateScale(16),
+    paddingTop: Screen.scale(26),
+    paddingHorizontal: Screen.scale(16),
   },
   inputWrapper: {
-    borderRadius: Screen.moderateScale(10),
+    borderRadius: Screen.scale(10),
     backgroundColor: Colors.steel10,
     // justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: Screen.moderateScale(6),
-    flexDirection: 'row',
+    alignItems: "center",
+    paddingVertical: Screen.scale(6),
+    flexDirection: "row",
   },
   searchInput: {
-    fontSize: Screen.moderateScale(18),
-    fontWeight: '500',
+    fontSize: Screen.scale(18),
+    fontWeight: "500",
     color: Colors.black,
-    // marginTop: Screen.moderateScale(15),
-    // height: Screen.moderateScale(100),
-    textAlignVertical: 'top',
+    // marginTop: Screen.scale(15),
+    // height: Screen.scale(100),
+    textAlignVertical: "top",
     flex: 1,
   },
   searchIcon: {
-    marginHorizontal: Screen.moderateScale(12),
+    marginHorizontal: Screen.scale(12),
     tintColor: Colors.steel,
   },
   hotSearchList: {
-    paddingTop: Screen.moderateScale(6),
+    paddingTop: Screen.scale(6),
     marginBottom: Metrics.baseMargin * 2,
-    paddingHorizontal: Screen.moderateScale(12),
+    paddingHorizontal: Screen.scale(12),
   },
   hotSearchListItem: {
-    marginVertical: Screen.moderateScale(12),
+    marginVertical: Screen.scale(12),
   },
   hotSearchKeyword: {
-    fontSize: Screen.moderateScale(16),
-    fontWeight: '500',
-    fontStyle: 'normal',
+    fontSize: Screen.scale(16),
+    fontWeight: "500",
+    fontStyle: "normal",
     color: Colors.greyishBrown,
   },
   listEmptyContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
   listEmptyMessage: {
-    alignSelf: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    textAlign: "center",
     lineHeight: 30,
   },
 });

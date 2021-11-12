@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/Ionicons';
-import ImagePicker from 'react-native-image-crop-picker';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import { connect } from 'react-redux';
-import { isString, isEmpty, debounce } from 'lodash';
-import { bindActionCreators } from 'redux';
-import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
+import React from "react";
+import PropTypes from "prop-types";
+import Icon from "react-native-vector-icons/Ionicons";
+import ImagePicker from "react-native-image-crop-picker";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import { connect } from "react-redux";
+import { isString, isEmpty, debounce } from "lodash";
+import { bindActionCreators } from "redux";
+import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import {
   TouchableWithoutFeedback,
   TouchableOpacity,
@@ -17,7 +17,7 @@ import {
   Image,
   View,
   Text,
-} from 'react-native';
+} from "react-native";
 
 import {
   ScaledSheet,
@@ -26,19 +26,23 @@ import {
   Screen,
   Date as d,
   Content as ContentHelper,
-} from '~/Helper';
-import { Colors, Metrics, Fonts, Classes } from '~/Theme';
-import { AppStateActions, TopicActions } from '~/Store';
-import { translate as t } from '~/Helper/I18n';
-import Config from '~/Config';
+} from "~/Helper";
+import { Colors, Metrics, Fonts, Classes } from "~/Theme";
+import { AppStateActions, TopicActions } from "~/Store/Actions";
+import { translate as t } from "~/Helper/I18n";
+import Config from "~/Config";
 
-import { fetchAPI, apiAction } from '../utils/api';
-import { validateEmpty, validateBlockWords } from '../utils/input';
+import { fetchAPI, apiAction } from "~/utils/api";
+import { validateEmpty, validateBlockWords } from "../utils/input";
+import { compressImage } from "../utils/image";
+import { checkAndRequestPermission, permissionType } from "../utils/permission";
 
-import { compressImage } from '../utils/image';
-import { checkAndRequestPermission, permissionType } from '../utils/permission';
-
-const { BUTTON_DEBOUNCE, CIRCLE_TYPE, CREATE_TOPIC_PERIOD, CREATE_POST_PERIOD } = Config;
+const {
+  BUTTON_DEBOUNCE,
+  CIRCLE_TYPE,
+  CREATE_TOPIC_PERIOD,
+  CREATE_POST_PERIOD,
+} = Config;
 
 const HIT_SLOP_5 = {
   top: 5,
@@ -65,7 +69,7 @@ const styles = ScaledSheet.create({
           },
           {
             marginBottom: Metrics.baseMargin / 2,
-          },
+          }
         ),
       },
       android: {
@@ -83,7 +87,7 @@ const styles = ScaledSheet.create({
           {
             marginBottom: 0,
             paddingBottom: 0,
-          },
+          }
         ),
       },
       android: {
@@ -105,11 +109,11 @@ const styles = ScaledSheet.create({
     }),
   },
   container: {
-    borderTopWidth: '1@vs',
+    borderTopWidth: "1@vs",
     borderColor: Colors.mainYellow,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: Metrics.baseMargin * 2,
     paddingBottom: Metrics.baseMargin,
     width: Screen.width,
@@ -120,18 +124,18 @@ const styles = ScaledSheet.create({
         },
         {
           marginBottom: 0,
-        },
+        }
       ),
     }),
   },
   textInputPlaceHolder: {
     color: Colors.red,
-    textAlignVertical: 'center',
+    textAlignVertical: "center",
   },
   textInputBase: {
-    textAlignVertical: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
+    textAlignVertical: "center",
+    justifyContent: "center",
+    alignSelf: "center",
     flex: 1,
     fontSize: Fonts.size.input,
     letterSpacing: Screen.scale(-0.36),
@@ -169,8 +173,8 @@ const styles = ScaledSheet.create({
   button: {
     marginTop: Metrics.baseMargin / 4.5,
     marginLeft: Metrics.baseMargin * 0.5,
-    justifyContent: 'center',
-    height: '100%',
+    justifyContent: "center",
+    height: "100%",
     ...Platform.select({
       android: {
         marginBottom: Metrics.baseMargin / 2,
@@ -178,10 +182,10 @@ const styles = ScaledSheet.create({
     }),
   },
   selectImageRow: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "flex-start",
     height: Metrics.REPLY_BAR_HEIGHT,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   selectImageIcon: {
     marginLeft: Metrics.baseMargin / 4,
@@ -192,13 +196,13 @@ const styles = ScaledSheet.create({
   txtContentExceedMaxLength: {
     fontSize: Fonts.size.small,
     color: Colors.error,
-    position: 'absolute',
+    position: "absolute",
     bottom: Metrics.baseMargin * 1.5,
     right: Metrics.baseMargin * 5.25,
   },
 
   btnClearContent: {
-    position: 'absolute',
+    position: "absolute",
     bottom: Metrics.baseMargin * 1.5,
     left: Metrics.baseMargin * 5.25,
   },
@@ -207,7 +211,7 @@ const styles = ScaledSheet.create({
     color: Colors.greyishBrown,
   },
   replyToAuthorBlockStyle: {
-    position: 'absolute',
+    position: "absolute",
     top: Platform.select({
       ios: Metrics.baseMargin / 1.5,
       android: Metrics.baseMargin / 2,
@@ -216,18 +220,18 @@ const styles = ScaledSheet.create({
       ios: ifIphoneX(Screen.scale(18), Screen.scale(18)),
       android: Screen.scale(18.5),
     }),
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: Colors.transparent,
     zIndex: 100,
   },
   txtReplyToAuthor: {
     fontSize: Fonts.size.regular,
     color: Colors.greyishBrown,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
     // backgroundColor: Colors.transparentblue,
   },
 });
@@ -236,7 +240,7 @@ let isComponentMounted = false;
 
 class ReplyBar extends React.PureComponent {
   static propTypes = {
-    type: PropTypes.oneOf(['TOPIC', 'POST', 'REPLY']).isRequired,
+    type: PropTypes.oneOf(["TOPIC", "POST", "REPLY"]).isRequired,
     updateLoading: PropTypes.func.isRequired,
     replyToAuthorName: PropTypes.string,
     disableUploadImage: PropTypes.bool,
@@ -268,10 +272,10 @@ class ReplyBar extends React.PureComponent {
     lastCreatePostAt: null,
     disableUploadImage: false,
     refreshTextInput: false,
-    replyToAuthorName: '',
+    replyToAuthorName: "",
     onReplySuccess: null,
-    appendContent: '',
-    content: '',
+    appendContent: "",
+    content: "",
     style: {},
     onBlur: null,
     onFocus: null,
@@ -292,13 +296,19 @@ class ReplyBar extends React.PureComponent {
     selectedImage: null,
     refreshing: false,
     isFocused: false,
-    content: '',
+    content: "",
     keyboardHeight: 0,
   };
 
   componentDidMount() {
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+    this.keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      this._keyboardDidShow
+    );
+    this.keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      this._keyboardDidHide
+    );
 
     isComponentMounted = true;
   }
@@ -306,13 +316,17 @@ class ReplyBar extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     const { content, maxLength, appendContent, replyToAuthorName } = this.props;
     if (isComponentMounted) {
-      if (content !== prevProps.content && content !== '' && !prevState.content) {
+      if (
+        content !== prevProps.content &&
+        content !== "" &&
+        !prevState.content
+      ) {
         this.setState({ content });
       }
       if (appendContent !== prevProps.appendContent && appendContent) {
         this.setState({
           content: `${prevState.content}${
-            prevState.content.trim() !== '' ? ', ' : ''
+            prevState.content.trim() !== "" ? ", " : ""
           }${appendContent}`,
         });
       }
@@ -342,7 +356,7 @@ class ReplyBar extends React.PureComponent {
 
   onChangeText = (text) => {
     const { maxTextInputLines } = this.props;
-    const lines = text.split('\n');
+    const lines = text.split("\n");
 
     if (lines.length < maxTextInputLines) {
       this.setState((prevState) => ({
@@ -353,8 +367,8 @@ class ReplyBar extends React.PureComponent {
   };
 
   onFocus = () => {
-    const { content = '' } = this.state;
-    const { onFocus, replyToAuthorName = '' } = this.props;
+    const { content = "" } = this.state;
+    const { onFocus, replyToAuthorName = "" } = this.props;
     if (onFocus) {
       onFocus();
     }
@@ -372,7 +386,7 @@ class ReplyBar extends React.PureComponent {
       isFocused: false,
       showLeftBlock: false,
     });
-    console.log('onBlur!');
+    console.log("onBlur!");
     const { onBlur } = this.props;
     if (onBlur) {
       onBlur();
@@ -388,7 +402,7 @@ class ReplyBar extends React.PureComponent {
     }
     const { content } = this.state;
     if (!allowPhotoWithEmptyContent && !validateEmpty(content)) {
-      Alert.alert(t('__alert_reply_bar_type_empty'));
+      Alert.alert(t("__alert_reply_bar_type_empty"));
       this.props.updateLoading(false);
       return null;
     }
@@ -397,13 +411,13 @@ class ReplyBar extends React.PureComponent {
     const isValid = await validateBlockWords(content);
     this.props.updateLoading(false);
     if (!isValid) {
-      Alert.alert(t('__alert_reply_bar_message_content_not_allowed'), null, [
+      Alert.alert(t("__alert_reply_bar_message_content_not_allowed"), null, [
         {
-          text: 'cancel',
+          text: "cancel",
           onPress: () => {},
         },
         {
-          text: 'Send',
+          text: "Send",
           onPress: async () => {
             await this.sendReply();
           },
@@ -441,9 +455,10 @@ class ReplyBar extends React.PureComponent {
     } = this.props;
     const { content, selectedImage, uploadedImage } = this.state;
     const data = {
-      title: type === 'TOPIC' ? content.replace(replyToAuthorName, '') : null,
-      circleId: belongsTo === CIRCLE_TYPE.HERE_YOU_ARE ? userCircle.id : homeCircle.id,
-      content: content.replace(replyToAuthorName, ''),
+      title: type === "TOPIC" ? content.replace(replyToAuthorName, "") : null,
+      circleId:
+        belongsTo === CIRCLE_TYPE.HERE_YOU_ARE ? userCircle.id : homeCircle.id,
+      content: content.replace(replyToAuthorName, ""),
       selectedImage,
     };
     if (isEmpty(uploadedImage)) {
@@ -457,27 +472,27 @@ class ReplyBar extends React.PureComponent {
       return Dialog.containBlockedWordAlert(this.handleFetchAddTopic);
     }
     if (
-      type === 'TOPIC' &&
+      type === "TOPIC" &&
       lastCreateTopicAt &&
-      d.moment(lastCreateTopicAt).add(CREATE_TOPIC_PERIOD, 's') > d.moment()
+      d.moment(lastCreateTopicAt).add(CREATE_TOPIC_PERIOD, "s") > d.moment()
     ) {
       return Dialog.createContentIntervalTooShortTooAlert(
-        t('create_topic_interval_too_short', { period: CREATE_TOPIC_PERIOD }),
+        t("create_topic_interval_too_short", { period: CREATE_TOPIC_PERIOD })
       );
     }
     if (
-      type !== 'TOPIC' &&
+      type !== "TOPIC" &&
       lastCreatePostAt &&
-      d.moment(lastCreatePostAt).add(CREATE_POST_PERIOD, 's') > d.moment()
+      d.moment(lastCreatePostAt).add(CREATE_POST_PERIOD, "s") > d.moment()
     ) {
       return Dialog.createContentIntervalTooShortTooAlert(
-        t('create_topic_interval_too_short', { period: CREATE_POST_PERIOD }),
+        t("create_topic_interval_too_short", { period: CREATE_POST_PERIOD })
       );
     }
     // console.log('type =>', type);
     // console.log('data =>', data);
     this.input.blur();
-    if (type === 'TOPIC') {
+    if (type === "TOPIC") {
       fetchAddTopic({
         title: data.title,
         content: data.content,
@@ -486,35 +501,39 @@ class ReplyBar extends React.PureComponent {
         selectedImage,
         onSuccess: replySuccess,
       });
-    } else if (type === 'REPLY') {
+    } else if (type === "REPLY") {
       fetchReplyPostPost(id, data, replySuccess);
     } else {
       fetchPostTopicPost(topicId, data, replySuccess);
     }
     this.setState(
       {
-        content: '',
+        content: "",
         refreshTextInput: true,
         selectedImage: null,
         uploadedImage: null,
       },
       () => {
         this.setState({ refreshTextInput: false });
-      },
+      }
     );
   };
 
   pickImageByLibrary = async () => {
-    const havePermission = await checkAndRequestPermission(permissionType.photo);
+    const havePermission = await checkAndRequestPermission(
+      permissionType.photo
+    );
     if (havePermission) {
       ImagePicker.openPicker({
-        mediaType: 'photo',
+        mediaType: "photo",
       }).then(this.handleSelectedImage);
     }
   };
 
   pickImageByCamera = async () => {
-    const havePermission = await checkAndRequestPermission(permissionType.camera);
+    const havePermission = await checkAndRequestPermission(
+      permissionType.camera
+    );
     if (havePermission) {
       ImagePicker.openCamera({}).then(this.handleSelectedImage);
     }
@@ -540,10 +559,10 @@ class ReplyBar extends React.PureComponent {
         file: {
           uri: compressedImage.uri,
           type: mime,
-          name: filename || 'image',
+          name: filename || "image",
         },
       });
-      console.log('uploadImage res=>', res);
+      console.log("uploadImage res=>", res);
       return res.data.files[0];
     }
     return null;
@@ -563,14 +582,23 @@ class ReplyBar extends React.PureComponent {
             styles.selectedImage,
             {
               height: Screen.scale(35),
-              width: Screen.scale((35 * selectedImage.width) / selectedImage.height),
+              width: Screen.scale(
+                (35 * selectedImage.width) / selectedImage.height
+              ),
             },
           ]}
         />
       </TouchableOpacity>
     );
     const imageNotSelect = () => (
-      <View style={[Classes.row, Classes.mainStart, Classes.mainSpaceBetween, { width: 52 }]}>
+      <View
+        style={[
+          Classes.row,
+          Classes.mainStart,
+          Classes.mainSpaceBetween,
+          { width: 52 },
+        ]}
+      >
         <TouchableOpacity
           key="camera"
           style={styles.selectImageIcon}
@@ -601,7 +629,11 @@ class ReplyBar extends React.PureComponent {
           onPress={this.showLeftBlock}
           hitSlop={HIT_SLOP_5}
         >
-          <Icon name="ios-arrow-dropright-circle" size={Screen.scale(24)} color={Colors.black} />
+          <Icon
+            name="ios-arrow-dropright-circle"
+            size={Screen.scale(24)}
+            color={Colors.black}
+          />
         </TouchableOpacity>
       </View>
     );
@@ -622,7 +654,7 @@ class ReplyBar extends React.PureComponent {
             style={{ marginRight: Metrics.baseMargin / 2 }}
           />
           <Text style={styles.txtReplyToAuthor}>
-            {t('__reply_to')}
+            {t("__reply_to")}
             {replyToAuthorName}
           </Text>
         </TouchableOpacity>
@@ -640,20 +672,27 @@ class ReplyBar extends React.PureComponent {
       replyToAuthorName,
       allowPhotoWithEmptyContent,
     } = this.props;
-    const { selectedImage, keyboardHeight, isFocused, refreshTextInput, content } = this.state;
+    const {
+      selectedImage,
+      keyboardHeight,
+      isFocused,
+      refreshTextInput,
+      content,
+    } = this.state;
     const contentInputted =
-      (typeof content === 'string' && content.trim().length > 0) ||
+      (typeof content === "string" && content.trim().length > 0) ||
       (allowPhotoWithEmptyContent && selectedImage);
-    const contentLines = content.split('\n').length;
+    const contentLines = content.split("\n").length;
     const contentLinesHeight = Metrics.REPLY_BAR_HEIGHT * maxTextInputLines;
     const maxDisplayAreaHeight = Platform.select({
       ios: ifIphoneX(
         Screen.height - keyboardHeight - Screen.scale(96),
-        Screen.height - keyboardHeight - Screen.scale(96),
+        Screen.height - keyboardHeight - Screen.scale(96)
       ),
       android: Screen.height - keyboardHeight - Screen.scale(56),
     });
-    const isContentLongerThanScreenHeight = contentLinesHeight > maxDisplayAreaHeight;
+    const isContentLongerThanScreenHeight =
+      contentLinesHeight > maxDisplayAreaHeight;
     const maxInputHeight = isContentLongerThanScreenHeight
       ? maxDisplayAreaHeight
       : contentLinesHeight;
@@ -676,7 +715,9 @@ class ReplyBar extends React.PureComponent {
                 paddingTop: Metrics.baseMargin * 3,
                 paddingBottom: Metrics.baseMargin * 2,
               },
-              isFocused ? styles.containerWrapperFocused : styles.containerWrapperUnfocused,
+              isFocused
+                ? styles.containerWrapperFocused
+                : styles.containerWrapperUnfocused,
               isContentTooLong && { marginBottom: Metrics.baseMargin * 1.5 },
               replyToAuthorName && { paddingTop: Metrics.baseMargin * 2 },
             ]}
@@ -688,7 +729,7 @@ class ReplyBar extends React.PureComponent {
                 ref={(ref) => {
                   this.input = ref;
                 }}
-                placeholder={t('reply_bar_placeholder')}
+                placeholder={t("reply_bar_placeholder")}
                 ellipsizeMode="head"
                 maxLength={maxLength}
                 maxHeight={
@@ -702,7 +743,9 @@ class ReplyBar extends React.PureComponent {
                 onChangeText={this.onChangeText}
                 style={[
                   styles.textInputBase,
-                  isFocused ? styles.textInputFocused : styles.textInputUnfocused,
+                  isFocused
+                    ? styles.textInputFocused
+                    : styles.textInputUnfocused,
                 ]}
                 underlineColorAndroid="transparent"
                 onFocus={this.onFocus}
@@ -738,7 +781,7 @@ class ReplyBar extends React.PureComponent {
                   isString(content) && content.length > 1 && { bottom: 0 },
                 ]}
               >
-                {t('text_input_max_length', { max: maxLength })}
+                {t("text_input_max_length", { max: maxLength })}
               </Text>
             )}
           </View>
@@ -764,8 +807,8 @@ export default connect(
         fetchAddTopic: TopicActions.fetchAddTopic,
         fetchReplyPostPost: TopicActions.fetchReplyPostPost,
       },
-      dispatch,
+      dispatch
     ),
   null,
-  { forwardRef: true },
+  { forwardRef: true }
 )(ReplyBar);

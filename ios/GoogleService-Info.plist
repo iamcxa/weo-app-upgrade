@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>824181281159-0e90d0e2tmane3bc93o0bk09jv721bbs.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.824181281159-0e90d0e2tmane3bc93o0bk09jv721bbs</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCreX3YakSK9MIg6cJwE5mh6KnkD4m-gyk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>824181281159</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.weo.com.hk</string>
+	<key>PROJECT_ID</key>
+	<string>weohk-210616</string>
+	<key>STORAGE_BUCKET</key>
+	<string>weohk-210616.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:824181281159:ios:863b8c5f924f84e2</string>
+	<key>DATABASE_URL</key>
+	<string>https://weohk-210616.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,17 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
-import { Image, TouchableOpacity, ActivityIndicator, Text, View, Platform } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/Ionicons';
-import PickerModal from 'react-native-picker-modal-view';
+import React from "react";
+import PropTypes from "prop-types";
+import { isEmpty } from "lodash";
+import {
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+  Text,
+  View,
+  Platform,
+} from "react-native";
+import { Actions } from "react-native-router-flux";
+import Icon from "react-native-vector-icons/Ionicons";
+// import PickerModal from 'react-native-picker-modal-view';
 
-import { ifIphoneX, Screen, StyleSheet } from '~/Helper';
-import { Metrics, Colors, Images, Classes } from '~/Theme';
-import { translate as t } from '~/Helper/I18n';
-import Config from '~/Config';
-import ImageButton from './ImageButton';
-import MainNavBar from './MainNavBar';
+import { ifIphoneX, Screen, StyleSheet } from "~/Helper";
+import { Metrics, Colors, Images, Classes } from "~/Theme";
+import { translate as t } from "~/Helper/I18n";
+import Config from "~/Config";
+import ImageButton from "./ImageButton";
+import MainNavBar from "./MainNavBar";
 
 const { CIRCLE_TYPE } = Config;
 
@@ -27,24 +34,24 @@ const styles = StyleSheet.create({
     // marginHorizontal: Screen.scale(8),
   },
   mainNavBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   sortOptionRow: {
     marginTop: Metrics.baseVerticalMargin,
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    justifyContent: "space-between",
+    alignItems: "flex-end",
   },
   sortOption: {
     paddingHorizontal: Screen.scale(28),
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
   },
   sortOptionText: {
     fontSize: Screen.scale(14),
-    fontWeight: '500',
+    fontWeight: "500",
     letterSpacing: -0.34,
     color: Colors.warmGreyTwo,
     marginLeft: Screen.scale(11),
@@ -52,17 +59,17 @@ const styles = StyleSheet.create({
   },
   activeOptionText: {
     color: Colors.black,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   activeOptionTextForPeek: {
     color: Colors.pureWhite,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   pickerWrapper: {
     flex: 1,
     // marginLeft: Screen.scale(-Metrics.baseMargin * 5),
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     ...Platform.select({
       android: {
         paddingTop: Screen.scale(-Metrics.baseMargin / 2),
@@ -73,18 +80,18 @@ const styles = StyleSheet.create({
     marginLeft: Screen.scale(-20),
   },
   titleWrapper: {
-    justifyContent: 'center',
-    alignSelf: 'flex-start',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignSelf: "flex-start",
+    flexDirection: "row",
     paddingTop: Screen.verticalScale(Metrics.baseMargin),
     paddingHorizontal: Screen.verticalScale(Metrics.baseMargin * 2),
   },
   titleCircle: {
     color: Colors.black,
-    textAlign: 'center',
-    fontWeight: '600',
+    textAlign: "center",
+    fontWeight: "600",
     fontSize: Screen.scale(18),
-    width: '100%',
+    width: "100%",
     ...Platform.select({
       android: {
         marginTop: Screen.scale(-Metrics.baseMargin / 4),
@@ -106,49 +113,54 @@ const styles = StyleSheet.create({
   },
 });
 
-const TitleComponent = ({ insideCircles = [], selectedCircle = {}, onSwitchCircle }) => {
+const TitleComponent = ({
+  insideCircles = [],
+  selectedCircle = {},
+  onSwitchCircle,
+}) => {
   return (
     <View style={styles.pickerWrapper}>
       {!isEmpty(selectedCircle) ? (
-        <PickerModal
-          renderSelectView={(disabled, selected, showModal) => (
-            <TouchableOpacity onPress={showModal} style={styles.titleWrapper}>
-              <Text style={styles.titleCircle} numberOfLines={1}>
-                {'📍'}
-                {selectedCircle.name}
-              </Text>
-              <Icon name="ios-arrow-down" size={20} style={styles.icon} />
-            </TouchableOpacity>
-          )}
-          renderListItem={(selectedItem, item) => (
-            <View style={styles.titleComponentPickerListItem}>
-              <Text
-                style={[
-                  styles.titleComponentPickerListItemText,
-                  // eslint-disable-next-line react-native/no-inline-styles
-                  {
-                    fontWeight: selectedItem.Name === item.Name ? 'bold' : '100',
-                  },
-                ]}
-              >
-                {item.Name}
-                {selectedItem.Name === item.Name ? '✅' : ''}
-              </Text>
-            </View>
-          )}
-          onSelected={onSwitchCircle}
-          items={insideCircles.map((e) => ({
-            Name: e.name,
-            Value: e.id,
-            Id: e.id,
-            rawCircleData: e,
-          }))}
-          selected={selectedCircle.id}
-          searchPlaceholderText="Pick a circle"
-          requireSelection={false}
-          autoSort={false}
-        />
-      ) : null}
+        <View />
+      ) : // <PickerModal
+      //   renderSelectView={(disabled, selected, showModal) => (
+      //     <TouchableOpacity onPress={showModal} style={styles.titleWrapper}>
+      //       <Text style={styles.titleCircle} numberOfLines={1}>
+      //         {'📍'}
+      //         {selectedCircle.name}
+      //       </Text>
+      //       <Icon name="ios-arrow-down" size={20} style={styles.icon} />
+      //     </TouchableOpacity>
+      //   )}
+      //   renderListItem={(selectedItem, item) => (
+      //     <View style={styles.titleComponentPickerListItem}>
+      //       <Text
+      //         style={[
+      //           styles.titleComponentPickerListItemText,
+      //           // eslint-disable-next-line react-native/no-inline-styles
+      //           {
+      //             fontWeight: selectedItem.Name === item.Name ? 'bold' : '100',
+      //           },
+      //         ]}
+      //       >
+      //         {item.Name}
+      //         {selectedItem.Name === item.Name ? '✅' : ''}
+      //       </Text>
+      //     </View>
+      //   )}
+      //   onSelected={onSwitchCircle}
+      //   items={insideCircles.map((e) => ({
+      //     Name: e.name,
+      //     Value: e.id,
+      //     Id: e.id,
+      //     rawCircleData: e,
+      //   }))}
+      //   selected={selectedCircle.id}
+      //   searchPlaceholderText="Pick a circle"
+      //   requireSelection={false}
+      //   autoSort={false}
+      // />
+      null}
     </View>
   );
 };
@@ -168,7 +180,7 @@ export const SortOptionRow = ({ showNewest, showHottest, active, dark }) => (
   <View style={styles.sortOptionRow}>
     <TouchableOpacity style={styles.sortOption} onPress={showNewest}>
       <Image
-        source={active === 'newest' ? Images.herePin_active : Images.herePin}
+        source={active === "newest" ? Images.herePin_active : Images.herePin}
         style={{
           width: Screen.scale(19),
           height: Screen.scale(30),
@@ -177,25 +189,25 @@ export const SortOptionRow = ({ showNewest, showHottest, active, dark }) => (
       <Text
         style={[
           styles.sortOptionText,
-          active === 'newest' && styles.activeOptionText,
-          dark && active === 'newest' && styles.activeOptionTextForPeek,
+          active === "newest" && styles.activeOptionText,
+          dark && active === "newest" && styles.activeOptionTextForPeek,
         ]}
       >
-        {t('topic_list_label_newest')}
+        {t("topic_list_label_newest")}
       </Text>
     </TouchableOpacity>
     <TouchableOpacity style={styles.sortOption} onPress={showHottest}>
       <Text
         style={[
           styles.sortOptionText,
-          active === 'hottest' && styles.activeOptionText,
-          dark && active === 'hottest' && styles.activeOptionTextForPeek,
+          active === "hottest" && styles.activeOptionText,
+          dark && active === "hottest" && styles.activeOptionTextForPeek,
         ]}
       >
-        {t('topic_list_label_hottest')}
+        {t("topic_list_label_hottest")}
       </Text>
       <Image
-        source={active === 'hottest' ? Images.herePin_active : Images.herePin}
+        source={active === "hottest" ? Images.herePin_active : Images.herePin}
         style={{
           width: Screen.scale(19),
           height: Screen.scale(30),
@@ -236,13 +248,13 @@ const ListHeader = ({
     <View style={styles.headerWrapper}>
       <MainNavBar
         titleComponent={
-          belongsTo === 'HERE_YOU_ARE'
+          belongsTo === "HERE_YOU_ARE"
             ? TitleComponent({
                 insideCircles,
                 selectedCircle,
                 onSwitchCircle,
               })
-            : belongsTo === 'THERE_YOU_ARE' && (
+            : belongsTo === "THERE_YOU_ARE" && (
                 <Text style={[styles.titleCircle, styles.favCircle]}>
                   {`❤️ ${homeCircle && homeCircle.name}`}
                 </Text>
@@ -250,8 +262,10 @@ const ListHeader = ({
         }
         rightComponent={
           <>
-            {((!isEmpty(selectedCircle) && belongsTo === CIRCLE_TYPE.HERE_YOU_ARE) ||
-              (!isEmpty(homeCircle) && belongsTo === CIRCLE_TYPE.THERE_YOU_ARE)) && (
+            {((!isEmpty(selectedCircle) &&
+              belongsTo === CIRCLE_TYPE.HERE_YOU_ARE) ||
+              (!isEmpty(homeCircle) &&
+                belongsTo === CIRCLE_TYPE.THERE_YOU_ARE)) && (
               <ImageButton
                 key="btnSearch"
                 onPress={() =>
@@ -282,7 +296,7 @@ const ListHeader = ({
               source={Images.navMic}
               imageStyle={[styles.icon]}
             />
-            {Platform.OS === 'ios' && (
+            {Platform.OS === "ios" && (
               <ActivityIndicator
                 style={{ marginLeft: Metrics.baseMargin }}
                 color="black"
@@ -295,7 +309,11 @@ const ListHeader = ({
         style={styles.mainNavBar}
       />
       {(!isEmpty(selectedCircle) || !isEmpty(homeCircle)) && (
-        <SortOptionRow active={active} showHottest={showHottest} showNewest={showNewest} />
+        <SortOptionRow
+          active={active}
+          showHottest={showHottest}
+          showNewest={showNewest}
+        />
       )}
     </View>
   );

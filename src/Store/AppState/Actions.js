@@ -1,4 +1,4 @@
-import { createActions } from 'reduxsauce';
+import { createActions } from "reduxsauce";
 
 /**
  * We use reduxsauce's `createActions()` helper to easily create redux actions.
@@ -20,25 +20,33 @@ import { createActions } from 'reduxsauce';
  */
 const { Types, Creators } = createActions({
   // This action triggered when the app stars or it's locale option is changed.
-  'app/onLocaleUpdate': ['localization'],
+  "app/onLocaleUpdate": ["localization"],
 
   // This action triggered when the app go to foreground or background.
-  'app/onStateUpdate': ['currentState'],
+  "app/onStateUpdate": ["currentState"],
 
   // This action triggered when the phone network status changes.
-  'app/onNetInfoUpdate': ['state'],
+  "app/onNetInfoUpdate": ["state"],
 
   // This action triggered when the app stars, to get current app version.
-  'app/onVersionUpdate': ['nativeAppVersion', 'nativeBuildVersion', 'expoVersion', 'platform'],
+  "app/onVersionUpdate": [
+    "nativeAppVersion",
+    "nativeBuildVersion",
+    "expoVersion",
+    "platform",
+  ],
 
   // This action triggered when the app orientation changes.
-  'app/onOrientationUpdate': ['currentOrientation'],
+  "app/onOrientationUpdate": ["currentOrientation"],
 
   // This action triggered when the app requires user to wait.
-  'app/onLoading': ['isLoading', 'message', 'options'],
+  "app/onLoading": ["isLoading", "message", "options"],
 
   // This action triggered when the app go to foreground or background.
-  onDeviceUpdate: ['device'],
+  onDeviceUpdate: ["device"],
+
+  // This action triggered when the device's geolocation sensor changes
+  onGeolocationChange: ["data"],
 });
 
 export const AppStateTypes = Types;

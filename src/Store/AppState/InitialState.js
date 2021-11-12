@@ -1,4 +1,4 @@
-import { boilerplateVersion } from '../../../package.json';
+import { boilerplateVersion } from "../../../package.json";
 
 /**
  * The initial values for the redux state.
@@ -8,19 +8,19 @@ export const INITIAL_STATE = {
 
   currentOrientation: null,
 
-  currentState: 'active',
+  currentState: "active",
 
   netInfo: {
     details: {
-      subnet: '',
-      ipAddress: '',
+      subnet: "",
+      ipAddress: "",
       strength: 0,
-      ssid: '',
+      ssid: "",
       isConnectionExpensive: null,
     },
     isInternetReachable: null,
     isConnected: null,
-    type: '',
+    type: "",
   },
 
   device: {
@@ -31,20 +31,25 @@ export const INITIAL_STATE = {
   currentVersion: {},
 
   localization: {
-    currency: '',
-    decimalSeparator: '.',
-    digitGroupingSeparator: ',',
+    currency: "",
+    decimalSeparator: ".",
+    digitGroupingSeparator: ",",
     isoCurrencyCodes: [],
     isMetric: false,
     isRTL: false,
-    locale: '',
+    locale: "",
     locales: [],
-    timezone: '',
-    region: '',
-    currentUsedLanguageTag: '',
+    timezone: "",
+    region: "",
+    currentUsedLanguageTag: "",
   },
 
   isLoading: false,
-  loadingMessage: '',
+  loadingMessage: "",
   loadingOptions: {},
+
+  currentGeolocation: {
+    provider: {},
+    motion: {},
+  },
 };

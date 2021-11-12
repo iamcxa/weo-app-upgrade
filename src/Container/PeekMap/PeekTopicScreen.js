@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { throttle, isEqual } from 'lodash';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import React from "react";
+import PropTypes from "prop-types";
+import { throttle, isEqual } from "lodash";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { Actions } from "react-native-router-flux";
 
-import { Config } from '~/Config';
-import { TopicActions } from '~/Store';
-import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
-import PeekTopicView from './PeekTopicView';
+import { Config } from "~/Config";
+import { TopicActions } from "~/Store";
+import { getStateKeyByBelongsTo } from "~/Store/List/Reducers";
+import PeekTopicView from "./PeekTopicView";
 
 const { ON_END_REACHED_THROTTLE, CIRCLE_TYPE } = Config;
 
@@ -36,20 +36,20 @@ class PeekTopicScreen extends React.Component {
   state = {
     curPage: 1,
     perPage: 15,
-    sort: 'newest',
+    sort: "newest",
     activeSlide: 0,
     belongsTo: this.props.belongsTo,
   };
 
   componentDidMount() {
-    __DEV__ && console.log('@Enter PeekTopicScreen');
+    __DEV__ && console.log("@Enter PeekTopicScreen");
     const { circleList } = this.props;
 
     setTimeout(() => {
       if (circleList[0] && circleList[0].id) {
         this.handleFetchTopics({
           curPage: 1,
-          sort: 'newest',
+          sort: "newest",
         });
       }
     }, 500);
@@ -101,7 +101,7 @@ class PeekTopicScreen extends React.Component {
       sort = this.state.sort,
       curPage = this.state.curPage,
       perPage = this.state.perPage,
-    } = this.state,
+    } = this.state
   ) => {
     const { fetchGetTopics, circleList, belongsTo, isFetching } = this.props;
     const circle = circleList[activeSlide];
@@ -121,7 +121,7 @@ class PeekTopicScreen extends React.Component {
         });
       } else {
         this.setState({
-          sort: 'newest',
+          sort: "newest",
           curPage: 1,
           perPage,
         });
@@ -135,10 +135,10 @@ class PeekTopicScreen extends React.Component {
       () => {
         this.handleFetchTopics({
           activeSlide: index,
-          sort: 'newest',
+          sort: "newest",
           curPage: 1,
         });
-      },
+      }
     );
   };
 
@@ -166,13 +166,13 @@ class PeekTopicScreen extends React.Component {
         handleListReachEnd={this.handleListReachEnd}
         handleShowNewest={() =>
           this.handleFetchTopics({
-            sort: 'newest',
+            sort: "newest",
             curPage: 1,
           })
         }
         handleShowHottest={() =>
           this.handleFetchTopics({
-            sort: 'hottest',
+            sort: "hottest",
             curPage: 1,
           })
         }
@@ -200,6 +200,6 @@ export default connect(
         fetchGetTopics: TopicActions.fetchGetTopics,
         resetTopic: TopicActions.resetTopic,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(PeekTopicScreen);

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Screen from '../utils/screen';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Screen } from "~/Helper";
 
 const styles = StyleSheet.create({});
 
@@ -24,7 +24,7 @@ export default class ListItem extends Component {
     const { style, children, disablePress, onPress } = this.props;
     return (
       <TouchableOpacity
-        style={[{ flex: 1, padding: Screen.moderateScale(15) }, style]}
+        style={[{ flex: 1, padding: Screen.scale(15) }, style]}
         onPress={() => {
           if (!disablePress) {
             if (!this.btnClick) {

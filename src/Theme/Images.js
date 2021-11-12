@@ -1,9 +1,10 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
+
 /**
  * Images should be stored in the `App/Images` directory and referenced using variables defined here.
  */
-const PREFIX_PATH = '~/Asset/Images/';
+const PREFIX_PATH = "../Asset/Images/";
 
 const imagePath = {
   logo: require(`${PREFIX_PATH}gec/logo.png`),
@@ -71,6 +72,42 @@ const imagePath = {
   navHereYouAre_active: require(`${PREFIX_PATH}nav-here-you-are-active.png`),
   navThereYouAre: require(`${PREFIX_PATH}nav-there-you-are.png`),
   navThereYouAre_active: require(`${PREFIX_PATH}nav-there-you-are-active.png`),
+
+  // map
+  SvgMapPinYellow: require(`${PREFIX_PATH}/map/pin-yellow.svg`).default,
+  SvgMapPinGray: require(`${PREFIX_PATH}/map/pin-gray.svg`).default,
+  SvgMapFav: require(`${PREFIX_PATH}/map/fav-circle.svg`).default,
+  SvgMapMyCircle: require(`${PREFIX_PATH}/map/my-circle.svg`).default,
+
+  // button
+  SvgBtnCreateCircle: require(`${PREFIX_PATH}btn-create-circle.svg`).default,
+  SvgBtnAboutCircle: require(`${PREFIX_PATH}btn-about-circle.svg`).default,
+  SvgBtnCreateTopic: require(`${PREFIX_PATH}btn-create-topic.svg`).default,
+  SvgBtnCreateMessage: require(`${PREFIX_PATH}btn-create-message.svg`).default,
+  SvgBtnLocation: require(`${PREFIX_PATH}btn-location.svg`).default,
+  SvgBtnRanking: require(`${PREFIX_PATH}btn-ranking.svg`).default,
+  SvgBtnMore: require(`${PREFIX_PATH}btn-more.svg`).default,
+  SvgBtnFavYellow: require(`${PREFIX_PATH}btn-fav-yellow.svg`).default,
+  SvgBtnFavGrey: require(`${PREFIX_PATH}btn-fav-grey.svg`).default,
+
+  // tab-bar
+  SvgTabBarMapScenes: require(`${PREFIX_PATH}/tabbar/nav-map.svg`).default,
+  SvgTabBarMapScenesFilled: require(`${PREFIX_PATH}/tabbar/nav-map-filled.svg`)
+    .default,
+  SvgTabBarNotificationScenes: require(`${PREFIX_PATH}/tabbar/nav-bell.svg`)
+    .default,
+  SvgTabBarNotificationScenesFilled:
+    require(`${PREFIX_PATH}/tabbar/nav-bell-filled.svg`).default,
+  SvgTabBarProfileScenes: require(`${PREFIX_PATH}/tabbar/nav-profile.svg`)
+    .default,
+  SvgTabBarProfileScenesFilled:
+    require(`${PREFIX_PATH}/tabbar/nav-profile-filled.svg`).default,
+  SvgTabBarChatScenes: require(`${PREFIX_PATH}/tabbar/nav-message.svg`).default,
+  SvgTabBarChatScenesFilled:
+    require(`${PREFIX_PATH}/tabbar/nav-message-filled.svg`).default,
+  SvgTabBarTopicScenes: require(`${PREFIX_PATH}/tabbar/nav-topic.svg`).default,
+  SvgTabBarTopicScenesFilled:
+    require(`${PREFIX_PATH}/tabbar/nav-topic-filled.svg`).default,
 };
 
 export default imagePath;

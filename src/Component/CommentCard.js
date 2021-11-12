@@ -1,37 +1,37 @@
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
 
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { StyleSheet, View } from 'react-native';
-import Share from 'react-native-share';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { StyleSheet, View } from "react-native";
+import Share from "react-native-share";
 
-import Colors from '~/Theme/Colors';
-import config from '~/Config';
-import Screen from '../utils/screen';
-import CommentCardHeader from './CommentCardHeader';
-import CommentCardImage from './CommentCardImage';
-import CommentCardContent from './CommentCardContent';
-import CommentCardFooter from './CommentCardFooter';
-import VoteBox from './VoteBox';
+import Colors from "~/Theme/Colors";
+import config from "~/Config";
+import { Screen } from "~/Helper";
+import CommentCardHeader from "./CommentCardHeader";
+import CommentCardImage from "./CommentCardImage";
+import CommentCardContent from "./CommentCardContent";
+import CommentCardFooter from "./CommentCardFooter";
+import VoteBox from "./VoteBox";
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Screen.moderateScale(14),
-    paddingBottom: Screen.moderateScale(8),
-    paddingHorizontal: Screen.moderateScale(12),
+    paddingTop: Screen.scale(14),
+    paddingBottom: Screen.scale(8),
+    paddingHorizontal: Screen.scale(12),
   },
   content: {
     flex: 1,
-    marginVertical: Screen.moderateScale(8),
+    marginVertical: Screen.scale(8),
   },
   imageContainer: {
-    marginBottom: Screen.moderateScale(10),
+    marginBottom: Screen.scale(10),
   },
   image: {
     backgroundColor: Colors.paleGrey,
-    width: '100%',
-    height: 'auto',
+    width: "100%",
+    height: "auto",
   },
 });
 
@@ -49,28 +49,28 @@ const topicListHeaderStyles = StyleSheet.create({
 
 const postListHeaderStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: Screen.moderateScale(16),
-    paddingBottom: Screen.moderateScale(14),
-    borderLeftWidth: Screen.moderateScale(1),
+    paddingHorizontal: Screen.scale(16),
+    paddingBottom: Screen.scale(14),
+    borderLeftWidth: Screen.scale(1),
   },
 });
 
 const replyListItemHeaderStyles = StyleSheet.create({
   container: {
-    paddingHorizontal: Screen.moderateScale(16),
-    paddingBottom: Screen.moderateScale(14),
+    paddingHorizontal: Screen.scale(16),
+    paddingBottom: Screen.scale(14),
   },
 });
 
-const CONSTANT_BELONGS_TO = ['HERE_YOU_ARE', 'THERE_YOU_ARE', 'BROWSE'];
+const CONSTANT_BELONGS_TO = ["HERE_YOU_ARE", "THERE_YOU_ARE", "BROWSE"];
 
-const CONSTANT_TYPE = ['TOPIC', 'POST', 'REPLY'];
+const CONSTANT_TYPE = ["TOPIC", "POST", "REPLY"];
 
 @connect(
   (state) => ({
     userCircle: state.circle.userCircle,
   }),
-  (dispatch) => bindActionCreators({}, dispatch),
+  (dispatch) => bindActionCreators({}, dispatch)
 )
 class CommentCard extends PureComponent {
   static propTypes = {
@@ -100,7 +100,7 @@ class CommentCard extends PureComponent {
 
   static defaultProps = {
     onPressPopupOriginPost: () => {},
-    replyAuthorName: '',
+    replyAuthorName: "",
     isHideFooter: false,
     onReplyPress: null,
     listHeader: false,
@@ -108,14 +108,14 @@ class CommentCard extends PureComponent {
     repliesLength: 0,
     userCircle: {},
     homeCircle: {},
-    type: 'TOPIC',
-    replyPostId: '',
-    authorHash: '',
-    authorName: '',
-    createdAt: '',
-    mediaUrl: '',
-    content: '',
-    avatar: '',
+    type: "TOPIC",
+    replyPostId: "",
+    authorHash: "",
+    authorName: "",
+    createdAt: "",
+    mediaUrl: "",
+    content: "",
+    avatar: "",
     style: {},
     topic: {},
   };
@@ -127,7 +127,9 @@ class CommentCard extends PureComponent {
 
   onShareBtnPress = async () => {
     const circle =
-      this.props.belongsTo === 'HERE_YOU_ARE' ? this.props.userCircle : this.props.homeCircle;
+      this.props.belongsTo === "HERE_YOU_ARE"
+        ? this.props.userCircle
+        : this.props.homeCircle;
     // const { content, title } = this.props;
     const topicUrl = `${config.shareAPI_BASE_URL}/${this.props.topic.id}`;
     // const encodeUrl = encodeURIComponent(topicUrl);
@@ -150,7 +152,7 @@ class CommentCard extends PureComponent {
     // console.log('result', result);
 
     const shareOptions = {
-      title: 'WeO 開始傾',
+      title: "WeO 開始傾",
       message: `喺 【${circle.name}】有人話：【${this.props.topic.title}】
 `,
       // url: `${config.domain}/share/${_.lowerCase(this.props.type)}/${
@@ -159,18 +161,22 @@ class CommentCard extends PureComponent {
       url: topicUrl,
       // url: (Platform.OS === 'ios') ? config.iosDownloadLink : config.androidDownloadLink,
       // (我) 喺 (${Circle名}) 同人傾緊：(${topic標題})。想一齊傾？立即下戴WeO, 喺Poly先玩到嘅Forum。(${app store 連結})
-      subject: 'Share from WeO', //  for email
+      subject: "Share from WeO", //  for email
     };
     Share.open(shareOptions);
   };
 
   getSpecificStyle = (key) => [
     styles[key],
-    this.props.type === 'TOPIC' && this.props.listHeader
+    this.props.type === "TOPIC" && this.props.listHeader
       ? topicListHeaderStyles[key]
       : listItemStyles[key],
-    this.props.type === 'POST' && this.props.listHeader && postListHeaderStyles[key],
-    this.props.type === 'REPLY' && !this.props.listHeader && replyListItemHeaderStyles[key],
+    this.props.type === "POST" &&
+      this.props.listHeader &&
+      postListHeaderStyles[key],
+    this.props.type === "REPLY" &&
+      !this.props.listHeader &&
+      replyListItemHeaderStyles[key],
   ];
 
   render() {
@@ -195,7 +201,7 @@ class CommentCard extends PureComponent {
       isHideFooter,
     } = this.props;
     return (
-      <View style={[this.getSpecificStyle('container'), style]}>
+      <View style={[this.getSpecificStyle("container"), style]}>
         <CommentCardHeader
           belongsTo={belongsTo}
           id={id}
@@ -206,7 +212,12 @@ class CommentCard extends PureComponent {
           createdAt={createdAt}
           isPeekMode={isPeekMode}
         >
-          <VoteBox id={id} disabled={isPeekMode} type={type} belongsTo={belongsTo} />
+          <VoteBox
+            id={id}
+            disabled={isPeekMode}
+            type={type}
+            belongsTo={belongsTo}
+          />
         </CommentCardHeader>
 
         <CommentCardContent
@@ -220,7 +231,7 @@ class CommentCard extends PureComponent {
           isPeekMode={isPeekMode}
         />
 
-        {typeof mediaUrl === 'object' &&
+        {typeof mediaUrl === "object" &&
           mediaUrl instanceof Array &&
           mediaUrl.length > 0 &&
           mediaUrl.map(
@@ -233,7 +244,7 @@ class CommentCard extends PureComponent {
                   imageRatio={this.state.imageRatio}
                   mediaUrl={m.url}
                 />
-              ),
+              )
           )}
 
         {!isHideFooter && (

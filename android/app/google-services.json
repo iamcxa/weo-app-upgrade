@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "824181281159",
+    "firebase_url": "https://weohk-210616.firebaseio.com",
+    "project_id": "weohk-210616",
+    "storage_bucket": "weohk-210616.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824181281159:android:7f49d1d3739b11d7",
+        "android_client_info": {
+          "package_name": "hk.com.weo.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824181281159-8iq569uec0dv6uplu08dna28sboa7hn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVcjHLiRU9mrg99Ym0CAhPLhjdVcISnlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824181281159-8iq569uec0dv6uplu08dna28sboa7hn5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "824181281159-0e90d0e2tmane3bc93o0bk09jv721bbs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.weo.com.hk",
+                "app_store_id": "1421655724"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

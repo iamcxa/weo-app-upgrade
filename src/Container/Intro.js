@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Image, ScrollView, StatusBar } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Colors from '~/Theme/Colors';
-import FooterLogo from '~/Components/FooterLogo';
-import { H1, H5 } from '../widget/Label';
-import Screen from '../utils/screen';
-import { PrimaryBtn } from '../widget/RoundButton';
+import React, { Component } from "react";
+import { StyleSheet, View, Image, ScrollView, StatusBar } from "react-native";
+import { Actions } from "react-native-router-flux";
+import Colors from "~/Theme/Colors";
+import FooterLogo from "~/Component/FooterLogo";
+import { H1, H5 } from "../widget/Label";
+import { Screen } from "~/Helper";
+import { PrimaryBtn } from "../widget/RoundButton";
 
 const TOTAL_PAGES = 3;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'stretch',
+    justifyContent: "space-around",
+    alignItems: "stretch",
   },
   label: {
-    fontWeight: '700',
-    lineHeight: parseInt(Screen.moderateScale(36), 10),
+    fontWeight: "700",
+    lineHeight: parseInt(Screen.scale(36), 10),
     color: Colors.black,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
@@ -78,11 +78,11 @@ export default class Intro extends Component {
       <View
         style={{
           backgroundColor: props.selected ? Colors.mainYellow : Colors.silver,
-          height: Screen.moderateScale(10),
-          width: Screen.moderateScale(10),
-          borderRadius: Screen.moderateScale(5),
-          padding: Screen.moderateScale(1),
-          margin: Screen.moderateScale(10),
+          height: Screen.scale(10),
+          width: Screen.scale(10),
+          borderRadius: Screen.scale(5),
+          padding: Screen.scale(1),
+          margin: Screen.scale(10),
         }}
       />
     );
@@ -103,19 +103,19 @@ export default class Intro extends Component {
           <View
             style={{
               width: Screen.width,
-              justifyContent: 'space-around',
-              alignItems: 'center',
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <View
               style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingTop: Screen.moderateScale(45),
+                justifyContent: "center",
+                alignItems: "center",
+                paddingTop: Screen.scale(45),
               }}
             >
               <Image
-                source={require('~/Assets/Images/intro/intro-1.png')}
+                source={require("~/Assets/Images/intro/intro-1.png")}
                 style={{
                   width: Screen.width * 0.7,
                   height: (Screen.width * 0.7 * 182) / 257,
@@ -125,7 +125,7 @@ export default class Intro extends Component {
             </View>
             <View
               style={{
-                paddingHorizontal: Screen.moderateScale(20),
+                paddingHorizontal: Screen.scale(20),
               }}
             >
               <H1 style={styles.label}>WeO 將地球分成唔同嘅 Circle ，</H1>
@@ -136,61 +136,63 @@ export default class Intro extends Component {
           <View
             style={{
               width: Screen.width,
-              justifyContent: 'space-around',
-              alignItems: 'center',
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <View
               style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingTop: Screen.moderateScale(45),
+                justifyContent: "center",
+                alignItems: "center",
+                paddingTop: Screen.scale(45),
               }}
             >
               <Image
-                source={require('~/Assets/Images/intro/intro-2.png')}
+                source={require("~/Assets/Images/intro/intro-2.png")}
                 style={{
-                  width: Screen.moderateScale(284),
-                  height: Screen.moderateScale(181),
+                  width: Screen.scale(284),
+                  height: Screen.scale(181),
                 }}
               />
             </View>
             <View
               style={{
-                paddingHorizontal: Screen.moderateScale(30),
+                paddingHorizontal: Screen.scale(30),
               }}
             >
-              <H1 style={styles.label}>WeO 令所有人都可以講真心話。 唔需要登入，更唔需要密碼，</H1>
+              <H1 style={styles.label}>
+                WeO 令所有人都可以講真心話。 唔需要登入，更唔需要密碼，
+              </H1>
               <H1 style={styles.label}>只要知道你喺邊，就可以玩。</H1>
             </View>
           </View>
           <View
             style={{
               width: Screen.width,
-              justifyContent: 'space-around',
-              alignItems: 'center',
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <View
               style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingTop: Screen.moderateScale(45),
+                justifyContent: "center",
+                alignItems: "center",
+                paddingTop: Screen.scale(45),
               }}
             >
               <Image
-                source={require('~/Assets/Images/intro/intro-3.png')}
+                source={require("~/Assets/Images/intro/intro-3.png")}
                 style={{
-                  width: Screen.moderateScale(241),
-                  height: Screen.moderateScale(191),
+                  width: Screen.scale(241),
+                  height: Screen.scale(191),
                 }}
               />
             </View>
             <View
               style={{
-                paddingHorizontal: Screen.moderateScale(30),
-                // height: Screen.moderateScale(144),
-                // marginTop: Screen.moderateScale(-50)
+                paddingHorizontal: Screen.scale(30),
+                // height: Screen.scale(144),
+                // marginTop: Screen.scale(-50)
               }}
             >
               <H1 style={styles.label}>
@@ -200,14 +202,14 @@ export default class Intro extends Component {
             </View>
           </View>
         </ScrollView>
-        <View style={{ flex: 0.4, justifyContent: 'space-between' }}>
-          <View style={{ alignItems: 'center' }}>
+        <View style={{ flex: 0.4, justifyContent: "space-between" }}>
+          <View style={{ alignItems: "center" }}>
             <View
               style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-                paddingBottom: Screen.moderateScale(18),
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+                paddingBottom: Screen.scale(18),
               }}
             >
               {dot({ selected: this.state.currentPage === 0 })}
@@ -216,8 +218,8 @@ export default class Intro extends Component {
             </View>
             <PrimaryBtn
               onPress={this.handleButton}
-              text={this.state.allRead ? '開始傾' : '下一步'}
-              style={{ width: Screen.width - Screen.moderateScale(34) }}
+              text={this.state.allRead ? "開始傾" : "下一步"}
+              style={{ width: Screen.width - Screen.scale(34) }}
             />
           </View>
           <FooterLogo />

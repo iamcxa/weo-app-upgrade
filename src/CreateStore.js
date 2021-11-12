@@ -1,45 +1,23 @@
-/* eslint-disable global-require */
-import asyncStorage from '@react-native-community/async-storage';
-import { Platform } from 'react-native';
-import { applyMiddleware, compose, createStore } from 'redux';
-import { persistReducer, persistStore } from 'redux-persist';
-import createSagaMiddleware from 'redux-saga';
-import thunk from 'redux-thunk';
+import { Platform } from "react-native";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
+import { persistReducer, persistStore } from "redux-persist";
+import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
+import appJson from "../app.json";
+import reducers from "~/Store/Reducers";
 
-import createMigrations from './Migration';
+import PersistConfig from "./PersistConfig";
 
-/**
- * This import defaults to localStorage for web and AsyncStorage for react-native.
- *
- * Keep in mind this storage *is not secure*. Do not use it to store sensitive information
- * (like API tokens, private and sensitive data, etc.).
- *
- * If you need to store sensitive information, use redux-persist-sensitive-storage.
- * NOTICE: sensitive-storage will not wipe data when removing app in iOS.
- *
- * @see https://github.com/CodingZeal/redux-persist-sensitive-storage
- */
+// Connect the sagas to the redux store
+export const sagaMiddleware = createSagaMiddleware();
 
-const persistConfig = {
-  key: 'root',
-  storage: asyncStorage,
-  version: 1,
-  migrate: createMigrations,
-  /**
-   * Blacklist state that we do not need/want to persist
-   */
-  blacklist: [
-    // 'auth',
-  ],
-};
+// Redux persist
+export const persistedReducers = persistReducer(
+  PersistConfig,
+  combineReducers(reducers)
+);
 
-export default (rootReducer, rootSaga) => {
-  // Redux persist
-  const persistedReducers = persistReducer(persistConfig, rootReducer);
-
-  // Connect the sagas to the redux store
-  const sagaMiddleware = createSagaMiddleware();
-
+export default () => {
   // Add middleware here
   const middleware = [];
   middleware.push(sagaMiddleware);
@@ -52,30 +30,32 @@ export default (rootReducer, rootSaga) => {
     // Use it if Remote debugging with RNDebugger, otherwise use remote-redux-devtools
     composeEnhancers = (
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
-      require('remote-redux-devtools').composeWithDevTools
+      // eslint-disable-next-line global-require
+      require("remote-redux-devtools").composeWithDevTools
     )({
-      name: Platform.OS,
+      name: `${Platform.OS}-${appJson.name}`,
       trace: true,
       traceLimit: 10,
     });
   }
 
+  // Create the store
+  const store = createStore(
+    persistedReducers,
+    composeEnhancers(applyMiddleware(...middleware))
+  );
+
   // Enable hot module replacement for reducers
   if (module.hot) {
-    module.hot.accept(() => {
-      const nextRootReducer = require('~/Store').default;
+    module.hot.accept(async () => {
+      const nextRootReducer = await import("~/Store/Reducers");
       store.replaceReducer(nextRootReducer);
     });
   }
 
-  // Create the store
-  const store = createStore(persistedReducers, composeEnhancers(applyMiddleware(...middleware)));
-
-  // Kick off the root saga
-  sagaMiddleware.run(rootSaga);
-
   return {
     persistor: persistStore(store),
     store,
+    sagaMiddleware,
   };
 };

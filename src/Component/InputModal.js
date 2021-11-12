@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   StyleSheet,
   View,
@@ -10,19 +10,19 @@ import {
   StatusBar,
   Platform,
   PixelRatio,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { connect } from 'react-redux';
-import _ from 'lodash';
-import { bindActionCreators } from 'redux';
-import Entypo from 'react-native-vector-icons/Ionicons';
-import config from '~/Config';
-import Colors from '~/Theme/Colors';
-import Screen from '../utils/screen';
-import { PrimaryInput } from '../widget/InputBox';
-import { Title, DefaultText } from '../widget/Label';
-import i18n, { i18nKey } from '../utils/i18n';
-import Modal from './BaseLightbox';
+} from "react-native";
+import { Actions } from "react-native-router-flux";
+import { connect } from "react-redux";
+import _ from "lodash";
+import { bindActionCreators } from "redux";
+import Entypo from "react-native-vector-icons/Ionicons";
+import config from "~/Config";
+import Colors from "~/Theme/Colors";
+import { Screen } from "~/Helper";
+import { PrimaryInput } from "../widget/InputBox";
+import { Title, DefaultText } from "../widget/Label";
+import i18n, { i18nKey } from "../utils/i18n";
+import Modal from "./BaseLightbox";
 
 const styles = StyleSheet.create({});
 
@@ -36,14 +36,14 @@ class InputMadal extends Component {
 
   static defaultProps = {
     onSubmit: () => {},
-    submitText: '建立',
-    closeText: '取消',
+    submitText: "建立",
+    closeText: "取消",
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      text: '',
+      text: "",
     };
   }
 
@@ -67,7 +67,7 @@ class InputMadal extends Component {
         submitText={submitText}
         closeText={closeText}
       >
-        <View style={{ justifyContent: 'center' }}>
+        <View style={{ justifyContent: "center" }}>
           <Title>項目名稱: </Title>
           <PrimaryInput
             style={{}}

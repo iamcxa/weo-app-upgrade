@@ -1,0 +1,8 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(3 3)" fill="none" fill-rule="evenodd">
+        <path d="M0 0h15v15H0z"/>
+        <circle fill="#000" cx="7" cy="3" r="1"/>
+        <circle fill="#000" cx="7" cy="7" r="1"/>
+        <circle fill="#000" cx="7" cy="11" r="1"/>
+    </g>
+</svg>

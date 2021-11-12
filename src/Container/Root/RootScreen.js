@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Text, View, Button, SafeAreaView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { NavBar } from '@ublocks-react-native/component';
-import { translate as t } from '~/Helper/I18n';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Text, View, Button, SafeAreaView } from "react-native";
+import { Actions } from "react-native-router-flux";
+import { NavBar } from "@ublocks-react-native/component";
+import { translate as t } from "~/Helper/I18n";
 
-import StartupActions from '~/Stores/Startup/Actions';
-import styles from './RootScreenStyle';
+import StartupActions from "~/Store/Startup/Actions";
+import styles from "./RootScreenStyle";
 
 const Separator = () => {
   return <View style={styles.separator} />;
@@ -20,7 +20,7 @@ class RootScreen extends React.Component {
   };
 
   componentDidMount() {
-    __DEV__ && console.log('@Mount RootScreen!');
+    __DEV__ && console.log("@Mount RootScreen!");
   }
 
   onPressOpenApiExample = () => {
@@ -41,25 +41,25 @@ class RootScreen extends React.Component {
           appRoute={appRoute}
           title="App Title"
           style={styles.navBar}
-          leftComponent={<Text style={styles.text}>{t('root_left')}</Text>}
-          rightComponent={<Text style={styles.text}>{t('root_right')}</Text>}
+          leftComponent={<Text style={styles.text}>{t("root_left")}</Text>}
+          rightComponent={<Text style={styles.text}>{t("root_right")}</Text>}
         />
         <View style={styles.bodyWrapper}>
-          <Text style={styles.title}>{t('root_hello_world')}</Text>
-          <Text style={styles.greeting}>{t('root_greeting')}</Text>
-          <Text style={styles.text}>{t('root_description')}</Text>
+          <Text style={styles.title}>{t("root_hello_world")}</Text>
+          <Text style={styles.greeting}>{t("root_greeting")}</Text>
+          <Text style={styles.text}>{t("root_description")}</Text>
           <Text style={styles.title}>Examples</Text>
           <View>
             <Button
               style={styles.button}
               onPress={this.onPressOpenApiExample}
-              title={t('btnOpenApiExample')}
+              title={t("btnOpenApiExample")}
             />
             <Separator />
             <Button
               style={styles.button}
               onPress={this.onPressOpenFcmExample}
-              title={t('btnOpenFcmExample')}
+              title={t("btnOpenFcmExample")}
             />
           </View>
         </View>
@@ -75,5 +75,5 @@ export default connect(
   }),
   (dispatch) => ({
     startup: () => dispatch(StartupActions.startup()),
-  }),
+  })
 )(RootScreen);

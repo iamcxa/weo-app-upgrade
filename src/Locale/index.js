@@ -1,8 +1,9 @@
-import en from './en';
-import zh_HK from './zh_HK';
+import en from "./en";
+import zh from "./zh";
+import zh_HK from "./zh_HK";
 
 export default {
   en: () => en,
-  zh: () => zh_HK,
+  zh: () => zh,
   zh_HK: () => zh_HK,
 };

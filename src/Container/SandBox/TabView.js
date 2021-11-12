@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, ViewPropTypes } from 'react-native';
-import Button from '~/Components/Button';
-import { Actions } from 'react-native-router-flux';
+import React from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Text, View, ViewPropTypes } from "react-native";
+import Button from "~/Component/Button";
+import { Actions } from "react-native-router-flux";
 
 const contextTypes = {
   drawer: PropTypes.object,
@@ -17,19 +17,23 @@ const propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
     borderWidth: 2,
-    borderColor: 'red',
+    borderColor: "red",
   },
 });
 
 const TabView = (props, context) => (
   <View style={[styles.container, props.sceneStyle]}>
     <Text>Tab {props.title}</Text>
-    {props.name === 'tab1_1' && <Button onPress={Actions.tab1_2} text="next screen for tab1_1" />}
-    {props.name === 'tab2_1' && <Button onPress={Actions.tab2_2} text="next screen for tab2_1" />}
+    {props.name === "tab1_1" && (
+      <Button onPress={Actions.tab1_2} text="next screen for tab1_1" />
+    )}
+    {props.name === "tab2_1" && (
+      <Button onPress={Actions.tab2_2} text="next screen for tab2_1" />
+    )}
     <Button onPress={Actions.pop} text="Back" />
     <Button
       onPress={() => {

@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { isString } from 'lodash';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { CircleActions, UserActions } from '~/Store/Actions';
+import { isString } from "lodash";
+import PropTypes from "prop-types";
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import SplashView from './SplashView';
+import { CircleActions, UserActions } from "~/Store/Actions";
+
+import SplashView from "./SplashView";
 
 class SplashScreen extends React.Component {
   timer = null;
@@ -113,7 +114,7 @@ SplashScreen.propTypes = {
 };
 
 SplashScreen.defaultProps = {
-  apiToken: '',
+  apiToken: "",
   // currentState: '',
 };
 
@@ -136,6 +137,6 @@ export default connect(
         cleanUser: UserActions.cleanUser,
         fetchPostAutoSignUp: UserActions.fetchPostAutoSignUp,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(SplashScreen);

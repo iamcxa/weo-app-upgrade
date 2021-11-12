@@ -1,25 +1,25 @@
 // import { ActionConst } from 'react-native-router-flux';
-import { takeLatest, takeEvery, all } from 'redux-saga/effects';
+import { all, call, takeEvery, takeLatest } from "redux-saga/effects";
 
-import { ExampleTypes } from '~/Store/Example/Actions';
-import * as Example from './ExampleSaga';
-
-// import { AppPermissionTypes } from '~/Store/AppPermission/Actions';
+import { AppPermissionTypes } from "~/Store/AppPermission/Actions";
 // import { AppConfigTypes } from '~/Store/AppConfig/Actions';
 // import { NotificationTypes } from '~/Store/Notification/Actions';
-// import { CircleTypes } from '~/Store/Circle/Actions';
-// import { UserTypes } from '~/Store/User/Actions';
+import { CircleTypes } from "~/Store/Circle/Actions";
+import { ExampleTypes } from "~/Store/Example/Actions";
+
+import { UserTypes } from "~/Store/User/Actions";
 // import { SearchTypes } from '~/Store/Search/Actions';
 // import { TopicTypes } from '~/Store/Topic/Actions';
 // import { VoteTypes } from '~/Store/Vote/Actions';
 // import { PostTypes } from '~/Store/Post/Actions';
 // import { ReportTypes } from '~/Store/Report/Actions';
 // import { FirebaseTypes } from '~/Store/Firebase/Actions';
-
-// import * as AppPermissionSaga from './AppPermissionSaga';
+import * as AppPermissionSaga from "./AppPermissionSaga";
 // import * as AppRouteSaga from './AppRouteSaga';
-// import * as CircleSaga from './CircleSaga';
-// import * as UserSaga from './UserSaga';
+import * as CircleSaga from "./CircleSaga";
+import * as Example from "./ExampleSaga";
+import * as UserSaga from "./UserSaga";
+import * as UserAuthSaga from "./UserAuthSaga";
 // import * as FirebaseSaga from './FirebaseSaga';
 // import * as TopicSaga from './TopicSaga';
 // import * as VoteSaga from './VoteSaga';
@@ -31,6 +31,8 @@ import * as Example from './ExampleSaga';
 
 export default function* root() {
   yield all([
+    // call(UserSaga.fetchPostAutoSignUp),
+
     /**
      * @see https://redux-saga.js.org/docs/basics/UsingSagaHelpers.html
      */
@@ -44,8 +46,14 @@ export default function* root() {
     // takeLatest(ActionConst.FOCUS, AppRouteSaga.pushｓActionWatcher),
 
     // // App Permission Watcher
-    // takeLatest(AppPermissionTypes.CHECK_PERMISSIONS, AppPermissionSaga.checkPermissions),
-    // takeLatest(AppPermissionTypes.REQUEST_PERMISSION, AppPermissionSaga.requestPermission),
+    takeLatest(
+      AppPermissionTypes.CHECK_PERMISSIONS,
+      AppPermissionSaga.checkPermissions
+    ),
+    takeLatest(
+      AppPermissionTypes.REQUEST_PERMISSION,
+      AppPermissionSaga.requestPermission
+    ),
     //
     // // FCM Watchers
     // // takeLatest(FirebaseTypes.GET_FCM_TOKEN, FirebaseSaga.getFcmToken),
@@ -72,21 +80,34 @@ export default function* root() {
     // takeLatest(
     //   NotificationTypes.FETCH_SET_NOTIFICATION_READ,
     //   NotificationSaga.fetchSetNotificationRead,
-    // ),
+    // ),ㄩㄝ
     //
     // // Search
     // takeLatest(SearchTypes.FETCH_GET_POPULAR_KEYWORDS, SearchSaga.fetchGetPopularKeywords),
     // takeLatest(SearchTypes.FETCH_GET_SEARCH_RESULT, SearchSaga.fetchGetSearchResult),
     //
-    // // Circle Watchers
-    // takeLatest(CircleTypes.FETCH_PUT_HOME_CIRCLE, CircleSaga.fetchPutHomeCircle),
-    // takeLatest(CircleTypes.FETCH_GET_STAY_CIRCLES, CircleSaga.fetchGetStayCircles),
+    // Circle Watchers
+    takeLatest(
+      CircleTypes.FETCH_PUT_HOME_CIRCLE,
+      CircleSaga.fetchPutHomeCircle
+    ),
+    takeLatest(
+      CircleTypes.FETCH_GET_STAY_CIRCLES,
+      CircleSaga.fetchGetStayCircles
+    ),
+    takeLatest(
+      CircleTypes.FETCH_GET_CIRCLE_RANKING,
+      CircleSaga.fetchGetCircleRanking
+    ),
     //
-    // // User Watchers
-    // takeLatest(UserTypes.FETCH_PUT_USER_PROFILE, UserSaga.fetchPutUserProfile),
-    // takeLatest(UserTypes.FETCH_POST_LOGOUT, UserSaga.fetchPostLogout),
-    // takeLatest(UserTypes.FETCH_POST_SIGN_UP, UserSaga.fetchPostSignUp),
-    // takeLatest(UserTypes.FETCH_POST_AUTO_SIGN_UP, UserSaga.fetchPostAutoSignUp),
+    // User Watchers
+    takeLatest(UserTypes.FETCH_PUT_USER_PROFILE, UserSaga.fetchPutUserProfile),
+    takeLatest(UserTypes.FETCH_POST_LOGOUT, UserAuthSaga.fetchPostLogout),
+    takeLatest(UserTypes.FETCH_POST_SIGN_UP, UserAuthSaga.fetchPostSignUp),
+    takeLatest(
+      UserTypes.FETCH_POST_AUTO_SIGN_UP,
+      UserAuthSaga.fetchPostAutoSignUp
+    ),
     //
     // // Post
     // takeLatest(PostTypes.FETCH_GET_POST, PostSaga.fetchGetPost),

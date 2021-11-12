@@ -1,7 +1,7 @@
-import { logger } from 'react-native-logs';
+import { logger } from "react-native-logs";
 
-import Config from '../Config';
+import Config from "../Config";
 
-const log = logger.createLogger(Config.Logger);
+const log = __DEV__ ? console : logger.createLogger(Config.LOGGER);
 
 export default log;

@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Animated, View, Text } from 'react-native';
-import Screen from '../utils/screen';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Animated, View, Text } from "react-native";
+import { Screen } from "~/Helper";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
   },
   notify: {
-    position: 'absolute',
-    backgroundColor: 'red',
-    height: Screen.moderateScale(22),
-    borderRadius: Screen.moderateScale(11),
-    paddingTop: Screen.moderateScale(1),
-    paddingLeft: Screen.moderateScale(4),
-    paddingRight: Screen.moderateScale(4),
+    position: "absolute",
+    backgroundColor: "red",
+    height: Screen.scale(22),
+    borderRadius: Screen.scale(11),
+    paddingTop: Screen.scale(1),
+    paddingLeft: Screen.scale(4),
+    paddingRight: Screen.scale(4),
     // justifyContent: 'center',
     // alignItems: 'center',
   },
   small: {
-    position: 'absolute',
-    backgroundColor: 'red',
-    height: Screen.moderateScale(10),
-    width: Screen.moderateScale(10),
-    borderRadius: Screen.moderateScale(5),
+    position: "absolute",
+    backgroundColor: "red",
+    height: Screen.scale(10),
+    width: Screen.scale(10),
+    borderRadius: Screen.scale(5),
     padding: 1,
   },
   amount: {
     flex: 1,
-    color: '#fff',
-    fontSize: Screen.moderateScale(14),
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    fontFamily: 'Verdana',
+    color: "#fff",
+    fontSize: Screen.scale(14),
+    backgroundColor: "rgba(0, 0, 0, 0)",
+    fontFamily: "Verdana",
   },
 });
 
@@ -73,42 +73,45 @@ export default class NotifyBox extends Component {
   };
 
   renderNotify = () => {
-    const { amount, max, small, animated, color, top, right, left, bottom } = this.props;
+    const { amount, max, small, animated, color, top, right, left, bottom } =
+      this.props;
     const style = small ? styles.small : styles.notify;
     let amountWidth =
       amount < 10
         ? {
-            width: Screen.moderateScale(16),
-            paddingLeft: Screen.moderateScale(4),
+            width: Screen.scale(16),
+            paddingLeft: Screen.scale(4),
           }
         : null;
     amountWidth =
       amount > max
         ? {
-            width: Screen.moderateScale(16),
-            paddingLeft: Screen.moderateScale(3),
+            width: Screen.scale(16),
+            paddingLeft: Screen.scale(3),
           }
         : amountWidth;
-    const count = max !== 0 && amount > max ? 'N' : amount;
-    const inside = !small ? <Text style={[styles.amount, amountWidth]}>{count}</Text> : null;
+    const count = max !== 0 && amount > max ? "N" : amount;
+    const inside = !small ? (
+      <Text style={[styles.amount, amountWidth]}>{count}</Text>
+    ) : null;
     let animate;
     const position = {
       top:
         bottom !== null
           ? null
-          : top || (small ? Screen.moderateScale(18) : Screen.moderateScale(10)),
+          : top || (small ? Screen.scale(18) : Screen.scale(10)),
       right:
         left !== null
           ? null
-          : right || (small ? Screen.moderateScale(18) : Screen.moderateScale(10)),
+          : right || (small ? Screen.scale(18) : Screen.scale(10)),
       bottom: bottom || null,
       left: left || null,
     };
     switch (animated) {
-      case 'pop':
+      case "pop":
         animate = { transform: [{ scale: this.state.bounceValue }] };
         break;
-      case 'bounce':
+      case "bounce":
         animate = {
           transform: [
             {
@@ -157,7 +160,7 @@ NotifyBox.propTypes = {
   amount: PropTypes.number,
   max: PropTypes.number,
   small: PropTypes.bool,
-  animated: PropTypes.oneOf(['none', 'pop', 'bounce']),
+  animated: PropTypes.oneOf(["none", "pop", "bounce"]),
   color: PropTypes.string,
   top: PropTypes.number,
   right: PropTypes.number,
@@ -168,8 +171,8 @@ NotifyBox.propTypes = {
 NotifyBox.defaultProps = {
   amount: 0,
   max: 999,
-  animated: 'none',
-  color: 'red',
+  animated: "none",
+  color: "red",
   top: null,
   right: null,
   left: null,

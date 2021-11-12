@@ -1,8 +1,8 @@
-import React from 'react';
-import { AppState } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { AppState } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AppStateActions } from '~/Store/Actions';
+import { AppStateActions } from "~/Store/Actions";
 
 export function useAppState() {
   const dispatch = useDispatch();
@@ -11,14 +11,14 @@ export function useAppState() {
 
   const handleAppStateChange = async (newState) => {
     if (currentState !== newState) {
-      dispatch(AppStateActions['~/onStateUpdate'](newState));
+      dispatch(AppStateActions["app/onStateUpdate"](newState));
     }
   };
 
   React.useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
+    AppState.addEventListener("change", handleAppStateChange);
 
-    return () => AppState.removeEventListener('change', handleAppStateChange);
+    return () => AppState.removeEventListener("change", handleAppStateChange);
   });
   return currentState;
 }

@@ -1,28 +1,29 @@
-import { filterActions } from 'redux-ignore';
-import { combineReducers } from 'redux';
+import { filterActions } from "redux-ignore";
+import { combineReducers } from "redux";
 
 /**
  * Import Reduces, prepare to export
  */
 // --------- Build-in reducer, do not change if not sure --------- //
-import { reducer as AppConfigReducer } from './AppConfig/Reducers';
-import { reducer as AppStateReducer } from './AppState/Reducers';
-import { reducer as ExampleReducer } from './Example/Reducers';
-import { reducer as AppPermissionReducer } from './AppPermission/Reducers';
-import { reducer as AppRouteReducer } from './AppRoute/Reducers';
-import { reducer as AppApiReducer } from './AppApi/Reducers';
-import { reducer as AppAlertReducer } from './AppAlert/Reducers';
-import { reducer as CircleReducer } from './Circle/Reducers';
-import { reducer as UserReducer } from './User/Reducers';
-import { reducer as SearchReducer } from './Search/Reducers';
-import { reducer as NotificationReducer } from './Notification/Reducers';
-import { reducer as TopicReducer } from './Topic/Reducers';
-import { reducer as PostReducer } from './Post/Reducers';
-import { reducer as ReplyReducer } from './Reply/Reducers';
-import listReducer from './List/Reducers';
-import loading from './Loading/Reducers';
-import notifyAction from './NotifyAction/Reducers';
-import list from './List/list';
+import { reducer as AppConfigReducer } from "./AppConfig/Reducers";
+import { reducer as AppStateReducer } from "./AppState/Reducers";
+import { reducer as ExampleReducer } from "./Example/Reducers";
+import { reducer as AppPermissionReducer } from "./AppPermission/Reducers";
+import { reducer as AppRouteReducer } from "./AppRoute/Reducers";
+import { reducer as AppApiReducer } from "./AppApi/Reducers";
+import { reducer as AppAlertReducer } from "./AppAlert/Reducers";
+import { reducer as CircleReducer } from "./Circle/Reducers";
+import { reducer as UserReducer } from "./User/Reducers";
+import { reducer as SearchReducer } from "./Search/Reducers";
+import { reducer as NotificationReducer } from "./Notification/Reducers";
+import { reducer as TopicReducer } from "./Topic/Reducers";
+import { reducer as PostReducer } from "./Post/Reducers";
+import { reducer as ReplyReducer } from "./Reply/Reducers";
+import { reducer as TooltipReducer } from "./Tooltip/Reducers";
+import listReducer from "./List/Reducers";
+import loading from "./Loading/Reducers";
+import notifyAction from "./NotifyAction/Reducers";
+import list from "./List/list";
 
 export default {
   // // do not modify appState/appRoute
@@ -54,6 +55,7 @@ export default {
   user: UserReducer,
   search: SearchReducer,
   notification: NotificationReducer,
+  tooltip: TooltipReducer,
 
   // hereYouAre content
   hereYouAre: filterActions(
@@ -62,7 +64,7 @@ export default {
       posts: PostReducer,
       replies: ReplyReducer,
     }),
-    (action) => action.belongsTo === 'HERE_YOU_ARE',
+    (action) => action.belongsTo === "HERE_YOU_ARE"
   ),
 
   // thereYouAre content
@@ -72,7 +74,7 @@ export default {
       posts: PostReducer,
       replies: ReplyReducer,
     }),
-    (action) => action.belongsTo === 'THERE_YOU_ARE',
+    (action) => action.belongsTo === "THERE_YOU_ARE"
   ),
 
   // peek view content
@@ -82,13 +84,13 @@ export default {
       posts: PostReducer,
       replies: ReplyReducer,
     }),
-    (action) => action.belongsTo === 'PEEK',
+    (action) => action.belongsTo === "PEEK"
   ),
 
   // hereYouAre: listReducer('HERE_YOU_ARE'),
   // thereYouAre: listReducer('THERE_YOU_ARE'),
   // peek: listReducer('PEEK'),
-  browse: listReducer('BROWSE'),
+  browse: listReducer("BROWSE"),
   // alert,
   // circle,
   loading,

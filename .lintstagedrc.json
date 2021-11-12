@@ -1,0 +1,5 @@
+{
+  "src/**/*.js": ["prettier --write"],
+  "test/**/*.js": ["prettier --write"],
+  "*.{json}": "prettier --write"
+}

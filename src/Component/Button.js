@@ -1,34 +1,46 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Screen from '../utils/screen';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Screen } from "~/Helper";
 
 const styles = StyleSheet.create({
   button: {
     // flex: 1,
     paddingLeft: 12,
     paddingRight: 12,
-    height: Screen.moderateScale(35),
+    height: Screen.scale(35),
     borderWidth: Screen.onePixel * 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
   buttonText: {
-    color: '#000',
-    fontSize: Screen.moderateScale(18),
+    color: "#000",
+    fontSize: Screen.scale(18),
   },
 });
 
 export default class RoundButton extends Component {
   static propTypes = {
-    style: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.array,
+    ]),
     onPress: PropTypes.func.isRequired,
     btnColor: PropTypes.string,
-    btnStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+    btnStyle: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.array,
+    ]),
     text: PropTypes.string,
     textColor: PropTypes.string,
-    textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+    textStyle: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.array,
+    ]),
     borderColor: PropTypes.string,
     disablePress: PropTypes.bool,
     hitSlop: PropTypes.object,

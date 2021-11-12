@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -8,12 +8,12 @@ import {
   StyleSheet,
   Dimensions,
   Platform,
-} from 'react-native';
+} from "react-native";
 // import PropTypes from 'prop-types';
-import { ParallaxImage } from 'react-native-snap-carousel';
-import Colors from '~/Theme/Colors';
-import Screen from '../utils/screen';
-import { Title } from '../widget/Label';
+import { ParallaxImage } from "react-native-snap-carousel";
+import Colors from "~/Theme/Colors";
+import { Screen } from "~/Helper";
+import { Title } from "../widget/Label";
 
 const { width: viewportWidth, height: viewportHeight } = Screen;
 
@@ -24,15 +24,15 @@ function wp(percentage) {
 
 let zoomParameter = 0.7;
 let imageZoom = 0.05;
-if (Platform.OS === 'android') {
+if (Platform.OS === "android") {
   zoomParameter = 0.6;
   imageZoom = 0.1;
-  if (Screen.proportion === '16:10') {
+  if (Screen.proportion === "16:10") {
     zoomParameter = 0.55;
-  } else if (Screen.proportion === '4:3') {
+  } else if (Screen.proportion === "4:3") {
     zoomParameter = 0.44;
   }
-} else if (Screen.proportion === '4:3') {
+} else if (Screen.proportion === "4:3") {
   zoomParameter = 0.6;
 }
 
@@ -52,59 +52,59 @@ const styles = StyleSheet.create({
   imageContainer: {
     flex: 1,
     // justifyContent: "center",
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
   imageContainerEven: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   image: {
     // ...StyleSheet.absoluteFillObject,
-    // height: Screen.moderateScale((Screen.width * (zoomParameter - 0.1)) * 2560 / 1440),
-    // width: Screen.moderateScale(Screen.width * (zoomParameter - 0.1)),
+    // height: Screen.scale((Screen.width * (zoomParameter - 0.1)) * 2560 / 1440),
+    // width: Screen.scale(Screen.width * (zoomParameter - 0.1)),
     height: (Screen.width * (zoomParameter - imageZoom) * 2339) / 1654,
     width: Screen.width * (zoomParameter - imageZoom),
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
   radiusMaskEven: {
-    backgroundColor: '#000',
+    backgroundColor: "#000",
   },
   textContainer: {
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingTop: 20 - 8,
     paddingBottom: 20,
     paddingHorizontal: 16,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   textContainerEven: {
-    backgroundColor: '#000',
+    backgroundColor: "#000",
   },
   title: {
-    color: '#000',
+    color: "#000",
     fontSize: 13,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 0.5,
   },
   titleEven: {
-    color: 'white',
+    color: "white",
   },
   subtitle: {
     marginTop: 6,
-    color: 'gray',
+    color: "gray",
     fontSize: 12,
-    fontStyle: 'italic',
+    fontStyle: "italic",
   },
   subtitleEven: {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: "rgba(255, 255, 255, 0.7)",
   },
   headerContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   headerText: {
     // fontSize: 24,
     // lineHeight: 33,
-    paddingBottom: Screen.moderateScale(9),
-    fontWeight: '300',
+    paddingBottom: Screen.scale(9),
+    fontWeight: "300",
     color: Colors.pinkRed,
   },
 });
@@ -143,11 +143,14 @@ export default class SliderCard extends Component {
     return parallax ? (
       <ParallaxImage
         source={{ uri: image }}
-        containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
+        containerStyle={[
+          styles.imageContainer,
+          even ? styles.imageContainerEven : {},
+        ]}
         style={[styles.image, imageStyle]}
         parallaxFactor={parallaxFactor}
         showSpinner
-        spinnerColor={even ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.25)'}
+        spinnerColor={even ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 0, 0, 0.25)"}
         {...parallaxProps}
       />
     ) : (
@@ -177,7 +180,10 @@ export default class SliderCard extends Component {
     } = this.props;
 
     const uppercaseTitle = title ? (
-      <Text style={[styles.title, even ? styles.titleEven : {}]} numberOfLines={2}>
+      <Text
+        style={[styles.title, even ? styles.titleEven : {}]}
+        numberOfLines={2}
+      >
         {title.toUpperCase()}
       </Text>
     ) : (
@@ -195,9 +201,13 @@ export default class SliderCard extends Component {
         }}
       >
         {this.header}
-        <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
+        <View
+          style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
+        >
           {this.image}
-          <View style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]} />
+          <View
+            style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]}
+          />
         </View>
       </TouchableOpacity>
     );

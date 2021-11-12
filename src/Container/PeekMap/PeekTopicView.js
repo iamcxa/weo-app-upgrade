@@ -1,6 +1,6 @@
-import React from 'react';
-import { throttle, isEqual } from 'lodash';
-import PropTypes from 'prop-types';
+import React from "react";
+import { throttle, isEqual } from "lodash";
+import PropTypes from "prop-types";
 import {
   Text,
   View,
@@ -9,25 +9,25 @@ import {
   SafeAreaView,
   RefreshControl,
   ActivityIndicator,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { Screen, StyleSheet, Date as d } from '~/Helper';
-import { translate as t } from '~/Helper/I18n';
-import { Colors, Classes } from '~/Theme';
-import Config from '~/Config';
+} from "react-native";
+import { Actions } from "react-native-router-flux";
+import { Screen, StyleSheet, Date as d } from "~/Helper";
+import { translate as t } from "~/Helper/I18n";
+import { Colors, Classes } from "~/Theme";
+import Config from "~/Config";
 import {
   TopicCard,
   AndroidBackKey,
   ListSeparator,
   BaseIconButton,
   BackToTopButton,
-} from '~/Component';
+} from "~/Component";
 
-import { SortOptionRow } from '~/Components/ListHeader';
-import HyperlinkWrapper from '~/widget/HyperlinkWrapper';
-import { getRoutePrefix } from '~/utils/route';
+import { SortOptionRow } from "~/Component/ListHeader";
+import HyperlinkWrapper from "~/widget/HyperlinkWrapper";
+import { getRoutePrefix } from "~/utils/route";
 
-import PaginationHeader from './PaginationHeader';
+import PaginationHeader from "./PaginationHeader";
 
 const { CIRCLE_TYPE } = Config;
 
@@ -38,20 +38,20 @@ const styles = StyleSheet.create({
     height: Screen.height,
   },
   listContent: {
-    paddingHorizontal: Screen.moderateScale(15),
-    borderRadius: Screen.moderateScale(4),
+    paddingHorizontal: Screen.scale(15),
+    borderRadius: Screen.scale(4),
     backgroundColor: Colors.blackFour,
   },
   listEmptyContainer: {
     backgroundColor: Colors.black,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
   },
   listEmptyMessage: {
-    alignSelf: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    textAlign: "center",
     lineHeight: 30,
     color: Colors.white,
   },
@@ -93,7 +93,7 @@ class PeekTopicView extends React.PureComponent {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (!Carousel) {
-      Carousel = require('react-native-snap-carousel').default;
+      Carousel = require("react-native-snap-carousel").default;
       return {
         isCarouselLoaded: true,
       };
@@ -191,15 +191,19 @@ class PeekTopicView extends React.PureComponent {
       return (
         <View style={[styles.listEmptyContainer, styles.darkView]}>
           <Text style={[styles.listEmptyMessage, styles.darkView]}>
-            {t('peek_topic_list_list_is_empty')}
+            {t("peek_topic_list_list_is_empty")}
           </Text>
         </View>
       );
     }
     return (
       <View style={[styles.listEmptyContainer, styles.darkContainer]}>
-        <HyperlinkWrapper style={[styles.listEmptyMessage, styles.darkContainer]}>
-          <Text style={styles.dark}>{t('peek_topic_list_location_not_support')}</Text>
+        <HyperlinkWrapper
+          style={[styles.listEmptyMessage, styles.darkContainer]}
+        >
+          <Text style={styles.dark}>
+            {t("peek_topic_list_location_not_support")}
+          </Text>
         </HyperlinkWrapper>
       </View>
     );
@@ -257,8 +261,12 @@ class PeekTopicView extends React.PureComponent {
     const slideHeight = Screen.height - Screen.verticalScale(80);
     const slideItemWidth = Screen.width - Screen.scale(64);
 
-    const { handleSnapItemChange, handleBeforeSnapItemChange, activeSlide, isFetching } =
-      this.props;
+    const {
+      handleSnapItemChange,
+      handleBeforeSnapItemChange,
+      activeSlide,
+      isFetching,
+    } = this.props;
     const { isCarouselLoaded } = this.state;
     return isCarouselLoaded ? (
       <View style={Classes.fillRow}>
@@ -294,8 +302,8 @@ class PeekTopicView extends React.PureComponent {
             // height: Screen.height - Screen.verticalScale(70),
           }}
           contentContainerStyle={{
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
             // height: Screen.height - Screen.verticalScale(300),
           }}
           scrollEventThrottle={150}
@@ -346,7 +354,7 @@ class PeekTopicView extends React.PureComponent {
           backToMap={this.handleBackToMap}
         />
         {this.renderContent({ sort, topics, circleList, viewableItems })}
-        {!isScrollAtTop && Platform.OS === 'android' && (
+        {!isScrollAtTop && Platform.OS === "android" && (
           <BackToTopButton onPress={this.handleScrollToTop} />
         )}
       </SafeAreaView>

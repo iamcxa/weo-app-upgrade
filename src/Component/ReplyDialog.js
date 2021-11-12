@@ -1,20 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import rnTextSize from 'react-native-text-size';
-import Dialog, { DialogContent } from 'react-native-popup-dialog';
-import { connect } from 'react-redux';
-import { isString, isEmpty } from 'lodash';
-import { bindActionCreators } from 'redux';
-import { ScrollView, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+// import rnTextSize from 'react-native-text-size';
+import Dialog, { DialogContent } from "react-native-popup-dialog";
+import { connect } from "react-redux";
+import { isString, isEmpty } from "lodash";
+import { bindActionCreators } from "redux";
+import {
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+} from "react-native";
 
-import { Date as d, Screen } from '~/Helper';
-import { PostActions } from ''~/Component';
-import { Fonts, Colors, Classes, Metrics } from '~/Theme';
+import { Date as d, Screen } from "~/Helper";
+import { PostActions } from "~/Store/Actions";
+import { Fonts, Colors, Classes, Metrics } from "~/Theme";
 
-import { getStateKeyByBelongsTo } from '~/Stores/List/Reducers';
+import { getStateKeyByBelongsTo } from "~/Store/List/Reducers";
 
-import CommentCardHeader from './CommentCardHeader';
-import CommentCardImage from './CommentCardImage';
+import CommentCardHeader from "./CommentCardHeader";
+import CommentCardImage from "./CommentCardImage";
 // import VoteBox from './VoteBox';
 
 const styles = StyleSheet.create({
@@ -57,12 +63,12 @@ class ReplyDialog extends React.PureComponent {
   state = {
     dialogHeight: 130,
     targetPost: {
-      id: '',
-      title: '',
-      content: '',
-      createdAt: '',
-      memberName: '',
-      memberAvatar: '',
+      id: "",
+      title: "",
+      content: "",
+      createdAt: "",
+      memberName: "",
+      memberAvatar: "",
     },
   };
 
@@ -121,15 +127,15 @@ class ReplyDialog extends React.PureComponent {
   };
 
   getDialogHeight = async (content) => {
-    if (isString(content)) {
-      const size = await rnTextSize.measure({
-        text: content.trim(), // text to measure, can include symbols
-        width: Screen.width * 0.92, // max-width of the "virtual" container
-        ...Fonts.style.normal,
-        // ...fontSpecs, // RN font specification
-      });
-      return size.height + 130;
-    }
+    // if (isString(content)) {
+    //   const size = await rnTextSize.measure({
+    //     text: content.trim(), // text to measure, can include symbols
+    //     width: Screen.width * 0.92, // max-width of the "virtual" container
+    //     ...Fonts.style.normal,
+    //     // ...fontSpecs, // RN font specification
+    //   });
+    //   return size.height + 130;
+    // }
     return 130;
   };
 
@@ -157,7 +163,7 @@ class ReplyDialog extends React.PureComponent {
                 children({
                   belongsTo,
                   id: targetPost.id,
-                  type: 'POST',
+                  type: "POST",
                   avatar: targetPost.memberAvatar,
                   authorName: targetPost.memberName,
                   createdAt: d.humanize(targetPost.createdAt),
@@ -184,7 +190,7 @@ class ReplyDialog extends React.PureComponent {
           {!isEmpty(targetPost) ? (
             <ScrollView style={Classes.fill}>
               <Text style={styles.contentText}>{targetPost.content}</Text>
-              {typeof targetPost === 'object' &&
+              {typeof targetPost === "object" &&
                 targetPost.mediaUrl instanceof Array &&
                 targetPost.mediaUrl.map((m, i) => (
                   <CommentCardImage
@@ -215,6 +221,6 @@ export default connect(
       {
         fetchGetSinglePost: PostActions.fetchGetSinglePost,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(ReplyDialog);

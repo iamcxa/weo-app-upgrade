@@ -1,34 +1,34 @@
-import * as React from 'react';
-import { SafeAreaView } from 'react-native';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { Actions } from 'react-native-router-flux';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import * as React from "react";
+import { SafeAreaView } from "react-native";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import { Actions } from "react-native-router-flux";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
-import { Colors, Classes } from '~/Theme';
-import { Screen, ScaledSheet } from '~/Helper';
+import { Colors, Classes } from "~/Theme";
+import { Screen, ScaledSheet } from "~/Helper";
 
-import { onUpdateList } from '~/Stores/List/Actions/list';
-import TopicScreen from '~/Containers/Topic/TopicScreen';
-import ThereYouAreIntro from '~/Containers/ThereYouAreIntro';
-import ProfileScreen from '~/Containers/Profile/ProfileScreen';
-import TopicCreationScreen from '~/Containers/Topic/TopicCreationScreen';
-import MainTabBar from '~/Components/MainTabBar';
-import CustomTabIcon from '~/Components/CustomTabIcon';
+import { onUpdateList } from "~/Store/List/Actions/list";
+import TopicScreen from "~/Containers/Topic/TopicScreen";
+import ThereYouAreIntro from "~/Containers/ThereYouAreIntro";
+import ProfileScreen from "~/Containers/Profile/ProfileScreen";
+import TopicCreationScreen from "~/Containers/Topic/TopicCreationScreen";
+import MainTabBar from "~/Component/MainTabBar";
+import CustomTabIcon from "~/Component/CustomTabIcon";
 
 const styles = ScaledSheet.create({
   tabBar: {
-    alignItems: 'stretch',
+    alignItems: "stretch",
     // justifyContent: 'space-between',
-    width: '100%',
-    height: Screen.moderateScale(49),
-    backgroundColor: '#ffffff',
-    shadowColor: '#d4d4d47f',
+    width: "100%",
+    height: Screen.scale(49),
+    backgroundColor: "#ffffff",
+    shadowColor: "#d4d4d47f",
     shadowOffset: {
       width: 0,
       height: 0,
     },
-    shadowRadius: Screen.moderateScale(17),
+    shadowRadius: Screen.scale(17),
     shadowOpacity: 1,
   },
 });
@@ -62,31 +62,31 @@ class MainTab extends React.Component {
     index: 0,
     routes: [
       {
-        key: 'HereYourTopicList',
-        title: 'Here',
-        iconName: 'navHereYouAre',
-        iconNameActive: 'navHereYouAre_active',
+        key: "HereYourTopicList",
+        title: "Here",
+        iconName: "navHereYouAre",
+        iconNameActive: "navHereYouAre_active",
       },
       {
-        key: 'ThereYouAreTopicList',
-        title: 'There',
-        iconName: 'navThereYouAre',
-        iconNameActive: 'navThereYouAre_active',
+        key: "ThereYouAreTopicList",
+        title: "There",
+        iconName: "navThereYouAre",
+        iconNameActive: "navThereYouAre_active",
       },
       {
-        key: 'ProfileScreen',
-        title: 'Profile',
-        iconName: 'navAccount',
-        iconNameActive: 'navAccountActive',
+        key: "ProfileScreen",
+        title: "Profile",
+        iconName: "navAccount",
+        iconNameActive: "navAccountActive",
       },
       {
-        key: 'CreateTopic',
-        title: 'Create',
-        iconName: 'navAdd',
+        key: "CreateTopic",
+        title: "Create",
+        iconName: "navAdd",
         iconStyle: {
           top: -10,
-          height: Screen.moderateScale(48),
-          width: Screen.moderateScale(48),
+          height: Screen.scale(48),
+          width: Screen.scale(48),
           zIndex: 100000,
         },
       },
@@ -120,11 +120,14 @@ class MainTab extends React.Component {
               )}
               // indicatorStyle={{ backgroundColor: 'white' }}
               onTabPress={({ route, preventDefault }) => {
-                if (route.key === 'CreateTopic') {
+                if (route.key === "CreateTopic") {
                   preventDefault();
                   return Actions.createNewTopic();
                 }
-                if (route.key === 'HereYourTopicList' || route.key === 'ThereYouAreTopicList') {
+                if (
+                  route.key === "HereYourTopicList" ||
+                  route.key === "ThereYouAreTopicList"
+                ) {
                   handleUpdateList({
                     isBackToTop: true,
                   });
@@ -151,6 +154,6 @@ export default connect(
       {
         handleUpdateList: onUpdateList,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(MainTab);

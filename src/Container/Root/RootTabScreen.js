@@ -1,31 +1,31 @@
-import * as React from 'react';
-import { TabView, SceneMap } from 'react-native-tab-view';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import * as React from "react";
+import { TabView, SceneMap } from "react-native-tab-view";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
-import { Screen } from '~/Helper';
-import AppStateActions from '~/Stores/AppState/Actions';
-import VoiceScreen from '~/Containers/Voice/VoiceScreen';
-import PeekMapScreen from '~/Containers/PeekMap/PeekMapScreen';
+import { Screen } from "~/Helper";
+import AppStateActions from "~/Store/AppState/Actions";
+import VoiceScreen from "~/Containers/Voice/VoiceScreen";
+import PeekMapScreen from "~/Containers/PeekMap/PeekMapScreen";
 
-import { onUpdateList } from '~/Stores/List/Actions/list';
+import { onUpdateList } from "~/Store/List/Actions/list";
 
-import MainTab from './MainTab';
+import MainTab from "./MainTab";
 
 class RootTab extends React.Component {
   state = {
     index: 0,
     routes: [
       {
-        key: 'VoiceScreen',
-        title: 'VoiceScreen',
-        belongsTo: 'THERE_YOU_ARE',
+        key: "VoiceScreen",
+        title: "VoiceScreen",
+        belongsTo: "THERE_YOU_ARE",
       },
-      { key: 'MainTab', title: 'MainTab', belongsTo: 'THERE_YOU_ARE' },
+      { key: "MainTab", title: "MainTab", belongsTo: "THERE_YOU_ARE" },
       {
-        key: 'PeekMapScreen',
-        title: 'PeekMapScreen',
-        belongsTo: 'THERE_YOU_ARE',
+        key: "PeekMapScreen",
+        title: "PeekMapScreen",
+        belongsTo: "THERE_YOU_ARE",
       },
     ],
   };
@@ -73,6 +73,6 @@ export default connect(
         onIndexChange: AppStateActions.onRootTabIndexChange,
         handleUpdateList: onUpdateList,
       },
-      dispatch,
-    ),
+      dispatch
+    )
 )(RootTab);

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:rnappexpo.xcodeproj">
+      location = "group:/Users/kent/Project/weo-app-upgrade/ios/Weo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

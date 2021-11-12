@@ -1,14 +1,21 @@
-import 'expo-splash-screen';
+import "expo-splash-screen";
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
+import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/lib/integration/react";
 
-import SplashScreen from '~/Container/Splash/SplashScreen';
-import AppNavigator from '~/Navigator/AppNavigator';
-import { AppStore, persistor } from '~/Store';
+import { ApiProvider } from "~/Api/ApiHandler/Store";
+import SplashScreen from "~/Container/Splash/SplashScreen";
+import AppNavigator from "~/Navigator";
+import rootSaga from "~/Saga";
+import { AppStore, persistor, sagaMiddleware } from "~/Store";
 
 export default () => {
+  // Kick off the root saga
+  sagaMiddleware.run(rootSaga);
+
+  // const ApiStoreProvider = CreateApiStore();
+
   return (
     /**
      * @see https://github.com/reduxjs/react-redux/blob/master/docs/api/Provider.md
@@ -21,10 +28,13 @@ export default () => {
      *
      * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
      */
-    <Provider store={AppStore}>
-      <PersistGate loading={<SplashScreen />} persistor={persistor}>
-        <AppNavigator />
-      </PersistGate>
-    </Provider>
+    <>
+      <ApiProvider />
+      <Provider store={AppStore}>
+        <PersistGate loading={<SplashScreen />} persistor={persistor}>
+          <AppNavigator />
+        </PersistGate>
+      </Provider>
+    </>
   );
 };
